@@ -50,9 +50,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseAStart(AStart node)
     {
         inAStart(node);
-        if(node.getDot() != null)
+        if(node.getProgramend() != null)
         {
-            node.getDot().apply(this);
+            node.getProgramend().apply(this);
         }
         if(node.getBody() != null)
         {
@@ -1353,9 +1353,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseAMatchedIfexpr(AMatchedIfexpr node)
     {
         inAMatchedIfexpr(node);
-        if(node.getFmatchedStmt() != null)
+        if(node.getMatchedstmt() != null)
         {
-            node.getFmatchedStmt().apply(this);
+            node.getMatchedstmt().apply(this);
         }
         outAMatchedIfexpr(node);
     }
@@ -1374,27 +1374,27 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseAOpenstmtIfexpr(AOpenstmtIfexpr node)
     {
         inAOpenstmtIfexpr(node);
-        if(node.getUnmatchedStmt() != null)
+        if(node.getOpenstmt() != null)
         {
-            node.getUnmatchedStmt().apply(this);
+            node.getOpenstmt().apply(this);
         }
         outAOpenstmtIfexpr(node);
     }
 
-    public void inAFmatchedStmt(AFmatchedStmt node)
+    public void inAMatchedMatchedstmt(AMatchedMatchedstmt node)
     {
         defaultIn(node);
     }
 
-    public void outAFmatchedStmt(AFmatchedStmt node)
+    public void outAMatchedMatchedstmt(AMatchedMatchedstmt node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAFmatchedStmt(AFmatchedStmt node)
+    public void caseAMatchedMatchedstmt(AMatchedMatchedstmt node)
     {
-        inAFmatchedStmt(node);
+        inAMatchedMatchedstmt(node);
         if(node.getRight() != null)
         {
             node.getRight().apply(this);
@@ -1419,23 +1419,44 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         {
             node.getIf().apply(this);
         }
-        outAFmatchedStmt(node);
+        outAMatchedMatchedstmt(node);
     }
 
-    public void inAIfthenIfUnmatchedStmt(AIfthenIfUnmatchedStmt node)
+    public void inAMatchedstmt(AMatchedstmt node)
     {
         defaultIn(node);
     }
 
-    public void outAIfthenIfUnmatchedStmt(AIfthenIfUnmatchedStmt node)
+    public void outAMatchedstmt(AMatchedstmt node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAIfthenIfUnmatchedStmt(AIfthenIfUnmatchedStmt node)
+    public void caseAMatchedstmt(AMatchedstmt node)
     {
-        inAIfthenIfUnmatchedStmt(node);
+        inAMatchedstmt(node);
+        if(node.getInstructions() != null)
+        {
+            node.getInstructions().apply(this);
+        }
+        outAMatchedstmt(node);
+    }
+
+    public void inAOpenOpenstmt(AOpenOpenstmt node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAOpenOpenstmt(AOpenOpenstmt node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAOpenOpenstmt(AOpenOpenstmt node)
+    {
+        inAOpenOpenstmt(node);
         if(node.getIfexpr() != null)
         {
             node.getIfexpr().apply(this);
@@ -1452,67 +1473,34 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         {
             node.getIf().apply(this);
         }
-        outAIfthenIfUnmatchedStmt(node);
+        outAOpenOpenstmt(node);
     }
 
-    public void inAIfthenUnmatchedStmt(AIfthenUnmatchedStmt node)
+    public void inAMatchedOpenstmt(AMatchedOpenstmt node)
     {
         defaultIn(node);
     }
 
-    public void outAIfthenUnmatchedStmt(AIfthenUnmatchedStmt node)
+    public void outAMatchedOpenstmt(AMatchedOpenstmt node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAIfthenUnmatchedStmt(AIfthenUnmatchedStmt node)
+    public void caseAMatchedOpenstmt(AMatchedOpenstmt node)
     {
-        inAIfthenUnmatchedStmt(node);
-        if(node.getOther() != null)
+        inAMatchedOpenstmt(node);
+        if(node.getOpenstmt() != null)
         {
-            node.getOther().apply(this);
-        }
-        if(node.getThen() != null)
-        {
-            node.getThen().apply(this);
-        }
-        if(node.getBoolcomp() != null)
-        {
-            node.getBoolcomp().apply(this);
-        }
-        if(node.getIf() != null)
-        {
-            node.getIf().apply(this);
-        }
-        outAIfthenUnmatchedStmt(node);
-    }
-
-    public void inAIfthenelseUnmatchedStmt(AIfthenelseUnmatchedStmt node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAIfthenelseUnmatchedStmt(AIfthenelseUnmatchedStmt node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAIfthenelseUnmatchedStmt(AIfthenelseUnmatchedStmt node)
-    {
-        inAIfthenelseUnmatchedStmt(node);
-        if(node.getUnmatchedStmt() != null)
-        {
-            node.getUnmatchedStmt().apply(this);
+            node.getOpenstmt().apply(this);
         }
         if(node.getElse() != null)
         {
             node.getElse().apply(this);
         }
-        if(node.getSmatchedStmt() != null)
+        if(node.getMatchedstmt() != null)
         {
-            node.getSmatchedStmt().apply(this);
+            node.getMatchedstmt().apply(this);
         }
         if(node.getThen() != null)
         {
@@ -1526,69 +1514,6 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         {
             node.getIf().apply(this);
         }
-        outAIfthenelseUnmatchedStmt(node);
-    }
-
-    public void inAFmatchedStmtSmatchedStmt(AFmatchedStmtSmatchedStmt node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAFmatchedStmtSmatchedStmt(AFmatchedStmtSmatchedStmt node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAFmatchedStmtSmatchedStmt(AFmatchedStmtSmatchedStmt node)
-    {
-        inAFmatchedStmtSmatchedStmt(node);
-        if(node.getFmatchedStmt() != null)
-        {
-            node.getFmatchedStmt().apply(this);
-        }
-        outAFmatchedStmtSmatchedStmt(node);
-    }
-
-    public void inASmatchedStmt(ASmatchedStmt node)
-    {
-        defaultIn(node);
-    }
-
-    public void outASmatchedStmt(ASmatchedStmt node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseASmatchedStmt(ASmatchedStmt node)
-    {
-        inASmatchedStmt(node);
-        if(node.getOther() != null)
-        {
-            node.getOther().apply(this);
-        }
-        outASmatchedStmt(node);
-    }
-
-    public void inAOther(AOther node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAOther(AOther node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAOther(AOther node)
-    {
-        inAOther(node);
-        if(node.getOperation() != null)
-        {
-            node.getOperation().apply(this);
-        }
-        outAOther(node);
+        outAMatchedOpenstmt(node);
     }
 }

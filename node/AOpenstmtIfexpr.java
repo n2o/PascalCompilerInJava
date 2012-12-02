@@ -7,7 +7,7 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class AOpenstmtIfexpr extends PIfexpr
 {
-    private PUnmatchedStmt _unmatchedStmt_;
+    private POpenstmt _openstmt_;
 
     public AOpenstmtIfexpr()
     {
@@ -15,10 +15,10 @@ public final class AOpenstmtIfexpr extends PIfexpr
     }
 
     public AOpenstmtIfexpr(
-        @SuppressWarnings("hiding") PUnmatchedStmt _unmatchedStmt_)
+        @SuppressWarnings("hiding") POpenstmt _openstmt_)
     {
         // Constructor
-        setUnmatchedStmt(_unmatchedStmt_);
+        setOpenstmt(_openstmt_);
 
     }
 
@@ -26,7 +26,7 @@ public final class AOpenstmtIfexpr extends PIfexpr
     public Object clone()
     {
         return new AOpenstmtIfexpr(
-            cloneNode(this._unmatchedStmt_));
+            cloneNode(this._openstmt_));
     }
 
     @Override
@@ -35,16 +35,16 @@ public final class AOpenstmtIfexpr extends PIfexpr
         ((Analysis) sw).caseAOpenstmtIfexpr(this);
     }
 
-    public PUnmatchedStmt getUnmatchedStmt()
+    public POpenstmt getOpenstmt()
     {
-        return this._unmatchedStmt_;
+        return this._openstmt_;
     }
 
-    public void setUnmatchedStmt(PUnmatchedStmt node)
+    public void setOpenstmt(POpenstmt node)
     {
-        if(this._unmatchedStmt_ != null)
+        if(this._openstmt_ != null)
         {
-            this._unmatchedStmt_.parent(null);
+            this._openstmt_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +57,23 @@ public final class AOpenstmtIfexpr extends PIfexpr
             node.parent(this);
         }
 
-        this._unmatchedStmt_ = node;
+        this._openstmt_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._unmatchedStmt_);
+            + toString(this._openstmt_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._unmatchedStmt_ == child)
+        if(this._openstmt_ == child)
         {
-            this._unmatchedStmt_ = null;
+            this._openstmt_ = null;
             return;
         }
 
@@ -84,9 +84,9 @@ public final class AOpenstmtIfexpr extends PIfexpr
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._unmatchedStmt_ == oldChild)
+        if(this._openstmt_ == oldChild)
         {
-            setUnmatchedStmt((PUnmatchedStmt) newChild);
+            setOpenstmt((POpenstmt) newChild);
             return;
         }
 

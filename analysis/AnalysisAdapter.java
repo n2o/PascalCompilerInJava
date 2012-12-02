@@ -393,43 +393,25 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAFmatchedStmt(AFmatchedStmt node)
+    public void caseAMatchedMatchedstmt(AMatchedMatchedstmt node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAIfthenIfUnmatchedStmt(AIfthenIfUnmatchedStmt node)
+    public void caseAMatchedstmt(AMatchedstmt node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAIfthenUnmatchedStmt(AIfthenUnmatchedStmt node)
+    public void caseAOpenOpenstmt(AOpenOpenstmt node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAIfthenelseUnmatchedStmt(AIfthenelseUnmatchedStmt node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAFmatchedStmtSmatchedStmt(AFmatchedStmtSmatchedStmt node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseASmatchedStmt(ASmatchedStmt node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAOther(AOther node)
+    public void caseAMatchedOpenstmt(AMatchedOpenstmt node)
     {
         defaultCase(node);
     }

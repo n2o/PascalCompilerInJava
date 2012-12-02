@@ -65,13 +65,10 @@ public interface Analysis extends Switch
     void caseABoolfactor(ABoolfactor node);
     void caseAMatchedIfexpr(AMatchedIfexpr node);
     void caseAOpenstmtIfexpr(AOpenstmtIfexpr node);
-    void caseAFmatchedStmt(AFmatchedStmt node);
-    void caseAIfthenIfUnmatchedStmt(AIfthenIfUnmatchedStmt node);
-    void caseAIfthenUnmatchedStmt(AIfthenUnmatchedStmt node);
-    void caseAIfthenelseUnmatchedStmt(AIfthenelseUnmatchedStmt node);
-    void caseAFmatchedStmtSmatchedStmt(AFmatchedStmtSmatchedStmt node);
-    void caseASmatchedStmt(ASmatchedStmt node);
-    void caseAOther(AOther node);
+    void caseAMatchedMatchedstmt(AMatchedMatchedstmt node);
+    void caseAMatchedstmt(AMatchedstmt node);
+    void caseAOpenOpenstmt(AOpenOpenstmt node);
+    void caseAMatchedOpenstmt(AMatchedOpenstmt node);
 
     void caseTInteger(TInteger node);
     void caseTBoolean(TBoolean node);

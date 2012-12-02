@@ -7,7 +7,7 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class AMatchedIfexpr extends PIfexpr
 {
-    private PFmatchedStmt _fmatchedStmt_;
+    private PMatchedstmt _matchedstmt_;
 
     public AMatchedIfexpr()
     {
@@ -15,10 +15,10 @@ public final class AMatchedIfexpr extends PIfexpr
     }
 
     public AMatchedIfexpr(
-        @SuppressWarnings("hiding") PFmatchedStmt _fmatchedStmt_)
+        @SuppressWarnings("hiding") PMatchedstmt _matchedstmt_)
     {
         // Constructor
-        setFmatchedStmt(_fmatchedStmt_);
+        setMatchedstmt(_matchedstmt_);
 
     }
 
@@ -26,7 +26,7 @@ public final class AMatchedIfexpr extends PIfexpr
     public Object clone()
     {
         return new AMatchedIfexpr(
-            cloneNode(this._fmatchedStmt_));
+            cloneNode(this._matchedstmt_));
     }
 
     @Override
@@ -35,16 +35,16 @@ public final class AMatchedIfexpr extends PIfexpr
         ((Analysis) sw).caseAMatchedIfexpr(this);
     }
 
-    public PFmatchedStmt getFmatchedStmt()
+    public PMatchedstmt getMatchedstmt()
     {
-        return this._fmatchedStmt_;
+        return this._matchedstmt_;
     }
 
-    public void setFmatchedStmt(PFmatchedStmt node)
+    public void setMatchedstmt(PMatchedstmt node)
     {
-        if(this._fmatchedStmt_ != null)
+        if(this._matchedstmt_ != null)
         {
-            this._fmatchedStmt_.parent(null);
+            this._matchedstmt_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +57,23 @@ public final class AMatchedIfexpr extends PIfexpr
             node.parent(this);
         }
 
-        this._fmatchedStmt_ = node;
+        this._matchedstmt_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._fmatchedStmt_);
+            + toString(this._matchedstmt_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._fmatchedStmt_ == child)
+        if(this._matchedstmt_ == child)
         {
-            this._fmatchedStmt_ = null;
+            this._matchedstmt_ = null;
             return;
         }
 
@@ -84,9 +84,9 @@ public final class AMatchedIfexpr extends PIfexpr
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._fmatchedStmt_ == oldChild)
+        if(this._matchedstmt_ == oldChild)
         {
-            setFmatchedStmt((PFmatchedStmt) newChild);
+            setMatchedstmt((PMatchedstmt) newChild);
             return;
         }
 
