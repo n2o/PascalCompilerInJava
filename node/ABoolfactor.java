@@ -7,7 +7,7 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class ABoolfactor extends PBoolfactor
 {
-    private TIdentifier _identifier_;
+    private TBoolidentifier _boolidentifier_;
 
     public ABoolfactor()
     {
@@ -15,10 +15,10 @@ public final class ABoolfactor extends PBoolfactor
     }
 
     public ABoolfactor(
-        @SuppressWarnings("hiding") TIdentifier _identifier_)
+        @SuppressWarnings("hiding") TBoolidentifier _boolidentifier_)
     {
         // Constructor
-        setIdentifier(_identifier_);
+        setBoolidentifier(_boolidentifier_);
 
     }
 
@@ -26,7 +26,7 @@ public final class ABoolfactor extends PBoolfactor
     public Object clone()
     {
         return new ABoolfactor(
-            cloneNode(this._identifier_));
+            cloneNode(this._boolidentifier_));
     }
 
     @Override
@@ -35,16 +35,16 @@ public final class ABoolfactor extends PBoolfactor
         ((Analysis) sw).caseABoolfactor(this);
     }
 
-    public TIdentifier getIdentifier()
+    public TBoolidentifier getBoolidentifier()
     {
-        return this._identifier_;
+        return this._boolidentifier_;
     }
 
-    public void setIdentifier(TIdentifier node)
+    public void setBoolidentifier(TBoolidentifier node)
     {
-        if(this._identifier_ != null)
+        if(this._boolidentifier_ != null)
         {
-            this._identifier_.parent(null);
+            this._boolidentifier_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +57,23 @@ public final class ABoolfactor extends PBoolfactor
             node.parent(this);
         }
 
-        this._identifier_ = node;
+        this._boolidentifier_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._identifier_);
+            + toString(this._boolidentifier_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._identifier_ == child)
+        if(this._boolidentifier_ == child)
         {
-            this._identifier_ = null;
+            this._boolidentifier_ = null;
             return;
         }
 
@@ -84,9 +84,9 @@ public final class ABoolfactor extends PBoolfactor
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._identifier_ == oldChild)
+        if(this._boolidentifier_ == oldChild)
         {
-            setIdentifier((TIdentifier) newChild);
+            setBoolidentifier((TBoolidentifier) newChild);
             return;
         }
 

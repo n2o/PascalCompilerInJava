@@ -27,7 +27,6 @@ public interface Analysis extends Switch
     void caseAOperation(AOperation node);
     void caseAPrint(APrint node);
     void caseAAssignment(AAssignment node);
-    void caseAWhileexpr(AWhileexpr node);
     void caseASingleDeclarations(ASingleDeclarations node);
     void caseAMultiDeclarations(AMultiDeclarations node);
     void caseABooleanType(ABooleanType node);
@@ -66,10 +65,13 @@ public interface Analysis extends Switch
     void caseABoolfactor(ABoolfactor node);
     void caseAMatchedIfexpr(AMatchedIfexpr node);
     void caseAOpenstmtIfexpr(AOpenstmtIfexpr node);
-    void caseAMatchedMatchedstmt(AMatchedMatchedstmt node);
-    void caseAMatchedstmt(AMatchedstmt node);
-    void caseAOpenOpenstmt(AOpenOpenstmt node);
-    void caseAMatchedOpenstmt(AMatchedOpenstmt node);
+    void caseAFmatchedStmt(AFmatchedStmt node);
+    void caseAIfthenIfUnmatchedStmt(AIfthenIfUnmatchedStmt node);
+    void caseAIfthenUnmatchedStmt(AIfthenUnmatchedStmt node);
+    void caseAIfthenelseUnmatchedStmt(AIfthenelseUnmatchedStmt node);
+    void caseAFmatchedStmtSmatchedStmt(AFmatchedStmtSmatchedStmt node);
+    void caseASmatchedStmt(ASmatchedStmt node);
+    void caseAOther(AOther node);
 
     void caseTInteger(TInteger node);
     void caseTBoolean(TBoolean node);
@@ -77,8 +79,8 @@ public interface Analysis extends Switch
     void caseTNumber(TNumber node);
     void caseTAssign(TAssign node);
     void caseTBegin(TBegin node);
-    void caseTEnd(TEnd node);
     void caseTProgramend(TProgramend node);
+    void caseTEnd(TEnd node);
     void caseTProgram(TProgram node);
     void caseTIf(TIf node);
     void caseTThen(TThen node);
@@ -111,5 +113,6 @@ public interface Analysis extends Switch
     void caseTDot(TDot node);
     void caseTWhitespace(TWhitespace node);
     void caseTIdentifier(TIdentifier node);
+    void caseTBoolidentifier(TBoolidentifier node);
     void caseEOF(EOF node);
 }

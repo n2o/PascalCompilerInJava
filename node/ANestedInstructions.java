@@ -8,7 +8,7 @@ import analysis.*;
 public final class ANestedInstructions extends PInstructions
 {
     private TBegin _begin_;
-    private PInstructions _instructions_;
+    private PInstructions _nested_;
     private TEnd _end_;
 
     public ANestedInstructions()
@@ -18,13 +18,13 @@ public final class ANestedInstructions extends PInstructions
 
     public ANestedInstructions(
         @SuppressWarnings("hiding") TBegin _begin_,
-        @SuppressWarnings("hiding") PInstructions _instructions_,
+        @SuppressWarnings("hiding") PInstructions _nested_,
         @SuppressWarnings("hiding") TEnd _end_)
     {
         // Constructor
         setBegin(_begin_);
 
-        setInstructions(_instructions_);
+        setNested(_nested_);
 
         setEnd(_end_);
 
@@ -35,7 +35,7 @@ public final class ANestedInstructions extends PInstructions
     {
         return new ANestedInstructions(
             cloneNode(this._begin_),
-            cloneNode(this._instructions_),
+            cloneNode(this._nested_),
             cloneNode(this._end_));
     }
 
@@ -70,16 +70,16 @@ public final class ANestedInstructions extends PInstructions
         this._begin_ = node;
     }
 
-    public PInstructions getInstructions()
+    public PInstructions getNested()
     {
-        return this._instructions_;
+        return this._nested_;
     }
 
-    public void setInstructions(PInstructions node)
+    public void setNested(PInstructions node)
     {
-        if(this._instructions_ != null)
+        if(this._nested_ != null)
         {
-            this._instructions_.parent(null);
+            this._nested_.parent(null);
         }
 
         if(node != null)
@@ -92,7 +92,7 @@ public final class ANestedInstructions extends PInstructions
             node.parent(this);
         }
 
-        this._instructions_ = node;
+        this._nested_ = node;
     }
 
     public TEnd getEnd()
@@ -125,7 +125,7 @@ public final class ANestedInstructions extends PInstructions
     {
         return ""
             + toString(this._begin_)
-            + toString(this._instructions_)
+            + toString(this._nested_)
             + toString(this._end_);
     }
 
@@ -139,9 +139,9 @@ public final class ANestedInstructions extends PInstructions
             return;
         }
 
-        if(this._instructions_ == child)
+        if(this._nested_ == child)
         {
-            this._instructions_ = null;
+            this._nested_ = null;
             return;
         }
 
@@ -164,9 +164,9 @@ public final class ANestedInstructions extends PInstructions
             return;
         }
 
-        if(this._instructions_ == oldChild)
+        if(this._nested_ == oldChild)
         {
-            setInstructions((PInstructions) newChild);
+            setNested((PInstructions) newChild);
             return;
         }
 

@@ -13,8 +13,8 @@ Tokens
 	// Commands
 	assign	= ':=';
 	begin 	= 'begin';
-	end 	= 'end';
 	programend 	= 'end.';
+	end 	= 'end';
 	program	= 'program';
 	if		= 'if';
 	then	= 'then';
@@ -51,13 +51,14 @@ Tokens
 	dot 		= '.';
 	whitespace	= (' '| 10 | 13)+;
 	identifier	= letter+number*letter*;
+	boolidentifier	= letter+number*letter*;
 
 Ignored Tokens
 	whitespace;
 
 Productions
 	start = 
-		   program identifier semikolon body programend;
+		   program identifier semikolon body dot;
 	body = 
 		   {with_dec} declarations begin instructions 
 		 | {without_dec} begin instructions
@@ -66,12 +67,12 @@ Productions
 	instructions = 
 		   {ops} operation
 		 | {mult_instructions} instructions semikolon operation
-		 | {nested} begin instructions end
+		 | {nested} begin [nested]:instructions end
 		 | [left]:instructions semikolon begin [right]:instructions end;
 
 	operation = 
 		   {if} ifexpr
-		 | {while} whileexpr
+		 | {while} while boolcomp do whileinstructions
 		 | {assign} assignment
 		 | {print} print
 		 | break;
@@ -81,9 +82,6 @@ Productions
 
 	assignment = 
 		   identifier assign expr;
-
-	whileexpr =
-		   while boolcomp do whileinstructions;
 
 	declarations =
 		   {single} var identifier colon type semikolon
@@ -146,21 +144,40 @@ Productions
 		   {not} not boolfactor
 		 | {true} true
 		 | {false} false
-		 | identifier;
+		 | boolidentifier;
 
 	// Getting if working
+	ifexpr = 
+		   {matched} fmatched_stmt
+		 | {openstmt} unmatched_stmt;
+
+	fmatched_stmt = if boolcomp then [left]:smatched_stmt else [right]:smatched_stmt;
+
+	unmatched_stmt = 
+		   {ifthen_if} if boolcomp then ifexpr
+		 | {ifthen} if boolcomp then other
+		 | {ifthenelse} if boolcomp then smatched_stmt else unmatched_stmt;
+
+	smatched_stmt =
+		   {fmatched_stmt} fmatched_stmt
+		 | other;
+
+	other = operation;
+
+	
+	/*
 	ifexpr = 
 		   {matched} matchedstmt
 		 | {openstmt} openstmt;
 
 	matchedstmt = 
 		   {matched} if boolcomp then [left]:matchedstmt else [right]:matchedstmt
-		 | whileinstructions;
+		 | instructions;
 
 	openstmt =
 		   {open} if boolcomp then ifexpr
 		 | {matched} if boolcomp then matchedstmt else openstmt;
-
+	*/
 
 
 

@@ -165,12 +165,6 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAWhileexpr(AWhileexpr node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
     public void caseASingleDeclarations(ASingleDeclarations node)
     {
         defaultCase(node);
@@ -399,25 +393,43 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAMatchedMatchedstmt(AMatchedMatchedstmt node)
+    public void caseAFmatchedStmt(AFmatchedStmt node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAMatchedstmt(AMatchedstmt node)
+    public void caseAIfthenIfUnmatchedStmt(AIfthenIfUnmatchedStmt node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAOpenOpenstmt(AOpenOpenstmt node)
+    public void caseAIfthenUnmatchedStmt(AIfthenUnmatchedStmt node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAMatchedOpenstmt(AMatchedOpenstmt node)
+    public void caseAIfthenelseUnmatchedStmt(AIfthenelseUnmatchedStmt node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAFmatchedStmtSmatchedStmt(AFmatchedStmtSmatchedStmt node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseASmatchedStmt(ASmatchedStmt node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAOther(AOther node)
     {
         defaultCase(node);
     }
@@ -459,13 +471,13 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseTEnd(TEnd node)
+    public void caseTProgramend(TProgramend node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseTProgramend(TProgramend node)
+    public void caseTEnd(TEnd node)
     {
         defaultCase(node);
     }
@@ -658,6 +670,12 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseTIdentifier(TIdentifier node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTBoolidentifier(TBoolidentifier node)
     {
         defaultCase(node);
     }

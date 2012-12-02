@@ -559,6 +559,17 @@ public class Lexer
                             this.line = accept_line;
                             return token;
                         }
+                    case 40:
+                        {
+                            @SuppressWarnings("hiding") Token token = new40(
+                                getText(accept_length),
+                                start_line + 1,
+                                start_pos + 1);
+                            pushBack(accept_length);
+                            this.pos = accept_pos;
+                            this.line = accept_line;
+                            return token;
+                        }
                     }
                 }
                 else
@@ -585,8 +596,8 @@ public class Lexer
     Token new3(@SuppressWarnings("hiding") String text, @SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TNumber(text, line, pos); }
     Token new4(@SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TAssign(line, pos); }
     Token new5(@SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TBegin(line, pos); }
-    Token new6(@SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TEnd(line, pos); }
-    Token new7(@SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TProgramend(line, pos); }
+    Token new6(@SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TProgramend(line, pos); }
+    Token new7(@SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TEnd(line, pos); }
     Token new8(@SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TProgram(line, pos); }
     Token new9(@SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TIf(line, pos); }
     Token new10(@SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TThen(line, pos); }
@@ -619,6 +630,7 @@ public class Lexer
     Token new37(@SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TDot(line, pos); }
     Token new38(@SuppressWarnings("hiding") String text, @SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TWhitespace(text, line, pos); }
     Token new39(@SuppressWarnings("hiding") String text, @SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TIdentifier(text, line, pos); }
+    Token new40(@SuppressWarnings("hiding") String text, @SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TBoolidentifier(text, line, pos); }
 
     private int getChar() throws IOException
     {
@@ -794,7 +806,7 @@ public class Lexer
     private static int[][] accept;
 /*  {
         // INITIAL
-        {-1, 38, 38, 38, 16, 17, 20, 18, 19, 37, 3, 3, 35, 36, 24, 23, 25, 39, 39, 39, 39, 39, 39, 39, 39, 39, 39, 39, 39, 39, 39, 39, 39, 3, 4, 26, 28, 27, 39, 39, 39, 39, 39, 39, 39, 39, 13, 39, 39, 39, 9, 39, 39, 39, 30, 39, 39, 39, 39, 39, 39, 39, 39, 39, 29, 39, 39, 39, 21, 39, 6, 39, 39, 22, 32, 39, 39, 39, 2, 39, 39, 31, 39, 39, 39, 11, 7, 39, 39, 39, 10, 33, 39, 39, 5, 39, 15, 34, 39, 39, 12, 39, 39, 39, 39, 39, 1, 0, 8, 14, },
+        {-1, 38, 38, 38, 16, 17, 20, 18, 19, 37, 3, 3, 35, 36, 24, 23, 25, 39, 39, 39, 39, 39, 39, 39, 39, 39, 39, 39, 39, 39, 39, 39, 39, 3, 4, 26, 28, 27, 39, 39, 39, 39, 39, 39, 39, 39, 13, 39, 39, 39, 9, 39, 39, 39, 30, 39, 39, 39, 39, 39, 39, 39, 39, 39, 29, 39, 39, 39, 21, 39, 7, 39, 39, 22, 32, 39, 39, 39, 2, 39, 39, 31, 39, 39, 39, 11, 6, 39, 39, 39, 10, 33, 39, 39, 5, 39, 15, 34, 39, 39, 12, 39, 39, 39, 39, 39, 1, 0, 8, 14, },
 
     };*/
 

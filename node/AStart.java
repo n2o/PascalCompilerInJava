@@ -11,7 +11,7 @@ public final class AStart extends PStart
     private TIdentifier _identifier_;
     private TSemikolon _semikolon_;
     private PBody _body_;
-    private TProgramend _programend_;
+    private TDot _dot_;
 
     public AStart()
     {
@@ -23,7 +23,7 @@ public final class AStart extends PStart
         @SuppressWarnings("hiding") TIdentifier _identifier_,
         @SuppressWarnings("hiding") TSemikolon _semikolon_,
         @SuppressWarnings("hiding") PBody _body_,
-        @SuppressWarnings("hiding") TProgramend _programend_)
+        @SuppressWarnings("hiding") TDot _dot_)
     {
         // Constructor
         setProgram(_program_);
@@ -34,7 +34,7 @@ public final class AStart extends PStart
 
         setBody(_body_);
 
-        setProgramend(_programend_);
+        setDot(_dot_);
 
     }
 
@@ -46,7 +46,7 @@ public final class AStart extends PStart
             cloneNode(this._identifier_),
             cloneNode(this._semikolon_),
             cloneNode(this._body_),
-            cloneNode(this._programend_));
+            cloneNode(this._dot_));
     }
 
     @Override
@@ -155,16 +155,16 @@ public final class AStart extends PStart
         this._body_ = node;
     }
 
-    public TProgramend getProgramend()
+    public TDot getDot()
     {
-        return this._programend_;
+        return this._dot_;
     }
 
-    public void setProgramend(TProgramend node)
+    public void setDot(TDot node)
     {
-        if(this._programend_ != null)
+        if(this._dot_ != null)
         {
-            this._programend_.parent(null);
+            this._dot_.parent(null);
         }
 
         if(node != null)
@@ -177,7 +177,7 @@ public final class AStart extends PStart
             node.parent(this);
         }
 
-        this._programend_ = node;
+        this._dot_ = node;
     }
 
     @Override
@@ -188,7 +188,7 @@ public final class AStart extends PStart
             + toString(this._identifier_)
             + toString(this._semikolon_)
             + toString(this._body_)
-            + toString(this._programend_);
+            + toString(this._dot_);
     }
 
     @Override
@@ -219,9 +219,9 @@ public final class AStart extends PStart
             return;
         }
 
-        if(this._programend_ == child)
+        if(this._dot_ == child)
         {
-            this._programend_ = null;
+            this._dot_ = null;
             return;
         }
 
@@ -256,9 +256,9 @@ public final class AStart extends PStart
             return;
         }
 
-        if(this._programend_ == oldChild)
+        if(this._dot_ == oldChild)
         {
-            setProgramend((TProgramend) newChild);
+            setDot((TDot) newChild);
             return;
         }
 

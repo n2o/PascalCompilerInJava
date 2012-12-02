@@ -7,7 +7,7 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class AMatchedstmt extends PMatchedstmt
 {
-    private PWhileinstructions _whileinstructions_;
+    private PInstructions _instructions_;
 
     public AMatchedstmt()
     {
@@ -15,10 +15,10 @@ public final class AMatchedstmt extends PMatchedstmt
     }
 
     public AMatchedstmt(
-        @SuppressWarnings("hiding") PWhileinstructions _whileinstructions_)
+        @SuppressWarnings("hiding") PInstructions _instructions_)
     {
         // Constructor
-        setWhileinstructions(_whileinstructions_);
+        setInstructions(_instructions_);
 
     }
 
@@ -26,7 +26,7 @@ public final class AMatchedstmt extends PMatchedstmt
     public Object clone()
     {
         return new AMatchedstmt(
-            cloneNode(this._whileinstructions_));
+            cloneNode(this._instructions_));
     }
 
     @Override
@@ -35,16 +35,16 @@ public final class AMatchedstmt extends PMatchedstmt
         ((Analysis) sw).caseAMatchedstmt(this);
     }
 
-    public PWhileinstructions getWhileinstructions()
+    public PInstructions getInstructions()
     {
-        return this._whileinstructions_;
+        return this._instructions_;
     }
 
-    public void setWhileinstructions(PWhileinstructions node)
+    public void setInstructions(PInstructions node)
     {
-        if(this._whileinstructions_ != null)
+        if(this._instructions_ != null)
         {
-            this._whileinstructions_.parent(null);
+            this._instructions_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +57,23 @@ public final class AMatchedstmt extends PMatchedstmt
             node.parent(this);
         }
 
-        this._whileinstructions_ = node;
+        this._instructions_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._whileinstructions_);
+            + toString(this._instructions_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._whileinstructions_ == child)
+        if(this._instructions_ == child)
         {
-            this._whileinstructions_ = null;
+            this._instructions_ = null;
             return;
         }
 
@@ -84,9 +84,9 @@ public final class AMatchedstmt extends PMatchedstmt
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._whileinstructions_ == oldChild)
+        if(this._instructions_ == oldChild)
         {
-            setWhileinstructions((PWhileinstructions) newChild);
+            setInstructions((PInstructions) newChild);
             return;
         }
 

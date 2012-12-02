@@ -7,7 +7,10 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class AWhileOperation extends POperation
 {
-    private PWhileexpr _whileexpr_;
+    private TWhile _while_;
+    private PBoolcomp _boolcomp_;
+    private TDo _do_;
+    private PWhileinstructions _whileinstructions_;
 
     public AWhileOperation()
     {
@@ -15,10 +18,19 @@ public final class AWhileOperation extends POperation
     }
 
     public AWhileOperation(
-        @SuppressWarnings("hiding") PWhileexpr _whileexpr_)
+        @SuppressWarnings("hiding") TWhile _while_,
+        @SuppressWarnings("hiding") PBoolcomp _boolcomp_,
+        @SuppressWarnings("hiding") TDo _do_,
+        @SuppressWarnings("hiding") PWhileinstructions _whileinstructions_)
     {
         // Constructor
-        setWhileexpr(_whileexpr_);
+        setWhile(_while_);
+
+        setBoolcomp(_boolcomp_);
+
+        setDo(_do_);
+
+        setWhileinstructions(_whileinstructions_);
 
     }
 
@@ -26,7 +38,10 @@ public final class AWhileOperation extends POperation
     public Object clone()
     {
         return new AWhileOperation(
-            cloneNode(this._whileexpr_));
+            cloneNode(this._while_),
+            cloneNode(this._boolcomp_),
+            cloneNode(this._do_),
+            cloneNode(this._whileinstructions_));
     }
 
     @Override
@@ -35,16 +50,16 @@ public final class AWhileOperation extends POperation
         ((Analysis) sw).caseAWhileOperation(this);
     }
 
-    public PWhileexpr getWhileexpr()
+    public TWhile getWhile()
     {
-        return this._whileexpr_;
+        return this._while_;
     }
 
-    public void setWhileexpr(PWhileexpr node)
+    public void setWhile(TWhile node)
     {
-        if(this._whileexpr_ != null)
+        if(this._while_ != null)
         {
-            this._whileexpr_.parent(null);
+            this._while_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +72,119 @@ public final class AWhileOperation extends POperation
             node.parent(this);
         }
 
-        this._whileexpr_ = node;
+        this._while_ = node;
+    }
+
+    public PBoolcomp getBoolcomp()
+    {
+        return this._boolcomp_;
+    }
+
+    public void setBoolcomp(PBoolcomp node)
+    {
+        if(this._boolcomp_ != null)
+        {
+            this._boolcomp_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._boolcomp_ = node;
+    }
+
+    public TDo getDo()
+    {
+        return this._do_;
+    }
+
+    public void setDo(TDo node)
+    {
+        if(this._do_ != null)
+        {
+            this._do_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._do_ = node;
+    }
+
+    public PWhileinstructions getWhileinstructions()
+    {
+        return this._whileinstructions_;
+    }
+
+    public void setWhileinstructions(PWhileinstructions node)
+    {
+        if(this._whileinstructions_ != null)
+        {
+            this._whileinstructions_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._whileinstructions_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._whileexpr_);
+            + toString(this._while_)
+            + toString(this._boolcomp_)
+            + toString(this._do_)
+            + toString(this._whileinstructions_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._whileexpr_ == child)
+        if(this._while_ == child)
         {
-            this._whileexpr_ = null;
+            this._while_ = null;
+            return;
+        }
+
+        if(this._boolcomp_ == child)
+        {
+            this._boolcomp_ = null;
+            return;
+        }
+
+        if(this._do_ == child)
+        {
+            this._do_ = null;
+            return;
+        }
+
+        if(this._whileinstructions_ == child)
+        {
+            this._whileinstructions_ = null;
             return;
         }
 
@@ -84,9 +195,27 @@ public final class AWhileOperation extends POperation
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._whileexpr_ == oldChild)
+        if(this._while_ == oldChild)
         {
-            setWhileexpr((PWhileexpr) newChild);
+            setWhile((TWhile) newChild);
+            return;
+        }
+
+        if(this._boolcomp_ == oldChild)
+        {
+            setBoolcomp((PBoolcomp) newChild);
+            return;
+        }
+
+        if(this._do_ == oldChild)
+        {
+            setDo((TDo) newChild);
+            return;
+        }
+
+        if(this._whileinstructions_ == oldChild)
+        {
+            setWhileinstructions((PWhileinstructions) newChild);
             return;
         }
 
