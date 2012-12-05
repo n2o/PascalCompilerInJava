@@ -117,19 +117,13 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseANestedStatement(ANestedStatement node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseABreakStatement(ABreakStatement node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseABeginStatement(ABeginStatement node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAEndStatement(AEndStatement node)
     {
         defaultCase(node);
     }

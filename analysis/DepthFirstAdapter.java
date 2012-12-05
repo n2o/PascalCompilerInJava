@@ -76,9 +76,9 @@ public class DepthFirstAdapter extends AnalysisAdapter
                 e.apply(this);
             }
         }
-        if(node.getDot() != null)
+        if(node.getProgramend() != null)
         {
-            node.getDot().apply(this);
+            node.getProgramend().apply(this);
         }
         outAStart(node);
     }
@@ -225,6 +225,35 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outAPrintStatement(node);
     }
 
+    public void inANestedStatement(ANestedStatement node)
+    {
+        defaultIn(node);
+    }
+
+    public void outANestedStatement(ANestedStatement node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseANestedStatement(ANestedStatement node)
+    {
+        inANestedStatement(node);
+        if(node.getBegin() != null)
+        {
+            node.getBegin().apply(this);
+        }
+        if(node.getStatement() != null)
+        {
+            node.getStatement().apply(this);
+        }
+        if(node.getEnd() != null)
+        {
+            node.getEnd().apply(this);
+        }
+        outANestedStatement(node);
+    }
+
     public void inABreakStatement(ABreakStatement node)
     {
         defaultIn(node);
@@ -244,48 +273,6 @@ public class DepthFirstAdapter extends AnalysisAdapter
             node.getBreak().apply(this);
         }
         outABreakStatement(node);
-    }
-
-    public void inABeginStatement(ABeginStatement node)
-    {
-        defaultIn(node);
-    }
-
-    public void outABeginStatement(ABeginStatement node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseABeginStatement(ABeginStatement node)
-    {
-        inABeginStatement(node);
-        if(node.getBegin() != null)
-        {
-            node.getBegin().apply(this);
-        }
-        outABeginStatement(node);
-    }
-
-    public void inAEndStatement(AEndStatement node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAEndStatement(AEndStatement node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAEndStatement(AEndStatement node)
-    {
-        inAEndStatement(node);
-        if(node.getEnd() != null)
-        {
-            node.getEnd().apply(this);
-        }
-        outAEndStatement(node);
     }
 
     public void inAStatement(AStatement node)

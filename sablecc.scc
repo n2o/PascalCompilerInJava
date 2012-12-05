@@ -58,7 +58,7 @@ Ignored Tokens
 // Pruefe noch auf leeres Programm
 Productions
 	start = 
-		   program identifier semikolon declarations* statement* dot;
+		   program identifier semikolon declarations* statement* programend;
 	
 	declarations =
 		   {single} var identifier colon type semikolon;
@@ -69,9 +69,8 @@ Productions
 		 | {while} while_statement
 		 | {assign} assignment
 		 | {print} print
+		 | {nested} begin statement end
 		 | {break} break
-		 | {begin} begin
-		 | {end} end
 		 | semikolon;
 
 	print =

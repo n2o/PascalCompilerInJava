@@ -13,7 +13,7 @@ public final class AStart extends PStart
     private TSemikolon _semikolon_;
     private final LinkedList<PDeclarations> _declarations_ = new LinkedList<PDeclarations>();
     private final LinkedList<PStatement> _statement_ = new LinkedList<PStatement>();
-    private TDot _dot_;
+    private TProgramend _programend_;
 
     public AStart()
     {
@@ -26,7 +26,7 @@ public final class AStart extends PStart
         @SuppressWarnings("hiding") TSemikolon _semikolon_,
         @SuppressWarnings("hiding") List<?> _declarations_,
         @SuppressWarnings("hiding") List<?> _statement_,
-        @SuppressWarnings("hiding") TDot _dot_)
+        @SuppressWarnings("hiding") TProgramend _programend_)
     {
         // Constructor
         setProgram(_program_);
@@ -39,7 +39,7 @@ public final class AStart extends PStart
 
         setStatement(_statement_);
 
-        setDot(_dot_);
+        setProgramend(_programend_);
 
     }
 
@@ -52,7 +52,7 @@ public final class AStart extends PStart
             cloneNode(this._semikolon_),
             cloneList(this._declarations_),
             cloneList(this._statement_),
-            cloneNode(this._dot_));
+            cloneNode(this._programend_));
     }
 
     @Override
@@ -188,16 +188,16 @@ public final class AStart extends PStart
         }
     }
 
-    public TDot getDot()
+    public TProgramend getProgramend()
     {
-        return this._dot_;
+        return this._programend_;
     }
 
-    public void setDot(TDot node)
+    public void setProgramend(TProgramend node)
     {
-        if(this._dot_ != null)
+        if(this._programend_ != null)
         {
-            this._dot_.parent(null);
+            this._programend_.parent(null);
         }
 
         if(node != null)
@@ -210,7 +210,7 @@ public final class AStart extends PStart
             node.parent(this);
         }
 
-        this._dot_ = node;
+        this._programend_ = node;
     }
 
     @Override
@@ -222,7 +222,7 @@ public final class AStart extends PStart
             + toString(this._semikolon_)
             + toString(this._declarations_)
             + toString(this._statement_)
-            + toString(this._dot_);
+            + toString(this._programend_);
     }
 
     @Override
@@ -257,9 +257,9 @@ public final class AStart extends PStart
             return;
         }
 
-        if(this._dot_ == child)
+        if(this._programend_ == child)
         {
-            this._dot_ = null;
+            this._programend_ = null;
             return;
         }
 
@@ -324,9 +324,9 @@ public final class AStart extends PStart
             }
         }
 
-        if(this._dot_ == oldChild)
+        if(this._programend_ == oldChild)
         {
-            setDot((TDot) newChild);
+            setProgramend((TProgramend) newChild);
             return;
         }
 
