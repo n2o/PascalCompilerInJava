@@ -75,6 +75,8 @@ public interface Analysis extends Switch
     void caseTBreak(TBreak node);
     void caseTLPar(TLPar node);
     void caseTRPar(TRPar node);
+    void caseTLCurlyBracket(TLCurlyBracket node);
+    void caseTRCurlyBracket(TRCurlyBracket node);
     void caseTPlus(TPlus node);
     void caseTMinus(TMinus node);
     void caseTMult(TMult node);

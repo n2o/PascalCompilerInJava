@@ -29,6 +29,11 @@ Helpers
   	z 		 = ['z' + 'Z'];
 	letter   = (['a'..'z']|['A'..'Z']);
 
+	cr = 13;
+    lf = 10;
+    eol = cr | lf | cr lf;
+	any = [32 .. 127]; 					// all characters 
+
 Tokens
 	// Datatypes
 	integer		= i n t e g e r;
@@ -53,6 +58,8 @@ Tokens
 	// Operators
 	l_par	= '(';
 	r_par	= ')';
+	l_curly_bracket	= '{';
+	r_curly_bracket	= '}';
 	plus 	= '+';
 	minus 	= '-';
 	mult	= '*';
@@ -75,7 +82,7 @@ Tokens
 	colon 		= ':';
 	semicolon	= ';';
 	dot 		= '.';
-	whitespace	= (' '| 9 | 10 | 13)+;
+	whitespace	= (' '| 9 | lf | cr)+;
 	identifier	= letter+ (number | letter)*;
 
 Ignored Tokens

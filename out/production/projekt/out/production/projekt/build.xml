@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!-- ====================================================================== 
+     May 23, 2007 6:21:03 PM                                                        
+
+     project    
+     description
+                   
+     tech                                                                
+     ====================================================================== -->
+
+<project name="project" default="default">
+
+
+    <!-- ================================= 
+          target: default              
+         ================================= -->
+    <target name="default"  description="--> description">
+    	
+  
+    	<java jar="sablecc.jar" fork="true" failonerror="true">
+    		<arg line=" sablecc.scc" />
+    	</java>
+
+    	
+    </target>
+	
+</project>
