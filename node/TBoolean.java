@@ -7,14 +7,14 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class TBoolean extends Token
 {
-    public TBoolean()
+    public TBoolean(String text)
     {
-        super.setText("boolean");
+        setText(text);
     }
 
-    public TBoolean(int line, int pos)
+    public TBoolean(String text, int line, int pos)
     {
-        super.setText("boolean");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,12 @@ public final class TBoolean extends Token
     @Override
     public Object clone()
     {
-      return new TBoolean(getLine(), getPos());
+      return new TBoolean(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTBoolean(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TBoolean text.");
     }
 }

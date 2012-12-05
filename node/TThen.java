@@ -7,14 +7,14 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class TThen extends Token
 {
-    public TThen()
+    public TThen(String text)
     {
-        super.setText("then");
+        setText(text);
     }
 
-    public TThen(int line, int pos)
+    public TThen(String text, int line, int pos)
     {
-        super.setText("then");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,12 @@ public final class TThen extends Token
     @Override
     public Object clone()
     {
-      return new TThen(getLine(), getPos());
+      return new TThen(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTThen(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TThen text.");
     }
 }

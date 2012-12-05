@@ -7,14 +7,14 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class TOr extends Token
 {
-    public TOr()
+    public TOr(String text)
     {
-        super.setText("or");
+        setText(text);
     }
 
-    public TOr(int line, int pos)
+    public TOr(String text, int line, int pos)
     {
-        super.setText("or");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,12 @@ public final class TOr extends Token
     @Override
     public Object clone()
     {
-      return new TOr(getLine(), getPos());
+      return new TOr(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTOr(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TOr text.");
     }
 }

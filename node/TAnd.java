@@ -7,14 +7,14 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class TAnd extends Token
 {
-    public TAnd()
+    public TAnd(String text)
     {
-        super.setText("and");
+        setText(text);
     }
 
-    public TAnd(int line, int pos)
+    public TAnd(String text, int line, int pos)
     {
-        super.setText("and");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,12 @@ public final class TAnd extends Token
     @Override
     public Object clone()
     {
-      return new TAnd(getLine(), getPos());
+      return new TAnd(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTAnd(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TAnd text.");
     }
 }

@@ -7,14 +7,14 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class TBegin extends Token
 {
-    public TBegin()
+    public TBegin(String text)
     {
-        super.setText("begin");
+        setText(text);
     }
 
-    public TBegin(int line, int pos)
+    public TBegin(String text, int line, int pos)
     {
-        super.setText("begin");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,12 @@ public final class TBegin extends Token
     @Override
     public Object clone()
     {
-      return new TBegin(getLine(), getPos());
+      return new TBegin(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTBegin(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TBegin text.");
     }
 }

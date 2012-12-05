@@ -2,6 +2,7 @@
 
 package node;
 
+import java.util.*;
 import analysis.*;
 
 @SuppressWarnings("nls")
@@ -9,7 +10,7 @@ public final class APrint extends PPrint
 {
     private TWriteln _writeln_;
     private TLPar _lPar_;
-    private PExpr _expr_;
+    private final LinkedList<PExpression> _expression_ = new LinkedList<PExpression>();
     private TRPar _rPar_;
 
     public APrint()
@@ -20,7 +21,7 @@ public final class APrint extends PPrint
     public APrint(
         @SuppressWarnings("hiding") TWriteln _writeln_,
         @SuppressWarnings("hiding") TLPar _lPar_,
-        @SuppressWarnings("hiding") PExpr _expr_,
+        @SuppressWarnings("hiding") List<?> _expression_,
         @SuppressWarnings("hiding") TRPar _rPar_)
     {
         // Constructor
@@ -28,7 +29,7 @@ public final class APrint extends PPrint
 
         setLPar(_lPar_);
 
-        setExpr(_expr_);
+        setExpression(_expression_);
 
         setRPar(_rPar_);
 
@@ -40,7 +41,7 @@ public final class APrint extends PPrint
         return new APrint(
             cloneNode(this._writeln_),
             cloneNode(this._lPar_),
-            cloneNode(this._expr_),
+            cloneList(this._expression_),
             cloneNode(this._rPar_));
     }
 
@@ -100,29 +101,30 @@ public final class APrint extends PPrint
         this._lPar_ = node;
     }
 
-    public PExpr getExpr()
+    public LinkedList<PExpression> getExpression()
     {
-        return this._expr_;
+        return this._expression_;
     }
 
-    public void setExpr(PExpr node)
+    public void setExpression(List<?> list)
     {
-        if(this._expr_ != null)
+        for(PExpression e : this._expression_)
         {
-            this._expr_.parent(null);
+            e.parent(null);
         }
+        this._expression_.clear();
 
-        if(node != null)
+        for(Object obj_e : list)
         {
-            if(node.parent() != null)
+            PExpression e = (PExpression) obj_e;
+            if(e.parent() != null)
             {
-                node.parent().removeChild(node);
+                e.parent().removeChild(e);
             }
 
-            node.parent(this);
+            e.parent(this);
+            this._expression_.add(e);
         }
-
-        this._expr_ = node;
     }
 
     public TRPar getRPar()
@@ -156,7 +158,7 @@ public final class APrint extends PPrint
         return ""
             + toString(this._writeln_)
             + toString(this._lPar_)
-            + toString(this._expr_)
+            + toString(this._expression_)
             + toString(this._rPar_);
     }
 
@@ -176,9 +178,8 @@ public final class APrint extends PPrint
             return;
         }
 
-        if(this._expr_ == child)
+        if(this._expression_.remove(child))
         {
-            this._expr_ = null;
             return;
         }
 
@@ -207,10 +208,22 @@ public final class APrint extends PPrint
             return;
         }
 
-        if(this._expr_ == oldChild)
+        for(ListIterator<PExpression> i = this._expression_.listIterator(); i.hasNext();)
         {
-            setExpr((PExpr) newChild);
-            return;
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((PExpression) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
+
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
         }
 
         if(this._rPar_ == oldChild)

@@ -7,14 +7,14 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class TMod extends Token
 {
-    public TMod()
+    public TMod(String text)
     {
-        super.setText("mod");
+        setText(text);
     }
 
-    public TMod(int line, int pos)
+    public TMod(String text, int line, int pos)
     {
-        super.setText("mod");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,12 @@ public final class TMod extends Token
     @Override
     public Object clone()
     {
-      return new TMod(getLine(), getPos());
+      return new TMod(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTMod(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TMod text.");
     }
 }

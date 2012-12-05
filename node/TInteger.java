@@ -7,14 +7,14 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class TInteger extends Token
 {
-    public TInteger()
+    public TInteger(String text)
     {
-        super.setText("integer");
+        setText(text);
     }
 
-    public TInteger(int line, int pos)
+    public TInteger(String text, int line, int pos)
     {
-        super.setText("integer");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,12 @@ public final class TInteger extends Token
     @Override
     public Object clone()
     {
-      return new TInteger(getLine(), getPos());
+      return new TInteger(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTInteger(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TInteger text.");
     }
 }

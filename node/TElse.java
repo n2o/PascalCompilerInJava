@@ -7,14 +7,14 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class TElse extends Token
 {
-    public TElse()
+    public TElse(String text)
     {
-        super.setText("else");
+        setText(text);
     }
 
-    public TElse(int line, int pos)
+    public TElse(String text, int line, int pos)
     {
-        super.setText("else");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,12 @@ public final class TElse extends Token
     @Override
     public Object clone()
     {
-      return new TElse(getLine(), getPos());
+      return new TElse(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTElse(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TElse text.");
     }
 }

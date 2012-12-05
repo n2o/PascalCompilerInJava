@@ -7,7 +7,7 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class AStatement extends PStatement
 {
-    private TSemikolon _semikolon_;
+    private TSemicolon _semicolon_;
 
     public AStatement()
     {
@@ -15,10 +15,10 @@ public final class AStatement extends PStatement
     }
 
     public AStatement(
-        @SuppressWarnings("hiding") TSemikolon _semikolon_)
+        @SuppressWarnings("hiding") TSemicolon _semicolon_)
     {
         // Constructor
-        setSemikolon(_semikolon_);
+        setSemicolon(_semicolon_);
 
     }
 
@@ -26,7 +26,7 @@ public final class AStatement extends PStatement
     public Object clone()
     {
         return new AStatement(
-            cloneNode(this._semikolon_));
+            cloneNode(this._semicolon_));
     }
 
     @Override
@@ -35,16 +35,16 @@ public final class AStatement extends PStatement
         ((Analysis) sw).caseAStatement(this);
     }
 
-    public TSemikolon getSemikolon()
+    public TSemicolon getSemicolon()
     {
-        return this._semikolon_;
+        return this._semicolon_;
     }
 
-    public void setSemikolon(TSemikolon node)
+    public void setSemicolon(TSemicolon node)
     {
-        if(this._semikolon_ != null)
+        if(this._semicolon_ != null)
         {
-            this._semikolon_.parent(null);
+            this._semicolon_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +57,23 @@ public final class AStatement extends PStatement
             node.parent(this);
         }
 
-        this._semikolon_ = node;
+        this._semicolon_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._semikolon_);
+            + toString(this._semicolon_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._semikolon_ == child)
+        if(this._semicolon_ == child)
         {
-            this._semikolon_ = null;
+            this._semicolon_ = null;
             return;
         }
 
@@ -84,9 +84,9 @@ public final class AStatement extends PStatement
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._semikolon_ == oldChild)
+        if(this._semicolon_ == oldChild)
         {
-            setSemikolon((TSemikolon) newChild);
+            setSemicolon((TSemicolon) newChild);
             return;
         }
 

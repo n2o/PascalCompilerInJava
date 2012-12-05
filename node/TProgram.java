@@ -7,14 +7,14 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class TProgram extends Token
 {
-    public TProgram()
+    public TProgram(String text)
     {
-        super.setText("program");
+        setText(text);
     }
 
-    public TProgram(int line, int pos)
+    public TProgram(String text, int line, int pos)
     {
-        super.setText("program");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,12 @@ public final class TProgram extends Token
     @Override
     public Object clone()
     {
-      return new TProgram(getLine(), getPos());
+      return new TProgram(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTProgram(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TProgram text.");
     }
 }

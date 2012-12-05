@@ -11,7 +11,7 @@ public final class ASingleDeclarations extends PDeclarations
     private TIdentifier _identifier_;
     private TColon _colon_;
     private PType _type_;
-    private TSemikolon _semikolon_;
+    private TSemicolon _semicolon_;
 
     public ASingleDeclarations()
     {
@@ -23,7 +23,7 @@ public final class ASingleDeclarations extends PDeclarations
         @SuppressWarnings("hiding") TIdentifier _identifier_,
         @SuppressWarnings("hiding") TColon _colon_,
         @SuppressWarnings("hiding") PType _type_,
-        @SuppressWarnings("hiding") TSemikolon _semikolon_)
+        @SuppressWarnings("hiding") TSemicolon _semicolon_)
     {
         // Constructor
         setVar(_var_);
@@ -34,7 +34,7 @@ public final class ASingleDeclarations extends PDeclarations
 
         setType(_type_);
 
-        setSemikolon(_semikolon_);
+        setSemicolon(_semicolon_);
 
     }
 
@@ -46,7 +46,7 @@ public final class ASingleDeclarations extends PDeclarations
             cloneNode(this._identifier_),
             cloneNode(this._colon_),
             cloneNode(this._type_),
-            cloneNode(this._semikolon_));
+            cloneNode(this._semicolon_));
     }
 
     @Override
@@ -155,16 +155,16 @@ public final class ASingleDeclarations extends PDeclarations
         this._type_ = node;
     }
 
-    public TSemikolon getSemikolon()
+    public TSemicolon getSemicolon()
     {
-        return this._semikolon_;
+        return this._semicolon_;
     }
 
-    public void setSemikolon(TSemikolon node)
+    public void setSemicolon(TSemicolon node)
     {
-        if(this._semikolon_ != null)
+        if(this._semicolon_ != null)
         {
-            this._semikolon_.parent(null);
+            this._semicolon_.parent(null);
         }
 
         if(node != null)
@@ -177,7 +177,7 @@ public final class ASingleDeclarations extends PDeclarations
             node.parent(this);
         }
 
-        this._semikolon_ = node;
+        this._semicolon_ = node;
     }
 
     @Override
@@ -188,7 +188,7 @@ public final class ASingleDeclarations extends PDeclarations
             + toString(this._identifier_)
             + toString(this._colon_)
             + toString(this._type_)
-            + toString(this._semikolon_);
+            + toString(this._semicolon_);
     }
 
     @Override
@@ -219,9 +219,9 @@ public final class ASingleDeclarations extends PDeclarations
             return;
         }
 
-        if(this._semikolon_ == child)
+        if(this._semicolon_ == child)
         {
-            this._semikolon_ = null;
+            this._semicolon_ = null;
             return;
         }
 
@@ -256,9 +256,9 @@ public final class ASingleDeclarations extends PDeclarations
             return;
         }
 
-        if(this._semikolon_ == oldChild)
+        if(this._semicolon_ == oldChild)
         {
-            setSemikolon((TSemikolon) newChild);
+            setSemicolon((TSemicolon) newChild);
             return;
         }
 

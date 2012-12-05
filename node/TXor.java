@@ -7,14 +7,14 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class TXor extends Token
 {
-    public TXor()
+    public TXor(String text)
     {
-        super.setText("xor");
+        setText(text);
     }
 
-    public TXor(int line, int pos)
+    public TXor(String text, int line, int pos)
     {
-        super.setText("xor");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,12 @@ public final class TXor extends Token
     @Override
     public Object clone()
     {
-      return new TXor(getLine(), getPos());
+      return new TXor(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTXor(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TXor text.");
     }
 }

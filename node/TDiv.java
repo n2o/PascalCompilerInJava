@@ -7,14 +7,14 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class TDiv extends Token
 {
-    public TDiv()
+    public TDiv(String text)
     {
-        super.setText("div");
+        setText(text);
     }
 
-    public TDiv(int line, int pos)
+    public TDiv(String text, int line, int pos)
     {
-        super.setText("div");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,12 @@ public final class TDiv extends Token
     @Override
     public Object clone()
     {
-      return new TDiv(getLine(), getPos());
+      return new TDiv(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTDiv(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TDiv text.");
     }
 }

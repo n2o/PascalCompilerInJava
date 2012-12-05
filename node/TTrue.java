@@ -7,14 +7,14 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class TTrue extends Token
 {
-    public TTrue()
+    public TTrue(String text)
     {
-        super.setText("true");
+        setText(text);
     }
 
-    public TTrue(int line, int pos)
+    public TTrue(String text, int line, int pos)
     {
-        super.setText("true");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,12 @@ public final class TTrue extends Token
     @Override
     public Object clone()
     {
-      return new TTrue(getLine(), getPos());
+      return new TTrue(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTTrue(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TTrue text.");
     }
 }

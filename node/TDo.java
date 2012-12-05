@@ -7,14 +7,14 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class TDo extends Token
 {
-    public TDo()
+    public TDo(String text)
     {
-        super.setText("do");
+        setText(text);
     }
 
-    public TDo(int line, int pos)
+    public TDo(String text, int line, int pos)
     {
-        super.setText("do");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,12 @@ public final class TDo extends Token
     @Override
     public Object clone()
     {
-      return new TDo(getLine(), getPos());
+      return new TDo(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTDo(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TDo text.");
     }
 }

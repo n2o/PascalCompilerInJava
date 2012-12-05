@@ -226,7 +226,7 @@ class TokenIndex extends AnalysisAdapter
     }
 
     @Override
-    public void caseTSemikolon(@SuppressWarnings("unused") TSemikolon node)
+    public void caseTSemicolon(@SuppressWarnings("unused") TSemicolon node)
     {
         this.index = 36;
     }

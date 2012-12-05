@@ -7,14 +7,14 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class TVar extends Token
 {
-    public TVar()
+    public TVar(String text)
     {
-        super.setText("var");
+        setText(text);
     }
 
-    public TVar(int line, int pos)
+    public TVar(String text, int line, int pos)
     {
-        super.setText("var");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,12 @@ public final class TVar extends Token
     @Override
     public Object clone()
     {
-      return new TVar(getLine(), getPos());
+      return new TVar(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTVar(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TVar text.");
     }
 }

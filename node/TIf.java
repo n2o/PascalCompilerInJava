@@ -7,14 +7,14 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class TIf extends Token
 {
-    public TIf()
+    public TIf(String text)
     {
-        super.setText("if");
+        setText(text);
     }
 
-    public TIf(int line, int pos)
+    public TIf(String text, int line, int pos)
     {
-        super.setText("if");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,12 @@ public final class TIf extends Token
     @Override
     public Object clone()
     {
-      return new TIf(getLine(), getPos());
+      return new TIf(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTIf(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TIf text.");
     }
 }

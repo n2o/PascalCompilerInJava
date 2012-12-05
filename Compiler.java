@@ -9,7 +9,7 @@ public class Compiler {
 		System.out.println("############################################################################");
 		String input =  "program HelloWorld; \n";
 			   input += "begin \n";
-			   input += "writeln('HelloWorld') \n";
+			   input += "\twriteln(Hello World) \n";
 			   input += "end. \n";
 		System.out.println("# Eingabe:  \n"+input);
 		parse(input);

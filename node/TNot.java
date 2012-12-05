@@ -7,14 +7,14 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class TNot extends Token
 {
-    public TNot()
+    public TNot(String text)
     {
-        super.setText("not");
+        setText(text);
     }
 
-    public TNot(int line, int pos)
+    public TNot(String text, int line, int pos)
     {
-        super.setText("not");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,12 @@ public final class TNot extends Token
     @Override
     public Object clone()
     {
-      return new TNot(getLine(), getPos());
+      return new TNot(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTNot(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TNot text.");
     }
 }

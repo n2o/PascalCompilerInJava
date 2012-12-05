@@ -8,7 +8,7 @@ import analysis.*;
 public final class AWhileWhileStatement extends PWhileStatement
 {
     private TWhile _while_;
-    private PExpr _expr_;
+    private PExpression _expression_;
     private TDo _do_;
     private PStatement _statement_;
 
@@ -19,14 +19,14 @@ public final class AWhileWhileStatement extends PWhileStatement
 
     public AWhileWhileStatement(
         @SuppressWarnings("hiding") TWhile _while_,
-        @SuppressWarnings("hiding") PExpr _expr_,
+        @SuppressWarnings("hiding") PExpression _expression_,
         @SuppressWarnings("hiding") TDo _do_,
         @SuppressWarnings("hiding") PStatement _statement_)
     {
         // Constructor
         setWhile(_while_);
 
-        setExpr(_expr_);
+        setExpression(_expression_);
 
         setDo(_do_);
 
@@ -39,7 +39,7 @@ public final class AWhileWhileStatement extends PWhileStatement
     {
         return new AWhileWhileStatement(
             cloneNode(this._while_),
-            cloneNode(this._expr_),
+            cloneNode(this._expression_),
             cloneNode(this._do_),
             cloneNode(this._statement_));
     }
@@ -75,16 +75,16 @@ public final class AWhileWhileStatement extends PWhileStatement
         this._while_ = node;
     }
 
-    public PExpr getExpr()
+    public PExpression getExpression()
     {
-        return this._expr_;
+        return this._expression_;
     }
 
-    public void setExpr(PExpr node)
+    public void setExpression(PExpression node)
     {
-        if(this._expr_ != null)
+        if(this._expression_ != null)
         {
-            this._expr_.parent(null);
+            this._expression_.parent(null);
         }
 
         if(node != null)
@@ -97,7 +97,7 @@ public final class AWhileWhileStatement extends PWhileStatement
             node.parent(this);
         }
 
-        this._expr_ = node;
+        this._expression_ = node;
     }
 
     public TDo getDo()
@@ -155,7 +155,7 @@ public final class AWhileWhileStatement extends PWhileStatement
     {
         return ""
             + toString(this._while_)
-            + toString(this._expr_)
+            + toString(this._expression_)
             + toString(this._do_)
             + toString(this._statement_);
     }
@@ -170,9 +170,9 @@ public final class AWhileWhileStatement extends PWhileStatement
             return;
         }
 
-        if(this._expr_ == child)
+        if(this._expression_ == child)
         {
-            this._expr_ = null;
+            this._expression_ = null;
             return;
         }
 
@@ -201,9 +201,9 @@ public final class AWhileWhileStatement extends PWhileStatement
             return;
         }
 
-        if(this._expr_ == oldChild)
+        if(this._expression_ == oldChild)
         {
-            setExpr((PExpr) newChild);
+            setExpression((PExpression) newChild);
             return;
         }
 

@@ -10,7 +10,8 @@ public final class AStart extends PStart
 {
     private TProgram _program_;
     private TIdentifier _identifier_;
-    private TSemikolon _semikolon_;
+    private TSemicolon _semicolon_;
+    private TBegin _begin_;
     private final LinkedList<PDeclarations> _declarations_ = new LinkedList<PDeclarations>();
     private final LinkedList<PStatement> _statement_ = new LinkedList<PStatement>();
     private TProgramend _programend_;
@@ -23,7 +24,8 @@ public final class AStart extends PStart
     public AStart(
         @SuppressWarnings("hiding") TProgram _program_,
         @SuppressWarnings("hiding") TIdentifier _identifier_,
-        @SuppressWarnings("hiding") TSemikolon _semikolon_,
+        @SuppressWarnings("hiding") TSemicolon _semicolon_,
+        @SuppressWarnings("hiding") TBegin _begin_,
         @SuppressWarnings("hiding") List<?> _declarations_,
         @SuppressWarnings("hiding") List<?> _statement_,
         @SuppressWarnings("hiding") TProgramend _programend_)
@@ -33,7 +35,9 @@ public final class AStart extends PStart
 
         setIdentifier(_identifier_);
 
-        setSemikolon(_semikolon_);
+        setSemicolon(_semicolon_);
+
+        setBegin(_begin_);
 
         setDeclarations(_declarations_);
 
@@ -49,7 +53,8 @@ public final class AStart extends PStart
         return new AStart(
             cloneNode(this._program_),
             cloneNode(this._identifier_),
-            cloneNode(this._semikolon_),
+            cloneNode(this._semicolon_),
+            cloneNode(this._begin_),
             cloneList(this._declarations_),
             cloneList(this._statement_),
             cloneNode(this._programend_));
@@ -111,16 +116,16 @@ public final class AStart extends PStart
         this._identifier_ = node;
     }
 
-    public TSemikolon getSemikolon()
+    public TSemicolon getSemicolon()
     {
-        return this._semikolon_;
+        return this._semicolon_;
     }
 
-    public void setSemikolon(TSemikolon node)
+    public void setSemicolon(TSemicolon node)
     {
-        if(this._semikolon_ != null)
+        if(this._semicolon_ != null)
         {
-            this._semikolon_.parent(null);
+            this._semicolon_.parent(null);
         }
 
         if(node != null)
@@ -133,7 +138,32 @@ public final class AStart extends PStart
             node.parent(this);
         }
 
-        this._semikolon_ = node;
+        this._semicolon_ = node;
+    }
+
+    public TBegin getBegin()
+    {
+        return this._begin_;
+    }
+
+    public void setBegin(TBegin node)
+    {
+        if(this._begin_ != null)
+        {
+            this._begin_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._begin_ = node;
     }
 
     public LinkedList<PDeclarations> getDeclarations()
@@ -219,7 +249,8 @@ public final class AStart extends PStart
         return ""
             + toString(this._program_)
             + toString(this._identifier_)
-            + toString(this._semikolon_)
+            + toString(this._semicolon_)
+            + toString(this._begin_)
             + toString(this._declarations_)
             + toString(this._statement_)
             + toString(this._programend_);
@@ -241,9 +272,15 @@ public final class AStart extends PStart
             return;
         }
 
-        if(this._semikolon_ == child)
+        if(this._semicolon_ == child)
         {
-            this._semikolon_ = null;
+            this._semicolon_ = null;
+            return;
+        }
+
+        if(this._begin_ == child)
+        {
+            this._begin_ = null;
             return;
         }
 
@@ -282,9 +319,15 @@ public final class AStart extends PStart
             return;
         }
 
-        if(this._semikolon_ == oldChild)
+        if(this._semicolon_ == oldChild)
         {
-            setSemikolon((TSemikolon) newChild);
+            setSemicolon((TSemicolon) newChild);
+            return;
+        }
+
+        if(this._begin_ == oldChild)
+        {
+            setBegin((TBegin) newChild);
             return;
         }
 

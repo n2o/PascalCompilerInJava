@@ -9,7 +9,7 @@ public final class AAssignment extends PAssignment
 {
     private TIdentifier _identifier_;
     private TAssign _assign_;
-    private PExpr _expr_;
+    private PExpression _expression_;
 
     public AAssignment()
     {
@@ -19,14 +19,14 @@ public final class AAssignment extends PAssignment
     public AAssignment(
         @SuppressWarnings("hiding") TIdentifier _identifier_,
         @SuppressWarnings("hiding") TAssign _assign_,
-        @SuppressWarnings("hiding") PExpr _expr_)
+        @SuppressWarnings("hiding") PExpression _expression_)
     {
         // Constructor
         setIdentifier(_identifier_);
 
         setAssign(_assign_);
 
-        setExpr(_expr_);
+        setExpression(_expression_);
 
     }
 
@@ -36,7 +36,7 @@ public final class AAssignment extends PAssignment
         return new AAssignment(
             cloneNode(this._identifier_),
             cloneNode(this._assign_),
-            cloneNode(this._expr_));
+            cloneNode(this._expression_));
     }
 
     @Override
@@ -95,16 +95,16 @@ public final class AAssignment extends PAssignment
         this._assign_ = node;
     }
 
-    public PExpr getExpr()
+    public PExpression getExpression()
     {
-        return this._expr_;
+        return this._expression_;
     }
 
-    public void setExpr(PExpr node)
+    public void setExpression(PExpression node)
     {
-        if(this._expr_ != null)
+        if(this._expression_ != null)
         {
-            this._expr_.parent(null);
+            this._expression_.parent(null);
         }
 
         if(node != null)
@@ -117,7 +117,7 @@ public final class AAssignment extends PAssignment
             node.parent(this);
         }
 
-        this._expr_ = node;
+        this._expression_ = node;
     }
 
     @Override
@@ -126,7 +126,7 @@ public final class AAssignment extends PAssignment
         return ""
             + toString(this._identifier_)
             + toString(this._assign_)
-            + toString(this._expr_);
+            + toString(this._expression_);
     }
 
     @Override
@@ -145,9 +145,9 @@ public final class AAssignment extends PAssignment
             return;
         }
 
-        if(this._expr_ == child)
+        if(this._expression_ == child)
         {
-            this._expr_ = null;
+            this._expression_ = null;
             return;
         }
 
@@ -170,9 +170,9 @@ public final class AAssignment extends PAssignment
             return;
         }
 
-        if(this._expr_ == oldChild)
+        if(this._expression_ == oldChild)
         {
-            setExpr((PExpr) newChild);
+            setExpression((PExpression) newChild);
             return;
         }
 

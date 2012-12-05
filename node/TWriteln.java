@@ -7,14 +7,14 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class TWriteln extends Token
 {
-    public TWriteln()
+    public TWriteln(String text)
     {
-        super.setText("writeln");
+        setText(text);
     }
 
-    public TWriteln(int line, int pos)
+    public TWriteln(String text, int line, int pos)
     {
-        super.setText("writeln");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,12 @@ public final class TWriteln extends Token
     @Override
     public Object clone()
     {
-      return new TWriteln(getLine(), getPos());
+      return new TWriteln(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTWriteln(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TWriteln text.");
     }
 }

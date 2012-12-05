@@ -7,14 +7,14 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class TWhile extends Token
 {
-    public TWhile()
+    public TWhile(String text)
     {
-        super.setText("while");
+        setText(text);
     }
 
-    public TWhile(int line, int pos)
+    public TWhile(String text, int line, int pos)
     {
-        super.setText("while");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,12 @@ public final class TWhile extends Token
     @Override
     public Object clone()
     {
-      return new TWhile(getLine(), getPos());
+      return new TWhile(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTWhile(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TWhile text.");
     }
 }

@@ -1,57 +1,82 @@
 Helpers
 	firstnum = ['1'..'9'];
 	number 	 = ['0'..'9'];
+	a 		 = ['a' + 'A'];
+  	b 		 = ['b' + 'B'];
+  	c 		 = ['c' + 'C'];
+  	d 		 = ['d' + 'D'];
+  	e 		 = ['e' + 'E'];
+  	f 		 = ['f' + 'F'];
+  	g 		 = ['g' + 'G'];
+  	h 		 = ['h' + 'H'];
+  	i 		 = ['i' + 'I'];
+  	j 		 = ['j' + 'J'];
+  	k 		 = ['k' + 'K'];
+  	l 		 = ['l' + 'L'];
+  	m 		 = ['m' + 'M'];
+  	n 		 = ['n' + 'N'];
+  	o 		 = ['o' + 'O'];
+  	p 		 = ['p' + 'P'];
+  	q 		 = ['q' + 'Q'];
+  	r 		 = ['r' + 'R'];
+  	s 		 = ['s' + 'S'];
+  	t 		 = ['t' + 'T'];
+  	u 		 = ['u' + 'U'];
+  	v 		 = ['v' + 'V'];
+  	w 		 = ['w' + 'W'];
+  	x 		 = ['x' + 'X'];
+  	y 		 = ['y' + 'Y'];
+  	z 		 = ['z' + 'Z'];
 	letter   = (['a'..'z']|['A'..'Z']);
 
 Tokens
 	// Datatypes
-	integer		= 'integer';
-	boolean		= 'boolean';
-	var			= 'var';
+	integer		= i n t e g e r;
+	boolean		= b o o l e a n;
+	var			= v a r;
 	number 		= (firstnum number*)|'0';
 
 	// Commands
 	assign	= ':=';
-	begin 	= 'begin';
-	programend 	= 'end.';
-	end 	= 'end';
-	program	= 'program';
-	if		= 'if';
-	then	= 'then';
-	else	= 'else';
-	while	= 'while';
-	do		= 'do';
-	writeln	= 'writeln';
-	break 	= 'break';
+	begin 	= b e g i n;
+	programend 	= e n d '.';
+	end 	= e n d;
+	program	= p r o g r a m;
+	if		= i f;
+	then	= t h e n;
+	else	= e l s e;
+	while	= w h i l e;
+	do		= d o;
+	writeln	= w r i t e l n;
+	break 	= b r e a k;
 
-	// Operator
+	// Operators
 	l_par	= '(';
 	r_par	= ')';
 	plus 	= '+';
 	minus 	= '-';
 	mult	= '*';
-	div 	= 'div';
-	mod 	= 'mod';
+	div 	= d i v;
+	mod 	= m o d;
 	eq		= '=';
 	lt		= '<';
 	gt 		= '>';
 	le		= '<=';
 	ge		= '>=';
 	ne		= '<>';
-	and		= 'and';
-	or		= 'or';
-	xor 	= 'xor';
-	not 	= 'not';
-	true	= 'true';
-	false	= 'false';
+	and		= a n d;
+	or		= o r;
+	xor 	= x o r;
+	not 	= n o t;
+	true	= t r u e;
+	false	= f a l s e;
 
 	// Other
 	colon 		= ':';
 	semicolon	= ';';
 	dot 		= '.';
-	tick 		= '\'';
-	whitespace	= (' '| 10 | 13)+;
-	identifier	= letter+number*letter*;
+	whitespace	= (' '| 9 | 10 | 13)+;
+	identifier	= letter+ (number | letter)*;
 
 Ignored Tokens
 	whitespace;
@@ -59,7 +84,7 @@ Ignored Tokens
 // Pruefe noch auf leeres Programm
 Productions
 	start = 
-		   program identifier semicolon declarations* statement* programend;
+		   program identifier semicolon begin declarations* statement* programend;
 	
 	declarations =
 		   {single} var identifier colon type semicolon;
@@ -75,35 +100,38 @@ Productions
 		 | semicolon;
 
 	print =
-		   writeln l_par tick expr tick r_par;
+		   writeln l_par expression* r_par;
 
 	assignment = 
-		   identifier assign expr;
+		   identifier assign expression;
 
 	type = 
 		   {boolean} boolean
 		 | {integer} integer;
 	
-	expr = 
-		  {comparision} [left]:expr comparision [right]:expr2
-		 | expr2;
+	/**
+	 * Boolean- and arithmetic expressions
+	 */
+	expression = 
+		  {comparision} expression comparision expression2
+		 | expression2;
 
-	expr2 =
-		   {plus} expr2 plus expr3 
-		 | {minus} expr2 minus expr3
-		 | {or} expr2 or expr3
-		 | {xor} expr2 xor expr3
-		 | expr3;
+	expression2 =
+		   {plus} expression2 plus expression3 
+		 | {minus} expression2 minus expression3
+		 | {or} expression2 or expression3
+		 | {xor} expression2 xor expression3
+		 | expression3;
 
-	expr3 =
-		   {mod} expr3 mod expr4
-		 | {mult} expr3 mult expr4
-		 | {div} expr3 div expr4
-		 | {and} expr3 and expr4
-		 | expr4;
+	expression3 =
+		   {mod} expression3 mod expression4
+		 | {mult} expression3 mult expression4
+		 | {div} expression3 div expression4
+		 | {and} expression3 and expression4
+		 | expression4;
 
-	expr4 = 
-		   {not} not expr4
+	expression4 = 
+		   {not} not expression4
 		 | {number} number
 		 | {identifier} identifier
 		 | {true} true
@@ -118,26 +146,26 @@ Productions
 		 | {eq} eq;
 
 	/**
-	 * If Expressions
+	 * If expressions
 	 */
 	if_then_statement =
-		   if expr then statement;
+		   if expression then statement;
 
 	if_then_else_statement =
-		   if expr then statement_no_short_if else statement;
+		   if expression then statement_no_short_if else statement;
 
 	if_then_else_statement_no_short_if =
-		   if expr then [left]:statement_no_short_if else [right]:statement_no_short_if;
+		   if expression then [left]:statement_no_short_if else [right]:statement_no_short_if;
 
 	statement_no_short_if =
 		   {if} if_then_else_statement_no_short_if
 		 | {while} while_statement_no_short_if;
 
 	while_statement_no_short_if =
-		   {while} while expr do statement_no_short_if;
+		   {while} while expression do statement_no_short_if;
 
 	while_statement =
-		   {while} while expr do statement;
+		   {while} while expression do statement;
 
 
 

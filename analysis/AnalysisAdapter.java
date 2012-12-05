@@ -159,103 +159,103 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAComparisionExpr(AComparisionExpr node)
+    public void caseAComparisionExpression(AComparisionExpression node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAExpr(AExpr node)
+    public void caseAExpression(AExpression node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAPlusExpr2(APlusExpr2 node)
+    public void caseAPlusExpression2(APlusExpression2 node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAMinusExpr2(AMinusExpr2 node)
+    public void caseAMinusExpression2(AMinusExpression2 node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAOrExpr2(AOrExpr2 node)
+    public void caseAOrExpression2(AOrExpression2 node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAXorExpr2(AXorExpr2 node)
+    public void caseAXorExpression2(AXorExpression2 node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAExpr2(AExpr2 node)
+    public void caseAExpression2(AExpression2 node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAModExpr3(AModExpr3 node)
+    public void caseAModExpression3(AModExpression3 node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAMultExpr3(AMultExpr3 node)
+    public void caseAMultExpression3(AMultExpression3 node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseADivExpr3(ADivExpr3 node)
+    public void caseADivExpression3(ADivExpression3 node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAAndExpr3(AAndExpr3 node)
+    public void caseAAndExpression3(AAndExpression3 node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAExpr3(AExpr3 node)
+    public void caseAExpression3(AExpression3 node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseANotExpr4(ANotExpr4 node)
+    public void caseANotExpression4(ANotExpression4 node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseANumberExpr4(ANumberExpr4 node)
+    public void caseANumberExpression4(ANumberExpression4 node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAIdentifierExpr4(AIdentifierExpr4 node)
+    public void caseAIdentifierExpression4(AIdentifierExpression4 node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseATrueExpr4(ATrueExpr4 node)
+    public void caseATrueExpression4(ATrueExpression4 node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAFalseExpr4(AFalseExpr4 node)
+    public void caseAFalseExpression4(AFalseExpression4 node)
     {
         defaultCase(node);
     }
@@ -555,7 +555,7 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseTSemikolon(TSemikolon node)
+    public void caseTSemicolon(TSemicolon node)
     {
         defaultCase(node);
     }

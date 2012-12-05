@@ -8,7 +8,7 @@ import analysis.*;
 public final class AIfThenElseStatementNoShortIf extends PIfThenElseStatementNoShortIf
 {
     private TIf _if_;
-    private PExpr _expr_;
+    private PExpression _expression_;
     private TThen _then_;
     private PStatementNoShortIf _left_;
     private TElse _else_;
@@ -21,7 +21,7 @@ public final class AIfThenElseStatementNoShortIf extends PIfThenElseStatementNoS
 
     public AIfThenElseStatementNoShortIf(
         @SuppressWarnings("hiding") TIf _if_,
-        @SuppressWarnings("hiding") PExpr _expr_,
+        @SuppressWarnings("hiding") PExpression _expression_,
         @SuppressWarnings("hiding") TThen _then_,
         @SuppressWarnings("hiding") PStatementNoShortIf _left_,
         @SuppressWarnings("hiding") TElse _else_,
@@ -30,7 +30,7 @@ public final class AIfThenElseStatementNoShortIf extends PIfThenElseStatementNoS
         // Constructor
         setIf(_if_);
 
-        setExpr(_expr_);
+        setExpression(_expression_);
 
         setThen(_then_);
 
@@ -47,7 +47,7 @@ public final class AIfThenElseStatementNoShortIf extends PIfThenElseStatementNoS
     {
         return new AIfThenElseStatementNoShortIf(
             cloneNode(this._if_),
-            cloneNode(this._expr_),
+            cloneNode(this._expression_),
             cloneNode(this._then_),
             cloneNode(this._left_),
             cloneNode(this._else_),
@@ -85,16 +85,16 @@ public final class AIfThenElseStatementNoShortIf extends PIfThenElseStatementNoS
         this._if_ = node;
     }
 
-    public PExpr getExpr()
+    public PExpression getExpression()
     {
-        return this._expr_;
+        return this._expression_;
     }
 
-    public void setExpr(PExpr node)
+    public void setExpression(PExpression node)
     {
-        if(this._expr_ != null)
+        if(this._expression_ != null)
         {
-            this._expr_.parent(null);
+            this._expression_.parent(null);
         }
 
         if(node != null)
@@ -107,7 +107,7 @@ public final class AIfThenElseStatementNoShortIf extends PIfThenElseStatementNoS
             node.parent(this);
         }
 
-        this._expr_ = node;
+        this._expression_ = node;
     }
 
     public TThen getThen()
@@ -215,7 +215,7 @@ public final class AIfThenElseStatementNoShortIf extends PIfThenElseStatementNoS
     {
         return ""
             + toString(this._if_)
-            + toString(this._expr_)
+            + toString(this._expression_)
             + toString(this._then_)
             + toString(this._left_)
             + toString(this._else_)
@@ -232,9 +232,9 @@ public final class AIfThenElseStatementNoShortIf extends PIfThenElseStatementNoS
             return;
         }
 
-        if(this._expr_ == child)
+        if(this._expression_ == child)
         {
-            this._expr_ = null;
+            this._expression_ = null;
             return;
         }
 
@@ -275,9 +275,9 @@ public final class AIfThenElseStatementNoShortIf extends PIfThenElseStatementNoS
             return;
         }
 
-        if(this._expr_ == oldChild)
+        if(this._expression_ == oldChild)
         {
-            setExpr((PExpr) newChild);
+            setExpression((PExpression) newChild);
             return;
         }
 

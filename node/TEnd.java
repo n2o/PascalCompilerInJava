@@ -7,14 +7,14 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class TEnd extends Token
 {
-    public TEnd()
+    public TEnd(String text)
     {
-        super.setText("end");
+        setText(text);
     }
 
-    public TEnd(int line, int pos)
+    public TEnd(String text, int line, int pos)
     {
-        super.setText("end");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,12 @@ public final class TEnd extends Token
     @Override
     public Object clone()
     {
-      return new TEnd(getLine(), getPos());
+      return new TEnd(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTEnd(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TEnd text.");
     }
 }

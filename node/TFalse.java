@@ -7,14 +7,14 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class TFalse extends Token
 {
-    public TFalse()
+    public TFalse(String text)
     {
-        super.setText("false");
+        setText(text);
     }
 
-    public TFalse(int line, int pos)
+    public TFalse(String text, int line, int pos)
     {
-        super.setText("false");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,12 @@ public final class TFalse extends Token
     @Override
     public Object clone()
     {
-      return new TFalse(getLine(), getPos());
+      return new TFalse(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTFalse(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TFalse text.");
     }
 }
