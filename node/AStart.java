@@ -2,6 +2,7 @@
 
 package node;
 
+import java.util.*;
 import analysis.*;
 
 @SuppressWarnings("nls")
@@ -10,8 +11,9 @@ public final class AStart extends PStart
     private TProgram _program_;
     private TIdentifier _identifier_;
     private TSemikolon _semikolon_;
-    private PBody _body_;
-    private TProgramend _programend_;
+    private final LinkedList<PDeclarations> _declarations_ = new LinkedList<PDeclarations>();
+    private final LinkedList<PStatement> _statement_ = new LinkedList<PStatement>();
+    private TDot _dot_;
 
     public AStart()
     {
@@ -22,8 +24,9 @@ public final class AStart extends PStart
         @SuppressWarnings("hiding") TProgram _program_,
         @SuppressWarnings("hiding") TIdentifier _identifier_,
         @SuppressWarnings("hiding") TSemikolon _semikolon_,
-        @SuppressWarnings("hiding") PBody _body_,
-        @SuppressWarnings("hiding") TProgramend _programend_)
+        @SuppressWarnings("hiding") List<?> _declarations_,
+        @SuppressWarnings("hiding") List<?> _statement_,
+        @SuppressWarnings("hiding") TDot _dot_)
     {
         // Constructor
         setProgram(_program_);
@@ -32,9 +35,11 @@ public final class AStart extends PStart
 
         setSemikolon(_semikolon_);
 
-        setBody(_body_);
+        setDeclarations(_declarations_);
 
-        setProgramend(_programend_);
+        setStatement(_statement_);
+
+        setDot(_dot_);
 
     }
 
@@ -45,8 +50,9 @@ public final class AStart extends PStart
             cloneNode(this._program_),
             cloneNode(this._identifier_),
             cloneNode(this._semikolon_),
-            cloneNode(this._body_),
-            cloneNode(this._programend_));
+            cloneList(this._declarations_),
+            cloneList(this._statement_),
+            cloneNode(this._dot_));
     }
 
     @Override
@@ -130,16 +136,68 @@ public final class AStart extends PStart
         this._semikolon_ = node;
     }
 
-    public PBody getBody()
+    public LinkedList<PDeclarations> getDeclarations()
     {
-        return this._body_;
+        return this._declarations_;
     }
 
-    public void setBody(PBody node)
+    public void setDeclarations(List<?> list)
     {
-        if(this._body_ != null)
+        for(PDeclarations e : this._declarations_)
         {
-            this._body_.parent(null);
+            e.parent(null);
+        }
+        this._declarations_.clear();
+
+        for(Object obj_e : list)
+        {
+            PDeclarations e = (PDeclarations) obj_e;
+            if(e.parent() != null)
+            {
+                e.parent().removeChild(e);
+            }
+
+            e.parent(this);
+            this._declarations_.add(e);
+        }
+    }
+
+    public LinkedList<PStatement> getStatement()
+    {
+        return this._statement_;
+    }
+
+    public void setStatement(List<?> list)
+    {
+        for(PStatement e : this._statement_)
+        {
+            e.parent(null);
+        }
+        this._statement_.clear();
+
+        for(Object obj_e : list)
+        {
+            PStatement e = (PStatement) obj_e;
+            if(e.parent() != null)
+            {
+                e.parent().removeChild(e);
+            }
+
+            e.parent(this);
+            this._statement_.add(e);
+        }
+    }
+
+    public TDot getDot()
+    {
+        return this._dot_;
+    }
+
+    public void setDot(TDot node)
+    {
+        if(this._dot_ != null)
+        {
+            this._dot_.parent(null);
         }
 
         if(node != null)
@@ -152,32 +210,7 @@ public final class AStart extends PStart
             node.parent(this);
         }
 
-        this._body_ = node;
-    }
-
-    public TProgramend getProgramend()
-    {
-        return this._programend_;
-    }
-
-    public void setProgramend(TProgramend node)
-    {
-        if(this._programend_ != null)
-        {
-            this._programend_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._programend_ = node;
+        this._dot_ = node;
     }
 
     @Override
@@ -187,8 +220,9 @@ public final class AStart extends PStart
             + toString(this._program_)
             + toString(this._identifier_)
             + toString(this._semikolon_)
-            + toString(this._body_)
-            + toString(this._programend_);
+            + toString(this._declarations_)
+            + toString(this._statement_)
+            + toString(this._dot_);
     }
 
     @Override
@@ -213,15 +247,19 @@ public final class AStart extends PStart
             return;
         }
 
-        if(this._body_ == child)
+        if(this._declarations_.remove(child))
         {
-            this._body_ = null;
             return;
         }
 
-        if(this._programend_ == child)
+        if(this._statement_.remove(child))
         {
-            this._programend_ = null;
+            return;
+        }
+
+        if(this._dot_ == child)
+        {
+            this._dot_ = null;
             return;
         }
 
@@ -250,15 +288,45 @@ public final class AStart extends PStart
             return;
         }
 
-        if(this._body_ == oldChild)
+        for(ListIterator<PDeclarations> i = this._declarations_.listIterator(); i.hasNext();)
         {
-            setBody((PBody) newChild);
-            return;
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((PDeclarations) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
+
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
         }
 
-        if(this._programend_ == oldChild)
+        for(ListIterator<PStatement> i = this._statement_.listIterator(); i.hasNext();)
         {
-            setProgramend((TProgramend) newChild);
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((PStatement) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
+
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
+        }
+
+        if(this._dot_ == oldChild)
+        {
+            setDot((TDot) newChild);
             return;
         }
 

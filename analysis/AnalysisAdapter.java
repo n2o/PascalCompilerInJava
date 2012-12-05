@@ -81,73 +81,61 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAWithDecBody(AWithDecBody node)
+    public void caseASingleDeclarations(ASingleDeclarations node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAWithoutDecBody(AWithoutDecBody node)
+    public void caseAIfThenStatementStatement(AIfThenStatementStatement node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAWithoutInstructionsBody(AWithoutInstructionsBody node)
+    public void caseAIfThenElseStatementStatement(AIfThenElseStatementStatement node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAOpsInstructions(AOpsInstructions node)
+    public void caseAWhileStatement(AWhileStatement node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAMultInstructionsInstructions(AMultInstructionsInstructions node)
+    public void caseAAssignStatement(AAssignStatement node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseANestedInstructions(ANestedInstructions node)
+    public void caseAPrintStatement(APrintStatement node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAInstructions(AInstructions node)
+    public void caseABreakStatement(ABreakStatement node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAIfOperation(AIfOperation node)
+    public void caseABeginStatement(ABeginStatement node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAWhileOperation(AWhileOperation node)
+    public void caseAEndStatement(AEndStatement node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAAssignOperation(AAssignOperation node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAPrintOperation(APrintOperation node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAOperation(AOperation node)
+    public void caseAStatement(AStatement node)
     {
         defaultCase(node);
     }
@@ -160,18 +148,6 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseAAssignment(AAssignment node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseASingleDeclarations(ASingleDeclarations node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAMultiDeclarations(AMultiDeclarations node)
     {
         defaultCase(node);
     }
@@ -327,85 +303,43 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAMatchedIfexpr(AMatchedIfexpr node)
+    public void caseAIfThenStatement(AIfThenStatement node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAOpenstmtIfexpr(AOpenstmtIfexpr node)
+    public void caseAIfThenElseStatement(AIfThenElseStatement node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAMatchedMatchedstmt(AMatchedMatchedstmt node)
+    public void caseAIfThenElseStatementNoShortIf(AIfThenElseStatementNoShortIf node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAMatchedstmt(AMatchedstmt node)
+    public void caseAIfStatementNoShortIf(AIfStatementNoShortIf node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAOpenstmt(AOpenstmt node)
+    public void caseAWhileStatementNoShortIf(AWhileStatementNoShortIf node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAElseOpenstmt(AElseOpenstmt node)
+    public void caseAWhileWhileStatementNoShortIf(AWhileWhileStatementNoShortIf node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAOpsOtherInstructions(AOpsOtherInstructions node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAMultInstructionsOtherInstructions(AMultInstructionsOtherInstructions node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseANestedOtherInstructions(ANestedOtherInstructions node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAOtherInstructions(AOtherInstructions node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAWhileOtherOperation(AWhileOtherOperation node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAAssignOtherOperation(AAssignOtherOperation node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAPrintOtherOperation(APrintOtherOperation node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAOtherOperation(AOtherOperation node)
+    public void caseAWhileWhileStatement(AWhileWhileStatement node)
     {
         defaultCase(node);
     }

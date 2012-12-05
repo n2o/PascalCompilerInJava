@@ -55,26 +55,24 @@ Tokens
 Ignored Tokens
 	whitespace;
 
+// Pruefe noch auf leeres Programm
 Productions
 	start = 
-		   program identifier semikolon body programend;
-	body = 
-		   {with_dec} declarations begin instructions 
-		 | {without_dec} begin instructions
-		 | {without_instructions} declarations begin;
+		   program identifier semikolon declarations* statement* dot;
+	
+	declarations =
+		   {single} var identifier colon type semikolon;
 
-	instructions = 
-		   {ops} operation
-		 | {mult_instructions} instructions semikolon operation
-		 | {nested} begin instructions end
-		 | [left]:instructions semikolon [right]:instructions;
-
-	operation = 
-		   {if} ifexpr
-		 | {while} while expr do instructions
+	statement = 
+		   {if_then_statement} if_then_statement
+		 | {if_then_else_statement} if_then_else_statement  
+		 | {while} while_statement
 		 | {assign} assignment
 		 | {print} print
-		 | break;
+		 | {break} break
+		 | {begin} begin
+		 | {end} end
+		 | semikolon;
 
 	print =
 		   writeln l_par expr r_par;
@@ -82,16 +80,12 @@ Productions
 	assignment = 
 		   identifier assign expr;
 
-	declarations =
-		   {single} var identifier colon type semikolon
-		 | {multi} declarations var identifier colon type semikolon;
-
 	type = 
 		   {boolean} boolean
 		 | {integer} integer;
 	
 	expr = 
-		  {comparision} [left]:expr comparision [right]:expr
+		  {comparision} [left]:expr comparision [right]:foo
 		 | foo;
 
 	foo =
@@ -126,29 +120,28 @@ Productions
 	/**
 	 * If Expressions
 	 */
-	ifexpr = 
-		   {matched} matchedstmt
-		 | {openstmt} openstmt;
 
-	matchedstmt = 
-		   {matched} if expr then [left]:matchedstmt else [right]:matchedstmt
-		 | other_instructions;
+	if_then_statement =
+		   if expr then statement;
 
-	openstmt =
-		   if expr then ifexpr
-		 | {else} if expr then matchedstmt else openstmt;
+	if_then_else_statement =
+		   if expr then statement_no_short_if else statement;
 
-	other_instructions = 
-		   {ops} other_operation
-		 | {mult_instructions} other_instructions semikolon other_operation
-		 | {nested} begin other_instructions end
-		 | [left]:other_instructions semikolon [right]:other_instructions;
+	if_then_else_statement_no_short_if =
+		   if expr then [left]:statement_no_short_if else [right]:statement_no_short_if;
 
- 	other_operation = 
-		   {while} while expr do other_instructions
-		 | {assign} assignment
-		 | {print} print
-		 | break;
+	statement_no_short_if =
+		   {if} if_then_else_statement_no_short_if
+		 | {while} while_statement_no_short_if;
+
+	while_statement_no_short_if =
+		   {while} while expr do statement_no_short_if;
+
+	while_statement =
+		   {while} while expr do statement;
+
+
+
 
 
 

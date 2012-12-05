@@ -5,26 +5,26 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class ANestedinstruction extends PNestedinstruction
+public final class ANestedInstruction extends PInstruction
 {
     private TBegin _begin_;
-    private PInstructions _instructions_;
+    private PInstruction _instruction_;
     private TEnd _end_;
 
-    public ANestedinstruction()
+    public ANestedInstruction()
     {
         // Constructor
     }
 
-    public ANestedinstruction(
+    public ANestedInstruction(
         @SuppressWarnings("hiding") TBegin _begin_,
-        @SuppressWarnings("hiding") PInstructions _instructions_,
+        @SuppressWarnings("hiding") PInstruction _instruction_,
         @SuppressWarnings("hiding") TEnd _end_)
     {
         // Constructor
         setBegin(_begin_);
 
-        setInstructions(_instructions_);
+        setInstruction(_instruction_);
 
         setEnd(_end_);
 
@@ -33,16 +33,16 @@ public final class ANestedinstruction extends PNestedinstruction
     @Override
     public Object clone()
     {
-        return new ANestedinstruction(
+        return new ANestedInstruction(
             cloneNode(this._begin_),
-            cloneNode(this._instructions_),
+            cloneNode(this._instruction_),
             cloneNode(this._end_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseANestedinstruction(this);
+        ((Analysis) sw).caseANestedInstruction(this);
     }
 
     public TBegin getBegin()
@@ -70,16 +70,16 @@ public final class ANestedinstruction extends PNestedinstruction
         this._begin_ = node;
     }
 
-    public PInstructions getInstructions()
+    public PInstruction getInstruction()
     {
-        return this._instructions_;
+        return this._instruction_;
     }
 
-    public void setInstructions(PInstructions node)
+    public void setInstruction(PInstruction node)
     {
-        if(this._instructions_ != null)
+        if(this._instruction_ != null)
         {
-            this._instructions_.parent(null);
+            this._instruction_.parent(null);
         }
 
         if(node != null)
@@ -92,7 +92,7 @@ public final class ANestedinstruction extends PNestedinstruction
             node.parent(this);
         }
 
-        this._instructions_ = node;
+        this._instruction_ = node;
     }
 
     public TEnd getEnd()
@@ -125,7 +125,7 @@ public final class ANestedinstruction extends PNestedinstruction
     {
         return ""
             + toString(this._begin_)
-            + toString(this._instructions_)
+            + toString(this._instruction_)
             + toString(this._end_);
     }
 
@@ -139,9 +139,9 @@ public final class ANestedinstruction extends PNestedinstruction
             return;
         }
 
-        if(this._instructions_ == child)
+        if(this._instruction_ == child)
         {
-            this._instructions_ = null;
+            this._instruction_ = null;
             return;
         }
 
@@ -164,9 +164,9 @@ public final class ANestedinstruction extends PNestedinstruction
             return;
         }
 
-        if(this._instructions_ == oldChild)
+        if(this._instruction_ == oldChild)
         {
-            setInstructions((PInstructions) newChild);
+            setInstruction((PInstruction) newChild);
             return;
         }
 

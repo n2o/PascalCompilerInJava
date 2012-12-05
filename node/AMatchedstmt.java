@@ -7,7 +7,7 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class AMatchedstmt extends PMatchedstmt
 {
-    private POtherInstructions _otherInstructions_;
+    private POtherInstruction _otherInstruction_;
 
     public AMatchedstmt()
     {
@@ -15,10 +15,10 @@ public final class AMatchedstmt extends PMatchedstmt
     }
 
     public AMatchedstmt(
-        @SuppressWarnings("hiding") POtherInstructions _otherInstructions_)
+        @SuppressWarnings("hiding") POtherInstruction _otherInstruction_)
     {
         // Constructor
-        setOtherInstructions(_otherInstructions_);
+        setOtherInstruction(_otherInstruction_);
 
     }
 
@@ -26,7 +26,7 @@ public final class AMatchedstmt extends PMatchedstmt
     public Object clone()
     {
         return new AMatchedstmt(
-            cloneNode(this._otherInstructions_));
+            cloneNode(this._otherInstruction_));
     }
 
     @Override
@@ -35,16 +35,16 @@ public final class AMatchedstmt extends PMatchedstmt
         ((Analysis) sw).caseAMatchedstmt(this);
     }
 
-    public POtherInstructions getOtherInstructions()
+    public POtherInstruction getOtherInstruction()
     {
-        return this._otherInstructions_;
+        return this._otherInstruction_;
     }
 
-    public void setOtherInstructions(POtherInstructions node)
+    public void setOtherInstruction(POtherInstruction node)
     {
-        if(this._otherInstructions_ != null)
+        if(this._otherInstruction_ != null)
         {
-            this._otherInstructions_.parent(null);
+            this._otherInstruction_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +57,23 @@ public final class AMatchedstmt extends PMatchedstmt
             node.parent(this);
         }
 
-        this._otherInstructions_ = node;
+        this._otherInstruction_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._otherInstructions_);
+            + toString(this._otherInstruction_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._otherInstructions_ == child)
+        if(this._otherInstruction_ == child)
         {
-            this._otherInstructions_ = null;
+            this._otherInstruction_ = null;
             return;
         }
 
@@ -84,9 +84,9 @@ public final class AMatchedstmt extends PMatchedstmt
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._otherInstructions_ == oldChild)
+        if(this._otherInstruction_ == oldChild)
         {
-            setOtherInstructions((POtherInstructions) newChild);
+            setOtherInstruction((POtherInstruction) newChild);
             return;
         }
 
