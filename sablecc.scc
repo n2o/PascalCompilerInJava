@@ -51,7 +51,6 @@ Tokens
 	dot 		= '.';
 	whitespace	= (' '| 10 | 13)+;
 	identifier	= letter+number*letter*;
-	boolidentifier	= letter+number*letter*;
 
 Ignored Tokens
 	whitespace;
@@ -67,12 +66,12 @@ Productions
 	instructions = 
 		   {ops} operation
 		 | {mult_instructions} instructions semikolon operation
-		 | {nested} begin [nested]:instructions end
-		 | [left]:instructions semikolon begin [right]:instructions end;
+		 | {nested} begin instructions end
+		 | [left]:instructions semikolon [right]:instructions;
 
 	operation = 
 		   {if} ifexpr
-		 | {while} while boolcomp do whileinstructions
+		 | {while} while expr do instructions
 		 | {assign} assignment
 		 | {print} print
 		 | break;
@@ -91,24 +90,30 @@ Productions
 		   {boolean} boolean
 		 | {integer} integer;
 	
-	expr =
-		   {boolcomp} boolcomp
-		 | {arithexpr} arithexpr;
+	expr = 
+		  {comparision} [left]:expr comparision [right]:expr
+		 | foo;
 
-	arithexpr =
-		   {plus} arithexpr plus factor 
-		 | {minus} arithexpr minus factor
-		 | factor;
+	foo =
+		   {plus} foo plus wtf 
+		 | {minus} foo minus wtf
+		 | {or} foo or wtf
+		 | {xor} foo xor wtf
+		 | wtf;
 
-	factor =
-		   {mod} factor mod term
-		 | {mult} factor mult term
-		 | {div} factor div term
-		 | term;
+	wtf =
+		   {mod} wtf mod bombe
+		 | {mult} wtf mult bombe
+		 | {div} wtf div bombe
+		 | {and} wtf and bombe
+		 | bombe;
 
-	term = 
-		   {number} number
-		 | {identifier} identifier;
+	bombe = 
+		   {not} not bombe
+		 | {number} number
+		 | {identifier} identifier
+		 | {true} true
+		 | {false} false;
 
 	comparision = 
 		   {gt} gt
@@ -118,59 +123,34 @@ Productions
 		 | {ne} ne
 		 | {eq} eq;
 
-	// While and nested instructions, nested by begin and end
-	whileinstructions = 
-		   {first} operation
-		 | begin instructions end; 
-
-
-	// Booleans and their precedences
-	boolcomp = 
-		   {eq} boolcomp eq boolexpr
-		 | {ne} boolcomp ne boolexpr
-		 | {comparision} [left]:arithexpr comparision [right]:arithexpr
-		 | boolexpr;
-
-	boolexpr = 
-		   {or} boolexpr or boolterm
-		 | {xor} boolexpr xor boolterm
-		 | boolterm;
-
-	boolterm =
-		   {and} boolterm and boolfactor
-		 | boolfactor;
-
-	boolfactor =
-		   {not} not boolfactor
-		 | {true} true
-		 | {false} false
-		 | boolidentifier;
-
-	// Next try
-	/*ifexpr = 
-		   {matched} fmatched_stmt
-		 | {openstmt} unmatched_stmt;
-
-	fmatched_stmt = if boolcomp then [left]:smatched_stmt else [right]:smatched_stmt;
-
-	unmatched_stmt = 
-		   {ifthen_if} if boolcomp then ifexpr
-		 | {ifthen} if boolcomp then operation
-		 | {ifthenelse} if boolcomp then smatched_stmt else unmatched_stmt;
-
-	smatched_stmt =
-		   {fmatched_stmt} fmatched_stmt
-		 | operation; */
-
-	
+	/**
+	 * If Expressions
+	 */
 	ifexpr = 
 		   {matched} matchedstmt
 		 | {openstmt} openstmt;
 
 	matchedstmt = 
-		   {matched} if boolcomp then [left]:matchedstmt else [right]:matchedstmt
-		 | instructions;
+		   {matched} if expr then [left]:matchedstmt else [right]:matchedstmt
+		 | other_instructions;
 
 	openstmt =
-		   {open} if boolcomp then ifexpr
-		 | {matched} if boolcomp then matchedstmt else openstmt;
+		   if expr then ifexpr
+		 | {else} if expr then matchedstmt else openstmt;
+
+	other_instructions = 
+		   {ops} other_operation
+		 | {mult_instructions} other_instructions semikolon other_operation
+		 | {nested} begin other_instructions end
+		 | [left]:other_instructions semikolon [right]:other_instructions;
+
+ 	other_operation = 
+		   {while} while expr do other_instructions
+		 | {assign} assignment
+		 | {print} print
+		 | break;
+
+
+
+
+

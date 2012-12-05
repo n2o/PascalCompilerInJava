@@ -9,9 +9,7 @@ public final class AInstructions extends PInstructions
 {
     private PInstructions _left_;
     private TSemikolon _semikolon_;
-    private TBegin _begin_;
     private PInstructions _right_;
-    private TEnd _end_;
 
     public AInstructions()
     {
@@ -21,20 +19,14 @@ public final class AInstructions extends PInstructions
     public AInstructions(
         @SuppressWarnings("hiding") PInstructions _left_,
         @SuppressWarnings("hiding") TSemikolon _semikolon_,
-        @SuppressWarnings("hiding") TBegin _begin_,
-        @SuppressWarnings("hiding") PInstructions _right_,
-        @SuppressWarnings("hiding") TEnd _end_)
+        @SuppressWarnings("hiding") PInstructions _right_)
     {
         // Constructor
         setLeft(_left_);
 
         setSemikolon(_semikolon_);
 
-        setBegin(_begin_);
-
         setRight(_right_);
-
-        setEnd(_end_);
 
     }
 
@@ -44,9 +36,7 @@ public final class AInstructions extends PInstructions
         return new AInstructions(
             cloneNode(this._left_),
             cloneNode(this._semikolon_),
-            cloneNode(this._begin_),
-            cloneNode(this._right_),
-            cloneNode(this._end_));
+            cloneNode(this._right_));
     }
 
     @Override
@@ -105,31 +95,6 @@ public final class AInstructions extends PInstructions
         this._semikolon_ = node;
     }
 
-    public TBegin getBegin()
-    {
-        return this._begin_;
-    }
-
-    public void setBegin(TBegin node)
-    {
-        if(this._begin_ != null)
-        {
-            this._begin_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._begin_ = node;
-    }
-
     public PInstructions getRight()
     {
         return this._right_;
@@ -155,40 +120,13 @@ public final class AInstructions extends PInstructions
         this._right_ = node;
     }
 
-    public TEnd getEnd()
-    {
-        return this._end_;
-    }
-
-    public void setEnd(TEnd node)
-    {
-        if(this._end_ != null)
-        {
-            this._end_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._end_ = node;
-    }
-
     @Override
     public String toString()
     {
         return ""
             + toString(this._left_)
             + toString(this._semikolon_)
-            + toString(this._begin_)
-            + toString(this._right_)
-            + toString(this._end_);
+            + toString(this._right_);
     }
 
     @Override
@@ -207,21 +145,9 @@ public final class AInstructions extends PInstructions
             return;
         }
 
-        if(this._begin_ == child)
-        {
-            this._begin_ = null;
-            return;
-        }
-
         if(this._right_ == child)
         {
             this._right_ = null;
-            return;
-        }
-
-        if(this._end_ == child)
-        {
-            this._end_ = null;
             return;
         }
 
@@ -244,21 +170,9 @@ public final class AInstructions extends PInstructions
             return;
         }
 
-        if(this._begin_ == oldChild)
-        {
-            setBegin((TBegin) newChild);
-            return;
-        }
-
         if(this._right_ == oldChild)
         {
             setRight((PInstructions) newChild);
-            return;
-        }
-
-        if(this._end_ == oldChild)
-        {
-            setEnd((TEnd) newChild);
             return;
         }
 

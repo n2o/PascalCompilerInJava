@@ -220,9 +220,9 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getBegin().apply(this);
         }
-        if(node.getNested() != null)
+        if(node.getInstructions() != null)
         {
-            node.getNested().apply(this);
+            node.getInstructions().apply(this);
         }
         if(node.getEnd() != null)
         {
@@ -253,17 +253,9 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getSemikolon().apply(this);
         }
-        if(node.getBegin() != null)
-        {
-            node.getBegin().apply(this);
-        }
         if(node.getRight() != null)
         {
             node.getRight().apply(this);
-        }
-        if(node.getEnd() != null)
-        {
-            node.getEnd().apply(this);
         }
         outAInstructions(node);
     }
@@ -307,17 +299,17 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getWhile().apply(this);
         }
-        if(node.getBoolcomp() != null)
+        if(node.getExpr() != null)
         {
-            node.getBoolcomp().apply(this);
+            node.getExpr().apply(this);
         }
         if(node.getDo() != null)
         {
             node.getDo().apply(this);
         }
-        if(node.getWhileinstructions() != null)
+        if(node.getInstructions() != null)
         {
-            node.getWhileinstructions().apply(this);
+            node.getInstructions().apply(this);
         }
         outAWhileOperation(node);
     }
@@ -567,275 +559,437 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outAIntegerType(node);
     }
 
-    public void inABoolcompExpr(ABoolcompExpr node)
+    public void inAComparisionExpr(AComparisionExpr node)
     {
         defaultIn(node);
     }
 
-    public void outABoolcompExpr(ABoolcompExpr node)
+    public void outAComparisionExpr(AComparisionExpr node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseABoolcompExpr(ABoolcompExpr node)
+    public void caseAComparisionExpr(AComparisionExpr node)
     {
-        inABoolcompExpr(node);
-        if(node.getBoolcomp() != null)
+        inAComparisionExpr(node);
+        if(node.getLeft() != null)
         {
-            node.getBoolcomp().apply(this);
+            node.getLeft().apply(this);
         }
-        outABoolcompExpr(node);
-    }
-
-    public void inAArithexprExpr(AArithexprExpr node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAArithexprExpr(AArithexprExpr node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAArithexprExpr(AArithexprExpr node)
-    {
-        inAArithexprExpr(node);
-        if(node.getArithexpr() != null)
+        if(node.getComparision() != null)
         {
-            node.getArithexpr().apply(this);
+            node.getComparision().apply(this);
         }
-        outAArithexprExpr(node);
+        if(node.getRight() != null)
+        {
+            node.getRight().apply(this);
+        }
+        outAComparisionExpr(node);
     }
 
-    public void inAPlusArithexpr(APlusArithexpr node)
+    public void inAExpr(AExpr node)
     {
         defaultIn(node);
     }
 
-    public void outAPlusArithexpr(APlusArithexpr node)
+    public void outAExpr(AExpr node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAPlusArithexpr(APlusArithexpr node)
+    public void caseAExpr(AExpr node)
     {
-        inAPlusArithexpr(node);
-        if(node.getArithexpr() != null)
+        inAExpr(node);
+        if(node.getFoo() != null)
         {
-            node.getArithexpr().apply(this);
+            node.getFoo().apply(this);
+        }
+        outAExpr(node);
+    }
+
+    public void inAPlusFoo(APlusFoo node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPlusFoo(APlusFoo node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPlusFoo(APlusFoo node)
+    {
+        inAPlusFoo(node);
+        if(node.getFoo() != null)
+        {
+            node.getFoo().apply(this);
         }
         if(node.getPlus() != null)
         {
             node.getPlus().apply(this);
         }
-        if(node.getFactor() != null)
+        if(node.getWtf() != null)
         {
-            node.getFactor().apply(this);
+            node.getWtf().apply(this);
         }
-        outAPlusArithexpr(node);
+        outAPlusFoo(node);
     }
 
-    public void inAMinusArithexpr(AMinusArithexpr node)
+    public void inAMinusFoo(AMinusFoo node)
     {
         defaultIn(node);
     }
 
-    public void outAMinusArithexpr(AMinusArithexpr node)
+    public void outAMinusFoo(AMinusFoo node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAMinusArithexpr(AMinusArithexpr node)
+    public void caseAMinusFoo(AMinusFoo node)
     {
-        inAMinusArithexpr(node);
-        if(node.getArithexpr() != null)
+        inAMinusFoo(node);
+        if(node.getFoo() != null)
         {
-            node.getArithexpr().apply(this);
+            node.getFoo().apply(this);
         }
         if(node.getMinus() != null)
         {
             node.getMinus().apply(this);
         }
-        if(node.getFactor() != null)
+        if(node.getWtf() != null)
         {
-            node.getFactor().apply(this);
+            node.getWtf().apply(this);
         }
-        outAMinusArithexpr(node);
+        outAMinusFoo(node);
     }
 
-    public void inAArithexpr(AArithexpr node)
+    public void inAOrFoo(AOrFoo node)
     {
         defaultIn(node);
     }
 
-    public void outAArithexpr(AArithexpr node)
+    public void outAOrFoo(AOrFoo node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAArithexpr(AArithexpr node)
+    public void caseAOrFoo(AOrFoo node)
     {
-        inAArithexpr(node);
-        if(node.getFactor() != null)
+        inAOrFoo(node);
+        if(node.getFoo() != null)
         {
-            node.getFactor().apply(this);
+            node.getFoo().apply(this);
         }
-        outAArithexpr(node);
+        if(node.getOr() != null)
+        {
+            node.getOr().apply(this);
+        }
+        if(node.getWtf() != null)
+        {
+            node.getWtf().apply(this);
+        }
+        outAOrFoo(node);
     }
 
-    public void inAModFactor(AModFactor node)
+    public void inAXorFoo(AXorFoo node)
     {
         defaultIn(node);
     }
 
-    public void outAModFactor(AModFactor node)
+    public void outAXorFoo(AXorFoo node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAModFactor(AModFactor node)
+    public void caseAXorFoo(AXorFoo node)
     {
-        inAModFactor(node);
-        if(node.getFactor() != null)
+        inAXorFoo(node);
+        if(node.getFoo() != null)
         {
-            node.getFactor().apply(this);
+            node.getFoo().apply(this);
+        }
+        if(node.getXor() != null)
+        {
+            node.getXor().apply(this);
+        }
+        if(node.getWtf() != null)
+        {
+            node.getWtf().apply(this);
+        }
+        outAXorFoo(node);
+    }
+
+    public void inAFoo(AFoo node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAFoo(AFoo node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAFoo(AFoo node)
+    {
+        inAFoo(node);
+        if(node.getWtf() != null)
+        {
+            node.getWtf().apply(this);
+        }
+        outAFoo(node);
+    }
+
+    public void inAModWtf(AModWtf node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAModWtf(AModWtf node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAModWtf(AModWtf node)
+    {
+        inAModWtf(node);
+        if(node.getWtf() != null)
+        {
+            node.getWtf().apply(this);
         }
         if(node.getMod() != null)
         {
             node.getMod().apply(this);
         }
-        if(node.getTerm() != null)
+        if(node.getBombe() != null)
         {
-            node.getTerm().apply(this);
+            node.getBombe().apply(this);
         }
-        outAModFactor(node);
+        outAModWtf(node);
     }
 
-    public void inAMultFactor(AMultFactor node)
+    public void inAMultWtf(AMultWtf node)
     {
         defaultIn(node);
     }
 
-    public void outAMultFactor(AMultFactor node)
+    public void outAMultWtf(AMultWtf node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAMultFactor(AMultFactor node)
+    public void caseAMultWtf(AMultWtf node)
     {
-        inAMultFactor(node);
-        if(node.getFactor() != null)
+        inAMultWtf(node);
+        if(node.getWtf() != null)
         {
-            node.getFactor().apply(this);
+            node.getWtf().apply(this);
         }
         if(node.getMult() != null)
         {
             node.getMult().apply(this);
         }
-        if(node.getTerm() != null)
+        if(node.getBombe() != null)
         {
-            node.getTerm().apply(this);
+            node.getBombe().apply(this);
         }
-        outAMultFactor(node);
+        outAMultWtf(node);
     }
 
-    public void inADivFactor(ADivFactor node)
+    public void inADivWtf(ADivWtf node)
     {
         defaultIn(node);
     }
 
-    public void outADivFactor(ADivFactor node)
+    public void outADivWtf(ADivWtf node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseADivFactor(ADivFactor node)
+    public void caseADivWtf(ADivWtf node)
     {
-        inADivFactor(node);
-        if(node.getFactor() != null)
+        inADivWtf(node);
+        if(node.getWtf() != null)
         {
-            node.getFactor().apply(this);
+            node.getWtf().apply(this);
         }
         if(node.getDiv() != null)
         {
             node.getDiv().apply(this);
         }
-        if(node.getTerm() != null)
+        if(node.getBombe() != null)
         {
-            node.getTerm().apply(this);
+            node.getBombe().apply(this);
         }
-        outADivFactor(node);
+        outADivWtf(node);
     }
 
-    public void inAFactor(AFactor node)
+    public void inAAndWtf(AAndWtf node)
     {
         defaultIn(node);
     }
 
-    public void outAFactor(AFactor node)
+    public void outAAndWtf(AAndWtf node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAFactor(AFactor node)
+    public void caseAAndWtf(AAndWtf node)
     {
-        inAFactor(node);
-        if(node.getTerm() != null)
+        inAAndWtf(node);
+        if(node.getWtf() != null)
         {
-            node.getTerm().apply(this);
+            node.getWtf().apply(this);
         }
-        outAFactor(node);
+        if(node.getAnd() != null)
+        {
+            node.getAnd().apply(this);
+        }
+        if(node.getBombe() != null)
+        {
+            node.getBombe().apply(this);
+        }
+        outAAndWtf(node);
     }
 
-    public void inANumberTerm(ANumberTerm node)
+    public void inAWtf(AWtf node)
     {
         defaultIn(node);
     }
 
-    public void outANumberTerm(ANumberTerm node)
+    public void outAWtf(AWtf node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseANumberTerm(ANumberTerm node)
+    public void caseAWtf(AWtf node)
     {
-        inANumberTerm(node);
+        inAWtf(node);
+        if(node.getBombe() != null)
+        {
+            node.getBombe().apply(this);
+        }
+        outAWtf(node);
+    }
+
+    public void inANotBombe(ANotBombe node)
+    {
+        defaultIn(node);
+    }
+
+    public void outANotBombe(ANotBombe node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseANotBombe(ANotBombe node)
+    {
+        inANotBombe(node);
+        if(node.getNot() != null)
+        {
+            node.getNot().apply(this);
+        }
+        if(node.getBombe() != null)
+        {
+            node.getBombe().apply(this);
+        }
+        outANotBombe(node);
+    }
+
+    public void inANumberBombe(ANumberBombe node)
+    {
+        defaultIn(node);
+    }
+
+    public void outANumberBombe(ANumberBombe node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseANumberBombe(ANumberBombe node)
+    {
+        inANumberBombe(node);
         if(node.getNumber() != null)
         {
             node.getNumber().apply(this);
         }
-        outANumberTerm(node);
+        outANumberBombe(node);
     }
 
-    public void inAIdentifierTerm(AIdentifierTerm node)
+    public void inAIdentifierBombe(AIdentifierBombe node)
     {
         defaultIn(node);
     }
 
-    public void outAIdentifierTerm(AIdentifierTerm node)
+    public void outAIdentifierBombe(AIdentifierBombe node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAIdentifierTerm(AIdentifierTerm node)
+    public void caseAIdentifierBombe(AIdentifierBombe node)
     {
-        inAIdentifierTerm(node);
+        inAIdentifierBombe(node);
         if(node.getIdentifier() != null)
         {
             node.getIdentifier().apply(this);
         }
-        outAIdentifierTerm(node);
+        outAIdentifierBombe(node);
+    }
+
+    public void inATrueBombe(ATrueBombe node)
+    {
+        defaultIn(node);
+    }
+
+    public void outATrueBombe(ATrueBombe node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseATrueBombe(ATrueBombe node)
+    {
+        inATrueBombe(node);
+        if(node.getTrue() != null)
+        {
+            node.getTrue().apply(this);
+        }
+        outATrueBombe(node);
+    }
+
+    public void inAFalseBombe(AFalseBombe node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAFalseBombe(AFalseBombe node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAFalseBombe(AFalseBombe node)
+    {
+        inAFalseBombe(node);
+        if(node.getFalse() != null)
+        {
+            node.getFalse().apply(this);
+        }
+        outAFalseBombe(node);
     }
 
     public void inAGtComparision(AGtComparision node)
@@ -964,381 +1118,6 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outAEqComparision(node);
     }
 
-    public void inAFirstWhileinstructions(AFirstWhileinstructions node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAFirstWhileinstructions(AFirstWhileinstructions node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAFirstWhileinstructions(AFirstWhileinstructions node)
-    {
-        inAFirstWhileinstructions(node);
-        if(node.getOperation() != null)
-        {
-            node.getOperation().apply(this);
-        }
-        outAFirstWhileinstructions(node);
-    }
-
-    public void inAWhileinstructions(AWhileinstructions node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAWhileinstructions(AWhileinstructions node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAWhileinstructions(AWhileinstructions node)
-    {
-        inAWhileinstructions(node);
-        if(node.getBegin() != null)
-        {
-            node.getBegin().apply(this);
-        }
-        if(node.getInstructions() != null)
-        {
-            node.getInstructions().apply(this);
-        }
-        if(node.getEnd() != null)
-        {
-            node.getEnd().apply(this);
-        }
-        outAWhileinstructions(node);
-    }
-
-    public void inAEqBoolcomp(AEqBoolcomp node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAEqBoolcomp(AEqBoolcomp node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAEqBoolcomp(AEqBoolcomp node)
-    {
-        inAEqBoolcomp(node);
-        if(node.getBoolcomp() != null)
-        {
-            node.getBoolcomp().apply(this);
-        }
-        if(node.getEq() != null)
-        {
-            node.getEq().apply(this);
-        }
-        if(node.getBoolexpr() != null)
-        {
-            node.getBoolexpr().apply(this);
-        }
-        outAEqBoolcomp(node);
-    }
-
-    public void inANeBoolcomp(ANeBoolcomp node)
-    {
-        defaultIn(node);
-    }
-
-    public void outANeBoolcomp(ANeBoolcomp node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseANeBoolcomp(ANeBoolcomp node)
-    {
-        inANeBoolcomp(node);
-        if(node.getBoolcomp() != null)
-        {
-            node.getBoolcomp().apply(this);
-        }
-        if(node.getNe() != null)
-        {
-            node.getNe().apply(this);
-        }
-        if(node.getBoolexpr() != null)
-        {
-            node.getBoolexpr().apply(this);
-        }
-        outANeBoolcomp(node);
-    }
-
-    public void inAComparisionBoolcomp(AComparisionBoolcomp node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAComparisionBoolcomp(AComparisionBoolcomp node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAComparisionBoolcomp(AComparisionBoolcomp node)
-    {
-        inAComparisionBoolcomp(node);
-        if(node.getLeft() != null)
-        {
-            node.getLeft().apply(this);
-        }
-        if(node.getComparision() != null)
-        {
-            node.getComparision().apply(this);
-        }
-        if(node.getRight() != null)
-        {
-            node.getRight().apply(this);
-        }
-        outAComparisionBoolcomp(node);
-    }
-
-    public void inABoolcomp(ABoolcomp node)
-    {
-        defaultIn(node);
-    }
-
-    public void outABoolcomp(ABoolcomp node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseABoolcomp(ABoolcomp node)
-    {
-        inABoolcomp(node);
-        if(node.getBoolexpr() != null)
-        {
-            node.getBoolexpr().apply(this);
-        }
-        outABoolcomp(node);
-    }
-
-    public void inAOrBoolexpr(AOrBoolexpr node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAOrBoolexpr(AOrBoolexpr node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAOrBoolexpr(AOrBoolexpr node)
-    {
-        inAOrBoolexpr(node);
-        if(node.getBoolexpr() != null)
-        {
-            node.getBoolexpr().apply(this);
-        }
-        if(node.getOr() != null)
-        {
-            node.getOr().apply(this);
-        }
-        if(node.getBoolterm() != null)
-        {
-            node.getBoolterm().apply(this);
-        }
-        outAOrBoolexpr(node);
-    }
-
-    public void inAXorBoolexpr(AXorBoolexpr node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAXorBoolexpr(AXorBoolexpr node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAXorBoolexpr(AXorBoolexpr node)
-    {
-        inAXorBoolexpr(node);
-        if(node.getBoolexpr() != null)
-        {
-            node.getBoolexpr().apply(this);
-        }
-        if(node.getXor() != null)
-        {
-            node.getXor().apply(this);
-        }
-        if(node.getBoolterm() != null)
-        {
-            node.getBoolterm().apply(this);
-        }
-        outAXorBoolexpr(node);
-    }
-
-    public void inABoolexpr(ABoolexpr node)
-    {
-        defaultIn(node);
-    }
-
-    public void outABoolexpr(ABoolexpr node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseABoolexpr(ABoolexpr node)
-    {
-        inABoolexpr(node);
-        if(node.getBoolterm() != null)
-        {
-            node.getBoolterm().apply(this);
-        }
-        outABoolexpr(node);
-    }
-
-    public void inAAndBoolterm(AAndBoolterm node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAAndBoolterm(AAndBoolterm node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAAndBoolterm(AAndBoolterm node)
-    {
-        inAAndBoolterm(node);
-        if(node.getBoolterm() != null)
-        {
-            node.getBoolterm().apply(this);
-        }
-        if(node.getAnd() != null)
-        {
-            node.getAnd().apply(this);
-        }
-        if(node.getBoolfactor() != null)
-        {
-            node.getBoolfactor().apply(this);
-        }
-        outAAndBoolterm(node);
-    }
-
-    public void inABoolterm(ABoolterm node)
-    {
-        defaultIn(node);
-    }
-
-    public void outABoolterm(ABoolterm node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseABoolterm(ABoolterm node)
-    {
-        inABoolterm(node);
-        if(node.getBoolfactor() != null)
-        {
-            node.getBoolfactor().apply(this);
-        }
-        outABoolterm(node);
-    }
-
-    public void inANotBoolfactor(ANotBoolfactor node)
-    {
-        defaultIn(node);
-    }
-
-    public void outANotBoolfactor(ANotBoolfactor node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseANotBoolfactor(ANotBoolfactor node)
-    {
-        inANotBoolfactor(node);
-        if(node.getNot() != null)
-        {
-            node.getNot().apply(this);
-        }
-        if(node.getBoolfactor() != null)
-        {
-            node.getBoolfactor().apply(this);
-        }
-        outANotBoolfactor(node);
-    }
-
-    public void inATrueBoolfactor(ATrueBoolfactor node)
-    {
-        defaultIn(node);
-    }
-
-    public void outATrueBoolfactor(ATrueBoolfactor node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseATrueBoolfactor(ATrueBoolfactor node)
-    {
-        inATrueBoolfactor(node);
-        if(node.getTrue() != null)
-        {
-            node.getTrue().apply(this);
-        }
-        outATrueBoolfactor(node);
-    }
-
-    public void inAFalseBoolfactor(AFalseBoolfactor node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAFalseBoolfactor(AFalseBoolfactor node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAFalseBoolfactor(AFalseBoolfactor node)
-    {
-        inAFalseBoolfactor(node);
-        if(node.getFalse() != null)
-        {
-            node.getFalse().apply(this);
-        }
-        outAFalseBoolfactor(node);
-    }
-
-    public void inABoolfactor(ABoolfactor node)
-    {
-        defaultIn(node);
-    }
-
-    public void outABoolfactor(ABoolfactor node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseABoolfactor(ABoolfactor node)
-    {
-        inABoolfactor(node);
-        if(node.getBoolidentifier() != null)
-        {
-            node.getBoolidentifier().apply(this);
-        }
-        outABoolfactor(node);
-    }
-
     public void inAMatchedIfexpr(AMatchedIfexpr node)
     {
         defaultIn(node);
@@ -1399,9 +1178,9 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getIf().apply(this);
         }
-        if(node.getBoolcomp() != null)
+        if(node.getExpr() != null)
         {
-            node.getBoolcomp().apply(this);
+            node.getExpr().apply(this);
         }
         if(node.getThen() != null)
         {
@@ -1436,34 +1215,34 @@ public class DepthFirstAdapter extends AnalysisAdapter
     public void caseAMatchedstmt(AMatchedstmt node)
     {
         inAMatchedstmt(node);
-        if(node.getInstructions() != null)
+        if(node.getOtherInstructions() != null)
         {
-            node.getInstructions().apply(this);
+            node.getOtherInstructions().apply(this);
         }
         outAMatchedstmt(node);
     }
 
-    public void inAOpenOpenstmt(AOpenOpenstmt node)
+    public void inAOpenstmt(AOpenstmt node)
     {
         defaultIn(node);
     }
 
-    public void outAOpenOpenstmt(AOpenOpenstmt node)
+    public void outAOpenstmt(AOpenstmt node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAOpenOpenstmt(AOpenOpenstmt node)
+    public void caseAOpenstmt(AOpenstmt node)
     {
-        inAOpenOpenstmt(node);
+        inAOpenstmt(node);
         if(node.getIf() != null)
         {
             node.getIf().apply(this);
         }
-        if(node.getBoolcomp() != null)
+        if(node.getExpr() != null)
         {
-            node.getBoolcomp().apply(this);
+            node.getExpr().apply(this);
         }
         if(node.getThen() != null)
         {
@@ -1473,30 +1252,30 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getIfexpr().apply(this);
         }
-        outAOpenOpenstmt(node);
+        outAOpenstmt(node);
     }
 
-    public void inAMatchedOpenstmt(AMatchedOpenstmt node)
+    public void inAElseOpenstmt(AElseOpenstmt node)
     {
         defaultIn(node);
     }
 
-    public void outAMatchedOpenstmt(AMatchedOpenstmt node)
+    public void outAElseOpenstmt(AElseOpenstmt node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAMatchedOpenstmt(AMatchedOpenstmt node)
+    public void caseAElseOpenstmt(AElseOpenstmt node)
     {
-        inAMatchedOpenstmt(node);
+        inAElseOpenstmt(node);
         if(node.getIf() != null)
         {
             node.getIf().apply(this);
         }
-        if(node.getBoolcomp() != null)
+        if(node.getExpr() != null)
         {
-            node.getBoolcomp().apply(this);
+            node.getExpr().apply(this);
         }
         if(node.getThen() != null)
         {
@@ -1514,6 +1293,210 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getOpenstmt().apply(this);
         }
-        outAMatchedOpenstmt(node);
+        outAElseOpenstmt(node);
+    }
+
+    public void inAOpsOtherInstructions(AOpsOtherInstructions node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAOpsOtherInstructions(AOpsOtherInstructions node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAOpsOtherInstructions(AOpsOtherInstructions node)
+    {
+        inAOpsOtherInstructions(node);
+        if(node.getOtherOperation() != null)
+        {
+            node.getOtherOperation().apply(this);
+        }
+        outAOpsOtherInstructions(node);
+    }
+
+    public void inAMultInstructionsOtherInstructions(AMultInstructionsOtherInstructions node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAMultInstructionsOtherInstructions(AMultInstructionsOtherInstructions node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAMultInstructionsOtherInstructions(AMultInstructionsOtherInstructions node)
+    {
+        inAMultInstructionsOtherInstructions(node);
+        if(node.getOtherInstructions() != null)
+        {
+            node.getOtherInstructions().apply(this);
+        }
+        if(node.getSemikolon() != null)
+        {
+            node.getSemikolon().apply(this);
+        }
+        if(node.getOtherOperation() != null)
+        {
+            node.getOtherOperation().apply(this);
+        }
+        outAMultInstructionsOtherInstructions(node);
+    }
+
+    public void inANestedOtherInstructions(ANestedOtherInstructions node)
+    {
+        defaultIn(node);
+    }
+
+    public void outANestedOtherInstructions(ANestedOtherInstructions node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseANestedOtherInstructions(ANestedOtherInstructions node)
+    {
+        inANestedOtherInstructions(node);
+        if(node.getBegin() != null)
+        {
+            node.getBegin().apply(this);
+        }
+        if(node.getOtherInstructions() != null)
+        {
+            node.getOtherInstructions().apply(this);
+        }
+        if(node.getEnd() != null)
+        {
+            node.getEnd().apply(this);
+        }
+        outANestedOtherInstructions(node);
+    }
+
+    public void inAOtherInstructions(AOtherInstructions node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAOtherInstructions(AOtherInstructions node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAOtherInstructions(AOtherInstructions node)
+    {
+        inAOtherInstructions(node);
+        if(node.getLeft() != null)
+        {
+            node.getLeft().apply(this);
+        }
+        if(node.getSemikolon() != null)
+        {
+            node.getSemikolon().apply(this);
+        }
+        if(node.getRight() != null)
+        {
+            node.getRight().apply(this);
+        }
+        outAOtherInstructions(node);
+    }
+
+    public void inAWhileOtherOperation(AWhileOtherOperation node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAWhileOtherOperation(AWhileOtherOperation node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAWhileOtherOperation(AWhileOtherOperation node)
+    {
+        inAWhileOtherOperation(node);
+        if(node.getWhile() != null)
+        {
+            node.getWhile().apply(this);
+        }
+        if(node.getExpr() != null)
+        {
+            node.getExpr().apply(this);
+        }
+        if(node.getDo() != null)
+        {
+            node.getDo().apply(this);
+        }
+        if(node.getOtherInstructions() != null)
+        {
+            node.getOtherInstructions().apply(this);
+        }
+        outAWhileOtherOperation(node);
+    }
+
+    public void inAAssignOtherOperation(AAssignOtherOperation node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAAssignOtherOperation(AAssignOtherOperation node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAAssignOtherOperation(AAssignOtherOperation node)
+    {
+        inAAssignOtherOperation(node);
+        if(node.getAssignment() != null)
+        {
+            node.getAssignment().apply(this);
+        }
+        outAAssignOtherOperation(node);
+    }
+
+    public void inAPrintOtherOperation(APrintOtherOperation node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPrintOtherOperation(APrintOtherOperation node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPrintOtherOperation(APrintOtherOperation node)
+    {
+        inAPrintOtherOperation(node);
+        if(node.getPrint() != null)
+        {
+            node.getPrint().apply(this);
+        }
+        outAPrintOtherOperation(node);
+    }
+
+    public void inAOtherOperation(AOtherOperation node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAOtherOperation(AOtherOperation node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAOtherOperation(AOtherOperation node)
+    {
+        inAOtherOperation(node);
+        if(node.getBreak() != null)
+        {
+            node.getBreak().apply(this);
+        }
+        outAOtherOperation(node);
     }
 }

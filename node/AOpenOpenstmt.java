@@ -8,9 +8,9 @@ import analysis.*;
 public final class AOpenOpenstmt extends POpenstmt
 {
     private TIf _if_;
-    private PBoolcomp _boolcomp_;
+    private PExpr _expr_;
     private TThen _then_;
-    private PIfexpr _ifexpr_;
+    private POpenstmt _openstmt_;
 
     public AOpenOpenstmt()
     {
@@ -19,18 +19,18 @@ public final class AOpenOpenstmt extends POpenstmt
 
     public AOpenOpenstmt(
         @SuppressWarnings("hiding") TIf _if_,
-        @SuppressWarnings("hiding") PBoolcomp _boolcomp_,
+        @SuppressWarnings("hiding") PExpr _expr_,
         @SuppressWarnings("hiding") TThen _then_,
-        @SuppressWarnings("hiding") PIfexpr _ifexpr_)
+        @SuppressWarnings("hiding") POpenstmt _openstmt_)
     {
         // Constructor
         setIf(_if_);
 
-        setBoolcomp(_boolcomp_);
+        setExpr(_expr_);
 
         setThen(_then_);
 
-        setIfexpr(_ifexpr_);
+        setOpenstmt(_openstmt_);
 
     }
 
@@ -39,9 +39,9 @@ public final class AOpenOpenstmt extends POpenstmt
     {
         return new AOpenOpenstmt(
             cloneNode(this._if_),
-            cloneNode(this._boolcomp_),
+            cloneNode(this._expr_),
             cloneNode(this._then_),
-            cloneNode(this._ifexpr_));
+            cloneNode(this._openstmt_));
     }
 
     @Override
@@ -75,16 +75,16 @@ public final class AOpenOpenstmt extends POpenstmt
         this._if_ = node;
     }
 
-    public PBoolcomp getBoolcomp()
+    public PExpr getExpr()
     {
-        return this._boolcomp_;
+        return this._expr_;
     }
 
-    public void setBoolcomp(PBoolcomp node)
+    public void setExpr(PExpr node)
     {
-        if(this._boolcomp_ != null)
+        if(this._expr_ != null)
         {
-            this._boolcomp_.parent(null);
+            this._expr_.parent(null);
         }
 
         if(node != null)
@@ -97,7 +97,7 @@ public final class AOpenOpenstmt extends POpenstmt
             node.parent(this);
         }
 
-        this._boolcomp_ = node;
+        this._expr_ = node;
     }
 
     public TThen getThen()
@@ -125,16 +125,16 @@ public final class AOpenOpenstmt extends POpenstmt
         this._then_ = node;
     }
 
-    public PIfexpr getIfexpr()
+    public POpenstmt getOpenstmt()
     {
-        return this._ifexpr_;
+        return this._openstmt_;
     }
 
-    public void setIfexpr(PIfexpr node)
+    public void setOpenstmt(POpenstmt node)
     {
-        if(this._ifexpr_ != null)
+        if(this._openstmt_ != null)
         {
-            this._ifexpr_.parent(null);
+            this._openstmt_.parent(null);
         }
 
         if(node != null)
@@ -147,7 +147,7 @@ public final class AOpenOpenstmt extends POpenstmt
             node.parent(this);
         }
 
-        this._ifexpr_ = node;
+        this._openstmt_ = node;
     }
 
     @Override
@@ -155,9 +155,9 @@ public final class AOpenOpenstmt extends POpenstmt
     {
         return ""
             + toString(this._if_)
-            + toString(this._boolcomp_)
+            + toString(this._expr_)
             + toString(this._then_)
-            + toString(this._ifexpr_);
+            + toString(this._openstmt_);
     }
 
     @Override
@@ -170,9 +170,9 @@ public final class AOpenOpenstmt extends POpenstmt
             return;
         }
 
-        if(this._boolcomp_ == child)
+        if(this._expr_ == child)
         {
-            this._boolcomp_ = null;
+            this._expr_ = null;
             return;
         }
 
@@ -182,9 +182,9 @@ public final class AOpenOpenstmt extends POpenstmt
             return;
         }
 
-        if(this._ifexpr_ == child)
+        if(this._openstmt_ == child)
         {
-            this._ifexpr_ = null;
+            this._openstmt_ = null;
             return;
         }
 
@@ -201,9 +201,9 @@ public final class AOpenOpenstmt extends POpenstmt
             return;
         }
 
-        if(this._boolcomp_ == oldChild)
+        if(this._expr_ == oldChild)
         {
-            setBoolcomp((PBoolcomp) newChild);
+            setExpr((PExpr) newChild);
             return;
         }
 
@@ -213,9 +213,9 @@ public final class AOpenOpenstmt extends POpenstmt
             return;
         }
 
-        if(this._ifexpr_ == oldChild)
+        if(this._openstmt_ == oldChild)
         {
-            setIfexpr((PIfexpr) newChild);
+            setOpenstmt((POpenstmt) newChild);
             return;
         }
 

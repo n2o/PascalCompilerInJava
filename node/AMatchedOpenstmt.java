@@ -8,11 +8,9 @@ import analysis.*;
 public final class AMatchedOpenstmt extends POpenstmt
 {
     private TIf _if_;
-    private PBoolcomp _boolcomp_;
+    private PExpr _expr_;
     private TThen _then_;
     private PMatchedstmt _matchedstmt_;
-    private TElse _else_;
-    private POpenstmt _openstmt_;
 
     public AMatchedOpenstmt()
     {
@@ -21,24 +19,18 @@ public final class AMatchedOpenstmt extends POpenstmt
 
     public AMatchedOpenstmt(
         @SuppressWarnings("hiding") TIf _if_,
-        @SuppressWarnings("hiding") PBoolcomp _boolcomp_,
+        @SuppressWarnings("hiding") PExpr _expr_,
         @SuppressWarnings("hiding") TThen _then_,
-        @SuppressWarnings("hiding") PMatchedstmt _matchedstmt_,
-        @SuppressWarnings("hiding") TElse _else_,
-        @SuppressWarnings("hiding") POpenstmt _openstmt_)
+        @SuppressWarnings("hiding") PMatchedstmt _matchedstmt_)
     {
         // Constructor
         setIf(_if_);
 
-        setBoolcomp(_boolcomp_);
+        setExpr(_expr_);
 
         setThen(_then_);
 
         setMatchedstmt(_matchedstmt_);
-
-        setElse(_else_);
-
-        setOpenstmt(_openstmt_);
 
     }
 
@@ -47,11 +39,9 @@ public final class AMatchedOpenstmt extends POpenstmt
     {
         return new AMatchedOpenstmt(
             cloneNode(this._if_),
-            cloneNode(this._boolcomp_),
+            cloneNode(this._expr_),
             cloneNode(this._then_),
-            cloneNode(this._matchedstmt_),
-            cloneNode(this._else_),
-            cloneNode(this._openstmt_));
+            cloneNode(this._matchedstmt_));
     }
 
     @Override
@@ -85,16 +75,16 @@ public final class AMatchedOpenstmt extends POpenstmt
         this._if_ = node;
     }
 
-    public PBoolcomp getBoolcomp()
+    public PExpr getExpr()
     {
-        return this._boolcomp_;
+        return this._expr_;
     }
 
-    public void setBoolcomp(PBoolcomp node)
+    public void setExpr(PExpr node)
     {
-        if(this._boolcomp_ != null)
+        if(this._expr_ != null)
         {
-            this._boolcomp_.parent(null);
+            this._expr_.parent(null);
         }
 
         if(node != null)
@@ -107,7 +97,7 @@ public final class AMatchedOpenstmt extends POpenstmt
             node.parent(this);
         }
 
-        this._boolcomp_ = node;
+        this._expr_ = node;
     }
 
     public TThen getThen()
@@ -160,66 +150,14 @@ public final class AMatchedOpenstmt extends POpenstmt
         this._matchedstmt_ = node;
     }
 
-    public TElse getElse()
-    {
-        return this._else_;
-    }
-
-    public void setElse(TElse node)
-    {
-        if(this._else_ != null)
-        {
-            this._else_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._else_ = node;
-    }
-
-    public POpenstmt getOpenstmt()
-    {
-        return this._openstmt_;
-    }
-
-    public void setOpenstmt(POpenstmt node)
-    {
-        if(this._openstmt_ != null)
-        {
-            this._openstmt_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._openstmt_ = node;
-    }
-
     @Override
     public String toString()
     {
         return ""
             + toString(this._if_)
-            + toString(this._boolcomp_)
+            + toString(this._expr_)
             + toString(this._then_)
-            + toString(this._matchedstmt_)
-            + toString(this._else_)
-            + toString(this._openstmt_);
+            + toString(this._matchedstmt_);
     }
 
     @Override
@@ -232,9 +170,9 @@ public final class AMatchedOpenstmt extends POpenstmt
             return;
         }
 
-        if(this._boolcomp_ == child)
+        if(this._expr_ == child)
         {
-            this._boolcomp_ = null;
+            this._expr_ = null;
             return;
         }
 
@@ -247,18 +185,6 @@ public final class AMatchedOpenstmt extends POpenstmt
         if(this._matchedstmt_ == child)
         {
             this._matchedstmt_ = null;
-            return;
-        }
-
-        if(this._else_ == child)
-        {
-            this._else_ = null;
-            return;
-        }
-
-        if(this._openstmt_ == child)
-        {
-            this._openstmt_ = null;
             return;
         }
 
@@ -275,9 +201,9 @@ public final class AMatchedOpenstmt extends POpenstmt
             return;
         }
 
-        if(this._boolcomp_ == oldChild)
+        if(this._expr_ == oldChild)
         {
-            setBoolcomp((PBoolcomp) newChild);
+            setExpr((PExpr) newChild);
             return;
         }
 
@@ -290,18 +216,6 @@ public final class AMatchedOpenstmt extends POpenstmt
         if(this._matchedstmt_ == oldChild)
         {
             setMatchedstmt((PMatchedstmt) newChild);
-            return;
-        }
-
-        if(this._else_ == oldChild)
-        {
-            setElse((TElse) newChild);
-            return;
-        }
-
-        if(this._openstmt_ == oldChild)
-        {
-            setOpenstmt((POpenstmt) newChild);
             return;
         }
 

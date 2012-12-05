@@ -8,9 +8,9 @@ import analysis.*;
 public final class AWhileOperation extends POperation
 {
     private TWhile _while_;
-    private PBoolcomp _boolcomp_;
+    private PExpr _expr_;
     private TDo _do_;
-    private PWhileinstructions _whileinstructions_;
+    private PInstructions _instructions_;
 
     public AWhileOperation()
     {
@@ -19,18 +19,18 @@ public final class AWhileOperation extends POperation
 
     public AWhileOperation(
         @SuppressWarnings("hiding") TWhile _while_,
-        @SuppressWarnings("hiding") PBoolcomp _boolcomp_,
+        @SuppressWarnings("hiding") PExpr _expr_,
         @SuppressWarnings("hiding") TDo _do_,
-        @SuppressWarnings("hiding") PWhileinstructions _whileinstructions_)
+        @SuppressWarnings("hiding") PInstructions _instructions_)
     {
         // Constructor
         setWhile(_while_);
 
-        setBoolcomp(_boolcomp_);
+        setExpr(_expr_);
 
         setDo(_do_);
 
-        setWhileinstructions(_whileinstructions_);
+        setInstructions(_instructions_);
 
     }
 
@@ -39,9 +39,9 @@ public final class AWhileOperation extends POperation
     {
         return new AWhileOperation(
             cloneNode(this._while_),
-            cloneNode(this._boolcomp_),
+            cloneNode(this._expr_),
             cloneNode(this._do_),
-            cloneNode(this._whileinstructions_));
+            cloneNode(this._instructions_));
     }
 
     @Override
@@ -75,16 +75,16 @@ public final class AWhileOperation extends POperation
         this._while_ = node;
     }
 
-    public PBoolcomp getBoolcomp()
+    public PExpr getExpr()
     {
-        return this._boolcomp_;
+        return this._expr_;
     }
 
-    public void setBoolcomp(PBoolcomp node)
+    public void setExpr(PExpr node)
     {
-        if(this._boolcomp_ != null)
+        if(this._expr_ != null)
         {
-            this._boolcomp_.parent(null);
+            this._expr_.parent(null);
         }
 
         if(node != null)
@@ -97,7 +97,7 @@ public final class AWhileOperation extends POperation
             node.parent(this);
         }
 
-        this._boolcomp_ = node;
+        this._expr_ = node;
     }
 
     public TDo getDo()
@@ -125,16 +125,16 @@ public final class AWhileOperation extends POperation
         this._do_ = node;
     }
 
-    public PWhileinstructions getWhileinstructions()
+    public PInstructions getInstructions()
     {
-        return this._whileinstructions_;
+        return this._instructions_;
     }
 
-    public void setWhileinstructions(PWhileinstructions node)
+    public void setInstructions(PInstructions node)
     {
-        if(this._whileinstructions_ != null)
+        if(this._instructions_ != null)
         {
-            this._whileinstructions_.parent(null);
+            this._instructions_.parent(null);
         }
 
         if(node != null)
@@ -147,7 +147,7 @@ public final class AWhileOperation extends POperation
             node.parent(this);
         }
 
-        this._whileinstructions_ = node;
+        this._instructions_ = node;
     }
 
     @Override
@@ -155,9 +155,9 @@ public final class AWhileOperation extends POperation
     {
         return ""
             + toString(this._while_)
-            + toString(this._boolcomp_)
+            + toString(this._expr_)
             + toString(this._do_)
-            + toString(this._whileinstructions_);
+            + toString(this._instructions_);
     }
 
     @Override
@@ -170,9 +170,9 @@ public final class AWhileOperation extends POperation
             return;
         }
 
-        if(this._boolcomp_ == child)
+        if(this._expr_ == child)
         {
-            this._boolcomp_ = null;
+            this._expr_ = null;
             return;
         }
 
@@ -182,9 +182,9 @@ public final class AWhileOperation extends POperation
             return;
         }
 
-        if(this._whileinstructions_ == child)
+        if(this._instructions_ == child)
         {
-            this._whileinstructions_ = null;
+            this._instructions_ = null;
             return;
         }
 
@@ -201,9 +201,9 @@ public final class AWhileOperation extends POperation
             return;
         }
 
-        if(this._boolcomp_ == oldChild)
+        if(this._expr_ == oldChild)
         {
-            setBoolcomp((PBoolcomp) newChild);
+            setExpr((PExpr) newChild);
             return;
         }
 
@@ -213,9 +213,9 @@ public final class AWhileOperation extends POperation
             return;
         }
 
-        if(this._whileinstructions_ == oldChild)
+        if(this._instructions_ == oldChild)
         {
-            setWhileinstructions((PWhileinstructions) newChild);
+            setInstructions((PInstructions) newChild);
             return;
         }
 

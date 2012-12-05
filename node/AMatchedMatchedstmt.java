@@ -8,7 +8,7 @@ import analysis.*;
 public final class AMatchedMatchedstmt extends PMatchedstmt
 {
     private TIf _if_;
-    private PBoolcomp _boolcomp_;
+    private PExpr _expr_;
     private TThen _then_;
     private PMatchedstmt _left_;
     private TElse _else_;
@@ -21,7 +21,7 @@ public final class AMatchedMatchedstmt extends PMatchedstmt
 
     public AMatchedMatchedstmt(
         @SuppressWarnings("hiding") TIf _if_,
-        @SuppressWarnings("hiding") PBoolcomp _boolcomp_,
+        @SuppressWarnings("hiding") PExpr _expr_,
         @SuppressWarnings("hiding") TThen _then_,
         @SuppressWarnings("hiding") PMatchedstmt _left_,
         @SuppressWarnings("hiding") TElse _else_,
@@ -30,7 +30,7 @@ public final class AMatchedMatchedstmt extends PMatchedstmt
         // Constructor
         setIf(_if_);
 
-        setBoolcomp(_boolcomp_);
+        setExpr(_expr_);
 
         setThen(_then_);
 
@@ -47,7 +47,7 @@ public final class AMatchedMatchedstmt extends PMatchedstmt
     {
         return new AMatchedMatchedstmt(
             cloneNode(this._if_),
-            cloneNode(this._boolcomp_),
+            cloneNode(this._expr_),
             cloneNode(this._then_),
             cloneNode(this._left_),
             cloneNode(this._else_),
@@ -85,16 +85,16 @@ public final class AMatchedMatchedstmt extends PMatchedstmt
         this._if_ = node;
     }
 
-    public PBoolcomp getBoolcomp()
+    public PExpr getExpr()
     {
-        return this._boolcomp_;
+        return this._expr_;
     }
 
-    public void setBoolcomp(PBoolcomp node)
+    public void setExpr(PExpr node)
     {
-        if(this._boolcomp_ != null)
+        if(this._expr_ != null)
         {
-            this._boolcomp_.parent(null);
+            this._expr_.parent(null);
         }
 
         if(node != null)
@@ -107,7 +107,7 @@ public final class AMatchedMatchedstmt extends PMatchedstmt
             node.parent(this);
         }
 
-        this._boolcomp_ = node;
+        this._expr_ = node;
     }
 
     public TThen getThen()
@@ -215,7 +215,7 @@ public final class AMatchedMatchedstmt extends PMatchedstmt
     {
         return ""
             + toString(this._if_)
-            + toString(this._boolcomp_)
+            + toString(this._expr_)
             + toString(this._then_)
             + toString(this._left_)
             + toString(this._else_)
@@ -232,9 +232,9 @@ public final class AMatchedMatchedstmt extends PMatchedstmt
             return;
         }
 
-        if(this._boolcomp_ == child)
+        if(this._expr_ == child)
         {
-            this._boolcomp_ = null;
+            this._expr_ = null;
             return;
         }
 
@@ -275,9 +275,9 @@ public final class AMatchedMatchedstmt extends PMatchedstmt
             return;
         }
 
-        if(this._boolcomp_ == oldChild)
+        if(this._expr_ == oldChild)
         {
-            setBoolcomp((PBoolcomp) newChild);
+            setExpr((PExpr) newChild);
             return;
         }
 

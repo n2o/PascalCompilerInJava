@@ -189,67 +189,103 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseABoolcompExpr(ABoolcompExpr node)
+    public void caseAComparisionExpr(AComparisionExpr node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAArithexprExpr(AArithexprExpr node)
+    public void caseAExpr(AExpr node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAPlusArithexpr(APlusArithexpr node)
+    public void caseAPlusFoo(APlusFoo node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAMinusArithexpr(AMinusArithexpr node)
+    public void caseAMinusFoo(AMinusFoo node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAArithexpr(AArithexpr node)
+    public void caseAOrFoo(AOrFoo node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAModFactor(AModFactor node)
+    public void caseAXorFoo(AXorFoo node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAMultFactor(AMultFactor node)
+    public void caseAFoo(AFoo node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseADivFactor(ADivFactor node)
+    public void caseAModWtf(AModWtf node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAFactor(AFactor node)
+    public void caseAMultWtf(AMultWtf node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseANumberTerm(ANumberTerm node)
+    public void caseADivWtf(ADivWtf node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAIdentifierTerm(AIdentifierTerm node)
+    public void caseAAndWtf(AAndWtf node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAWtf(AWtf node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseANotBombe(ANotBombe node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseANumberBombe(ANumberBombe node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAIdentifierBombe(AIdentifierBombe node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseATrueBombe(ATrueBombe node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAFalseBombe(AFalseBombe node)
     {
         defaultCase(node);
     }
@@ -291,96 +327,6 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAFirstWhileinstructions(AFirstWhileinstructions node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAWhileinstructions(AWhileinstructions node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAEqBoolcomp(AEqBoolcomp node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseANeBoolcomp(ANeBoolcomp node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAComparisionBoolcomp(AComparisionBoolcomp node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseABoolcomp(ABoolcomp node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAOrBoolexpr(AOrBoolexpr node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAXorBoolexpr(AXorBoolexpr node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseABoolexpr(ABoolexpr node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAAndBoolterm(AAndBoolterm node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseABoolterm(ABoolterm node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseANotBoolfactor(ANotBoolfactor node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseATrueBoolfactor(ATrueBoolfactor node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAFalseBoolfactor(AFalseBoolfactor node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseABoolfactor(ABoolfactor node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
     public void caseAMatchedIfexpr(AMatchedIfexpr node)
     {
         defaultCase(node);
@@ -405,13 +351,61 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAOpenOpenstmt(AOpenOpenstmt node)
+    public void caseAOpenstmt(AOpenstmt node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAMatchedOpenstmt(AMatchedOpenstmt node)
+    public void caseAElseOpenstmt(AElseOpenstmt node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAOpsOtherInstructions(AOpsOtherInstructions node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAMultInstructionsOtherInstructions(AMultInstructionsOtherInstructions node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseANestedOtherInstructions(ANestedOtherInstructions node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAOtherInstructions(AOtherInstructions node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAWhileOtherOperation(AWhileOtherOperation node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAAssignOtherOperation(AAssignOtherOperation node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAPrintOtherOperation(APrintOtherOperation node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAOtherOperation(AOtherOperation node)
     {
         defaultCase(node);
     }
@@ -652,12 +646,6 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseTIdentifier(TIdentifier node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTBoolidentifier(TBoolidentifier node)
     {
         defaultCase(node);
     }
