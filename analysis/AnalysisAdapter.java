@@ -596,6 +596,12 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
+    @Override
+    public void caseInvalidToken(InvalidToken node)
+    {
+        defaultCase(node);
+    }
+
     public void defaultCase(@SuppressWarnings("unused") Node node)
     {
         // do nothing

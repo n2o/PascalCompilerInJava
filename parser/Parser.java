@@ -174,332 +174,9 @@ public class Parser
                     }
 		    break;
                 case REDUCE:
-                    switch(this.action[1])
                     {
-                    case 0: /* reduce AAstart1Start */
-		    {
-			ArrayList<Object> list = new0();
-			push(goTo(0), list, false);
-		    }
-		    break;
-                    case 1: /* reduce AAstart2Start */
-		    {
-			ArrayList<Object> list = new1();
-			push(goTo(0), list, false);
-		    }
-		    break;
-                    case 2: /* reduce AAstart3Start */
-		    {
-			ArrayList<Object> list = new2();
-			push(goTo(0), list, false);
-		    }
-		    break;
-                    case 3: /* reduce AAstart4Start */
-		    {
-			ArrayList<Object> list = new3();
-			push(goTo(0), list, false);
-		    }
-		    break;
-                    case 4: /* reduce ASingleDeclarations */
-		    {
-			ArrayList<Object> list = new4();
-			push(goTo(1), list, false);
-		    }
-		    break;
-                    case 5: /* reduce AIfThenStatementStatement */
-		    {
-			ArrayList<Object> list = new5();
-			push(goTo(2), list, false);
-		    }
-		    break;
-                    case 6: /* reduce AIfThenElseStatementStatement */
-		    {
-			ArrayList<Object> list = new6();
-			push(goTo(2), list, false);
-		    }
-		    break;
-                    case 7: /* reduce AWhileStatement */
-		    {
-			ArrayList<Object> list = new7();
-			push(goTo(2), list, false);
-		    }
-		    break;
-                    case 8: /* reduce AAssignStatement */
-		    {
-			ArrayList<Object> list = new8();
-			push(goTo(2), list, false);
-		    }
-		    break;
-                    case 9: /* reduce APrintStatement */
-		    {
-			ArrayList<Object> list = new9();
-			push(goTo(2), list, false);
-		    }
-		    break;
-                    case 10: /* reduce ANestedStatement */
-		    {
-			ArrayList<Object> list = new10();
-			push(goTo(2), list, false);
-		    }
-		    break;
-                    case 11: /* reduce ABreakStatement */
-		    {
-			ArrayList<Object> list = new11();
-			push(goTo(2), list, false);
-		    }
-		    break;
-                    case 12: /* reduce AStatement */
-		    {
-			ArrayList<Object> list = new12();
-			push(goTo(2), list, false);
-		    }
-		    break;
-                    case 13: /* reduce AAprint1Print */
-		    {
-			ArrayList<Object> list = new13();
-			push(goTo(3), list, false);
-		    }
-		    break;
-                    case 14: /* reduce AAprint2Print */
-		    {
-			ArrayList<Object> list = new14();
-			push(goTo(3), list, false);
-		    }
-		    break;
-                    case 15: /* reduce AAssignment */
-		    {
-			ArrayList<Object> list = new15();
-			push(goTo(4), list, false);
-		    }
-		    break;
-                    case 16: /* reduce ABooleanType */
-		    {
-			ArrayList<Object> list = new16();
-			push(goTo(5), list, false);
-		    }
-		    break;
-                    case 17: /* reduce AIntegerType */
-		    {
-			ArrayList<Object> list = new17();
-			push(goTo(5), list, false);
-		    }
-		    break;
-                    case 18: /* reduce AComparisionExpression */
-		    {
-			ArrayList<Object> list = new18();
-			push(goTo(6), list, false);
-		    }
-		    break;
-                    case 19: /* reduce AExpression */
-		    {
-			ArrayList<Object> list = new19();
-			push(goTo(6), list, false);
-		    }
-		    break;
-                    case 20: /* reduce APlusExpression2 */
-		    {
-			ArrayList<Object> list = new20();
-			push(goTo(7), list, false);
-		    }
-		    break;
-                    case 21: /* reduce AMinusExpression2 */
-		    {
-			ArrayList<Object> list = new21();
-			push(goTo(7), list, false);
-		    }
-		    break;
-                    case 22: /* reduce AOrExpression2 */
-		    {
-			ArrayList<Object> list = new22();
-			push(goTo(7), list, false);
-		    }
-		    break;
-                    case 23: /* reduce AXorExpression2 */
-		    {
-			ArrayList<Object> list = new23();
-			push(goTo(7), list, false);
-		    }
-		    break;
-                    case 24: /* reduce AExpression2 */
-		    {
-			ArrayList<Object> list = new24();
-			push(goTo(7), list, false);
-		    }
-		    break;
-                    case 25: /* reduce AModExpression3 */
-		    {
-			ArrayList<Object> list = new25();
-			push(goTo(8), list, false);
-		    }
-		    break;
-                    case 26: /* reduce AMultExpression3 */
-		    {
-			ArrayList<Object> list = new26();
-			push(goTo(8), list, false);
-		    }
-		    break;
-                    case 27: /* reduce ADivExpression3 */
-		    {
-			ArrayList<Object> list = new27();
-			push(goTo(8), list, false);
-		    }
-		    break;
-                    case 28: /* reduce AAndExpression3 */
-		    {
-			ArrayList<Object> list = new28();
-			push(goTo(8), list, false);
-		    }
-		    break;
-                    case 29: /* reduce AExpression3 */
-		    {
-			ArrayList<Object> list = new29();
-			push(goTo(8), list, false);
-		    }
-		    break;
-                    case 30: /* reduce ANotExpression4 */
-		    {
-			ArrayList<Object> list = new30();
-			push(goTo(9), list, false);
-		    }
-		    break;
-                    case 31: /* reduce ANumberExpression4 */
-		    {
-			ArrayList<Object> list = new31();
-			push(goTo(9), list, false);
-		    }
-		    break;
-                    case 32: /* reduce AIdentifierExpression4 */
-		    {
-			ArrayList<Object> list = new32();
-			push(goTo(9), list, false);
-		    }
-		    break;
-                    case 33: /* reduce ATrueExpression4 */
-		    {
-			ArrayList<Object> list = new33();
-			push(goTo(9), list, false);
-		    }
-		    break;
-                    case 34: /* reduce AFalseExpression4 */
-		    {
-			ArrayList<Object> list = new34();
-			push(goTo(9), list, false);
-		    }
-		    break;
-                    case 35: /* reduce AGtComparision */
-		    {
-			ArrayList<Object> list = new35();
-			push(goTo(10), list, false);
-		    }
-		    break;
-                    case 36: /* reduce AGeComparision */
-		    {
-			ArrayList<Object> list = new36();
-			push(goTo(10), list, false);
-		    }
-		    break;
-                    case 37: /* reduce ALtComparision */
-		    {
-			ArrayList<Object> list = new37();
-			push(goTo(10), list, false);
-		    }
-		    break;
-                    case 38: /* reduce ALeComparision */
-		    {
-			ArrayList<Object> list = new38();
-			push(goTo(10), list, false);
-		    }
-		    break;
-                    case 39: /* reduce ANeComparision */
-		    {
-			ArrayList<Object> list = new39();
-			push(goTo(10), list, false);
-		    }
-		    break;
-                    case 40: /* reduce AEqComparision */
-		    {
-			ArrayList<Object> list = new40();
-			push(goTo(10), list, false);
-		    }
-		    break;
-                    case 41: /* reduce AIfThenStatement */
-		    {
-			ArrayList<Object> list = new41();
-			push(goTo(11), list, false);
-		    }
-		    break;
-                    case 42: /* reduce AIfThenElseStatement */
-		    {
-			ArrayList<Object> list = new42();
-			push(goTo(12), list, false);
-		    }
-		    break;
-                    case 43: /* reduce AIfThenElseStatementNoShortIf */
-		    {
-			ArrayList<Object> list = new43();
-			push(goTo(13), list, false);
-		    }
-		    break;
-                    case 44: /* reduce AIfStatementNoShortIf */
-		    {
-			ArrayList<Object> list = new44();
-			push(goTo(14), list, false);
-		    }
-		    break;
-                    case 45: /* reduce AWhileStatementNoShortIf */
-		    {
-			ArrayList<Object> list = new45();
-			push(goTo(14), list, false);
-		    }
-		    break;
-                    case 46: /* reduce AWhileWhileStatementNoShortIf */
-		    {
-			ArrayList<Object> list = new46();
-			push(goTo(15), list, false);
-		    }
-		    break;
-                    case 47: /* reduce AWhileWhileStatement */
-		    {
-			ArrayList<Object> list = new47();
-			push(goTo(16), list, false);
-		    }
-		    break;
-                    case 48: /* reduce ATerminal$Declarations */
-		    {
-			ArrayList<Object> list = new48();
-			push(goTo(17), list, true);
-		    }
-		    break;
-                    case 49: /* reduce ANonTerminal$Declarations */
-		    {
-			ArrayList<Object> list = new49();
-			push(goTo(17), list, true);
-		    }
-		    break;
-                    case 50: /* reduce ATerminal$Statement */
-		    {
-			ArrayList<Object> list = new50();
-			push(goTo(18), list, true);
-		    }
-		    break;
-                    case 51: /* reduce ANonTerminal$Statement */
-		    {
-			ArrayList<Object> list = new51();
-			push(goTo(18), list, true);
-		    }
-		    break;
-                    case 52: /* reduce ATerminal$Expression */
-		    {
-			ArrayList<Object> list = new52();
-			push(goTo(19), list, true);
-		    }
-		    break;
-                    case 53: /* reduce ANonTerminal$Expression */
-		    {
-			ArrayList<Object> list = new53();
-			push(goTo(19), list, true);
-		    }
-		    break;
+                        int reduction = this.action[1];
+                        if(reduction < 500) reduce_0(reduction);
                     }
                     break;
                 case ACCEPT:
@@ -514,6 +191,337 @@ public class Parser
                         "[" + this.last_line + "," + this.last_pos + "] " +
                         Parser.errorMessages[Parser.errors[this.action[1]]]);
             }
+        }
+    }
+
+    private void reduce_0(int reduction) throws IOException, LexerException, ParserException
+    {
+        switch(reduction)
+        {
+            case 0: /* reduce AAstart1Start */
+            {
+                ArrayList<Object> list = new0();
+                push(goTo(0), list, false);
+            }
+            break;
+            case 1: /* reduce AAstart2Start */
+            {
+                ArrayList<Object> list = new1();
+                push(goTo(0), list, false);
+            }
+            break;
+            case 2: /* reduce AAstart3Start */
+            {
+                ArrayList<Object> list = new2();
+                push(goTo(0), list, false);
+            }
+            break;
+            case 3: /* reduce AAstart4Start */
+            {
+                ArrayList<Object> list = new3();
+                push(goTo(0), list, false);
+            }
+            break;
+            case 4: /* reduce ASingleDeclarations */
+            {
+                ArrayList<Object> list = new4();
+                push(goTo(1), list, false);
+            }
+            break;
+            case 5: /* reduce AIfThenStatementStatement */
+            {
+                ArrayList<Object> list = new5();
+                push(goTo(2), list, false);
+            }
+            break;
+            case 6: /* reduce AIfThenElseStatementStatement */
+            {
+                ArrayList<Object> list = new6();
+                push(goTo(2), list, false);
+            }
+            break;
+            case 7: /* reduce AWhileStatement */
+            {
+                ArrayList<Object> list = new7();
+                push(goTo(2), list, false);
+            }
+            break;
+            case 8: /* reduce AAssignStatement */
+            {
+                ArrayList<Object> list = new8();
+                push(goTo(2), list, false);
+            }
+            break;
+            case 9: /* reduce APrintStatement */
+            {
+                ArrayList<Object> list = new9();
+                push(goTo(2), list, false);
+            }
+            break;
+            case 10: /* reduce ANestedStatement */
+            {
+                ArrayList<Object> list = new10();
+                push(goTo(2), list, false);
+            }
+            break;
+            case 11: /* reduce ABreakStatement */
+            {
+                ArrayList<Object> list = new11();
+                push(goTo(2), list, false);
+            }
+            break;
+            case 12: /* reduce AStatement */
+            {
+                ArrayList<Object> list = new12();
+                push(goTo(2), list, false);
+            }
+            break;
+            case 13: /* reduce AAprint1Print */
+            {
+                ArrayList<Object> list = new13();
+                push(goTo(3), list, false);
+            }
+            break;
+            case 14: /* reduce AAprint2Print */
+            {
+                ArrayList<Object> list = new14();
+                push(goTo(3), list, false);
+            }
+            break;
+            case 15: /* reduce AAssignment */
+            {
+                ArrayList<Object> list = new15();
+                push(goTo(4), list, false);
+            }
+            break;
+            case 16: /* reduce ABooleanType */
+            {
+                ArrayList<Object> list = new16();
+                push(goTo(5), list, false);
+            }
+            break;
+            case 17: /* reduce AIntegerType */
+            {
+                ArrayList<Object> list = new17();
+                push(goTo(5), list, false);
+            }
+            break;
+            case 18: /* reduce AComparisionExpression */
+            {
+                ArrayList<Object> list = new18();
+                push(goTo(6), list, false);
+            }
+            break;
+            case 19: /* reduce AExpression */
+            {
+                ArrayList<Object> list = new19();
+                push(goTo(6), list, false);
+            }
+            break;
+            case 20: /* reduce APlusExpression2 */
+            {
+                ArrayList<Object> list = new20();
+                push(goTo(7), list, false);
+            }
+            break;
+            case 21: /* reduce AMinusExpression2 */
+            {
+                ArrayList<Object> list = new21();
+                push(goTo(7), list, false);
+            }
+            break;
+            case 22: /* reduce AOrExpression2 */
+            {
+                ArrayList<Object> list = new22();
+                push(goTo(7), list, false);
+            }
+            break;
+            case 23: /* reduce AXorExpression2 */
+            {
+                ArrayList<Object> list = new23();
+                push(goTo(7), list, false);
+            }
+            break;
+            case 24: /* reduce AExpression2 */
+            {
+                ArrayList<Object> list = new24();
+                push(goTo(7), list, false);
+            }
+            break;
+            case 25: /* reduce AModExpression3 */
+            {
+                ArrayList<Object> list = new25();
+                push(goTo(8), list, false);
+            }
+            break;
+            case 26: /* reduce AMultExpression3 */
+            {
+                ArrayList<Object> list = new26();
+                push(goTo(8), list, false);
+            }
+            break;
+            case 27: /* reduce ADivExpression3 */
+            {
+                ArrayList<Object> list = new27();
+                push(goTo(8), list, false);
+            }
+            break;
+            case 28: /* reduce AAndExpression3 */
+            {
+                ArrayList<Object> list = new28();
+                push(goTo(8), list, false);
+            }
+            break;
+            case 29: /* reduce AExpression3 */
+            {
+                ArrayList<Object> list = new29();
+                push(goTo(8), list, false);
+            }
+            break;
+            case 30: /* reduce ANotExpression4 */
+            {
+                ArrayList<Object> list = new30();
+                push(goTo(9), list, false);
+            }
+            break;
+            case 31: /* reduce ANumberExpression4 */
+            {
+                ArrayList<Object> list = new31();
+                push(goTo(9), list, false);
+            }
+            break;
+            case 32: /* reduce AIdentifierExpression4 */
+            {
+                ArrayList<Object> list = new32();
+                push(goTo(9), list, false);
+            }
+            break;
+            case 33: /* reduce ATrueExpression4 */
+            {
+                ArrayList<Object> list = new33();
+                push(goTo(9), list, false);
+            }
+            break;
+            case 34: /* reduce AFalseExpression4 */
+            {
+                ArrayList<Object> list = new34();
+                push(goTo(9), list, false);
+            }
+            break;
+            case 35: /* reduce AGtComparision */
+            {
+                ArrayList<Object> list = new35();
+                push(goTo(10), list, false);
+            }
+            break;
+            case 36: /* reduce AGeComparision */
+            {
+                ArrayList<Object> list = new36();
+                push(goTo(10), list, false);
+            }
+            break;
+            case 37: /* reduce ALtComparision */
+            {
+                ArrayList<Object> list = new37();
+                push(goTo(10), list, false);
+            }
+            break;
+            case 38: /* reduce ALeComparision */
+            {
+                ArrayList<Object> list = new38();
+                push(goTo(10), list, false);
+            }
+            break;
+            case 39: /* reduce ANeComparision */
+            {
+                ArrayList<Object> list = new39();
+                push(goTo(10), list, false);
+            }
+            break;
+            case 40: /* reduce AEqComparision */
+            {
+                ArrayList<Object> list = new40();
+                push(goTo(10), list, false);
+            }
+            break;
+            case 41: /* reduce AIfThenStatement */
+            {
+                ArrayList<Object> list = new41();
+                push(goTo(11), list, false);
+            }
+            break;
+            case 42: /* reduce AIfThenElseStatement */
+            {
+                ArrayList<Object> list = new42();
+                push(goTo(12), list, false);
+            }
+            break;
+            case 43: /* reduce AIfThenElseStatementNoShortIf */
+            {
+                ArrayList<Object> list = new43();
+                push(goTo(13), list, false);
+            }
+            break;
+            case 44: /* reduce AIfStatementNoShortIf */
+            {
+                ArrayList<Object> list = new44();
+                push(goTo(14), list, false);
+            }
+            break;
+            case 45: /* reduce AWhileStatementNoShortIf */
+            {
+                ArrayList<Object> list = new45();
+                push(goTo(14), list, false);
+            }
+            break;
+            case 46: /* reduce AWhileWhileStatementNoShortIf */
+            {
+                ArrayList<Object> list = new46();
+                push(goTo(15), list, false);
+            }
+            break;
+            case 47: /* reduce AWhileWhileStatement */
+            {
+                ArrayList<Object> list = new47();
+                push(goTo(16), list, false);
+            }
+            break;
+            case 48: /* reduce ATerminal$Declarations */
+            {
+                ArrayList<Object> list = new48();
+                push(goTo(17), list, true);
+            }
+            break;
+            case 49: /* reduce ANonTerminal$Declarations */
+            {
+                ArrayList<Object> list = new49();
+                push(goTo(17), list, true);
+            }
+            break;
+            case 50: /* reduce ATerminal$Statement */
+            {
+                ArrayList<Object> list = new50();
+                push(goTo(18), list, true);
+            }
+            break;
+            case 51: /* reduce ANonTerminal$Statement */
+            {
+                ArrayList<Object> list = new51();
+                push(goTo(18), list, true);
+            }
+            break;
+            case 52: /* reduce ATerminal$Expression */
+            {
+                ArrayList<Object> list = new52();
+                push(goTo(19), list, true);
+            }
+            break;
+            case 53: /* reduce ANonTerminal$Expression */
+            {
+                ArrayList<Object> list = new53();
+                push(goTo(19), list, true);
+            }
+            break;
         }
     }
 
