@@ -445,394 +445,394 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseAExpr(AExpr node)
     {
         inAExpr(node);
-        if(node.getFoo() != null)
+        if(node.getExpr2() != null)
         {
-            node.getFoo().apply(this);
+            node.getExpr2().apply(this);
         }
         outAExpr(node);
     }
 
-    public void inAPlusFoo(APlusFoo node)
+    public void inAPlusExpr2(APlusExpr2 node)
     {
         defaultIn(node);
     }
 
-    public void outAPlusFoo(APlusFoo node)
+    public void outAPlusExpr2(APlusExpr2 node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAPlusFoo(APlusFoo node)
+    public void caseAPlusExpr2(APlusExpr2 node)
     {
-        inAPlusFoo(node);
-        if(node.getWtf() != null)
+        inAPlusExpr2(node);
+        if(node.getExpr3() != null)
         {
-            node.getWtf().apply(this);
+            node.getExpr3().apply(this);
         }
         if(node.getPlus() != null)
         {
             node.getPlus().apply(this);
         }
-        if(node.getFoo() != null)
+        if(node.getExpr2() != null)
         {
-            node.getFoo().apply(this);
+            node.getExpr2().apply(this);
         }
-        outAPlusFoo(node);
+        outAPlusExpr2(node);
     }
 
-    public void inAMinusFoo(AMinusFoo node)
+    public void inAMinusExpr2(AMinusExpr2 node)
     {
         defaultIn(node);
     }
 
-    public void outAMinusFoo(AMinusFoo node)
+    public void outAMinusExpr2(AMinusExpr2 node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAMinusFoo(AMinusFoo node)
+    public void caseAMinusExpr2(AMinusExpr2 node)
     {
-        inAMinusFoo(node);
-        if(node.getWtf() != null)
+        inAMinusExpr2(node);
+        if(node.getExpr3() != null)
         {
-            node.getWtf().apply(this);
+            node.getExpr3().apply(this);
         }
         if(node.getMinus() != null)
         {
             node.getMinus().apply(this);
         }
-        if(node.getFoo() != null)
+        if(node.getExpr2() != null)
         {
-            node.getFoo().apply(this);
+            node.getExpr2().apply(this);
         }
-        outAMinusFoo(node);
+        outAMinusExpr2(node);
     }
 
-    public void inAOrFoo(AOrFoo node)
+    public void inAOrExpr2(AOrExpr2 node)
     {
         defaultIn(node);
     }
 
-    public void outAOrFoo(AOrFoo node)
+    public void outAOrExpr2(AOrExpr2 node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAOrFoo(AOrFoo node)
+    public void caseAOrExpr2(AOrExpr2 node)
     {
-        inAOrFoo(node);
-        if(node.getWtf() != null)
+        inAOrExpr2(node);
+        if(node.getExpr3() != null)
         {
-            node.getWtf().apply(this);
+            node.getExpr3().apply(this);
         }
         if(node.getOr() != null)
         {
             node.getOr().apply(this);
         }
-        if(node.getFoo() != null)
+        if(node.getExpr2() != null)
         {
-            node.getFoo().apply(this);
+            node.getExpr2().apply(this);
         }
-        outAOrFoo(node);
+        outAOrExpr2(node);
     }
 
-    public void inAXorFoo(AXorFoo node)
+    public void inAXorExpr2(AXorExpr2 node)
     {
         defaultIn(node);
     }
 
-    public void outAXorFoo(AXorFoo node)
+    public void outAXorExpr2(AXorExpr2 node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAXorFoo(AXorFoo node)
+    public void caseAXorExpr2(AXorExpr2 node)
     {
-        inAXorFoo(node);
-        if(node.getWtf() != null)
+        inAXorExpr2(node);
+        if(node.getExpr3() != null)
         {
-            node.getWtf().apply(this);
+            node.getExpr3().apply(this);
         }
         if(node.getXor() != null)
         {
             node.getXor().apply(this);
         }
-        if(node.getFoo() != null)
+        if(node.getExpr2() != null)
         {
-            node.getFoo().apply(this);
+            node.getExpr2().apply(this);
         }
-        outAXorFoo(node);
+        outAXorExpr2(node);
     }
 
-    public void inAFoo(AFoo node)
+    public void inAExpr2(AExpr2 node)
     {
         defaultIn(node);
     }
 
-    public void outAFoo(AFoo node)
+    public void outAExpr2(AExpr2 node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAFoo(AFoo node)
+    public void caseAExpr2(AExpr2 node)
     {
-        inAFoo(node);
-        if(node.getWtf() != null)
+        inAExpr2(node);
+        if(node.getExpr3() != null)
         {
-            node.getWtf().apply(this);
+            node.getExpr3().apply(this);
         }
-        outAFoo(node);
+        outAExpr2(node);
     }
 
-    public void inAModWtf(AModWtf node)
+    public void inAModExpr3(AModExpr3 node)
     {
         defaultIn(node);
     }
 
-    public void outAModWtf(AModWtf node)
+    public void outAModExpr3(AModExpr3 node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAModWtf(AModWtf node)
+    public void caseAModExpr3(AModExpr3 node)
     {
-        inAModWtf(node);
-        if(node.getBombe() != null)
+        inAModExpr3(node);
+        if(node.getExpr4() != null)
         {
-            node.getBombe().apply(this);
+            node.getExpr4().apply(this);
         }
         if(node.getMod() != null)
         {
             node.getMod().apply(this);
         }
-        if(node.getWtf() != null)
+        if(node.getExpr3() != null)
         {
-            node.getWtf().apply(this);
+            node.getExpr3().apply(this);
         }
-        outAModWtf(node);
+        outAModExpr3(node);
     }
 
-    public void inAMultWtf(AMultWtf node)
+    public void inAMultExpr3(AMultExpr3 node)
     {
         defaultIn(node);
     }
 
-    public void outAMultWtf(AMultWtf node)
+    public void outAMultExpr3(AMultExpr3 node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAMultWtf(AMultWtf node)
+    public void caseAMultExpr3(AMultExpr3 node)
     {
-        inAMultWtf(node);
-        if(node.getBombe() != null)
+        inAMultExpr3(node);
+        if(node.getExpr4() != null)
         {
-            node.getBombe().apply(this);
+            node.getExpr4().apply(this);
         }
         if(node.getMult() != null)
         {
             node.getMult().apply(this);
         }
-        if(node.getWtf() != null)
+        if(node.getExpr3() != null)
         {
-            node.getWtf().apply(this);
+            node.getExpr3().apply(this);
         }
-        outAMultWtf(node);
+        outAMultExpr3(node);
     }
 
-    public void inADivWtf(ADivWtf node)
+    public void inADivExpr3(ADivExpr3 node)
     {
         defaultIn(node);
     }
 
-    public void outADivWtf(ADivWtf node)
+    public void outADivExpr3(ADivExpr3 node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseADivWtf(ADivWtf node)
+    public void caseADivExpr3(ADivExpr3 node)
     {
-        inADivWtf(node);
-        if(node.getBombe() != null)
+        inADivExpr3(node);
+        if(node.getExpr4() != null)
         {
-            node.getBombe().apply(this);
+            node.getExpr4().apply(this);
         }
         if(node.getDiv() != null)
         {
             node.getDiv().apply(this);
         }
-        if(node.getWtf() != null)
+        if(node.getExpr3() != null)
         {
-            node.getWtf().apply(this);
+            node.getExpr3().apply(this);
         }
-        outADivWtf(node);
+        outADivExpr3(node);
     }
 
-    public void inAAndWtf(AAndWtf node)
+    public void inAAndExpr3(AAndExpr3 node)
     {
         defaultIn(node);
     }
 
-    public void outAAndWtf(AAndWtf node)
+    public void outAAndExpr3(AAndExpr3 node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAAndWtf(AAndWtf node)
+    public void caseAAndExpr3(AAndExpr3 node)
     {
-        inAAndWtf(node);
-        if(node.getBombe() != null)
+        inAAndExpr3(node);
+        if(node.getExpr4() != null)
         {
-            node.getBombe().apply(this);
+            node.getExpr4().apply(this);
         }
         if(node.getAnd() != null)
         {
             node.getAnd().apply(this);
         }
-        if(node.getWtf() != null)
+        if(node.getExpr3() != null)
         {
-            node.getWtf().apply(this);
+            node.getExpr3().apply(this);
         }
-        outAAndWtf(node);
+        outAAndExpr3(node);
     }
 
-    public void inAWtf(AWtf node)
+    public void inAExpr3(AExpr3 node)
     {
         defaultIn(node);
     }
 
-    public void outAWtf(AWtf node)
+    public void outAExpr3(AExpr3 node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAWtf(AWtf node)
+    public void caseAExpr3(AExpr3 node)
     {
-        inAWtf(node);
-        if(node.getBombe() != null)
+        inAExpr3(node);
+        if(node.getExpr4() != null)
         {
-            node.getBombe().apply(this);
+            node.getExpr4().apply(this);
         }
-        outAWtf(node);
+        outAExpr3(node);
     }
 
-    public void inANotBombe(ANotBombe node)
+    public void inANotExpr4(ANotExpr4 node)
     {
         defaultIn(node);
     }
 
-    public void outANotBombe(ANotBombe node)
+    public void outANotExpr4(ANotExpr4 node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseANotBombe(ANotBombe node)
+    public void caseANotExpr4(ANotExpr4 node)
     {
-        inANotBombe(node);
-        if(node.getBombe() != null)
+        inANotExpr4(node);
+        if(node.getExpr4() != null)
         {
-            node.getBombe().apply(this);
+            node.getExpr4().apply(this);
         }
         if(node.getNot() != null)
         {
             node.getNot().apply(this);
         }
-        outANotBombe(node);
+        outANotExpr4(node);
     }
 
-    public void inANumberBombe(ANumberBombe node)
+    public void inANumberExpr4(ANumberExpr4 node)
     {
         defaultIn(node);
     }
 
-    public void outANumberBombe(ANumberBombe node)
+    public void outANumberExpr4(ANumberExpr4 node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseANumberBombe(ANumberBombe node)
+    public void caseANumberExpr4(ANumberExpr4 node)
     {
-        inANumberBombe(node);
+        inANumberExpr4(node);
         if(node.getNumber() != null)
         {
             node.getNumber().apply(this);
         }
-        outANumberBombe(node);
+        outANumberExpr4(node);
     }
 
-    public void inAIdentifierBombe(AIdentifierBombe node)
+    public void inAIdentifierExpr4(AIdentifierExpr4 node)
     {
         defaultIn(node);
     }
 
-    public void outAIdentifierBombe(AIdentifierBombe node)
+    public void outAIdentifierExpr4(AIdentifierExpr4 node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAIdentifierBombe(AIdentifierBombe node)
+    public void caseAIdentifierExpr4(AIdentifierExpr4 node)
     {
-        inAIdentifierBombe(node);
+        inAIdentifierExpr4(node);
         if(node.getIdentifier() != null)
         {
             node.getIdentifier().apply(this);
         }
-        outAIdentifierBombe(node);
+        outAIdentifierExpr4(node);
     }
 
-    public void inATrueBombe(ATrueBombe node)
+    public void inATrueExpr4(ATrueExpr4 node)
     {
         defaultIn(node);
     }
 
-    public void outATrueBombe(ATrueBombe node)
+    public void outATrueExpr4(ATrueExpr4 node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseATrueBombe(ATrueBombe node)
+    public void caseATrueExpr4(ATrueExpr4 node)
     {
-        inATrueBombe(node);
+        inATrueExpr4(node);
         if(node.getTrue() != null)
         {
             node.getTrue().apply(this);
         }
-        outATrueBombe(node);
+        outATrueExpr4(node);
     }
 
-    public void inAFalseBombe(AFalseBombe node)
+    public void inAFalseExpr4(AFalseExpr4 node)
     {
         defaultIn(node);
     }
 
-    public void outAFalseBombe(AFalseBombe node)
+    public void outAFalseExpr4(AFalseExpr4 node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAFalseBombe(AFalseBombe node)
+    public void caseAFalseExpr4(AFalseExpr4 node)
     {
-        inAFalseBombe(node);
+        inAFalseExpr4(node);
         if(node.getFalse() != null)
         {
             node.getFalse().apply(this);
         }
-        outAFalseBombe(node);
+        outAFalseExpr4(node);
     }
 
     public void inAGtComparision(AGtComparision node)

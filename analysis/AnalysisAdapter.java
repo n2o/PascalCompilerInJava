@@ -171,91 +171,91 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAPlusFoo(APlusFoo node)
+    public void caseAPlusExpr2(APlusExpr2 node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAMinusFoo(AMinusFoo node)
+    public void caseAMinusExpr2(AMinusExpr2 node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAOrFoo(AOrFoo node)
+    public void caseAOrExpr2(AOrExpr2 node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAXorFoo(AXorFoo node)
+    public void caseAXorExpr2(AXorExpr2 node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAFoo(AFoo node)
+    public void caseAExpr2(AExpr2 node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAModWtf(AModWtf node)
+    public void caseAModExpr3(AModExpr3 node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAMultWtf(AMultWtf node)
+    public void caseAMultExpr3(AMultExpr3 node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseADivWtf(ADivWtf node)
+    public void caseADivExpr3(ADivExpr3 node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAAndWtf(AAndWtf node)
+    public void caseAAndExpr3(AAndExpr3 node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAWtf(AWtf node)
+    public void caseAExpr3(AExpr3 node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseANotBombe(ANotBombe node)
+    public void caseANotExpr4(ANotExpr4 node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseANumberBombe(ANumberBombe node)
+    public void caseANumberExpr4(ANumberExpr4 node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAIdentifierBombe(AIdentifierBombe node)
+    public void caseAIdentifierExpr4(AIdentifierExpr4 node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseATrueBombe(ATrueBombe node)
+    public void caseATrueExpr4(ATrueExpr4 node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAFalseBombe(AFalseBombe node)
+    public void caseAFalseExpr4(AFalseExpr4 node)
     {
         defaultCase(node);
     }

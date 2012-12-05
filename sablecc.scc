@@ -84,25 +84,25 @@ Productions
 		 | {integer} integer;
 	
 	expr = 
-		  {comparision} [left]:expr comparision [right]:foo
-		 | foo;
+		  {comparision} [left]:expr comparision [right]:expr2
+		 | expr2;
 
-	foo =
-		   {plus} foo plus wtf 
-		 | {minus} foo minus wtf
-		 | {or} foo or wtf
-		 | {xor} foo xor wtf
-		 | wtf;
+	expr2 =
+		   {plus} expr2 plus expr3 
+		 | {minus} expr2 minus expr3
+		 | {or} expr2 or expr3
+		 | {xor} expr2 xor expr3
+		 | expr3;
 
-	wtf =
-		   {mod} wtf mod bombe
-		 | {mult} wtf mult bombe
-		 | {div} wtf div bombe
-		 | {and} wtf and bombe
-		 | bombe;
+	expr3 =
+		   {mod} expr3 mod expr4
+		 | {mult} expr3 mult expr4
+		 | {div} expr3 div expr4
+		 | {and} expr3 and expr4
+		 | expr4;
 
-	bombe = 
-		   {not} not bombe
+	expr4 = 
+		   {not} not expr4
 		 | {number} number
 		 | {identifier} identifier
 		 | {true} true
@@ -119,7 +119,6 @@ Productions
 	/**
 	 * If Expressions
 	 */
-
 	if_then_statement =
 		   if expr then statement;
 
