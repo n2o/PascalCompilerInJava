@@ -47,8 +47,9 @@ Tokens
 
 	// Other
 	colon 		= ':';
-	semikolon	= ';';
+	semicolon	= ';';
 	dot 		= '.';
+	tick 		= '\'';
 	whitespace	= (' '| 10 | 13)+;
 	identifier	= letter+number*letter*;
 
@@ -58,10 +59,10 @@ Ignored Tokens
 // Pruefe noch auf leeres Programm
 Productions
 	start = 
-		   program identifier semikolon declarations* statement* programend;
+		   program identifier semicolon declarations* statement* programend;
 	
 	declarations =
-		   {single} var identifier colon type semikolon;
+		   {single} var identifier colon type semicolon;
 
 	statement = 
 		   {if_then_statement} if_then_statement
@@ -71,10 +72,10 @@ Productions
 		 | {print} print
 		 | {nested} begin statement end
 		 | {break} break
-		 | semikolon;
+		 | semicolon;
 
 	print =
-		   writeln l_par expr r_par;
+		   writeln l_par tick expr tick r_par;
 
 	assignment = 
 		   identifier assign expr;
