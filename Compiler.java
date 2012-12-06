@@ -1,13 +1,16 @@
-import parser.*;
-import lexer.*;
-import node.*;
+import lexer.Lexer;
+import lexer.LexerException;
+import node.Start;
+import parser.Parser;
+import parser.ParserException;
+
 import java.io.*;
 
 public class Compiler {
 
 	public static void main(String[] args) throws LexerException, IOException, ParserException {
         String input = "";
-        String zeile = "";
+        String zeile;
         FileReader fr = new FileReader(args[0]);
         BufferedReader br = new BufferedReader(fr);
 
@@ -33,5 +36,4 @@ public class Compiler {
 		ASTPrinter printer = new ASTPrinter();
 		start.apply(printer);
 	}
-
 }
