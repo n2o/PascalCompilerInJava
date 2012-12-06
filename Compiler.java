@@ -1,6 +1,8 @@
 import lexer.Lexer;
 import lexer.LexerException;
+import node.EOF;
 import node.Start;
+import node.Token;
 import parser.Parser;
 import parser.ParserException;
 
@@ -31,6 +33,7 @@ public class Compiler {
 		StringReader reader = new StringReader(input);
 		PushbackReader r = new PushbackReader(reader, 100);
 		Lexer l = new Lexer(r);
+
 		Parser parser = new Parser(l);
 		Start start = parser.parse();
 		ASTPrinter printer = new ASTPrinter();

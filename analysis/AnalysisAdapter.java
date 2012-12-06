@@ -477,18 +477,6 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseTLCurlyBracket(TLCurlyBracket node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTRCurlyBracket(TRCurlyBracket node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
     public void caseTPlus(TPlus node)
     {
         defaultCase(node);
@@ -609,7 +597,7 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseTWhitespace(TWhitespace node)
+    public void caseTBlankOrComment(TBlankOrComment node)
     {
         defaultCase(node);
     }

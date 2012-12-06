@@ -80,8 +80,6 @@ public interface Analysis extends Switch
     void caseTBreak(TBreak node);
     void caseTLPar(TLPar node);
     void caseTRPar(TRPar node);
-    void caseTLCurlyBracket(TLCurlyBracket node);
-    void caseTRCurlyBracket(TRCurlyBracket node);
     void caseTPlus(TPlus node);
     void caseTMinus(TMinus node);
     void caseTMult(TMult node);
@@ -102,7 +100,7 @@ public interface Analysis extends Switch
     void caseTColon(TColon node);
     void caseTSemicolon(TSemicolon node);
     void caseTDot(TDot node);
-    void caseTWhitespace(TWhitespace node);
+    void caseTBlankOrComment(TBlankOrComment node);
     void caseTIdentifier(TIdentifier node);
     void caseEOF(EOF node);
     void caseInvalidToken(InvalidToken node);

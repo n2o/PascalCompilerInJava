@@ -278,6 +278,10 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseABreakStatement(ABreakStatement node)
     {
         inABreakStatement(node);
+        if(node.getSemicolon() != null)
+        {
+            node.getSemicolon().apply(this);
+        }
         if(node.getBreak() != null)
         {
             node.getBreak().apply(this);
@@ -549,13 +553,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         {
             node.getRPar().apply(this);
         }
+        if(node.getExpression() != null)
         {
-            List<PExpression> copy = new ArrayList<PExpression>(node.getExpression());
-            Collections.reverse(copy);
-            for(PExpression e : copy)
-            {
-                e.apply(this);
-            }
+            node.getExpression().apply(this);
         }
         if(node.getLPar() != null)
         {

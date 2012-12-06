@@ -31,8 +31,18 @@ Helpers
 
 	cr = 13;
     lf = 10;
-    eol = cr | lf | cr lf;
-	any = [32 .. 127]; 					// all characters 
+
+    // For comments
+	any = [0 .. 127]; 					// all characters 
+	not_curly_left = [ any - '{' ];
+	not_curly 	= [ not_curly_left - '}' ];
+
+	not_lf 		= [any - lf];			// take away the linefeed and carriage return
+	not_crlf 	= [not_lf - cr];
+
+	blank		= (' '| 9 | lf | cr);
+	comment 	= '{' not_curly* blank* '}';
+	comment_line = '//' not_crlf*;
 
 Tokens
 	// Datatypes
@@ -58,8 +68,6 @@ Tokens
 	// Operators
 	l_par	= '(';
 	r_par	= ')';
-	l_curly_bracket	= '{';
-	r_curly_bracket	= '}';
 	plus 	= '+';
 	minus 	= '-';
 	mult	= '*';
@@ -82,11 +90,11 @@ Tokens
 	colon 		= ':';
 	semicolon	= ';';
 	dot 		= '.';
-	whitespace	= (' '| 9 | lf | cr)+;
+	blank_or_comment = (blank | comment | comment_line)*;
 	identifier	= letter+ (number | letter)*;
 
 Ignored Tokens
-	whitespace;
+	blank_or_comment;
 
 Productions
 	start = 
@@ -102,7 +110,7 @@ Productions
 		 | {assign} assignment
 		 | {print} print
 		 | {nested} begin statement+ end
-		 | {break} break
+		 | {break} break semicolon
 		 | semicolon;
 
 	statement_no_short_if =
@@ -124,7 +132,7 @@ Productions
 	 * Trivial stuff
 	 */
 	print =
-		   writeln l_par expression* r_par;
+		   writeln l_par expression r_par;
 
 	assignment = 
 		   identifier assign expression;

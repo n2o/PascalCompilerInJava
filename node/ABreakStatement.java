@@ -8,6 +8,7 @@ import analysis.*;
 public final class ABreakStatement extends PStatement
 {
     private TBreak _break_;
+    private TSemicolon _semicolon_;
 
     public ABreakStatement()
     {
@@ -15,10 +16,13 @@ public final class ABreakStatement extends PStatement
     }
 
     public ABreakStatement(
-        @SuppressWarnings("hiding") TBreak _break_)
+        @SuppressWarnings("hiding") TBreak _break_,
+        @SuppressWarnings("hiding") TSemicolon _semicolon_)
     {
         // Constructor
         setBreak(_break_);
+
+        setSemicolon(_semicolon_);
 
     }
 
@@ -26,7 +30,8 @@ public final class ABreakStatement extends PStatement
     public Object clone()
     {
         return new ABreakStatement(
-            cloneNode(this._break_));
+            cloneNode(this._break_),
+            cloneNode(this._semicolon_));
     }
 
     @Override
@@ -60,11 +65,37 @@ public final class ABreakStatement extends PStatement
         this._break_ = node;
     }
 
+    public TSemicolon getSemicolon()
+    {
+        return this._semicolon_;
+    }
+
+    public void setSemicolon(TSemicolon node)
+    {
+        if(this._semicolon_ != null)
+        {
+            this._semicolon_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._semicolon_ = node;
+    }
+
     @Override
     public String toString()
     {
         return ""
-            + toString(this._break_);
+            + toString(this._break_)
+            + toString(this._semicolon_);
     }
 
     @Override
@@ -74,6 +105,12 @@ public final class ABreakStatement extends PStatement
         if(this._break_ == child)
         {
             this._break_ = null;
+            return;
+        }
+
+        if(this._semicolon_ == child)
+        {
+            this._semicolon_ = null;
             return;
         }
 
@@ -87,6 +124,12 @@ public final class ABreakStatement extends PStatement
         if(this._break_ == oldChild)
         {
             setBreak((TBreak) newChild);
+            return;
+        }
+
+        if(this._semicolon_ == oldChild)
+        {
+            setSemicolon((TSemicolon) newChild);
             return;
         }
 

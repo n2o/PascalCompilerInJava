@@ -279,6 +279,10 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getBreak().apply(this);
         }
+        if(node.getSemicolon() != null)
+        {
+            node.getSemicolon().apply(this);
+        }
         outABreakStatement(node);
     }
 
@@ -549,12 +553,9 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getLPar().apply(this);
         }
+        if(node.getExpression() != null)
         {
-            List<PExpression> copy = new ArrayList<PExpression>(node.getExpression());
-            for(PExpression e : copy)
-            {
-                e.apply(this);
-            }
+            node.getExpression().apply(this);
         }
         if(node.getRPar() != null)
         {
