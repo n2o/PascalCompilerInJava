@@ -6,15 +6,19 @@ import java.io.*;
 public class Compiler {
 
 	public static void main(String[] args) throws LexerException, IOException, ParserException {
+        String input = "";
+        String zeile = "";
+        FileReader fr = new FileReader(args[0]);
+        BufferedReader br = new BufferedReader(fr);
+
+        zeile = br.readLine();
+        while (zeile != null) {
+            input += zeile+"\n";
+            zeile = br.readLine();
+        }
+        br.close();
+
 		System.out.println("############################################################################");
-		String input =  "program HelloWorld; \n";
-			   input += "begin \n";
-			   input += "\twriteln(Hello World); \n";
-               input += "\twhile 1 < 2 do \n";
-               input += "\tbegin \n";
-               input += "\t\twriteln(Hello World); \n";
-               input += "\tend\n";
-			   input += "end. \n";
 		System.out.println("# Eingabe:  \n"+input);
 		parse(input);
 		System.out.println("############################################################################");
