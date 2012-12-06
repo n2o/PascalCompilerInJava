@@ -90,7 +90,7 @@ Ignored Tokens
 
 Productions
 	start = 
-		   program identifier semicolon begin declarations* statement* programend;
+		   program identifier semicolon declarations* begin statement* programend;
 	
 	declarations =
 		   {single} var identifier colon type semicolon;

@@ -62,6 +62,10 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
                 e.apply(this);
             }
         }
+        if(node.getBegin() != null)
+        {
+            node.getBegin().apply(this);
+        }
         {
             List<PDeclarations> copy = new ArrayList<PDeclarations>(node.getDeclarations());
             Collections.reverse(copy);
@@ -69,10 +73,6 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
             {
                 e.apply(this);
             }
-        }
-        if(node.getBegin() != null)
-        {
-            node.getBegin().apply(this);
         }
         if(node.getSemicolon() != null)
         {
@@ -512,13 +512,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseAWhileWhileStatement(AWhileWhileStatement node)
     {
         inAWhileWhileStatement(node);
+        if(node.getStatement() != null)
         {
-            List<PStatement> copy = new ArrayList<PStatement>(node.getStatement());
-            Collections.reverse(copy);
-            for(PStatement e : copy)
-            {
-                e.apply(this);
-            }
+            node.getStatement().apply(this);
         }
         if(node.getDo() != null)
         {

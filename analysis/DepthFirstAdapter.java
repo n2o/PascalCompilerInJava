@@ -62,16 +62,16 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getSemicolon().apply(this);
         }
-        if(node.getBegin() != null)
-        {
-            node.getBegin().apply(this);
-        }
         {
             List<PDeclarations> copy = new ArrayList<PDeclarations>(node.getDeclarations());
             for(PDeclarations e : copy)
             {
                 e.apply(this);
             }
+        }
+        if(node.getBegin() != null)
+        {
+            node.getBegin().apply(this);
         }
         {
             List<PStatement> copy = new ArrayList<PStatement>(node.getStatement());
@@ -520,12 +520,9 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getDo().apply(this);
         }
+        if(node.getStatement() != null)
         {
-            List<PStatement> copy = new ArrayList<PStatement>(node.getStatement());
-            for(PStatement e : copy)
-            {
-                e.apply(this);
-            }
+            node.getStatement().apply(this);
         }
         outAWhileWhileStatement(node);
     }

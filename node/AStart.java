@@ -11,8 +11,8 @@ public final class AStart extends PStart
     private TProgram _program_;
     private TIdentifier _identifier_;
     private TSemicolon _semicolon_;
-    private TBegin _begin_;
     private final LinkedList<PDeclarations> _declarations_ = new LinkedList<PDeclarations>();
+    private TBegin _begin_;
     private final LinkedList<PStatement> _statement_ = new LinkedList<PStatement>();
     private TProgramend _programend_;
 
@@ -25,8 +25,8 @@ public final class AStart extends PStart
         @SuppressWarnings("hiding") TProgram _program_,
         @SuppressWarnings("hiding") TIdentifier _identifier_,
         @SuppressWarnings("hiding") TSemicolon _semicolon_,
-        @SuppressWarnings("hiding") TBegin _begin_,
         @SuppressWarnings("hiding") List<?> _declarations_,
+        @SuppressWarnings("hiding") TBegin _begin_,
         @SuppressWarnings("hiding") List<?> _statement_,
         @SuppressWarnings("hiding") TProgramend _programend_)
     {
@@ -37,9 +37,9 @@ public final class AStart extends PStart
 
         setSemicolon(_semicolon_);
 
-        setBegin(_begin_);
-
         setDeclarations(_declarations_);
+
+        setBegin(_begin_);
 
         setStatement(_statement_);
 
@@ -54,8 +54,8 @@ public final class AStart extends PStart
             cloneNode(this._program_),
             cloneNode(this._identifier_),
             cloneNode(this._semicolon_),
-            cloneNode(this._begin_),
             cloneList(this._declarations_),
+            cloneNode(this._begin_),
             cloneList(this._statement_),
             cloneNode(this._programend_));
     }
@@ -141,31 +141,6 @@ public final class AStart extends PStart
         this._semicolon_ = node;
     }
 
-    public TBegin getBegin()
-    {
-        return this._begin_;
-    }
-
-    public void setBegin(TBegin node)
-    {
-        if(this._begin_ != null)
-        {
-            this._begin_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._begin_ = node;
-    }
-
     public LinkedList<PDeclarations> getDeclarations()
     {
         return this._declarations_;
@@ -190,6 +165,31 @@ public final class AStart extends PStart
             e.parent(this);
             this._declarations_.add(e);
         }
+    }
+
+    public TBegin getBegin()
+    {
+        return this._begin_;
+    }
+
+    public void setBegin(TBegin node)
+    {
+        if(this._begin_ != null)
+        {
+            this._begin_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._begin_ = node;
     }
 
     public LinkedList<PStatement> getStatement()
@@ -250,8 +250,8 @@ public final class AStart extends PStart
             + toString(this._program_)
             + toString(this._identifier_)
             + toString(this._semicolon_)
-            + toString(this._begin_)
             + toString(this._declarations_)
+            + toString(this._begin_)
             + toString(this._statement_)
             + toString(this._programend_);
     }
@@ -278,14 +278,14 @@ public final class AStart extends PStart
             return;
         }
 
-        if(this._begin_ == child)
+        if(this._declarations_.remove(child))
         {
-            this._begin_ = null;
             return;
         }
 
-        if(this._declarations_.remove(child))
+        if(this._begin_ == child)
         {
+            this._begin_ = null;
             return;
         }
 
@@ -325,12 +325,6 @@ public final class AStart extends PStart
             return;
         }
 
-        if(this._begin_ == oldChild)
-        {
-            setBegin((TBegin) newChild);
-            return;
-        }
-
         for(ListIterator<PDeclarations> i = this._declarations_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)
@@ -347,6 +341,12 @@ public final class AStart extends PStart
                 oldChild.parent(null);
                 return;
             }
+        }
+
+        if(this._begin_ == oldChild)
+        {
+            setBegin((TBegin) newChild);
+            return;
         }
 
         for(ListIterator<PStatement> i = this._statement_.listIterator(); i.hasNext();)
