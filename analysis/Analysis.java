@@ -22,6 +22,15 @@ public interface Analysis extends Switch
     void caseANestedStatement(ANestedStatement node);
     void caseABreakStatement(ABreakStatement node);
     void caseAStatement(AStatement node);
+    void caseAIfStatementNoShortIf(AIfStatementNoShortIf node);
+    void caseAWhileStatementNoShortIf(AWhileStatementNoShortIf node);
+    void caseAAssignStatementNoShortIf(AAssignStatementNoShortIf node);
+    void caseAPrintStatementNoShortIf(APrintStatementNoShortIf node);
+    void caseANestedStatementNoShortIf(ANestedStatementNoShortIf node);
+    void caseABreakStatementNoShortIf(ABreakStatementNoShortIf node);
+    void caseAStatementNoShortIf(AStatementNoShortIf node);
+    void caseAWhileWhileStatementNoShortIf(AWhileWhileStatementNoShortIf node);
+    void caseAWhileWhileStatement(AWhileWhileStatement node);
     void caseAPrint(APrint node);
     void caseAAssignment(AAssignment node);
     void caseABooleanType(ABooleanType node);
@@ -52,10 +61,6 @@ public interface Analysis extends Switch
     void caseAIfThenStatement(AIfThenStatement node);
     void caseAIfThenElseStatement(AIfThenElseStatement node);
     void caseAIfThenElseStatementNoShortIf(AIfThenElseStatementNoShortIf node);
-    void caseAIfStatementNoShortIf(AIfStatementNoShortIf node);
-    void caseAWhileStatementNoShortIf(AWhileStatementNoShortIf node);
-    void caseAWhileWhileStatementNoShortIf(AWhileWhileStatementNoShortIf node);
-    void caseAWhileWhileStatement(AWhileWhileStatement node);
 
     void caseTInteger(TInteger node);
     void caseTBoolean(TBoolean node);

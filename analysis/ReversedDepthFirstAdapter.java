@@ -249,9 +249,13 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         {
             node.getEnd().apply(this);
         }
-        if(node.getStatement() != null)
         {
-            node.getStatement().apply(this);
+            List<PStatement> copy = new ArrayList<PStatement>(node.getStatement());
+            Collections.reverse(copy);
+            for(PStatement e : copy)
+            {
+                e.apply(this);
+            }
         }
         if(node.getBegin() != null)
         {
@@ -300,6 +304,235 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
             node.getSemicolon().apply(this);
         }
         outAStatement(node);
+    }
+
+    public void inAIfStatementNoShortIf(AIfStatementNoShortIf node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAIfStatementNoShortIf(AIfStatementNoShortIf node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAIfStatementNoShortIf(AIfStatementNoShortIf node)
+    {
+        inAIfStatementNoShortIf(node);
+        if(node.getIfThenElseStatementNoShortIf() != null)
+        {
+            node.getIfThenElseStatementNoShortIf().apply(this);
+        }
+        outAIfStatementNoShortIf(node);
+    }
+
+    public void inAWhileStatementNoShortIf(AWhileStatementNoShortIf node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAWhileStatementNoShortIf(AWhileStatementNoShortIf node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAWhileStatementNoShortIf(AWhileStatementNoShortIf node)
+    {
+        inAWhileStatementNoShortIf(node);
+        if(node.getWhileStatementNoShortIf() != null)
+        {
+            node.getWhileStatementNoShortIf().apply(this);
+        }
+        outAWhileStatementNoShortIf(node);
+    }
+
+    public void inAAssignStatementNoShortIf(AAssignStatementNoShortIf node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAAssignStatementNoShortIf(AAssignStatementNoShortIf node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAAssignStatementNoShortIf(AAssignStatementNoShortIf node)
+    {
+        inAAssignStatementNoShortIf(node);
+        if(node.getAssignment() != null)
+        {
+            node.getAssignment().apply(this);
+        }
+        outAAssignStatementNoShortIf(node);
+    }
+
+    public void inAPrintStatementNoShortIf(APrintStatementNoShortIf node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPrintStatementNoShortIf(APrintStatementNoShortIf node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPrintStatementNoShortIf(APrintStatementNoShortIf node)
+    {
+        inAPrintStatementNoShortIf(node);
+        if(node.getPrint() != null)
+        {
+            node.getPrint().apply(this);
+        }
+        outAPrintStatementNoShortIf(node);
+    }
+
+    public void inANestedStatementNoShortIf(ANestedStatementNoShortIf node)
+    {
+        defaultIn(node);
+    }
+
+    public void outANestedStatementNoShortIf(ANestedStatementNoShortIf node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseANestedStatementNoShortIf(ANestedStatementNoShortIf node)
+    {
+        inANestedStatementNoShortIf(node);
+        if(node.getEnd() != null)
+        {
+            node.getEnd().apply(this);
+        }
+        {
+            List<PStatement> copy = new ArrayList<PStatement>(node.getStatement());
+            Collections.reverse(copy);
+            for(PStatement e : copy)
+            {
+                e.apply(this);
+            }
+        }
+        if(node.getBegin() != null)
+        {
+            node.getBegin().apply(this);
+        }
+        outANestedStatementNoShortIf(node);
+    }
+
+    public void inABreakStatementNoShortIf(ABreakStatementNoShortIf node)
+    {
+        defaultIn(node);
+    }
+
+    public void outABreakStatementNoShortIf(ABreakStatementNoShortIf node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseABreakStatementNoShortIf(ABreakStatementNoShortIf node)
+    {
+        inABreakStatementNoShortIf(node);
+        if(node.getBreak() != null)
+        {
+            node.getBreak().apply(this);
+        }
+        outABreakStatementNoShortIf(node);
+    }
+
+    public void inAStatementNoShortIf(AStatementNoShortIf node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAStatementNoShortIf(AStatementNoShortIf node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAStatementNoShortIf(AStatementNoShortIf node)
+    {
+        inAStatementNoShortIf(node);
+        if(node.getSemicolon() != null)
+        {
+            node.getSemicolon().apply(this);
+        }
+        outAStatementNoShortIf(node);
+    }
+
+    public void inAWhileWhileStatementNoShortIf(AWhileWhileStatementNoShortIf node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAWhileWhileStatementNoShortIf(AWhileWhileStatementNoShortIf node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAWhileWhileStatementNoShortIf(AWhileWhileStatementNoShortIf node)
+    {
+        inAWhileWhileStatementNoShortIf(node);
+        if(node.getStatementNoShortIf() != null)
+        {
+            node.getStatementNoShortIf().apply(this);
+        }
+        if(node.getDo() != null)
+        {
+            node.getDo().apply(this);
+        }
+        if(node.getExpression() != null)
+        {
+            node.getExpression().apply(this);
+        }
+        if(node.getWhile() != null)
+        {
+            node.getWhile().apply(this);
+        }
+        outAWhileWhileStatementNoShortIf(node);
+    }
+
+    public void inAWhileWhileStatement(AWhileWhileStatement node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAWhileWhileStatement(AWhileWhileStatement node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAWhileWhileStatement(AWhileWhileStatement node)
+    {
+        inAWhileWhileStatement(node);
+        {
+            List<PStatement> copy = new ArrayList<PStatement>(node.getStatement());
+            Collections.reverse(copy);
+            for(PStatement e : copy)
+            {
+                e.apply(this);
+            }
+        }
+        if(node.getDo() != null)
+        {
+            node.getDo().apply(this);
+        }
+        if(node.getExpression() != null)
+        {
+            node.getExpression().apply(this);
+        }
+        if(node.getWhile() != null)
+        {
+            node.getWhile().apply(this);
+        }
+        outAWhileWhileStatement(node);
     }
 
     public void inAPrint(APrint node)
@@ -1082,113 +1315,5 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
             node.getIf().apply(this);
         }
         outAIfThenElseStatementNoShortIf(node);
-    }
-
-    public void inAIfStatementNoShortIf(AIfStatementNoShortIf node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAIfStatementNoShortIf(AIfStatementNoShortIf node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAIfStatementNoShortIf(AIfStatementNoShortIf node)
-    {
-        inAIfStatementNoShortIf(node);
-        if(node.getIfThenElseStatementNoShortIf() != null)
-        {
-            node.getIfThenElseStatementNoShortIf().apply(this);
-        }
-        outAIfStatementNoShortIf(node);
-    }
-
-    public void inAWhileStatementNoShortIf(AWhileStatementNoShortIf node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAWhileStatementNoShortIf(AWhileStatementNoShortIf node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAWhileStatementNoShortIf(AWhileStatementNoShortIf node)
-    {
-        inAWhileStatementNoShortIf(node);
-        if(node.getWhileStatementNoShortIf() != null)
-        {
-            node.getWhileStatementNoShortIf().apply(this);
-        }
-        outAWhileStatementNoShortIf(node);
-    }
-
-    public void inAWhileWhileStatementNoShortIf(AWhileWhileStatementNoShortIf node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAWhileWhileStatementNoShortIf(AWhileWhileStatementNoShortIf node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAWhileWhileStatementNoShortIf(AWhileWhileStatementNoShortIf node)
-    {
-        inAWhileWhileStatementNoShortIf(node);
-        if(node.getStatementNoShortIf() != null)
-        {
-            node.getStatementNoShortIf().apply(this);
-        }
-        if(node.getDo() != null)
-        {
-            node.getDo().apply(this);
-        }
-        if(node.getExpression() != null)
-        {
-            node.getExpression().apply(this);
-        }
-        if(node.getWhile() != null)
-        {
-            node.getWhile().apply(this);
-        }
-        outAWhileWhileStatementNoShortIf(node);
-    }
-
-    public void inAWhileWhileStatement(AWhileWhileStatement node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAWhileWhileStatement(AWhileWhileStatement node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAWhileWhileStatement(AWhileWhileStatement node)
-    {
-        inAWhileWhileStatement(node);
-        if(node.getStatement() != null)
-        {
-            node.getStatement().apply(this);
-        }
-        if(node.getDo() != null)
-        {
-            node.getDo().apply(this);
-        }
-        if(node.getExpression() != null)
-        {
-            node.getExpression().apply(this);
-        }
-        if(node.getWhile() != null)
-        {
-            node.getWhile().apply(this);
-        }
-        outAWhileWhileStatement(node);
     }
 }

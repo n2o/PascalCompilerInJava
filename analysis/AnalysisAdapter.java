@@ -135,6 +135,60 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseAIfStatementNoShortIf(AIfStatementNoShortIf node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAWhileStatementNoShortIf(AWhileStatementNoShortIf node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAAssignStatementNoShortIf(AAssignStatementNoShortIf node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAPrintStatementNoShortIf(APrintStatementNoShortIf node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseANestedStatementNoShortIf(ANestedStatementNoShortIf node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseABreakStatementNoShortIf(ABreakStatementNoShortIf node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAStatementNoShortIf(AStatementNoShortIf node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAWhileWhileStatementNoShortIf(AWhileWhileStatementNoShortIf node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAWhileWhileStatement(AWhileWhileStatement node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseAPrint(APrint node)
     {
         defaultCase(node);
@@ -310,30 +364,6 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseAIfThenElseStatementNoShortIf(AIfThenElseStatementNoShortIf node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAIfStatementNoShortIf(AIfStatementNoShortIf node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAWhileStatementNoShortIf(AWhileStatementNoShortIf node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAWhileWhileStatementNoShortIf(AWhileWhileStatementNoShortIf node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAWhileWhileStatement(AWhileWhileStatement node)
     {
         defaultCase(node);
     }

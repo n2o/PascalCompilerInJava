@@ -2,13 +2,14 @@
 
 package node;
 
+import java.util.*;
 import analysis.*;
 
 @SuppressWarnings("nls")
 public final class ANestedStatement extends PStatement
 {
     private TBegin _begin_;
-    private PStatement _statement_;
+    private final LinkedList<PStatement> _statement_ = new LinkedList<PStatement>();
     private TEnd _end_;
 
     public ANestedStatement()
@@ -18,7 +19,7 @@ public final class ANestedStatement extends PStatement
 
     public ANestedStatement(
         @SuppressWarnings("hiding") TBegin _begin_,
-        @SuppressWarnings("hiding") PStatement _statement_,
+        @SuppressWarnings("hiding") List<?> _statement_,
         @SuppressWarnings("hiding") TEnd _end_)
     {
         // Constructor
@@ -35,7 +36,7 @@ public final class ANestedStatement extends PStatement
     {
         return new ANestedStatement(
             cloneNode(this._begin_),
-            cloneNode(this._statement_),
+            cloneList(this._statement_),
             cloneNode(this._end_));
     }
 
@@ -70,29 +71,30 @@ public final class ANestedStatement extends PStatement
         this._begin_ = node;
     }
 
-    public PStatement getStatement()
+    public LinkedList<PStatement> getStatement()
     {
         return this._statement_;
     }
 
-    public void setStatement(PStatement node)
+    public void setStatement(List<?> list)
     {
-        if(this._statement_ != null)
+        for(PStatement e : this._statement_)
         {
-            this._statement_.parent(null);
+            e.parent(null);
         }
+        this._statement_.clear();
 
-        if(node != null)
+        for(Object obj_e : list)
         {
-            if(node.parent() != null)
+            PStatement e = (PStatement) obj_e;
+            if(e.parent() != null)
             {
-                node.parent().removeChild(node);
+                e.parent().removeChild(e);
             }
 
-            node.parent(this);
+            e.parent(this);
+            this._statement_.add(e);
         }
-
-        this._statement_ = node;
     }
 
     public TEnd getEnd()
@@ -139,9 +141,8 @@ public final class ANestedStatement extends PStatement
             return;
         }
 
-        if(this._statement_ == child)
+        if(this._statement_.remove(child))
         {
-            this._statement_ = null;
             return;
         }
 
@@ -164,10 +165,22 @@ public final class ANestedStatement extends PStatement
             return;
         }
 
-        if(this._statement_ == oldChild)
+        for(ListIterator<PStatement> i = this._statement_.listIterator(); i.hasNext();)
         {
-            setStatement((PStatement) newChild);
-            return;
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((PStatement) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
+
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
         }
 
         if(this._end_ == oldChild)

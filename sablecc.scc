@@ -88,7 +88,6 @@ Tokens
 Ignored Tokens
 	whitespace;
 
-// Pruefe noch auf leeres Programm
 Productions
 	start = 
 		   program identifier semicolon begin declarations* statement* programend;
@@ -102,10 +101,28 @@ Productions
 		 | {while} while_statement
 		 | {assign} assignment
 		 | {print} print
-		 | {nested} begin statement end
+		 | {nested} begin statement+ end
 		 | {break} break
 		 | semicolon;
 
+	statement_no_short_if =
+		   {if} if_then_else_statement_no_short_if
+		 | {while} while_statement_no_short_if
+		 | {assign} assignment
+		 | {print} print
+		 | {nested} begin statement+ end
+		 | {break} break
+		 | semicolon;
+
+	while_statement_no_short_if =
+		   {while} while expression do statement_no_short_if;
+
+	while_statement =
+		   {while} while expression do statement;
+
+	/**
+	 * Trivial stuff
+	 */
 	print =
 		   writeln l_par expression* r_par;
 
@@ -163,16 +180,6 @@ Productions
 
 	if_then_else_statement_no_short_if =
 		   if expression then [left]:statement_no_short_if else [right]:statement_no_short_if;
-
-	statement_no_short_if =
-		   {if} if_then_else_statement_no_short_if
-		 | {while} while_statement_no_short_if;
-
-	while_statement_no_short_if =
-		   {while} while expression do statement_no_short_if;
-
-	while_statement =
-		   {while} while expression do statement;
 
 
 

@@ -2,6 +2,7 @@
 
 package node;
 
+import java.util.*;
 import analysis.*;
 
 @SuppressWarnings("nls")
@@ -10,7 +11,7 @@ public final class AWhileWhileStatement extends PWhileStatement
     private TWhile _while_;
     private PExpression _expression_;
     private TDo _do_;
-    private PStatement _statement_;
+    private final LinkedList<PStatement> _statement_ = new LinkedList<PStatement>();
 
     public AWhileWhileStatement()
     {
@@ -21,7 +22,7 @@ public final class AWhileWhileStatement extends PWhileStatement
         @SuppressWarnings("hiding") TWhile _while_,
         @SuppressWarnings("hiding") PExpression _expression_,
         @SuppressWarnings("hiding") TDo _do_,
-        @SuppressWarnings("hiding") PStatement _statement_)
+        @SuppressWarnings("hiding") List<?> _statement_)
     {
         // Constructor
         setWhile(_while_);
@@ -41,7 +42,7 @@ public final class AWhileWhileStatement extends PWhileStatement
             cloneNode(this._while_),
             cloneNode(this._expression_),
             cloneNode(this._do_),
-            cloneNode(this._statement_));
+            cloneList(this._statement_));
     }
 
     @Override
@@ -125,29 +126,30 @@ public final class AWhileWhileStatement extends PWhileStatement
         this._do_ = node;
     }
 
-    public PStatement getStatement()
+    public LinkedList<PStatement> getStatement()
     {
         return this._statement_;
     }
 
-    public void setStatement(PStatement node)
+    public void setStatement(List<?> list)
     {
-        if(this._statement_ != null)
+        for(PStatement e : this._statement_)
         {
-            this._statement_.parent(null);
+            e.parent(null);
         }
+        this._statement_.clear();
 
-        if(node != null)
+        for(Object obj_e : list)
         {
-            if(node.parent() != null)
+            PStatement e = (PStatement) obj_e;
+            if(e.parent() != null)
             {
-                node.parent().removeChild(node);
+                e.parent().removeChild(e);
             }
 
-            node.parent(this);
+            e.parent(this);
+            this._statement_.add(e);
         }
-
-        this._statement_ = node;
     }
 
     @Override
@@ -182,9 +184,8 @@ public final class AWhileWhileStatement extends PWhileStatement
             return;
         }
 
-        if(this._statement_ == child)
+        if(this._statement_.remove(child))
         {
-            this._statement_ = null;
             return;
         }
 
@@ -213,10 +214,22 @@ public final class AWhileWhileStatement extends PWhileStatement
             return;
         }
 
-        if(this._statement_ == oldChild)
+        for(ListIterator<PStatement> i = this._statement_.listIterator(); i.hasNext();)
         {
-            setStatement((PStatement) newChild);
-            return;
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((PStatement) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
+
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
         }
 
         throw new RuntimeException("Not a child.");
