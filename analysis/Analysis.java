@@ -33,6 +33,7 @@ public interface Analysis extends Switch
     void caseAIntegerExpr(AIntegerExpr node);
     void caseASemicolonExpr(ASemicolonExpr node);
     void caseAIdentifierExpr(AIdentifierExpr node);
+    void caseAIdentifierListExpr(AIdentifierListExpr node);
     void caseANumberExpr(ANumberExpr node);
     void caseABooleanExpr(ABooleanExpr node);
     void caseATrueExpr(ATrueExpr node);

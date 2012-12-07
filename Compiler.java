@@ -25,6 +25,7 @@ public class Compiler {
 
 		System.out.println("############################################################################");
 		System.out.println("# Eingabe:  \n"+input);
+        System.out.println("############################################################################");
 		parse(input);
 		System.out.println("############################################################################");
 	}
@@ -38,5 +39,8 @@ public class Compiler {
 		Start start = parser.parse();
 		ASTPrinter printer = new ASTPrinter();
 		start.apply(printer);
+        ASTInterpreter interpreter = new ASTInterpreter();
+        start.apply(interpreter);
+        System.out.println("################################# Success! #################################");
 	}
 }

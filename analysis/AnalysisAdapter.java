@@ -201,6 +201,12 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseAIdentifierListExpr(AIdentifierListExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseANumberExpr(ANumberExpr node)
     {
         defaultCase(node);

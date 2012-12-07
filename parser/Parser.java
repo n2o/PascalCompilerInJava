@@ -733,7 +733,15 @@ public class Parser
         @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
         @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
         PExpr pexprNode1;
-        pexprNode1 = (PExpr)nodeArrayList1.get(0);
+        {
+            // Block
+        PExpr pexprNode2;
+        TIdentifier tidentifierNode3;
+        pexprNode2 = (PExpr)nodeArrayList1.get(0);
+        tidentifierNode3 = (TIdentifier)nodeArrayList3.get(0);
+
+        pexprNode1 = new AIdentifierListExpr(pexprNode2, tidentifierNode3);
+        }
 	nodeList.add(pexprNode1);
         return nodeList;
     }

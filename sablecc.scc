@@ -93,7 +93,7 @@ Tokens
 	dot 		= '.';
 	comma 		= ',';
 	blank_or_comment = (blank | comment | comment_line)*;
-	identifier	= letter+ (number | letter)*;
+	identifier	= ('_' | '$' | letter) (number | letter)*;
 
 Ignored Tokens
 	blank_or_comment;
@@ -107,7 +107,7 @@ Productions
 
 	identifier_list {-> expr} =
 		   {mult} identifier_list comma identifier
-		   		{-> identifier_list.expr}
+		   		{-> New expr.identifier_list(identifier_list.expr, identifier)}
 		 | identifier 
 		 		{-> New expr.identifier(identifier)};
 
@@ -251,6 +251,7 @@ Abstract Syntax Tree
 		 | {integer} 	integer
 		 | {semicolon} 	semicolon
 		 | {identifier}	identifier
+		 | {identifier_list}	expr identifier
 		 | {number} 	number
 		 | {boolean} 	boolean
 		 | {true} 		true

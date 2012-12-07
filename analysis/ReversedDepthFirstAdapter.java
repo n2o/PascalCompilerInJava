@@ -561,6 +561,31 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outAIdentifierExpr(node);
     }
 
+    public void inAIdentifierListExpr(AIdentifierListExpr node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAIdentifierListExpr(AIdentifierListExpr node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAIdentifierListExpr(AIdentifierListExpr node)
+    {
+        inAIdentifierListExpr(node);
+        if(node.getIdentifier() != null)
+        {
+            node.getIdentifier().apply(this);
+        }
+        if(node.getExpr() != null)
+        {
+            node.getExpr().apply(this);
+        }
+        outAIdentifierListExpr(node);
+    }
+
     public void inANumberExpr(ANumberExpr node)
     {
         defaultIn(node);
