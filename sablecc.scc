@@ -91,6 +91,7 @@ Tokens
 	colon 		= ':';
 	semicolon	= ';';
 	dot 		= '.';
+	comma 		= ',';
 	blank_or_comment = (blank | comment | comment_line)*;
 	identifier	= letter+ (number | letter)*;
 
@@ -102,7 +103,13 @@ Productions
 		   program identifier semicolon declaration* begin statement* programend {-> New expr.start(identifier, [declaration.expr], [statement.expr])};
 
 	declaration {-> expr} =
-		   {single} var identifier colon type semicolon {-> New expr.declaration(identifier, type.expr)};
+		   var identifier_list colon type semicolon {-> New expr.declaration(identifier_list.expr, type.expr)};
+
+	identifier_list {-> expr} =
+		   {mult} identifier_list comma identifier
+		   		{-> identifier_list.expr}
+		 | identifier 
+		 		{-> New expr.identifier(identifier)};
 
 	statement {-> expr} = 
 		   {if_then_statement} if_then_statement 			{-> if_then_statement.expr}
@@ -143,8 +150,10 @@ Productions
 		   		{-> New expr.assignment(identifier, expression.expr)};
 
 	type {-> expr} = 
-		   {boolean} boolean {-> New expr.boolean(boolean)}
-		 | {integer} integer {-> New expr.integer(integer)};
+		   {boolean} boolean 
+		   		{-> New expr.boolean(boolean)}
+		 | {integer} integer 
+		 		{-> New expr.integer(integer)};
 	
 	/**
 	 * Boolean- and arithmetic expressions
@@ -223,7 +232,7 @@ Productions
 Abstract Syntax Tree
 	expr = {start} 		identifier [declaration]:expr* [statement]:expr*
 		 | {statement} 	expr*
-		 | {declaration} identifier expr
+		 | {declaration} [left]:expr [right]:expr
 		 | {print} 		expr
 		 | {assignment} identifier expr
 		 | {comparison}	[left]:expr [comparison]:expr [right]:expr

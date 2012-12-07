@@ -495,6 +495,12 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseTComma(TComma node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseTBlankOrComment(TBlankOrComment node)
     {
         defaultCase(node);

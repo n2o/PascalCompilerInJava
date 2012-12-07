@@ -9,7 +9,7 @@ comment!!!!}
 BeGin
 	a := 1;
 	b := 1;
-	while True do 
+	while 1 < 2 do 
 	begin 
 		writeln(a); // Bombe				!
 		temp := b;

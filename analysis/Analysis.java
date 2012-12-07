@@ -83,6 +83,7 @@ public interface Analysis extends Switch
     void caseTColon(TColon node);
     void caseTSemicolon(TSemicolon node);
     void caseTDot(TDot node);
+    void caseTComma(TComma node);
     void caseTBlankOrComment(TBlankOrComment node);
     void caseTIdentifier(TIdentifier node);
     void caseEOF(EOF node);

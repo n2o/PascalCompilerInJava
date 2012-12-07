@@ -109,13 +109,13 @@ public class DepthFirstAdapter extends AnalysisAdapter
     public void caseADeclarationExpr(ADeclarationExpr node)
     {
         inADeclarationExpr(node);
-        if(node.getIdentifier() != null)
+        if(node.getLeft() != null)
         {
-            node.getIdentifier().apply(this);
+            node.getLeft().apply(this);
         }
-        if(node.getExpr() != null)
+        if(node.getRight() != null)
         {
-            node.getExpr().apply(this);
+            node.getRight().apply(this);
         }
         outADeclarationExpr(node);
     }

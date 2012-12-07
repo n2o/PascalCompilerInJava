@@ -112,13 +112,13 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseADeclarationExpr(ADeclarationExpr node)
     {
         inADeclarationExpr(node);
-        if(node.getExpr() != null)
+        if(node.getRight() != null)
         {
-            node.getExpr().apply(this);
+            node.getRight().apply(this);
         }
-        if(node.getIdentifier() != null)
+        if(node.getLeft() != null)
         {
-            node.getIdentifier().apply(this);
+            node.getLeft().apply(this);
         }
         outADeclarationExpr(node);
     }
