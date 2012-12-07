@@ -93,13 +93,175 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseABooleanExpr(ABooleanExpr node)
+    public void caseAPrintExpr(APrintExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAAssignmentExpr(AAssignmentExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAComparisonExpr(AComparisonExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAPlusExpr(APlusExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAMinusExpr(AMinusExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAOrExpr(AOrExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAXorExpr(AXorExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAModExpr(AModExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAMultExpr(AMultExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseADivExpr(ADivExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAAndExpr(AAndExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseANotExpr(ANotExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAWhileExpr(AWhileExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAIfThenExpr(AIfThenExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAIfThenElseExpr(AIfThenElseExpr node)
     {
         defaultCase(node);
     }
 
     @Override
     public void caseAIntegerExpr(AIntegerExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseASemicolonExpr(ASemicolonExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAIdentifierExpr(AIdentifierExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseANumberExpr(ANumberExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseABooleanExpr(ABooleanExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseATrueExpr(ATrueExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAFalseExpr(AFalseExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAGtExpr(AGtExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAGeExpr(AGeExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseALtExpr(ALtExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseALeExpr(ALeExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseANeExpr(ANeExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAEqExpr(AEqExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseABreakExpr(ABreakExpr node)
     {
         defaultCase(node);
     }

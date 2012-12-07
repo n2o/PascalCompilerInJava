@@ -10,7 +10,8 @@ BeGin
 	a := 1;
 	b := 1;
 	while True do 
-	begin writeln(a); // Bombe				!
+	begin 
+		writeln(a); // Bombe				!
 		temp := b;
 		b := a + b;
 		a := temp ;
