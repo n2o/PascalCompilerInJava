@@ -1,0 +1,193 @@
+Helpers
+	firstnum = ['1'..'9'];
+	number 	 = ['0'..'9'];
+	a 		 = ['a' + 'A'];
+  	b 		 = ['b' + 'B'];
+  	c 		 = ['c' + 'C'];
+  	d 		 = ['d' + 'D'];
+  	e 		 = ['e' + 'E'];
+  	f 		 = ['f' + 'F'];
+  	g 		 = ['g' + 'G'];
+  	h 		 = ['h' + 'H'];
+  	i 		 = ['i' + 'I'];
+  	j 		 = ['j' + 'J'];
+  	k 		 = ['k' + 'K'];
+  	l 		 = ['l' + 'L'];
+  	m 		 = ['m' + 'M'];
+  	n 		 = ['n' + 'N'];
+  	o 		 = ['o' + 'O'];
+  	p 		 = ['p' + 'P'];
+  	q 		 = ['q' + 'Q'];
+  	r 		 = ['r' + 'R'];
+  	s 		 = ['s' + 'S'];
+  	t 		 = ['t' + 'T'];
+  	u 		 = ['u' + 'U'];
+  	v 		 = ['v' + 'V'];
+  	w 		 = ['w' + 'W'];
+  	x 		 = ['x' + 'X'];
+  	y 		 = ['y' + 'Y'];
+  	z 		 = ['z' + 'Z'];
+	letter   = (['a'..'z']|['A'..'Z']);
+
+	cr = 13;
+    lf = 10;
+
+    // For comments
+	any = [0 .. 127]; 					// all characters 
+	not_curly_left = [ any - '{' ];
+	not_curly = [ not_curly_left - '}' ];
+	blank		= (' '| 9 | lf | cr)+;
+	comment 	= '{' not_curly* (' '| 9 | lf | cr)* '}';
+
+Tokens
+	// Datatypes
+	integer		= i n t e g e r;
+	boolean		= b o o l e a n;
+	var			= v a r;
+	number 		= (firstnum number*)|'0';
+
+	// Commands
+	assign	= ':=';
+	begin 	= b e g i n;
+	programend 	= e n d '.';
+	end 	= e n d;
+	program	= p r o g r a m;
+	if		= i f;
+	then	= t h e n;
+	else	= e l s e;
+	while	= w h i l e;
+	do		= d o;
+	writeln	= w r i t e l n;
+	break 	= b r e a k;
+
+	// Operators
+	l_par	= '(';
+	r_par	= ')';
+	plus 	= '+';
+	minus 	= '-';
+	mult	= '*';
+	div 	= d i v;
+	mod 	= m o d;
+	eq		= '=';
+	lt		= '<';
+	gt 		= '>';
+	le		= '<=';
+	ge		= '>=';
+	ne		= '<>';
+	and		= a n d;
+	or		= o r;
+	xor 	= x o r;
+	not 	= n o t;
+	true	= t r u e;
+	false	= f a l s e;
+
+	// Other
+	colon 		= ':';
+	semicolon	= ';';
+	dot 		= '.';
+	blank_or_comment = (blank | comment)*;
+	identifier	= letter+ (number | letter)*;
+
+Ignored Tokens
+	blank_or_comment;
+
+Productions
+	start = 
+		   program identifier semicolon declarations* begin statement* programend;
+	
+	declarations =
+		   {single} var identifier colon type semicolon;
+
+	statement = 
+		   {if_then_statement} if_then_statement
+		 | {if_then_else_statement} if_then_else_statement  
+		 | {while} while_statement
+		 | {assign} assignment
+		 | {print} print
+		 | {nested} begin statement+ end
+		 | {break} break semicolon
+		 | semicolon;
+
+	statement_no_short_if =
+		   {if} if_then_else_statement_no_short_if
+		 | {while} while_statement_no_short_if
+		 | {assign} assignment
+		 | {print} print
+		 | {nested} begin statement+ end
+		 | {break} break
+		 | semicolon;
+
+	while_statement_no_short_if =
+		   {while} while expression do statement_no_short_if;
+
+	while_statement =
+		   {while} while expression do statement;
+
+	/**
+	 * Trivial stuff
+	 */
+	print =
+		   writeln l_par expression r_par;
+
+	assignment = 
+		   identifier assign expression;
+
+	type = 
+		   {boolean} boolean
+		 | {integer} integer;
+	
+	/**
+	 * Boolean- and arithmetic expressions
+	 */
+	expression = 
+		  {comparision} expression comparision expression2
+		 | expression2;
+
+	expression2 =
+		   {plus} expression2 plus expression3 
+		 | {minus} expression2 minus expression3
+		 | {or} expression2 or expression3
+		 | {xor} expression2 xor expression3
+		 | expression3;
+
+	expression3 =
+		   {mod} expression3 mod expression4
+		 | {mult} expression3 mult expression4
+		 | {div} expression3 div expression4
+		 | {and} expression3 and expression4
+		 | expression4;
+
+	expression4 = 
+		   {not} not expression4
+		 | {number} number
+		 | {identifier} identifier
+		 | {true} true
+		 | {false} false;
+
+	comparision = 
+		   {gt} gt
+		 | {ge} ge
+		 | {lt} lt
+		 | {le} le
+		 | {ne} ne
+		 | {eq} eq;
+
+	/**
+	 * If expressions
+	 */
+	if_then_statement =
+		   if expression then statement;
+
+	if_then_else_statement =
+		   if expression then statement_no_short_if else statement;
+
+	if_then_else_statement_no_short_if =
+		   if expression then [left]:statement_no_short_if else [right]:statement_no_short_if;
+
+
+
+
+
+
+
+

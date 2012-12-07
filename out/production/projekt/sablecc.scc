@@ -1,0 +1,271 @@
+Helpers
+	firstnum = ['1'..'9'];
+	number 	 = ['0'..'9'];
+	a 		 = ['a' + 'A'];
+  	b 		 = ['b' + 'B'];
+  	c 		 = ['c' + 'C'];
+  	d 		 = ['d' + 'D'];
+  	e 		 = ['e' + 'E'];
+  	f 		 = ['f' + 'F'];
+  	g 		 = ['g' + 'G'];
+  	h 		 = ['h' + 'H'];
+  	i 		 = ['i' + 'I'];
+  	j 		 = ['j' + 'J'];
+  	k 		 = ['k' + 'K'];
+  	l 		 = ['l' + 'L'];
+  	m 		 = ['m' + 'M'];
+  	n 		 = ['n' + 'N'];
+  	o 		 = ['o' + 'O'];
+  	p 		 = ['p' + 'P'];
+  	q 		 = ['q' + 'Q'];
+  	r 		 = ['r' + 'R'];
+  	s 		 = ['s' + 'S'];
+  	t 		 = ['t' + 'T'];
+  	u 		 = ['u' + 'U'];
+  	v 		 = ['v' + 'V'];
+  	w 		 = ['w' + 'W'];
+  	x 		 = ['x' + 'X'];
+  	y 		 = ['y' + 'Y'];
+  	z 		 = ['z' + 'Z'];
+	letter   = (['a'..'z']|['A'..'Z']);
+
+	cr = 13;
+    lf = 10;
+    tab = 9;
+
+    // For comments
+	any = [0 .. 127]; 					// all characters 
+	not_curly_left = [ any - '{' ];
+	not_curly 	= [ not_curly_left - '}' ];
+
+	not_lf 		= [any - lf];			// take away the linefeed and carriage return
+	not_crlf 	= [not_lf - cr];
+
+	blank		= (' '| tab | lf | cr);
+	comment 	= '{' not_curly* blank* '}';
+	comment_line = '//' not_crlf*;
+
+Tokens
+	// Datatypes
+	integer		= i n t e g e r;
+	boolean		= b o o l e a n;
+	var			= v a r;
+	number 		= (firstnum number*)|'0';
+
+	// Commands
+	assign	= ':=';
+	begin 	= b e g i n;
+	programend 	= e n d '.';
+	end 	= e n d;
+	program	= p r o g r a m;
+	if		= i f;
+	then	= t h e n;
+	else	= e l s e;
+	while	= w h i l e;
+	do		= d o;
+	writeln	= w r i t e l n;
+	break 	= b r e a k;
+
+	// Operators
+	l_par	= '(';
+	r_par	= ')';
+	plus 	= '+';
+	minus 	= '-';
+	mult	= '*';
+	div 	= d i v;
+	mod 	= m o d;
+	eq		= '=';
+	lt		= '<';
+	gt 		= '>';
+	le		= '<=';
+	ge		= '>=';
+	ne		= '<>';
+	and		= a n d;
+	or		= o r;
+	xor 	= x o r;
+	not 	= n o t;
+	true	= t r u e;
+	false	= f a l s e;
+
+	// Other
+	colon 		= ':';
+	semicolon	= ';';
+	dot 		= '.';
+	comma 		= ',';
+	blank_or_comment = (blank | comment | comment_line)*;
+	identifier	= ('_' | '$' | letter) (number | letter)*;
+
+Ignored Tokens
+	blank_or_comment;
+
+Productions
+	start {-> expr} = 
+		   program identifier semicolon declaration* begin statement* programend {-> New expr.start(identifier, [declaration.expr], [statement.expr])};
+
+	declaration {-> expr} =
+		   var identifier_list colon type semicolon {-> New expr.declaration(identifier_list.expr, type.expr)};
+
+	identifier_list {-> expr} =
+		   {mult} identifier_list comma identifier
+		   		{-> New expr.identifier_list(identifier_list.expr, identifier)}
+		 | identifier 
+		 		{-> New expr.identifier(identifier)};
+
+	statement {-> expr} = 
+		   {if_then_statement} if_then_statement 			{-> if_then_statement.expr}
+		 | {if_then_else_statement} if_then_else_statement 	{-> if_then_else_statement.expr}
+		 | {while} while_statement 							{-> while_statement.expr}
+		 | {assign} assignment 								{-> assignment.expr}
+		 | {print} print 									{-> print.expr}
+		 | {nested} begin statement+ end 					{-> New expr.statement([statement.expr])}
+		 | {break} break		 							{-> New expr.break(break)}
+		 | semicolon 										{-> New expr.semicolon(semicolon)};
+
+	statement_no_short_if {-> expr} =
+		   {if} if_then_else_statement_no_short_if			{-> if_then_else_statement_no_short_if.expr}
+		 | {while} while_statement_no_short_if				{-> while_statement_no_short_if.expr}
+		 | {assign} assignment								{-> assignment.expr}
+		 | {print} print									{-> print.expr}
+		 | {nested} begin statement+ end					{-> New expr.statement([statement.expr])}
+		 | {break} break									{-> New expr.break(break)}
+		 | semicolon										{-> New expr.semicolon(semicolon)};
+
+	while_statement_no_short_if {-> expr} =
+		   {while} while expression do statement_no_short_if
+		   		{-> New expr.while(expression.expr, statement_no_short_if.expr)};
+
+	while_statement {-> expr} =
+		   {while} while expression do statement
+		   		{-> New expr.while(expression.expr, statement.expr)};
+
+	/**
+	 * Trivial stuff
+	 */
+	print {-> expr} =
+		   writeln l_par expression r_par
+		   		{-> New expr.print(expression.expr)};
+
+	assignment {-> expr} = 
+		   identifier assign expression
+		   		{-> New expr.assignment(identifier, expression.expr)};
+
+	type {-> expr} = 
+		   {boolean} boolean 
+		   		{-> New expr.boolean(boolean)}
+		 | {integer} integer 
+		 		{-> New expr.integer(integer)};
+	
+	/**
+	 * Boolean- and arithmetic expressions
+	 */
+	expression {-> expr} = 
+		  {comparison} [left]:expression [comparison]:comparison [right]:expression2
+		  		{-> New expr.comparison(left.expr, comparison.expr, right.expr)}
+		 | expression2
+		 		{-> expression2.expr};
+
+	expression2 {-> expr} =
+		   {plus} 	[left]:expression2 	plus 	[right]:expression3 
+		   		{-> New expr.plus(left.expr, right.expr)}
+		 | {minus} 	[left]:expression2 	minus 	[right]:expression3
+		 		{-> New expr.minus(left.expr, right.expr)}
+		 | {or} 	[left]:expression2 	or 		[right]:expression3
+		 		{-> New expr.or(left.expr, right.expr)}
+		 | {xor} 	[left]:expression2 	xor	 	[right]:expression3
+		 		{-> New expr.xor(left.expr, right.expr)}
+		 | expression3
+		 		{-> expression3.expr};
+
+	expression3 {-> expr} =
+		   {mod} 	[left]:expression3 	mod 	[right]:expression4
+		   		{-> New expr.mod(left.expr, right.expr)}
+		 | {mult} 	[left]:expression3 	mult 	[right]:expression4
+		 		{-> New expr.mult(left.expr, right.expr)}
+		 | {div} 	[left]:expression3 	div 	[right]:expression4
+		 		{-> New expr.div(left.expr, right.expr)}
+		 | {and} 	[left]:expression3 	and 	[right]:expression4
+		 		{-> New expr.and(left.expr, right.expr)}
+		 | expression4
+		 		{-> expression4.expr};
+
+	expression4 {-> expr} = 
+		   {not} not expression4
+		   		{-> New expr.not(expression4.expr)}
+		 | {number} number
+		 		{-> New expr.number(number)}
+		 | {identifier} identifier
+		 		{-> New expr.identifier(identifier)}
+		 | {true} true
+		 		{-> New expr.true(true)}
+		 | {false} false
+		 		{-> New expr.false(false)};
+
+	comparison {-> expr} = 
+		   {gt} gt
+		   		{-> New expr.gt(gt)}
+		 | {ge} ge
+		 		{-> New expr.ge(ge)}
+		 | {lt} lt
+		 		{-> New expr.lt(lt)}
+		 | {le} le
+		 		{-> New expr.le(le)}
+		 | {ne} ne
+		 		{-> New expr.ne(ne)}
+		 | {eq} eq
+		 		{-> New expr.eq(eq)};
+
+	/**
+	 * If expressions
+	 */
+	if_then_statement {-> expr} =
+		   if [left]:expression then [right]:statement
+		   		{-> New expr.if_then(left.expr, right.expr)};
+
+	if_then_else_statement {-> expr} =
+		   if [left]:expression then [mid]:statement_no_short_if else [right]:statement
+		   		{-> New expr.if_then_else(left.expr, mid.expr, right.expr)};
+
+	if_then_else_statement_no_short_if {-> expr} =
+		   if [left]:expression then [mid]:statement_no_short_if else [right]:statement_no_short_if
+		   		{-> New expr.if_then_else(left.expr, mid.expr, right.expr)};
+
+Abstract Syntax Tree
+	expr = {start} 		identifier [declaration]:expr* [statement]:expr*
+		 | {statement} 	expr*
+		 | {declaration} [left]:expr [right]:expr
+		 | {print} 		expr
+		 | {assignment} identifier expr
+		 | {comparison}	[left]:expr [comparison]:expr [right]:expr
+		 | {plus} 		[left]:expr [right]:expr
+		 | {minus} 		[left]:expr [right]:expr
+		 | {or} 		[left]:expr [right]:expr
+		 | {xor} 		[left]:expr [right]:expr
+		 | {mod} 		[left]:expr [right]:expr
+		 | {mult} 		[left]:expr [right]:expr
+		 | {div} 		[left]:expr [right]:expr
+		 | {and} 		[left]:expr [right]:expr
+		 | {not} 		expr
+		 | {while}		[left]:expr [right]:expr
+		 | {if_then}	[left]:expr [right]:expr
+		 | {if_then_else} [if]:expr [then]:expr [else]:expr
+		 | {integer} 	integer
+		 | {semicolon} 	semicolon
+		 | {identifier}	identifier
+		 | {identifier_list}	expr identifier
+		 | {number} 	number
+		 | {boolean} 	boolean
+		 | {true} 		true
+		 | {false} 		false
+		 | {gt} 		gt
+		 | {ge} 		ge
+		 | {lt} 		lt
+		 | {le} 		le
+		 | {ne} 		ne
+		 | {eq} 		eq
+		 | {break} 		break;
+
+
+
+
+
+
