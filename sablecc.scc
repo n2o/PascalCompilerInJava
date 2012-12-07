@@ -31,6 +31,7 @@ Helpers
 
 	cr = 13;
     lf = 10;
+    tab = 9;
 
     // For comments
 	any = [0 .. 127]; 					// all characters 
@@ -40,7 +41,7 @@ Helpers
 	not_lf 		= [any - lf];			// take away the linefeed and carriage return
 	not_crlf 	= [not_lf - cr];
 
-	blank		= (' '| 9 | lf | cr);
+	blank		= (' '| tab | lf | cr);
 	comment 	= '{' not_curly* blank* '}';
 	comment_line = '//' not_crlf*;
 
@@ -97,11 +98,13 @@ Ignored Tokens
 	blank_or_comment;
 
 Productions
-	start = 
-		   program identifier semicolon declarations* begin statement* programend;
-	
-	declarations =
-		   {single} var identifier colon type semicolon;
+	start {-> expr} = 
+		   program identifier semicolon declaration* begin statement* programend
+		   {-> New expr.start(identifier, [declaration.expr])};
+
+	declaration {-> expr} =
+		   {single} var identifier colon type semicolon
+		   {-> New expr.declaration(identifier, type.expr)};
 
 	statement = 
 		   {if_then_statement} if_then_statement
@@ -137,9 +140,9 @@ Productions
 	assignment = 
 		   identifier assign expression;
 
-	type = 
-		   {boolean} boolean
-		 | {integer} integer;
+	type {-> expr} = 
+		   {boolean} boolean {-> New expr.boolean(boolean)}
+		 | {integer} integer {-> New expr.integer(integer)};
 	
 	/**
 	 * Boolean- and arithmetic expressions
@@ -189,7 +192,12 @@ Productions
 	if_then_else_statement_no_short_if =
 		   if expression then [left]:statement_no_short_if else [right]:statement_no_short_if;
 
-
+Abstract Syntax Tree
+	expr = {start} identifier expr*
+		 | {statement} expr*
+		 | {declaration} identifier expr
+		 | {boolean} boolean
+		 | {integer} integer;
 
 
 

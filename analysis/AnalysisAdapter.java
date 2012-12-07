@@ -75,295 +75,31 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAStart(AStart node)
+    public void caseAStartExpr(AStartExpr node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseASingleDeclarations(ASingleDeclarations node)
+    public void caseAStatementExpr(AStatementExpr node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAIfThenStatementStatement(AIfThenStatementStatement node)
+    public void caseADeclarationExpr(ADeclarationExpr node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAIfThenElseStatementStatement(AIfThenElseStatementStatement node)
+    public void caseABooleanExpr(ABooleanExpr node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAWhileStatement(AWhileStatement node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAAssignStatement(AAssignStatement node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAPrintStatement(APrintStatement node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseANestedStatement(ANestedStatement node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseABreakStatement(ABreakStatement node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAStatement(AStatement node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAIfStatementNoShortIf(AIfStatementNoShortIf node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAWhileStatementNoShortIf(AWhileStatementNoShortIf node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAAssignStatementNoShortIf(AAssignStatementNoShortIf node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAPrintStatementNoShortIf(APrintStatementNoShortIf node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseANestedStatementNoShortIf(ANestedStatementNoShortIf node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseABreakStatementNoShortIf(ABreakStatementNoShortIf node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAStatementNoShortIf(AStatementNoShortIf node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAWhileWhileStatementNoShortIf(AWhileWhileStatementNoShortIf node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAWhileWhileStatement(AWhileWhileStatement node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAPrint(APrint node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAAssignment(AAssignment node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseABooleanType(ABooleanType node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAIntegerType(AIntegerType node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAComparisionExpression(AComparisionExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAExpression(AExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAPlusExpression2(APlusExpression2 node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAMinusExpression2(AMinusExpression2 node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAOrExpression2(AOrExpression2 node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAXorExpression2(AXorExpression2 node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAExpression2(AExpression2 node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAModExpression3(AModExpression3 node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAMultExpression3(AMultExpression3 node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseADivExpression3(ADivExpression3 node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAAndExpression3(AAndExpression3 node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAExpression3(AExpression3 node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseANotExpression4(ANotExpression4 node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseANumberExpression4(ANumberExpression4 node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAIdentifierExpression4(AIdentifierExpression4 node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseATrueExpression4(ATrueExpression4 node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAFalseExpression4(AFalseExpression4 node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAGtComparision(AGtComparision node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAGeComparision(AGeComparision node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseALtComparision(ALtComparision node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseALeComparision(ALeComparision node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseANeComparision(ANeComparision node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAEqComparision(AEqComparision node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAIfThenStatement(AIfThenStatement node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAIfThenElseStatement(AIfThenElseStatement node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAIfThenElseStatementNoShortIf(AIfThenElseStatementNoShortIf node)
+    public void caseAIntegerExpr(AIntegerExpr node)
     {
         defaultCase(node);
     }
