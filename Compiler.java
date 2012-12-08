@@ -44,7 +44,7 @@ public class Compiler {
         System.out.println("# Starting TypeChecker...");
         ASTTypeChecker interpreter = new ASTTypeChecker();
         start.apply(interpreter);
-        System.out.println("\n# TypeChecker: Finished with no errors.\n");
+        System.out.println("# TypeChecker: Finished with no errors.\n");
         System.out.println("################################# Success! #################################");
 	}
 }

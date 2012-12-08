@@ -12,9 +12,9 @@ public class ASTTypeChecker extends DepthFirstAdapter {
      * Look up all the declarations and put it into the HashMap
      */
     public void caseADeclarationExpr(ADeclarationExpr node) {
-        String[] var;
         String type = node.getRight().toString().toLowerCase().replaceAll(" ","");
-        var = node.getLeft().toString().toLowerCase().split(" ");
+        String[] var = node.getLeft().toString().toLowerCase().split(" ");
+
         for (String aVar : var) {
             if (!symbolTable.containsKey(aVar)) {
                 symbolTable.put(aVar, type);
@@ -61,9 +61,23 @@ public class ASTTypeChecker extends DepthFirstAdapter {
 
     }
 
+
     /**************************************************************************************************
-     * Typechecking of all the boolean operations or, xor, and, not
+     * Typechecking of all the boolean operations or, xor, and, not and comparisons <, <=, >, ...
      */
+    @Override
+    public void caseAComparisonExpr(AComparisonExpr node) {
+        String operation = "comparison";
+        node.getLeft().apply(this);
+        String left = this.result;
+        node.getRight().apply(this);
+        String right = this.result;
+
+        if (!left.equals(right))
+            printErrorBooleanOperation(operation);
+        else
+            printValidOperation(operation);
+    }
     @Override
     public void caseAOrExpr(AOrExpr node) {
         String operation = "or";
@@ -108,9 +122,10 @@ public class ASTTypeChecker extends DepthFirstAdapter {
         String operation = "not";
         node.getExpr().apply(this);
 
-        if (!result.equals("boolean"))
-            System.out.println("# Error: Syntax of '"+operation+"' is 'not' 'boolean' = 'boolean'.");
-        else
+        if (!result.equals("boolean")) {
+            System.out.println("# Error: Syntax of '" + operation + "' is 'not' 'boolean' = 'boolean'.");
+            System.exit(1);
+        } else
             printValidOperation(operation);
     }
 
@@ -228,14 +243,14 @@ public class ASTTypeChecker extends DepthFirstAdapter {
     }
 
     /**
-     * Prepare outputstrings for arithmetic operations
+     * Prepare output for arithmetic operations
      */
     private void printErrorArithmeticOperation(String operation) {
         System.out.println("# Error: Syntax of '"+operation+"' is 'integer' '"+operation+"' 'integer' = 'integer'.");
         System.exit(1);
     }
     private void printValidOperation(String operation) {
-        System.out.println("\t# Found: Valid '"+operation+"' Operation");
+        System.out.println("\t# Found: Valid '"+operation+"' Operation.");
     }
     /**
      * The same for boolean expressions

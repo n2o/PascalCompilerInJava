@@ -1,14 +1,16 @@
-proGRam fibonacci; 
+program fibonacci; 
 var a : integer; 
-var b: integer;
-var c: integer;
-var bool: boolean;
+var b: integer; 
+var temp : integer ; 
 
-BeGin
+begin
 	a := 1;
-	b := 1+2;
-	a := b;
-	a := b*c;
-	bool := not true or false;
-
+	b := 1;
+	while True do 
+	begin 
+		writeln(a)
+		temp := b;
+		b := a + b;
+		a := temp;
+	end
 end.
