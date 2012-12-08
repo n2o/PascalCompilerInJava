@@ -6,7 +6,7 @@ import parser.ParserException;
 
 import java.io.*;
 
-public class Compiler {
+public class StupsCompiler {
 
 	public static void main(String[] args) throws LexerException, IOException, ParserException {
         String input = "";

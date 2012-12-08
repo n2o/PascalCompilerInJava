@@ -142,11 +142,11 @@ Productions
 	 * Trivial stuff
 	 */
 	print {-> expr} =
-		   writeln l_par expression r_par semicolon
+		   writeln l_par expression r_par 
 		   		{-> New expr.print(expression.expr)};
 
 	assignment {-> expr} = 
-		   identifier assign expression semicolon
+		   identifier assign expression 
 		   		{-> New expr.assignment(identifier, expression.expr)};
 
 	type {-> expr} = 

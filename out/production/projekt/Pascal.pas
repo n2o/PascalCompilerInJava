@@ -8,9 +8,10 @@ begin
 	b := 1;
 	while True do 
 	begin 
-		writeln(a)
+		writeln(a);
 		temp := b;
 		b := a + b;
 		a := temp;
+		;
 	end
 end.

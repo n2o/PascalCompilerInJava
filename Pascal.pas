@@ -12,5 +12,6 @@ begin
 		temp := b;
 		b := a + b;
 		a := temp;
+		;
 	end
 end.
