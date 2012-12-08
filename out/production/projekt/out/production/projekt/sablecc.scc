@@ -31,13 +31,19 @@ Helpers
 
 	cr = 13;
     lf = 10;
+    tab = 9;
 
     // For comments
 	any = [0 .. 127]; 					// all characters 
 	not_curly_left = [ any - '{' ];
-	not_curly = [ not_curly_left - '}' ];
-	blank		= (' '| 9 | lf | cr)+;
-	comment 	= '{' not_curly* (' '| 9 | lf | cr)* '}';
+	not_curly 	= [ not_curly_left - '}' ];
+
+	not_lf 		= [any - lf];			// take away the linefeed and carriage return
+	not_crlf 	= [not_lf - cr];
+
+	blank		= (' '| tab | lf | cr);
+	comment 	= '{' not_curly* blank* '}';
+	comment_line = '//' not_crlf*;
 
 Tokens
 	// Datatypes
@@ -85,106 +91,178 @@ Tokens
 	colon 		= ':';
 	semicolon	= ';';
 	dot 		= '.';
-	blank_or_comment = (blank | comment)*;
-	identifier	= letter+ (number | letter)*;
+	comma 		= ',';
+	blank_or_comment = (blank | comment | comment_line)*;
+	identifier	= ('_' | '$' | letter) (number | letter)*;
 
 Ignored Tokens
 	blank_or_comment;
 
 Productions
-	start = 
-		   program identifier semicolon declarations* begin statement* programend;
-	
-	declarations =
-		   {single} var identifier colon type semicolon;
+	start {-> expr} = 
+		   program identifier semicolon declaration* begin statement* programend {-> New expr.start(identifier, [declaration.expr], [statement.expr])};
 
-	statement = 
-		   {if_then_statement} if_then_statement
-		 | {if_then_else_statement} if_then_else_statement  
-		 | {while} while_statement
-		 | {assign} assignment
-		 | {print} print
-		 | {nested} begin statement+ end
-		 | {break} break semicolon
-		 | semicolon;
+	declaration {-> expr} =
+		   var identifier_list colon type semicolon {-> New expr.declaration(identifier_list.expr, type.expr)};
 
-	statement_no_short_if =
-		   {if} if_then_else_statement_no_short_if
-		 | {while} while_statement_no_short_if
-		 | {assign} assignment
-		 | {print} print
-		 | {nested} begin statement+ end
-		 | {break} break
-		 | semicolon;
+	identifier_list {-> expr} =
+		   {mult} identifier_list comma identifier
+		   		{-> New expr.identifier_list(identifier_list.expr, identifier)}
+		 | identifier 
+		 		{-> New expr.identifier(identifier)};
 
-	while_statement_no_short_if =
-		   {while} while expression do statement_no_short_if;
+	statement {-> expr} = 
+		   {if_then_statement} if_then_statement 			{-> if_then_statement.expr}
+		 | {if_then_else_statement} if_then_else_statement 	{-> if_then_else_statement.expr}
+		 | {while} while_statement 							{-> while_statement.expr}
+		 | {assign} assignment 								{-> assignment.expr}
+		 | {print} print 									{-> print.expr}
+		 | {nested} begin statement+ end 					{-> New expr.statement([statement.expr])}
+		 | {break} break		 							{-> New expr.break(break)}
+		 | semicolon 										{-> New expr.semicolon(semicolon)};
 
-	while_statement =
-		   {while} while expression do statement;
+	statement_no_short_if {-> expr} =
+		   {if} if_then_else_statement_no_short_if			{-> if_then_else_statement_no_short_if.expr}
+		 | {while} while_statement_no_short_if				{-> while_statement_no_short_if.expr}
+		 | {assign} assignment								{-> assignment.expr}
+		 | {print} print									{-> print.expr}
+		 | {nested} begin statement+ end					{-> New expr.statement([statement.expr])}
+		 | {break} break									{-> New expr.break(break)}
+		 | semicolon										{-> New expr.semicolon(semicolon)};
+
+	while_statement_no_short_if {-> expr} =
+		   {while} while expression do statement_no_short_if
+		   		{-> New expr.while(expression.expr, statement_no_short_if.expr)};
+
+	while_statement {-> expr} =
+		   {while} while expression do statement
+		   		{-> New expr.while(expression.expr, statement.expr)};
 
 	/**
 	 * Trivial stuff
 	 */
-	print =
-		   writeln l_par expression r_par;
+	print {-> expr} =
+		   writeln l_par expression r_par
+		   		{-> New expr.print(expression.expr)};
 
-	assignment = 
-		   identifier assign expression;
+	assignment {-> expr} = 
+		   identifier assign expression
+		   		{-> New expr.assignment(identifier, expression.expr)};
 
-	type = 
-		   {boolean} boolean
-		 | {integer} integer;
+	type {-> expr} = 
+		   {boolean} boolean 
+		   		{-> New expr.boolean(boolean)}
+		 | {integer} integer 
+		 		{-> New expr.integer(integer)};
 	
 	/**
 	 * Boolean- and arithmetic expressions
 	 */
-	expression = 
-		  {comparision} expression comparision expression2
-		 | expression2;
+	expression {-> expr} = 
+		  {comparison} [left]:expression [comparison]:comparison [right]:expression2
+		  		{-> New expr.comparison(left.expr, comparison.expr, right.expr)}
+		 | expression2
+		 		{-> expression2.expr};
 
-	expression2 =
-		   {plus} expression2 plus expression3 
-		 | {minus} expression2 minus expression3
-		 | {or} expression2 or expression3
-		 | {xor} expression2 xor expression3
-		 | expression3;
+	expression2 {-> expr} =
+		   {plus} 	[left]:expression2 	plus 	[right]:expression3 
+		   		{-> New expr.plus(left.expr, right.expr)}
+		 | {minus} 	[left]:expression2 	minus 	[right]:expression3
+		 		{-> New expr.minus(left.expr, right.expr)}
+		 | {or} 	[left]:expression2 	or 		[right]:expression3
+		 		{-> New expr.or(left.expr, right.expr)}
+		 | {xor} 	[left]:expression2 	xor	 	[right]:expression3
+		 		{-> New expr.xor(left.expr, right.expr)}
+		 | expression3
+		 		{-> expression3.expr};
 
-	expression3 =
-		   {mod} expression3 mod expression4
-		 | {mult} expression3 mult expression4
-		 | {div} expression3 div expression4
-		 | {and} expression3 and expression4
-		 | expression4;
+	expression3 {-> expr} =
+		   {mod} 	[left]:expression3 	mod 	[right]:expression4
+		   		{-> New expr.mod(left.expr, right.expr)}
+		 | {mult} 	[left]:expression3 	mult 	[right]:expression4
+		 		{-> New expr.mult(left.expr, right.expr)}
+		 | {div} 	[left]:expression3 	div 	[right]:expression4
+		 		{-> New expr.div(left.expr, right.expr)}
+		 | {and} 	[left]:expression3 	and 	[right]:expression4
+		 		{-> New expr.and(left.expr, right.expr)}
+		 | expression4
+		 		{-> expression4.expr};
 
-	expression4 = 
+	expression4 {-> expr} = 
 		   {not} not expression4
+		   		{-> New expr.not(expression4.expr)}
 		 | {number} number
+		 		{-> New expr.number(number)}
 		 | {identifier} identifier
+		 		{-> New expr.identifier(identifier)}
 		 | {true} true
-		 | {false} false;
+		 		{-> New expr.true(true)}
+		 | {false} false
+		 		{-> New expr.false(false)};
 
-	comparision = 
+	comparison {-> expr} = 
 		   {gt} gt
+		   		{-> New expr.gt(gt)}
 		 | {ge} ge
+		 		{-> New expr.ge(ge)}
 		 | {lt} lt
+		 		{-> New expr.lt(lt)}
 		 | {le} le
+		 		{-> New expr.le(le)}
 		 | {ne} ne
-		 | {eq} eq;
+		 		{-> New expr.ne(ne)}
+		 | {eq} eq
+		 		{-> New expr.eq(eq)};
 
 	/**
 	 * If expressions
 	 */
-	if_then_statement =
-		   if expression then statement;
+	if_then_statement {-> expr} =
+		   if [left]:expression then [right]:statement
+		   		{-> New expr.if_then(left.expr, right.expr)};
 
-	if_then_else_statement =
-		   if expression then statement_no_short_if else statement;
+	if_then_else_statement {-> expr} =
+		   if [left]:expression then [mid]:statement_no_short_if else [right]:statement
+		   		{-> New expr.if_then_else(left.expr, mid.expr, right.expr)};
 
-	if_then_else_statement_no_short_if =
-		   if expression then [left]:statement_no_short_if else [right]:statement_no_short_if;
+	if_then_else_statement_no_short_if {-> expr} =
+		   if [left]:expression then [mid]:statement_no_short_if else [right]:statement_no_short_if
+		   		{-> New expr.if_then_else(left.expr, mid.expr, right.expr)};
 
-
+Abstract Syntax Tree
+	expr = {start} 		identifier [declaration]:expr* [statement]:expr*
+		 | {statement} 	expr*
+		 | {declaration} [left]:expr [right]:expr
+		 | {print} 		expr
+		 | {assignment} identifier expr
+		 | {comparison}	[left]:expr [comparison]:expr [right]:expr
+		 | {plus} 		[left]:expr [right]:expr
+		 | {minus} 		[left]:expr [right]:expr
+		 | {or} 		[left]:expr [right]:expr
+		 | {xor} 		[left]:expr [right]:expr
+		 | {mod} 		[left]:expr [right]:expr
+		 | {mult} 		[left]:expr [right]:expr
+		 | {div} 		[left]:expr [right]:expr
+		 | {and} 		[left]:expr [right]:expr
+		 | {not} 		expr
+		 | {while}		[left]:expr [right]:expr
+		 | {if_then}	[left]:expr [right]:expr
+		 | {if_then_else} [if]:expr [then]:expr [else]:expr
+		 | {integer} 	integer
+		 | {semicolon} 	semicolon
+		 | {identifier}	identifier
+		 | {identifier_list}	expr identifier
+		 | {number} 	number
+		 | {boolean} 	boolean
+		 | {true} 		true
+		 | {false} 		false
+		 | {gt} 		gt
+		 | {ge} 		ge
+		 | {lt} 		lt
+		 | {le} 		le
+		 | {ne} 		ne
+		 | {eq} 		eq
+		 | {break} 		break;
 
 
 
