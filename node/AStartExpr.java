@@ -10,7 +10,7 @@ public final class AStartExpr extends PExpr
 {
     private TIdentifier _identifier_;
     private final LinkedList<PExpr> _declaration_ = new LinkedList<PExpr>();
-    private final LinkedList<PExpr> _statement_ = new LinkedList<PExpr>();
+    private PExpr _statementList_;
 
     public AStartExpr()
     {
@@ -20,14 +20,14 @@ public final class AStartExpr extends PExpr
     public AStartExpr(
         @SuppressWarnings("hiding") TIdentifier _identifier_,
         @SuppressWarnings("hiding") List<?> _declaration_,
-        @SuppressWarnings("hiding") List<?> _statement_)
+        @SuppressWarnings("hiding") PExpr _statementList_)
     {
         // Constructor
         setIdentifier(_identifier_);
 
         setDeclaration(_declaration_);
 
-        setStatement(_statement_);
+        setStatementList(_statementList_);
 
     }
 
@@ -37,7 +37,7 @@ public final class AStartExpr extends PExpr
         return new AStartExpr(
             cloneNode(this._identifier_),
             cloneList(this._declaration_),
-            cloneList(this._statement_));
+            cloneNode(this._statementList_));
     }
 
     @Override
@@ -97,30 +97,29 @@ public final class AStartExpr extends PExpr
         }
     }
 
-    public LinkedList<PExpr> getStatement()
+    public PExpr getStatementList()
     {
-        return this._statement_;
+        return this._statementList_;
     }
 
-    public void setStatement(List<?> list)
+    public void setStatementList(PExpr node)
     {
-        for(PExpr e : this._statement_)
+        if(this._statementList_ != null)
         {
-            e.parent(null);
+            this._statementList_.parent(null);
         }
-        this._statement_.clear();
 
-        for(Object obj_e : list)
+        if(node != null)
         {
-            PExpr e = (PExpr) obj_e;
-            if(e.parent() != null)
+            if(node.parent() != null)
             {
-                e.parent().removeChild(e);
+                node.parent().removeChild(node);
             }
 
-            e.parent(this);
-            this._statement_.add(e);
+            node.parent(this);
         }
+
+        this._statementList_ = node;
     }
 
     @Override
@@ -129,7 +128,7 @@ public final class AStartExpr extends PExpr
         return ""
             + toString(this._identifier_)
             + toString(this._declaration_)
-            + toString(this._statement_);
+            + toString(this._statementList_);
     }
 
     @Override
@@ -147,8 +146,9 @@ public final class AStartExpr extends PExpr
             return;
         }
 
-        if(this._statement_.remove(child))
+        if(this._statementList_ == child)
         {
+            this._statementList_ = null;
             return;
         }
 
@@ -183,22 +183,10 @@ public final class AStartExpr extends PExpr
             }
         }
 
-        for(ListIterator<PExpr> i = this._statement_.listIterator(); i.hasNext();)
+        if(this._statementList_ == oldChild)
         {
-            if(i.next() == oldChild)
-            {
-                if(newChild != null)
-                {
-                    i.set((PExpr) newChild);
-                    newChild.parent(this);
-                    oldChild.parent(null);
-                    return;
-                }
-
-                i.remove();
-                oldChild.parent(null);
-                return;
-            }
+            setStatementList((PExpr) newChild);
+            return;
         }
 
         throw new RuntimeException("Not a child.");

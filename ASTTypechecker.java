@@ -83,7 +83,6 @@ public class ASTTypeChecker extends DepthFirstAdapter {
         String operation = "or";
         node.getLeft().apply(this);
         String left = this.result;
-        node.getRight().apply(this);
         String right = this.result;
 
         if (!left.equals(right))
@@ -154,6 +153,18 @@ public class ASTTypeChecker extends DepthFirstAdapter {
         String right = this.result;
 
         if (!left.equals(right))
+            printErrorArithmeticOperation(operation);
+        else
+            printValidOperation(operation);
+    }
+    @Override
+    public void caseAUnaryMinusExpr(AUnaryMinusExpr node) {
+        String operation = "unaryminus";
+        node.getExpr().apply(this);
+
+        System.out.println("+ "+node.getExpr().getClass().getSimpleName());
+
+        if (!result.equals("integer") || !node.getExpr().getClass().getSimpleName().equals("AIdentifierExpr"))
             printErrorArithmeticOperation(operation);
         else
             printValidOperation(operation);

@@ -61,12 +61,9 @@ public class DepthFirstAdapter extends AnalysisAdapter
                 e.apply(this);
             }
         }
+        if(node.getStatementList() != null)
         {
-            List<PExpr> copy = new ArrayList<PExpr>(node.getStatement());
-            for(PExpr e : copy)
-            {
-                e.apply(this);
-            }
+            node.getStatementList().apply(this);
         }
         outAStartExpr(node);
     }
@@ -93,6 +90,34 @@ public class DepthFirstAdapter extends AnalysisAdapter
             }
         }
         outAStatementExpr(node);
+    }
+
+    public void inAStatementListExpr(AStatementListExpr node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAStatementListExpr(AStatementListExpr node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAStatementListExpr(AStatementListExpr node)
+    {
+        inAStatementListExpr(node);
+        if(node.getList() != null)
+        {
+            node.getList().apply(this);
+        }
+        {
+            List<PExpr> copy = new ArrayList<PExpr>(node.getSingle());
+            for(PExpr e : copy)
+            {
+                e.apply(this);
+            }
+        }
+        outAStatementListExpr(node);
     }
 
     public void inADeclarationExpr(ADeclarationExpr node)
@@ -414,6 +439,48 @@ public class DepthFirstAdapter extends AnalysisAdapter
             node.getExpr().apply(this);
         }
         outANotExpr(node);
+    }
+
+    public void inAUnaryMinusExpr(AUnaryMinusExpr node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAUnaryMinusExpr(AUnaryMinusExpr node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAUnaryMinusExpr(AUnaryMinusExpr node)
+    {
+        inAUnaryMinusExpr(node);
+        if(node.getExpr() != null)
+        {
+            node.getExpr().apply(this);
+        }
+        outAUnaryMinusExpr(node);
+    }
+
+    public void inAUnaryPlusExpr(AUnaryPlusExpr node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAUnaryPlusExpr(AUnaryPlusExpr node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAUnaryPlusExpr(AUnaryPlusExpr node)
+    {
+        inAUnaryPlusExpr(node);
+        if(node.getExpr() != null)
+        {
+            node.getExpr().apply(this);
+        }
+        outAUnaryPlusExpr(node);
     }
 
     public void inAWhileExpr(AWhileExpr node)

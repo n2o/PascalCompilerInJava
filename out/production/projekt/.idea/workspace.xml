@@ -2,12 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f3e7a438-b788-4167-a4f1-283d1c74201f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ASTInterpreter.java" afterPath="$PROJECT_DIR$/ASTInterpreter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parser/parser.dat" afterPath="$PROJECT_DIR$/parser/parser.dat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/AStatementExpr.java" afterPath="$PROJECT_DIR$/node/AStatementExpr.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/analysis/Analysis.java" afterPath="$PROJECT_DIR$/analysis/Analysis.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/analysis/AnalysisAdapter.java" afterPath="$PROJECT_DIR$/analysis/AnalysisAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/analysis/DepthFirstAdapter.java" afterPath="$PROJECT_DIR$/analysis/DepthFirstAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parser/Parser.java" afterPath="$PROJECT_DIR$/parser/Parser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pascal.pas" afterPath="$PROJECT_DIR$/Pascal.pas" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/analysis/ReversedDepthFirstAdapter.java" afterPath="$PROJECT_DIR$/analysis/ReversedDepthFirstAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sablecc.scc" afterPath="$PROJECT_DIR$/sablecc.scc" />
     </list>
     <ignored path="projekt.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354972633412" ignored="false" />
-    <file path="/Compiler.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887459608" ignored="false" />
+    <file path="/Dummy.txt" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1355315326609" ignored="false" />
+    <file path="/Compiler.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354976870895" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../Development/Java/BjörnProjekt/src/MainWorld.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354740432198" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../Development/Java/BjörnProjekt/src/Protagonist.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354740759028" ignored="false" />
     <file path="/Protagonist.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354740753970" ignored="false" />
@@ -18,91 +26,88 @@
     <file path="/fragment.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354790125868" ignored="false" />
     <file path="$PROJECT_DIR$/node/TWhitespace.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354794418630" ignored="false" />
     <file path="$PROJECT_DIR$/node/TLCurlyBracket.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354794418632" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TBlankOrComment.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253623" ignored="false" />
-    <file path="$PROJECT_DIR$/node/EOF.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253623" ignored="false" />
-    <file path="$PROJECT_DIR$/node/InvalidToken.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253623" ignored="false" />
-    <file path="$PROJECT_DIR$/node/Node.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253623" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TComma.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253623" ignored="false" />
-    <file path="$PROJECT_DIR$/node/PExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253623" ignored="false" />
-    <file path="$PROJECT_DIR$/parser/ParserException.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253623" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TLt.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253623" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TMinus.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253623" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TMod.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253624" ignored="false" />
-    <file path="$PROJECT_DIR$/lexer/LexerException.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253624" ignored="false" />
-    <file path="$PROJECT_DIR$/node/AStartExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253624" ignored="false" />
-    <file path="$PROJECT_DIR$/node/AIntegerExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253624" ignored="false" />
-    <file path="$PROJECT_DIR$/node/ABooleanExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253624" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TWriteln.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253624" ignored="false" />
-    <file path="$PROJECT_DIR$/node/ANumberExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253624" ignored="false" />
-    <file path="$PROJECT_DIR$/node/ABreakExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253624" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TWhile.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253624" ignored="false" />
-    <file path="$PROJECT_DIR$/node/ALeExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253624" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TVar.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253624" ignored="false" />
-    <file path="$PROJECT_DIR$/node/APrintExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253624" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TTrue.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253624" ignored="false" />
-    <file path="$PROJECT_DIR$/node/AFalseExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253624" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TThen.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253624" ignored="false" />
-    <file path="$PROJECT_DIR$/node/ANeExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253625" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TSemicolon.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253625" ignored="false" />
-    <file path="$PROJECT_DIR$/node/APlusExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253625" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TRPar.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253625" ignored="false" />
-    <file path="$PROJECT_DIR$/node/AWhileExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253625" ignored="false" />
-    <file path="$PROJECT_DIR$/node/AXorExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253625" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TProgramend.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253625" ignored="false" />
-    <file path="$PROJECT_DIR$/node/ADivExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253625" ignored="false" />
-    <file path="$PROJECT_DIR$/node/ADeclarationExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253625" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TProgram.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253625" ignored="false" />
-    <file path="$PROJECT_DIR$/node/AGtExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253625" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TPlus.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253625" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TBreak.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253625" ignored="false" />
-    <file path="$PROJECT_DIR$/node/AStatementExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253625" ignored="false" />
-    <file path="$PROJECT_DIR$/node/AIdentifierListExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253625" ignored="false" />
-    <file path="$PROJECT_DIR$/node/AIfThenExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253625" ignored="false" />
-    <file path="$PROJECT_DIR$/node/ANotExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253625" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TDot.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253625" ignored="false" />
-    <file path="$PROJECT_DIR$/node/AMultExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253626" ignored="false" />
-    <file path="$PROJECT_DIR$/node/AEqExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253626" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TOr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253626" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TInteger.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253626" ignored="false" />
-    <file path="$PROJECT_DIR$/node/AComparisonExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253626" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TIf.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253626" ignored="false" />
-    <file path="$PROJECT_DIR$/node/AAssignmentExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253626" ignored="false" />
-    <file path="$PROJECT_DIR$/node/AAndExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253626" ignored="false" />
-    <file path="$PROJECT_DIR$/node/Token.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253626" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TXor.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253626" ignored="false" />
-    <file path="$PROJECT_DIR$/node/ATrueExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253626" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TNumber.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253626" ignored="false" />
-    <file path="$PROJECT_DIR$/node/AOrExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253626" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TNot.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253626" ignored="false" />
-    <file path="$PROJECT_DIR$/node/ALtExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253626" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TNe.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253626" ignored="false" />
-    <file path="$PROJECT_DIR$/node/AMinusExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253626" ignored="false" />
-    <file path="$PROJECT_DIR$/node/AIfThenElseExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253626" ignored="false" />
-    <file path="$PROJECT_DIR$/node/AGeExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253626" ignored="false" />
-    <file path="$PROJECT_DIR$/node/ASemicolonExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253627" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TLPar.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253627" ignored="false" />
-    <file path="$PROJECT_DIR$/node/AModExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253627" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TMult.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253627" ignored="false" />
-    <file path="$PROJECT_DIR$/node/AIdentifierExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253627" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TLe.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253627" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TIdentifier.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253627" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TGt.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253627" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TGe.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253627" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TFalse.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253627" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TEq.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253627" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TEnd.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253627" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TDo.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253627" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TDiv.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253627" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TColon.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253627" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TBoolean.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253627" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TBegin.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253627" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TAssign.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253627" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TAnd.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253628" ignored="false" />
-    <file path="$PROJECT_DIR$/node/Switch.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253628" ignored="false" />
-    <file path="$PROJECT_DIR$/node/Switchable.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253628" ignored="false" />
-    <file path="$PROJECT_DIR$/node/Start.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253628" ignored="false" />
-    <file path="$PROJECT_DIR$/node/TElse.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354887253628" ignored="false" />
-    <file path="/ASTInterpreter.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354896152170" ignored="false" />
+    <file path="/ASTInterpreter.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354979828159" ignored="false" />
+    <file path="/ASTTypeChecker.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354979805657" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TBlankOrComment.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179032" ignored="false" />
+    <file path="$PROJECT_DIR$/node/EOF.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179032" ignored="false" />
+    <file path="$PROJECT_DIR$/node/InvalidToken.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179032" ignored="false" />
+    <file path="$PROJECT_DIR$/node/Node.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179032" ignored="false" />
+    <file path="$PROJECT_DIR$/node/PExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179033" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TLt.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179033" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TMinus.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179033" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TMod.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179033" ignored="false" />
+    <file path="$PROJECT_DIR$/node/AStartExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179033" ignored="false" />
+    <file path="$PROJECT_DIR$/node/AIntegerExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179033" ignored="false" />
+    <file path="$PROJECT_DIR$/node/ABooleanExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179033" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TWriteln.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179033" ignored="false" />
+    <file path="$PROJECT_DIR$/node/ANumberExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179033" ignored="false" />
+    <file path="$PROJECT_DIR$/node/ABreakExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179033" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TWhile.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179033" ignored="false" />
+    <file path="$PROJECT_DIR$/node/ALeExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179033" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TVar.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179033" ignored="false" />
+    <file path="$PROJECT_DIR$/node/APrintExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179033" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TTrue.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179033" ignored="false" />
+    <file path="$PROJECT_DIR$/node/AFalseExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179033" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TThen.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179033" ignored="false" />
+    <file path="$PROJECT_DIR$/node/ANeExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179033" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TSemicolon.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179033" ignored="false" />
+    <file path="$PROJECT_DIR$/node/APlusExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179033" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TRPar.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179033" ignored="false" />
+    <file path="$PROJECT_DIR$/node/AWhileExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179033" ignored="false" />
+    <file path="$PROJECT_DIR$/node/AXorExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179034" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TProgramend.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179034" ignored="false" />
+    <file path="$PROJECT_DIR$/node/ADivExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179034" ignored="false" />
+    <file path="$PROJECT_DIR$/node/ADeclarationExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179034" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TProgram.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179034" ignored="false" />
+    <file path="$PROJECT_DIR$/node/AGtExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179034" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TPlus.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179034" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TBreak.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179034" ignored="false" />
+    <file path="$PROJECT_DIR$/node/AIfThenExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179034" ignored="false" />
+    <file path="$PROJECT_DIR$/node/ANotExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179034" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TDot.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179034" ignored="false" />
+    <file path="$PROJECT_DIR$/node/AMultExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179034" ignored="false" />
+    <file path="$PROJECT_DIR$/node/AEqExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179034" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TOr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179034" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TInteger.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179034" ignored="false" />
+    <file path="$PROJECT_DIR$/node/AComparisonExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179034" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TIf.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179034" ignored="false" />
+    <file path="$PROJECT_DIR$/node/AAssignmentExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179034" ignored="false" />
+    <file path="$PROJECT_DIR$/node/AAndExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179034" ignored="false" />
+    <file path="$PROJECT_DIR$/node/Token.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179034" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TXor.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179034" ignored="false" />
+    <file path="$PROJECT_DIR$/node/ATrueExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179034" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TNumber.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179035" ignored="false" />
+    <file path="$PROJECT_DIR$/node/AOrExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179035" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TNot.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179035" ignored="false" />
+    <file path="$PROJECT_DIR$/node/ALtExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179035" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TNe.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179035" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TLPar.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179035" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TMult.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179035" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TLe.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179035" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TIdentifier.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179035" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TGt.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179035" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TGe.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179035" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TFalse.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179035" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TEq.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179035" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TEnd.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179035" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TDo.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179035" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TDiv.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179035" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TColon.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179035" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TBoolean.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179035" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TBegin.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179035" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TAssign.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179035" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TAnd.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179036" ignored="false" />
+    <file path="$PROJECT_DIR$/node/Switch.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179036" ignored="false" />
+    <file path="$PROJECT_DIR$/node/Switchable.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179036" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TElse.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179036" ignored="false" />
+    <file path="$PROJECT_DIR$/node/AIdentifierListExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179036" ignored="false" />
+    <file path="$PROJECT_DIR$/node/AIfThenElseExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179036" ignored="false" />
+    <file path="$PROJECT_DIR$/node/TComma.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179036" ignored="false" />
+    <file path="$PROJECT_DIR$/node/AGeExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179036" ignored="false" />
+    <file path="$PROJECT_DIR$/node/ASemicolonExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179036" ignored="false" />
+    <file path="$PROJECT_DIR$/node/AModExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179036" ignored="false" />
+    <file path="$PROJECT_DIR$/node/AIdentifierExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179036" ignored="false" />
+    <file path="$PROJECT_DIR$/node/AMinusExpr.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354981179037" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +124,7 @@
   <component name="DebuggerManager">
     <breakpoint_rules default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/analysis/DepthFirstAdapter.java" line="215" class="analysis.DepthFirstAdapter" package="analysis">
+      <breakpoint url="file://$PROJECT_DIR$/analysis/DepthFirstAdapter.java" line="237" class="analysis.DepthFirstAdapter" package="analysis">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -178,31 +183,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Compiler.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Compiler.java">
+      <file leaf-file-name="StupsCompiler.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/StupsCompiler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="33" selection-start="1449" selection-end="1449" vertical-scroll-proportion="0.0">
+            <state line="24" column="24" selection-start="698" selection-end="698" vertical-scroll-proportion="0.19745223">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ASTInterpreter.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ASTInterpreter.java">
+      <file leaf-file-name="ASTTypeChecker.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ASTTypeChecker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="40" selection-start="1813" selection-end="1813" vertical-scroll-proportion="0.22601625">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#196#212#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ASTPrinter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ASTPrinter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="157" column="36" selection-start="4047" selection-end="4047" vertical-scroll-proportion="0.0">
+            <state line="7" column="15" selection-start="150" selection-end="150" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -228,8 +221,10 @@
       <list>
         <option value="$PROJECT_DIR$/HelloWorld.pas" />
         <option value="$PROJECT_DIR$/node/AExpression2.java" />
-        <option value="$PROJECT_DIR$/Compiler.java" />
         <option value="$PROJECT_DIR$/ASTInterpreter.java" />
+        <option value="$PROJECT_DIR$/Compiler.java" />
+        <option value="$PROJECT_DIR$/ASTTypeChecker.java" />
+        <option value="$PROJECT_DIR$/StupsCompiler.java" />
       </list>
     </option>
   </component>
@@ -266,7 +261,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -287,6 +281,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -311,10 +306,10 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
   </component>
-  <component name="RunManager" selected="Application.Compiler">
-    <configuration default="false" name="Compiler" type="Application" factoryName="Application" temporary="true">
+  <component name="RunManager" selected="Application.StupsCompiler">
+    <configuration default="false" name="StupsCompiler" type="Application" factoryName="Application" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="Compiler" />
+      <option name="MAIN_CLASS_NAME" value="StupsCompiler" />
       <option name="VM_PARAMETERS" value="" />
       <option name="PROGRAM_PARAMETERS" value="Pascal.pas" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
@@ -427,11 +422,11 @@
       <method />
     </configuration>
     <list size="1">
-      <item index="0" class="java.lang.String" itemvalue="Application.Compiler" />
+      <item index="0" class="java.lang.String" itemvalue="Application.StupsCompiler" />
     </list>
     <recent_temporary>
       <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Application.Compiler" />
+        <item index="0" class="java.lang.String" itemvalue="Application.StupsCompiler" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -478,7 +473,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3277439" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959481" sideWeight="0.60091746" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39908257" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -563,33 +558,12 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ASTPrinter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="157" column="36" selection-start="4047" selection-end="4047" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Compiler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="41" selection-start="477" selection-end="477" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ASTPrinter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="150" column="0" selection-start="3803" selection-end="3803" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/analysis/AnalysisAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="610" column="25" selection-start="10752" selection-end="10752" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Compiler.java">
+    <entry file="file://$PROJECT_DIR$/StupsCompiler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="41" selection-start="853" selection-end="853" vertical-scroll-proportion="0.0">
           <folding />
@@ -601,14 +575,14 @@
         <state line="6" column="2" selection-start="287" selection-end="287" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Compiler.java">
+    <entry file="file://$PROJECT_DIR$/StupsCompiler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="36" selection-start="771" selection-end="771" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Compiler.java">
+    <entry file="file://$PROJECT_DIR$/StupsCompiler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="18" selection-start="610" selection-end="610" vertical-scroll-proportion="0.0">
           <folding />
@@ -635,19 +609,12 @@
         <state line="508" column="25" selection-start="8340" selection-end="8340" vertical-scroll-proportion="0.048661802" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Compiler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="33" selection-start="1449" selection-end="1449" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/analysis/DepthFirstAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="215" column="11" selection-start="4500" selection-end="4500" vertical-scroll-proportion="0.65753424">
           <folding>
-            <element signature="e#357#384#1" expanded="true" />
-            <element signature="e#458#485#1" expanded="true" />
+            <element signature="e#357#384#1" expanded="false" />
+            <element signature="e#458#485#1" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -659,13 +626,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ASTInterpreter.java">
+    <entry file="file://$PROJECT_DIR$/parser/ParserException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="40" selection-start="1813" selection-end="1813" vertical-scroll-proportion="0.22601625">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#196#212#0" expanded="true" />
-          </folding>
+        <state line="11" column="17" selection-start="222" selection-end="222" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analysis/Analysis.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="281" selection-end="281" vertical-scroll-proportion="0.5589041" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parser/TokenIndex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="0" selection-start="540" selection-end="540" vertical-scroll-proportion="-9.945206" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ASTTypeChecker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="15" selection-start="150" selection-end="150" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StupsCompiler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="24" selection-start="698" selection-end="698" vertical-scroll-proportion="0.19745223">
+          <folding />
         </state>
       </provider>
     </entry>

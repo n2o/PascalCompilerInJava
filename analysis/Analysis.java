@@ -14,6 +14,7 @@ public interface Analysis extends Switch
     void caseStart(Start node);
     void caseAStartExpr(AStartExpr node);
     void caseAStatementExpr(AStatementExpr node);
+    void caseAStatementListExpr(AStatementListExpr node);
     void caseADeclarationExpr(ADeclarationExpr node);
     void caseAPrintExpr(APrintExpr node);
     void caseAAssignmentExpr(AAssignmentExpr node);
@@ -27,6 +28,8 @@ public interface Analysis extends Switch
     void caseADivExpr(ADivExpr node);
     void caseAAndExpr(AAndExpr node);
     void caseANotExpr(ANotExpr node);
+    void caseAUnaryMinusExpr(AUnaryMinusExpr node);
+    void caseAUnaryPlusExpr(AUnaryPlusExpr node);
     void caseAWhileExpr(AWhileExpr node);
     void caseAIfThenExpr(AIfThenExpr node);
     void caseAIfThenElseExpr(AIfThenElseExpr node);

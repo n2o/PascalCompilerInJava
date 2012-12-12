@@ -87,6 +87,12 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseAStatementListExpr(AStatementListExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseADeclarationExpr(ADeclarationExpr node)
     {
         defaultCase(node);
@@ -160,6 +166,18 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseANotExpr(ANotExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAUnaryMinusExpr(AUnaryMinusExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAUnaryPlusExpr(AUnaryPlusExpr node)
     {
         defaultCase(node);
     }

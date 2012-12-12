@@ -81,8 +81,8 @@ Tokens
 	ge		= '>=';
 	ne		= '<>';
 	and		= a n d;
-	or		= o r;
 	xor 	= x o r;
+	or		= o r;
 	not 	= n o t;
 	true	= t r u e;
 	false	= f a l s e;
@@ -100,7 +100,7 @@ Ignored Tokens
 
 Productions
 	start {-> expr} = 
-		   program identifier semicolon declaration* begin statement* programend {-> New expr.start(identifier, [declaration.expr], [statement.expr])};
+		   program identifier semicolon declaration* begin statement_list programend {-> New expr.start(identifier, [declaration.expr], statement_list.expr)};
 
 	declaration {-> expr} =
 		   var identifier_list colon type semicolon {-> New expr.declaration(identifier_list.expr, type.expr)};
@@ -111,24 +111,28 @@ Productions
 		 | identifier 
 		 		{-> New expr.identifier(identifier)};
 
+	statement_list {-> expr}=
+		   {mult} statement_list semicolon statement? 
+		   		{-> New expr.statement_list(statement_list.expr, [statement.expr])}
+		 | statement?
+		 		{-> New expr.statement([statement.expr])};
+
 	statement {-> expr} = 
 		   {if_then_statement} if_then_statement 			{-> if_then_statement.expr}
 		 | {if_then_else_statement} if_then_else_statement 	{-> if_then_else_statement.expr}
 		 | {while} while_statement 							{-> while_statement.expr}
 		 | {assign} assignment 								{-> assignment.expr}
 		 | {print} print 									{-> print.expr}
-		 | {nested} begin statement+ end 					{-> New expr.statement([statement.expr])}
-		 | {break} break		 							{-> New expr.break(break)}
-		 | semicolon 										{-> New expr.semicolon(semicolon)};
+		 | {nested} begin statement_list end 				{-> statement_list.expr}
+		 | {break} break		 							{-> New expr.break(break)};
 
 	statement_no_short_if {-> expr} =
 		   {if} if_then_else_statement_no_short_if			{-> if_then_else_statement_no_short_if.expr}
 		 | {while} while_statement_no_short_if				{-> while_statement_no_short_if.expr}
 		 | {assign} assignment								{-> assignment.expr}
 		 | {print} print									{-> print.expr}
-		 | {nested} begin statement+ end					{-> New expr.statement([statement.expr])}
-		 | {break} break									{-> New expr.break(break)}
-		 | semicolon										{-> New expr.semicolon(semicolon)};
+		 | {nested} begin statement_list end 				{-> statement_list.expr}
+		 | {break} break									{-> New expr.break(break)};
 
 	while_statement_no_short_if {-> expr} =
 		   {while} while expression do statement_no_short_if
@@ -191,6 +195,10 @@ Productions
 	expression4 {-> expr} = 
 		   {not} not expression4
 		   		{-> New expr.not(expression4.expr)}
+		 | {unary_minus} minus expression4
+		   		{-> New expr.unary_minus(expression4.expr)}
+		 | {unary_plus} plus expression4
+		   		{-> New expr.unary_plus(expression4.expr)}
 		 | {number} number
 		 		{-> New expr.number(number)}
 		 | {identifier} identifier
@@ -230,8 +238,9 @@ Productions
 		   		{-> New expr.if_then_else(left.expr, mid.expr, right.expr)};
 
 Abstract Syntax Tree
-	expr = {start} 		identifier [declaration]:expr* [statement]:expr*
+	expr = {start} 		identifier [declaration]:expr* [statement_list]:expr
 		 | {statement} 	expr*
+		 | {statement_list} [list]:expr [single]:expr*
 		 | {declaration} [left]:expr [right]:expr
 		 | {print} 		expr
 		 | {assignment} identifier expr
@@ -245,6 +254,8 @@ Abstract Syntax Tree
 		 | {div} 		[left]:expr [right]:expr
 		 | {and} 		[left]:expr [right]:expr
 		 | {not} 		expr
+		 | {unary_minus} expr
+		 | {unary_plus} expr
 		 | {while}		[left]:expr [right]:expr
 		 | {if_then}	[left]:expr [right]:expr
 		 | {if_then_else} [if]:expr [then]:expr [else]:expr
