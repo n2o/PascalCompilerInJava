@@ -9,6 +9,29 @@ public class ASTTypeChecker extends DepthFirstAdapter {
     private String result;
 
     /**
+     * Check if break is only used in a while context
+     */
+    public void caseABreakExpr(ABreakExpr node) {
+        Node parent = node.parent();
+        String parentName;
+
+        do {
+            parent = parent.parent();
+            parentName = parent.getClass().getSimpleName().replaceAll(" ","");
+
+            if (parentName.equals("AWhileExpr")) break;
+
+        } while (!parentName.equals("AStartExpr"));
+
+        if (parentName.equals("AStartExpr")) {
+            System.out.println("# Error: User 'break' only in a 'while' context!");
+            System.exit(1);
+        } else {
+            printValidOperation("break");
+        }
+    }
+
+    /**
      * Look up all the declarations and put it into the HashMap
      */
     public void caseADeclarationExpr(ADeclarationExpr node) {
@@ -159,14 +182,24 @@ public class ASTTypeChecker extends DepthFirstAdapter {
     }
     @Override
     public void caseAUnaryMinusExpr(AUnaryMinusExpr node) {
-        String operation = "unaryminus";
+        String operation = "unary -";
         node.getExpr().apply(this);
 
-        System.out.println("+ "+node.getExpr().getClass().getSimpleName());
+        if (!result.equals("integer") && !node.getExpr().getClass().getSimpleName().equals("AIdentifierExpr") && !node.getExpr().getClass().getSimpleName().equals("ANumberExpr")) {
+            System.out.println("# Error: Syntax of '"+operation+"' is '"+operation+"' 'integer' = 'integer'.");
+            System.exit(1);
+        } else
+            printValidOperation(operation);
+    }
+    @Override
+    public void caseAUnaryPlusExpr(AUnaryPlusExpr node) {
+        String operation = "unary +";
+        node.getExpr().apply(this);
 
-        if (!result.equals("integer") || !node.getExpr().getClass().getSimpleName().equals("AIdentifierExpr"))
-            printErrorArithmeticOperation(operation);
-        else
+        if (!result.equals("integer") && !node.getExpr().getClass().getSimpleName().equals("AIdentifierExpr") && !node.getExpr().getClass().getSimpleName().equals("ANumberExpr")) {
+            System.out.println("# Error: Syntax of '"+operation+"' is '"+operation+"' 'integer' = 'integer'.");
+            System.exit(1);
+        } else
             printValidOperation(operation);
     }
     @Override

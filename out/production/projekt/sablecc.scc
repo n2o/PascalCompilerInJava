@@ -81,8 +81,8 @@ Tokens
 	ge		= '>=';
 	ne		= '<>';
 	and		= a n d;
-	or		= o r;
 	xor 	= x o r;
+	or		= o r;
 	not 	= n o t;
 	true	= t r u e;
 	false	= f a l s e;
