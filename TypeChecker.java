@@ -13,7 +13,7 @@ import java.util.HashMap;
 
 public class TypeChecker extends DepthFirstAdapter {
 
-    private HashMap<String, String> symbolTable = new HashMap<String, String>();
+    public HashMap<String, String> symbolTable = new HashMap<String, String>();
     private String result;
 
     /**

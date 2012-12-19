@@ -38,10 +38,8 @@ public class StupsCompiler {
                     zeile = br.readLine();
                 }
                 br.close();
+                parse(input, args[1].substring(0,args[1].lastIndexOf('.')));
 
-//                System.out.println("# Input:  \n"+input);
-
-                parse(input);
             } else if (args[0].equals("-liveness")) {
                 // Write something about liveness...
             } else {
@@ -56,24 +54,56 @@ public class StupsCompiler {
         }
 	}
 
-	private static void parse(String input) throws ParserException, LexerException, IOException {
-		StringReader reader = new StringReader(input);
+	private static void parse(String input, String fileName) throws ParserException, LexerException, IOException {
+		String output;
+        StringReader reader = new StringReader(input);
 		PushbackReader r = new PushbackReader(reader, 100);
-//        System.out.println("# Start Lexing and Parsing...");
         Lexer l = new Lexer(r);
         Parser parser = new Parser(l);
 		Start start = parser.parse();
-//        System.out.println("# Lexer and Parser: Finished with no errors.\n");
+        ASTPrinter printer = new ASTPrinter();
+        start.apply(printer);
 
-//        System.out.println("# Start printing the AST...");
-//        ASTPrinter printer = new ASTPrinter();
-//	    start.apply(printer);
-//        System.out.println("# AST: Finished with no errors.\n");
-
-//        System.out.println("# Start TypeChecker...");
         TypeChecker interpreter = new TypeChecker();
         start.apply(interpreter);
-//        System.out.println("# TypeChecker: Finished with no errors.\n");
-//        System.out.println("################################# Success! #################################\n");
-	}
+
+        CodeGenerator visitor = new CodeGenerator(interpreter.symbolTable);
+        copySymbolTable(interpreter, visitor);          // To get all the identifiers copied with an index to CodeGen
+        start.apply(visitor);
+
+        output = createOutput(visitor);
+        System.out.println(output);
+
+        Writer wout = new BufferedWriter(
+                new OutputStreamWriter(
+                        new FileOutputStream(fileName+".j"),"UTF8"));
+        wout.append(output);
+        wout.close();
+    }
+
+    private static String createOutput(CodeGenerator visitor) {
+        int size = visitor.symbolTable.size()+1;
+        return  ".bytecode 50.0\n"+
+                ".class public Out\n"+
+                ".super java/lang/Object\n"+
+                ".method public <init>()V\n"+
+                    "\t.limit stack 1\n"+
+                    "\t.limit locals 1\n"+
+                    "\taload_0\n"+
+                    "\tinvokespecial java/lang/Object/<init>()V\n"+
+                    "\treturn\n"+
+                    ".end method\n"+
+                    "\t.method public static main([Ljava/lang/String;)V\n"+
+                    "\t.limit stack 100\n"+                                     // NEEDS TO BE UPGRADED
+                    "\t.limit locals "+size+"\n"+
+                        visitor.code+
+                    "\treturn\n"+
+                ".end method\n";
+    }
+
+    private static void copySymbolTable(TypeChecker interpreter, CodeGenerator visitor) {
+        int i = interpreter.symbolTable.size();
+        for (String id : interpreter.symbolTable.keySet())
+            visitor.symbolTable.put(id, i--);
+    }
 }
