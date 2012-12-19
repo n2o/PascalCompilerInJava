@@ -136,49 +136,49 @@ class TokenIndex extends AnalysisAdapter
     }
 
     @Override
-    public void caseTDiv(@SuppressWarnings("unused") TDiv node)
+    public void caseTEq(@SuppressWarnings("unused") TEq node)
     {
         this.index = 21;
     }
 
     @Override
-    public void caseTMod(@SuppressWarnings("unused") TMod node)
+    public void caseTLt(@SuppressWarnings("unused") TLt node)
     {
         this.index = 22;
     }
 
     @Override
-    public void caseTEq(@SuppressWarnings("unused") TEq node)
+    public void caseTGt(@SuppressWarnings("unused") TGt node)
     {
         this.index = 23;
     }
 
     @Override
-    public void caseTLt(@SuppressWarnings("unused") TLt node)
+    public void caseTLe(@SuppressWarnings("unused") TLe node)
     {
         this.index = 24;
     }
 
     @Override
-    public void caseTGt(@SuppressWarnings("unused") TGt node)
+    public void caseTGe(@SuppressWarnings("unused") TGe node)
     {
         this.index = 25;
     }
 
     @Override
-    public void caseTLe(@SuppressWarnings("unused") TLe node)
+    public void caseTNe(@SuppressWarnings("unused") TNe node)
     {
         this.index = 26;
     }
 
     @Override
-    public void caseTGe(@SuppressWarnings("unused") TGe node)
+    public void caseTDiv(@SuppressWarnings("unused") TDiv node)
     {
         this.index = 27;
     }
 
     @Override
-    public void caseTNe(@SuppressWarnings("unused") TNe node)
+    public void caseTMod(@SuppressWarnings("unused") TMod node)
     {
         this.index = 28;
     }
@@ -190,13 +190,13 @@ class TokenIndex extends AnalysisAdapter
     }
 
     @Override
-    public void caseTOr(@SuppressWarnings("unused") TOr node)
+    public void caseTXor(@SuppressWarnings("unused") TXor node)
     {
         this.index = 30;
     }
 
     @Override
-    public void caseTXor(@SuppressWarnings("unused") TXor node)
+    public void caseTOr(@SuppressWarnings("unused") TOr node)
     {
         this.index = 31;
     }

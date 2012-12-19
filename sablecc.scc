@@ -1,8 +1,8 @@
 Helpers
-	firstnum = ['1'..'9'];
+	firstnum = ['1'..'9'];		
 	number 	 = ['0'..'9'];
-	a 		 = ['a' + 'A'];
-  	b 		 = ['b' + 'B'];
+	a 		 = ['a' + 'A'];		// Create all the letters and accept them
+  	b 		 = ['b' + 'B'];		// ignoring their case
   	c 		 = ['c' + 'C'];
   	d 		 = ['d' + 'D'];
   	e 		 = ['e' + 'E'];
@@ -27,7 +27,7 @@ Helpers
   	x 		 = ['x' + 'X'];
   	y 		 = ['y' + 'Y'];
   	z 		 = ['z' + 'Z'];
-	letter   = (['a'..'z']|['A'..'Z']);
+	letter   = (['a'..'z']|['A'..'Z']);		// needed...?
 
 	cr = 13;
     lf = 10;
@@ -72,14 +72,14 @@ Tokens
 	plus 	= '+';
 	minus 	= '-';
 	mult	= '*';
-	div 	= d i v;
-	mod 	= m o d;
 	eq		= '=';
 	lt		= '<';
 	gt 		= '>';
 	le		= '<=';
 	ge		= '>=';
 	ne		= '<>';
+	div 	= d i v;
+	mod 	= m o d;
 	and		= a n d;
 	xor 	= x o r;
 	or		= o r;
@@ -93,7 +93,7 @@ Tokens
 	dot 		= '.';
 	comma 		= ',';
 	blank_or_comment = (blank | comment | comment_line)*;
-	identifier	= ('_' | '$' | letter) (number | letter)*;
+	identifier	= ('_' | '$' | letter) (number | letter | '_')*;
 
 Ignored Tokens
 	blank_or_comment;
@@ -195,6 +195,8 @@ Productions
 	expression4 {-> expr} = 
 		   {not} not expression4
 		   		{-> New expr.not(expression4.expr)}
+		 | {brackets} l_par expression4 r_par
+		   		{-> expression4.expr}
 		 | {unary_minus} minus expression4
 		   		{-> New expr.unary_minus(expression4.expr)}
 		 | {unary_plus} plus expression4

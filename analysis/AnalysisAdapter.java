@@ -417,18 +417,6 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseTDiv(TDiv node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTMod(TMod node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
     public void caseTEq(TEq node)
     {
         defaultCase(node);
@@ -465,19 +453,31 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseTDiv(TDiv node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTMod(TMod node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseTAnd(TAnd node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseTOr(TOr node)
+    public void caseTXor(TXor node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseTXor(TXor node)
+    public void caseTOr(TOr node)
     {
         defaultCase(node);
     }

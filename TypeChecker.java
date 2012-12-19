@@ -1,9 +1,17 @@
+/**************************************************************************
+ * Created by Christian Meter on 13th December 2012                       *
+ *                                                                        *
+ * Typechecking all the identifiers and their operations                  *
+ **************************************************************************
+ * Usage: > java StupsCompiler -compile <Filename.pas>                    *
+ **************************************************************************/
+
 import analysis.DepthFirstAdapter;
 import node.*;
 
 import java.util.HashMap;
 
-public class ASTTypeChecker extends DepthFirstAdapter {
+public class TypeChecker extends DepthFirstAdapter {
 
     private HashMap<String, String> symbolTable = new HashMap<String, String>();
     private String result;
@@ -24,16 +32,15 @@ public class ASTTypeChecker extends DepthFirstAdapter {
         } while (!parentName.equals("AStartExpr"));
 
         if (parentName.equals("AStartExpr")) {
-            System.out.println("# Error: User 'break' only in a 'while' context!");
+            System.out.println("# Error: User 'break' only in a 'while' context!\n");
             System.exit(1);
-        } else {
-            printValidOperation("break");
         }
     }
 
     /**
      * Look up all the declarations and put it into the HashMap
      */
+    @Override
     public void caseADeclarationExpr(ADeclarationExpr node) {
         String type = node.getRight().toString().toLowerCase().replaceAll(" ","");
         String[] var = node.getLeft().toString().toLowerCase().split(" ");
@@ -42,12 +49,15 @@ public class ASTTypeChecker extends DepthFirstAdapter {
             if (!symbolTable.containsKey(aVar)) {
                 symbolTable.put(aVar, type);
             } else {
-                System.out.println("# Error: Already specified '" + aVar + "' as '" + symbolTable.get(aVar) + "'. Terminating...");
+                System.out.println("# Error: Already specified '" + aVar + "' as '" + symbolTable.get(aVar) + "'. Terminating...\n");
                 System.exit(1);
             }
         }
     }
 
+    /**
+     * Look up the := operator and it's correct syntax...
+     */
     @Override
     public void caseAAssignmentExpr(AAssignmentExpr node) {
         String identifier = node.getIdentifier().toString().toLowerCase().replaceAll(" ","");
@@ -57,31 +67,42 @@ public class ASTTypeChecker extends DepthFirstAdapter {
 
         node.getExpr().apply(this);     // Going through the AST
 
-        /**
-         * If on the right side of := is only a number, check the type of the identifier
-         */
-        if (expr.equals("ANumberExpr")) {
+        // Check if arithmetic expressions are
+        if (expr.equals("APlusExpr") || expr.equals("AMinusExpr") || expr.equals("AMultExpr") || expr.equals("ADivExpr") || expr.equals("AModExpr") || expr.equals("AUnaryMinusExpr") || expr.equals("AUnaryPlusExpr")) {
             if (!type.equals("integer")) {
-                System.out.println("# Error: Syntax of a simple assignment is 'integer' ':=' 'integer'.");
+                System.out.println("# Error: Wrong types. Expected 'integer'.\n");
                 System.exit(1);
-            } else {
-                printValidOperation("assignment");
             }
         }
-
-        /**
-         * If on the right side of := is only an identifier, check both types
-         */
+        // Check if those comparisons and boolean arithmetic are assigned to booleans
+        if (expr.equals("AOrExpr") || expr.equals("AXorExpr") || expr.equals("AAndExpr") || expr.equals("ANotExpr") || expr.equals("AComparisonExpr") ) {
+            if (!type.equals("boolean")) {
+                System.out.println("# Error: Wrong types. Expected 'boolean'.\n");
+                System.exit(1);
+            }
+        }
+        // If on the right side of := is only a number, check the type of the identifier
+        if (expr.equals("ANumberExpr")) {
+            if (!type.equals("integer")) {
+                System.out.println("# Error: Syntax of a simple assignment is: 'integer' ':=' 'integer';\n");
+                System.exit(1);
+            }
+        }
+        // If there was only true or false found
+        if (expr.equals("ATrueExpr") || expr.equals("AFalseExpr")) {
+            if (!type.equals("boolean")) {
+                System.out.println("# Error: Can't assign a boolean to an integer.\n");
+                System.exit(1);
+            }
+        }
+        // If on the right side of := is only an identifier, check both types
         if (expr.equals("AIdentifierExpr")) {
             String matchIdentifier = node.getIdentifier().toString().toLowerCase().replaceAll(" ","");
             checkDeclared(matchIdentifier);
             if (!symbolTable.get(identifier).equals(symbolTable.get(identifier))) {
-                System.out.println("# Error: Wrong types. '"+identifier+"' is '"+symbolTable.get(identifier)+"' and '"+matchIdentifier+"' is type '"+symbolTable.get(matchIdentifier)+"'.");
-            } else {
-                printValidOperation("assignment");
+                System.out.println("# Error: Wrong types. '"+identifier+"' is '"+symbolTable.get(identifier)+"' and '"+matchIdentifier+"' is type '"+symbolTable.get(matchIdentifier)+"'.\n");
             }
         }
-
     }
 
 
@@ -98,8 +119,6 @@ public class ASTTypeChecker extends DepthFirstAdapter {
 
         if (!left.equals(right))
             printErrorBooleanOperation(operation);
-        else
-            printValidOperation(operation);
     }
     @Override
     public void caseAOrExpr(AOrExpr node) {
@@ -110,8 +129,6 @@ public class ASTTypeChecker extends DepthFirstAdapter {
 
         if (!left.equals(right))
             printErrorBooleanOperation(operation);
-        else
-            printValidOperation(operation);
     }
     @Override
     public void caseAXorExpr(AXorExpr node) {
@@ -123,8 +140,6 @@ public class ASTTypeChecker extends DepthFirstAdapter {
 
         if (!left.equals(right))
             printErrorBooleanOperation(operation);
-        else
-            printValidOperation(operation);
     }
     @Override
     public void caseAAndExpr(AAndExpr node) {
@@ -136,8 +151,6 @@ public class ASTTypeChecker extends DepthFirstAdapter {
 
         if (!left.equals(right))
             printErrorBooleanOperation(operation);
-        else
-            printValidOperation(operation);
     }
     @Override
     public void caseANotExpr(ANotExpr node) {
@@ -145,10 +158,9 @@ public class ASTTypeChecker extends DepthFirstAdapter {
         node.getExpr().apply(this);
 
         if (!result.equals("boolean")) {
-            System.out.println("# Error: Syntax of '" + operation + "' is 'not' 'boolean' = 'boolean'.");
+            System.out.println("# Error: Syntax of '" + operation + "' is: 'boolean' := '"+operation+"' 'boolean';\n");
             System.exit(1);
-        } else
-            printValidOperation(operation);
+        }
     }
 
     /**************************************************************************************************
@@ -164,8 +176,6 @@ public class ASTTypeChecker extends DepthFirstAdapter {
 
         if (!left.equals(right))
             printErrorArithmeticOperation(operation);
-        else
-            printValidOperation(operation);
     }
     @Override
     public void caseAMinusExpr(AMinusExpr node) {
@@ -177,8 +187,6 @@ public class ASTTypeChecker extends DepthFirstAdapter {
 
         if (!left.equals(right))
             printErrorArithmeticOperation(operation);
-        else
-            printValidOperation(operation);
     }
     @Override
     public void caseAUnaryMinusExpr(AUnaryMinusExpr node) {
@@ -186,10 +194,9 @@ public class ASTTypeChecker extends DepthFirstAdapter {
         node.getExpr().apply(this);
 
         if (!result.equals("integer") && !node.getExpr().getClass().getSimpleName().equals("AIdentifierExpr") && !node.getExpr().getClass().getSimpleName().equals("ANumberExpr")) {
-            System.out.println("# Error: Syntax of '"+operation+"' is '"+operation+"' 'integer' = 'integer'.");
+            System.out.println("# Error: Syntax of '"+operation+"' is: 'integer' := '"+operation+"' 'integer';\n");
             System.exit(1);
-        } else
-            printValidOperation(operation);
+        }
     }
     @Override
     public void caseAUnaryPlusExpr(AUnaryPlusExpr node) {
@@ -197,10 +204,9 @@ public class ASTTypeChecker extends DepthFirstAdapter {
         node.getExpr().apply(this);
 
         if (!result.equals("integer") && !node.getExpr().getClass().getSimpleName().equals("AIdentifierExpr") && !node.getExpr().getClass().getSimpleName().equals("ANumberExpr")) {
-            System.out.println("# Error: Syntax of '"+operation+"' is '"+operation+"' 'integer' = 'integer'.");
+            System.out.println("# Error: Syntax of '"+operation+"' is: 'integer' := '"+operation+"' 'integer';\n");
             System.exit(1);
-        } else
-            printValidOperation(operation);
+        }
     }
     @Override
     public void caseAModExpr(AModExpr node) {
@@ -212,8 +218,6 @@ public class ASTTypeChecker extends DepthFirstAdapter {
 
         if (!left.equals(right))
             printErrorArithmeticOperation(operation);
-        else
-            printValidOperation(operation);
     }
     @Override
     public void caseAMultExpr(AMultExpr node) {
@@ -225,8 +229,6 @@ public class ASTTypeChecker extends DepthFirstAdapter {
 
         if (!left.equals(right))
             printErrorArithmeticOperation(operation);
-        else
-            printValidOperation(operation);
     }
     @Override
     public void caseADivExpr(ADivExpr node) {
@@ -238,8 +240,6 @@ public class ASTTypeChecker extends DepthFirstAdapter {
 
         if (!left.equals(right))
             printErrorArithmeticOperation(operation);
-        else
-            printValidOperation(operation);
     }
 
     /**
@@ -281,7 +281,7 @@ public class ASTTypeChecker extends DepthFirstAdapter {
      */
     private void checkDeclared(String identifier) {
         if (!symbolTable.containsKey(identifier)) {
-            System.out.println("# Error: Undeclared variable '"+identifier+"' found. Terminating.");
+            System.out.println("# Error: Undeclared variable '"+identifier+"' found. Terminating.\n");
             System.exit(1);
         }
     }
@@ -290,17 +290,14 @@ public class ASTTypeChecker extends DepthFirstAdapter {
      * Prepare output for arithmetic operations
      */
     private void printErrorArithmeticOperation(String operation) {
-        System.out.println("# Error: Syntax of '"+operation+"' is 'integer' '"+operation+"' 'integer' = 'integer'.");
+        System.out.println("# Error: Syntax of '"+operation+"' is: 'integer' := 'integer' '"+operation+"' 'integer';\n");
         System.exit(1);
-    }
-    private void printValidOperation(String operation) {
-        System.out.println("\t# Found: Valid '"+operation+"' Operation.");
     }
     /**
      * The same for boolean expressions
      */
     private void printErrorBooleanOperation(String operation) {
-        System.out.println("# Error: Syntax of '"+operation+"' is 'boolean' '"+operation+"' 'boolean' = 'boolean'.");
+        System.out.println("# Error: Syntax of '"+operation+"' is: 'boolean' := 'boolean' '"+operation+"' 'boolean';\n");
         System.exit(1);
     }
 }

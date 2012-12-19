@@ -2,12 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f3e7a438-b788-4167-a4f1-283d1c74201f" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ASTTypechecker.java" afterPath="$PROJECT_DIR$/ASTTypeChecker.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ASTTypechecker.java" afterPath="$PROJECT_DIR$/TypeChecker.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lexer/lexer.dat" afterPath="$PROJECT_DIR$/lexer/lexer.dat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parser/parser.dat" afterPath="$PROJECT_DIR$/parser/parser.dat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/analysis/Analysis.java" afterPath="$PROJECT_DIR$/analysis/Analysis.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/analysis/AnalysisAdapter.java" afterPath="$PROJECT_DIR$/analysis/AnalysisAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lexer/Lexer.java" afterPath="$PROJECT_DIR$/lexer/Lexer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parser/Parser.java" afterPath="$PROJECT_DIR$/parser/Parser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pascal.pas" afterPath="$PROJECT_DIR$/Pascal.pas" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/StupsCompiler.java" afterPath="$PROJECT_DIR$/StupsCompiler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parser/TokenIndex.java" afterPath="$PROJECT_DIR$/parser/TokenIndex.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sablecc.scc" afterPath="$PROJECT_DIR$/sablecc.scc" />
     </list>
     <ignored path="projekt.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1355344087706" ignored="false" />
+    <file path="/Dummy.txt" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1355908200973" ignored="false" />
     <file path="/Compiler.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354976870895" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../Development/Java/BjörnProjekt/src/MainWorld.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354740432198" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../Development/Java/BjörnProjekt/src/Protagonist.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354740759028" ignored="false" />
@@ -20,9 +29,11 @@
     <file path="$PROJECT_DIR$/node/TWhitespace.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354794418630" ignored="false" />
     <file path="$PROJECT_DIR$/node/TLCurlyBracket.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354794418632" ignored="false" />
     <file path="/ASTInterpreter.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354979828159" ignored="false" />
-    <file path="/ASTTypeChecker.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1355323696029" ignored="false" />
-    <file path="/StupsCompiler.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1355318239161" ignored="false" />
-    <file path="/ParserException.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1355318416678" ignored="false" />
+    <file path="/ASTTypeChecker.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1355397199999" ignored="false" />
+    <file path="/StupsCompiler.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1355418315862" ignored="false" />
+    <file path="/ParserException.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1355400586713" ignored="false" />
+    <file path="/TypeCheckerException.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1355400612106" ignored="false" />
+    <file path="/TypeChecker.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1355759104036" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,20 +109,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="StupsCompiler.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="StupsCompiler.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/StupsCompiler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="21" selection-start="720" selection-end="725" vertical-scroll-proportion="0.0">
+            <state line="69" column="6" selection-start="3029" selection-end="3029" vertical-scroll-proportion="0.58536583">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ASTTypeChecker.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ASTTypeChecker.java">
+      <file leaf-file-name="TypeChecker.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TypeChecker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="167" column="4" selection-start="5675" selection-end="5675" vertical-scroll-proportion="-1.6585366">
-              <folding />
+            <state line="79" column="143" selection-start="3105" selection-end="3105" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#727#743#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -138,9 +152,12 @@
         <option value="$PROJECT_DIR$/node/AExpression2.java" />
         <option value="$PROJECT_DIR$/ASTInterpreter.java" />
         <option value="$PROJECT_DIR$/Compiler.java" />
-        <option value="$PROJECT_DIR$/StupsCompiler.java" />
-        <option value="$PROJECT_DIR$/parser/ParserException.java" />
         <option value="$PROJECT_DIR$/ASTTypeChecker.java" />
+        <option value="$PROJECT_DIR$/TypeCheckerException.java" />
+        <option value="$PROJECT_DIR$/lexer/LexerException.java" />
+        <option value="$PROJECT_DIR$/parser/ParserException.java" />
+        <option value="$PROJECT_DIR$/TypeChecker.java" />
+        <option value="$PROJECT_DIR$/StupsCompiler.java" />
       </list>
     </option>
   </component>
@@ -177,6 +194,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -195,24 +214,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="projekt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="projekt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -416,7 +419,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1726094" sideWeight="0.60091746" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1726094" sideWeight="0.60091746" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39908257" sideWeight="0.9975689" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="110" y="122" width="1060" height="574" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -488,15 +491,13 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/analysis/AnalysisAdapter.java">
+    <entry file="file://$PROJECT_DIR$/TypeChecker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="610" column="25" selection-start="10752" selection-end="10752" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StupsCompiler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="41" selection-start="853" selection-end="853" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="308" column="71" selection-start="10708" selection-end="10708" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#727#743#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -564,21 +565,29 @@
         <state line="28" column="0" selection-start="540" selection-end="540" vertical-scroll-proportion="-9.945206" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/StupsCompiler.java">
+    <entry file="file://$PROJECT_DIR$/lexer/LexerException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="21" selection-start="720" selection-end="725" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="11" column="14" selection-start="330" selection-end="330" vertical-scroll-proportion="0.51232874" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/parser/ParserException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="5" selection-start="325" selection-end="325" vertical-scroll-proportion="0.0" />
+        <state line="15" column="5" selection-start="353" selection-end="353" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ASTTypeChecker.java">
+    <entry file="file://$PROJECT_DIR$/TypeChecker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="167" column="4" selection-start="5675" selection-end="5675" vertical-scroll-proportion="-1.6585366">
+        <state line="79" column="143" selection-start="3105" selection-end="3105" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#727#743#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StupsCompiler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="6" selection-start="3029" selection-end="3029" vertical-scroll-proportion="0.58536583">
           <folding />
         </state>
       </provider>
