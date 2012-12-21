@@ -10,11 +10,14 @@ import java.util.HashMap;
  */
 
 public class CodeGenerator extends DepthFirstAdapter {
-    public String code = "";
-    public HashMap<String, Integer> symbolTable = new HashMap<String, Integer>();
+    private String code = "";
+    private HashMap<String, Integer> symbolTable = new HashMap<String, Integer>();
     private HashMap<String, String> typeTable;
     private String type = "";
     private int countLabels = 0;
+    private int compareCounter = 0;
+    private int breakCounter = 0;
+    private int stackHeight = 1;
 
     public CodeGenerator(HashMap<String, String> symbolTable) {
         typeTable = symbolTable;
@@ -24,16 +27,19 @@ public class CodeGenerator extends DepthFirstAdapter {
     @Override
     public void outAAndExpr(AAndExpr node) {
         code += "\tiand\n";
+        stackHeight--;
         type = "boolean";
     }
     @Override
     public void outAOrExpr(AOrExpr node) {
         code += "\tior\n";
+        stackHeight--;
         type = "boolean";
     }
     @Override
     public void outAXorExpr(AXorExpr node) {
         code += "\tixor\n";
+        stackHeight--;
         type = "boolean";
     }
     @Override
@@ -41,28 +47,21 @@ public class CodeGenerator extends DepthFirstAdapter {
         code += "\tineg\n";
         type = "boolean";
     }
-    @Override
-    public void outATrueExpr(ATrueExpr node) {
-        code += "\tbipush 1\n";
-        type = "boolean";
-    }
-    @Override
-    public void outAFalseExpr(AFalseExpr node) {
-        code += "\tbipush 0\n";
-        type = "boolean";
-    }
-
     // Arithmetic operations
     @Override
     public void outAPlusExpr(APlusExpr node) {
         code += "\tiadd\n";
+        stackHeight--;
         type = "integer";
     }
     @Override
     public void outAMinusExpr(AMinusExpr node) {
         code += "\tisub\n";
+        stackHeight--;
         type = "integer";
     }
+
+    // Arithmetic expressions
     @Override                                               // NEED TO TEST THIS!
     public void outAUnaryMinusExpr(AUnaryMinusExpr node) {
         code += "\tineg\n";
@@ -71,11 +70,13 @@ public class CodeGenerator extends DepthFirstAdapter {
     @Override
     public void outAMultExpr(AMultExpr node) {
         code += "\timul\n";
+        stackHeight--;
         type = "integer";
     }
     @Override
     public void outADivExpr(ADivExpr node) {
         code += "\tidiv\n";
+        stackHeight--;
         type = "integer";
     }
     @Override
@@ -84,16 +85,14 @@ public class CodeGenerator extends DepthFirstAdapter {
         type = "integer";
     }
 
-    // Comparisons
-
-    // Identifier
+    // Check identifier
     @Override
     public void outAIdentifierExpr(AIdentifierExpr node) {
         boolean check = true;
         String identifier = node.getIdentifier().toString().toLowerCase().replaceAll(" ","");
         Node parent = node;
         String parentName;
-        do {
+        do {        // Needed to check, if we are in a declaration-context
             parent = parent.parent();
             parentName = parent.getClass().getSimpleName().replaceAll(" ","");
             if (parentName.equals("ADeclarationExpr")) check = false;
@@ -102,6 +101,7 @@ public class CodeGenerator extends DepthFirstAdapter {
 
         if (check) {
             code += "\tiload "+symbolTable.get(identifier)+"\n";
+            stackHeight++;
             type = typeTable.get(identifier);
         }
     }
@@ -111,47 +111,137 @@ public class CodeGenerator extends DepthFirstAdapter {
     public void caseAAssignmentExpr(AAssignmentExpr node) {
         node.getExpr().apply(this);
         code += "\tistore "+symbolTable.get(node.getIdentifier().toString().toLowerCase().replaceAll(" ",""))+"\n";
+        stackHeight--;
     }
     @Override
     public void caseANumberExpr(ANumberExpr node) {
-        code += "\tldc "+node.getNumber().toString().replaceAll(" ","")+"\n";
+        code += "\tbipush "+node.getNumber().toString().replaceAll(" ","")+"\n";
+        stackHeight++;
         type = "integer";
     }
     @Override
     public void caseATrueExpr(ATrueExpr node) {
-        code += "\tldc 1\n";
+        code += "\tbipush 1\n";
+        stackHeight++;
         type = "boolean";
     }
     @Override
     public void caseAFalseExpr(AFalseExpr node) {
-        code += "\tldc 0\n";
+        code += "\tbipush 0\n";
+        stackHeight++;
         type = "boolean";
     }
     @Override
     public void caseAPrintExpr(APrintExpr node) {
         String intOrBoolean = "I";
-
         code += "\tgetstatic java/lang/System/out Ljava/io/PrintStream;\n";
         node.getExpr().apply(this);
         if (type.equals("boolean")) intOrBoolean = "Z";
         code += "\tinvokevirtual java/io/PrintStream/println("+intOrBoolean+")V\n";
+        stackHeight++;
     }
 
     // While loop
     @Override
     public void caseAWhileExpr(AWhileExpr node) {
-        code += "\tLabel"+countLabels+":\n";
+        breakCounter = countLabels;
+        int temp = countLabels++;
+        code += "LabelWhileUp"+temp+":\n";
         node.getLeft().apply(this);
-        code += "\ndone\n";
+        code += "\tifeq LabelWhileDown"+temp+"\n";
+        stackHeight--;
+        node.getRight().apply(this);
+        code += "\tgoto LabelWhileUp"+temp+"\n";
+        code += "LabelWhileDown"+temp+":\n";
+    }
+
+    // Break
+    @Override
+    public void caseABreakExpr(ABreakExpr node) {
+        code += "\tgoto LabelWhileDown"+breakCounter+"\n";
+    }
+
+    // If-then Part
+    @Override
+    public void caseAIfThenExpr(AIfThenExpr node) {
+        int temp = countLabels++;
+        node.getLeft().apply(this);
+        code += "\tifeq LabelIfDown"+temp+"\n";
+        stackHeight--;
+        node.getRight().apply(this);
+        code += "LabelIfDown"+temp+":\n";
+    }
+
+    // If-then-else Part
+    @Override
+    public void caseAIfThenElseExpr(AIfThenElseExpr node) {
+        int temp = countLabels++;
+        node.getIf().apply(this);
+        code += "\tifeq LabelIfElse"+temp+"\n";
+        stackHeight--;
+        node.getThen().apply(this);
+        code += "LabelIfElse"+temp+":\n";
+        node.getElse().apply(this);
     }
 
     // Comparisons
     @Override
     public void caseAComparisonExpr(AComparisonExpr node) {
-        String compare = node.getComparison().toString().toLowerCase().replaceAll(" ","");
-        if (compare.equals("<")) {
-            System.out.println("bombe");
-        }
+        int temp = 0;
+        node.getLeft().apply(this);
+        node.getRight().apply(this);
+        code += "\tisub\n";         // To check with zero
+        stackHeight--;
+        temp = compareCounter;
+        node.getComparison().apply(this);   // Add line matching to corresponding symbol
+        code += "\tbipush 0\n";
+        stackHeight++;
+        code += "\tgoto LabelCompEnd"+temp+"\n";
+        code += "LabelTrue"+temp+":\n";
+        code += "\tbipush 1\n";
+        stackHeight++;
+        code += "LabelCompEnd"+temp+":\n";
+    }
+    @Override
+    public void outAGtExpr(AGtExpr node) {
+        code += "\tifgt LabelTrue"+(compareCounter++)+"\n";
+        stackHeight--;
+    }
+    @Override
+    public void outAGeExpr(AGeExpr node) {
+        code += "\tifge LabelTrue"+(compareCounter++)+"\n";
+        stackHeight--;
+    }
+    @Override
+    public void outALtExpr(ALtExpr node) {
+        code += "\tiflt LabelTrue"+(compareCounter++)+"\n";
+        stackHeight--;
+    }
+    @Override
+    public void outALeExpr(ALeExpr node) {
+        code += "\tifle LabelTrue"+(compareCounter++)+"\n";
+        stackHeight--;
+    }
+    @Override
+    public void outANeExpr(ANeExpr node) {
+        code += "\tifne LabelTrue"+(compareCounter++)+"\n";
+        stackHeight--;
+    }
+    @Override
+    public void outAEqExpr(AEqExpr node) {
+        code += "\tifeq LabelTrue"+(compareCounter++)+"\n";
+        stackHeight--;
+    }
 
+    /********************************* Getter and Setter **************************************/
+
+    public HashMap<String, Integer> getSymbolTable() {
+        return symbolTable;
+    }
+    public String getCode() {
+        return code;
+    }
+    public int getStackHeight() {
+        return stackHeight;
     }
 }

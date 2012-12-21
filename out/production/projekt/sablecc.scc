@@ -27,7 +27,7 @@ Helpers
   	x 		 = ['x' + 'X'];
   	y 		 = ['y' + 'Y'];
   	z 		 = ['z' + 'Z'];
-	letter   = (['a'..'z']|['A'..'Z']);		// needed...?
+	letter   = (['a'..'z']|['A'..'Z']);
 
 	cr = 13;
     lf = 10;
@@ -93,7 +93,7 @@ Tokens
 	dot 		= '.';
 	comma 		= ',';
 	blank_or_comment = (blank | comment | comment_line)*;
-	identifier	= ('_' | '$' | letter) (number | letter | '_')*;
+	identifier	= ('_' | '$' | letter)* (number | letter | '_')*;
 
 Ignored Tokens
 	blank_or_comment;
