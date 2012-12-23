@@ -9,7 +9,6 @@
  *  - Catch uninitialized variables                                       *
  *************************************************************************/
 
-import com.sun.tools.corba.se.idl.IncludeGen;
 import lexer.Lexer;
 import lexer.LexerException;
 import node.Start;
@@ -22,7 +21,7 @@ public class StupsCompiler {
 
 	public static void main(String[] args) throws LexerException, IOException, ParserException {
         String input = "";
-        String fileName = args[1];
+        String fileName = "";
         if (args.length < 2) {  // catch valid number of arguments
             System.out.println("# Error: Not enough arguments.\n# Usage: > java StupsCompiler -argument <Filename.pas>\n# Valid arguments are: compile, liveness.");
             System.exit(1);
@@ -30,10 +29,13 @@ public class StupsCompiler {
         if (!args[1].endsWith(".pas")) {    // catch valid file extension
             System.out.println("# Error: Valid file extension is only '.pas'.");
             System.exit(1);
+        } else {
+            fileName = args[1];
         }
         try {
             if (args[0].equals("-compile")) {       // Compile section
                 String zeile;
+                fileName = args[1];
                 FileReader fr = new FileReader(fileName);
                 BufferedReader br = new BufferedReader(fr);
 

@@ -9,7 +9,7 @@
 	return
 .end method
 	.method public static main([Ljava/lang/String;)V
-	.limit stack 9
+	.limit stack 17
 	.limit locals 5
 	bipush 1
 	istore 2
@@ -17,6 +17,8 @@
 	istore 3
 	iload 3
 	istore 2
+	bipush 1
+	istore 4
 LabelWhileUp0:
 	iload 2
 	bipush 100
@@ -52,8 +54,45 @@ LabelCompEnd1:
 	goto LabelWhileDown0
 LabelIfElse1:
 	getstatic java/lang/System/out Ljava/io/PrintStream;
+	iload 2
+	invokevirtual java/io/PrintStream/println(I)V
+	bipush 1
+	bipush 2
+	isub
+	iflt LabelTrue2
+	bipush 0
+	goto LabelCompEnd2
+LabelTrue2:
+	bipush 1
+LabelCompEnd2:
+	ifeq LabelIfElse2
+	getstatic java/lang/System/out Ljava/io/PrintStream;
 	bipush 0
 	invokevirtual java/io/PrintStream/println(I)V
+LabelIfElse2:
+	getstatic java/lang/System/out Ljava/io/PrintStream;
+	bipush 100
+	invokevirtual java/io/PrintStream/println(I)V
+LabelWhileUp3:
+	iload 4
+	bipush 5
+	isub
+	iflt LabelTrue3
+	bipush 0
+	goto LabelCompEnd3
+LabelTrue3:
+	bipush 1
+LabelCompEnd3:
+	ifeq LabelWhileDown3
+	getstatic java/lang/System/out Ljava/io/PrintStream;
+	iload 4
+	invokevirtual java/io/PrintStream/println(I)V
+	iload 4
+	bipush 1
+	iadd
+	istore 4
+	goto LabelWhileUp3
+LabelWhileDown3:
 	goto LabelWhileUp0
 LabelWhileDown0:
 	getstatic java/lang/System/out Ljava/io/PrintStream;

@@ -273,7 +273,7 @@ public class TypeChecker extends DepthFirstAdapter {
         String identifier = node.getIdentifier().toString().toLowerCase().replaceAll(" ","");
         checkDeclared(identifier);
         if (varInitialized.get(identifier) == 0) {
-            System.out.println("# Error: Identifier '"+identifier+"' has not been initialized. Terminating...");
+            System.out.println("# Error: Identifier '"+identifier+"' has been declared, but not initialized. Terminating...");
             System.exit(1);
         }
         this.result = symbolTable.get(identifier);

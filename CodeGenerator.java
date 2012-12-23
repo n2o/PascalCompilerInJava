@@ -234,7 +234,6 @@ public class CodeGenerator extends DepthFirstAdapter {
     }
 
     /********************************* Getter and Setter **************************************/
-
     public HashMap<String, Integer> getSymbolTable() {
         return symbolTable;
     }
