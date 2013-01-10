@@ -327,12 +327,6 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseTProgramend(TProgramend node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
     public void caseTEnd(TEnd node)
     {
         defaultCase(node);

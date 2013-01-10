@@ -55,7 +55,6 @@ Tokens
 	// Commands
 	assign	= ':=';
 	begin 	= b e g i n;
-	programend 	= e n d '.';
 	end 	= e n d;
 	program	= p r o g r a m;
 	if		= i f;
@@ -93,14 +92,14 @@ Tokens
 	dot 		= '.';
 	comma 		= ',';
 	blank_or_comment = (blank | comment | comment_line)*;
-	identifier	= ('_' | '$' | letter)* (number | letter | '_')*;
+	identifier	= ('_' | letter)* (number | letter | '_' | '$')*;
 
 Ignored Tokens
 	blank_or_comment;
 
 Productions
 	start {-> expr} = 
-		   program identifier semicolon declaration* begin statement_list programend {-> New expr.start(identifier, [declaration.expr], statement_list.expr)};
+		   program identifier semicolon declaration* begin statement_list end dot {-> New expr.start(identifier, [declaration.expr], statement_list.expr)};
 
 	declaration {-> expr} =
 		   var identifier_list colon type semicolon {-> New expr.declaration(identifier_list.expr, type.expr)};

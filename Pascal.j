@@ -9,19 +9,19 @@
 	return
 .end method
 	.method public static main([Ljava/lang/String;)V
-	.limit stack 17
-	.limit locals 5
+	.limit stack 14
+	.limit locals 4
 	bipush 1
-	istore 2
-	bipush 1
+	istore 1
+	iload 1
 	istore 3
 	iload 3
+	iload 1
+	iadd
 	istore 2
-	bipush 1
-	istore 4
 LabelWhileUp0:
-	iload 2
-	bipush 100
+	iload 1
+	bipush 10
 	isub
 	iflt LabelTrue0
 	bipush 0
@@ -30,34 +30,31 @@ LabelTrue0:
 	bipush 1
 LabelCompEnd0:
 	ifeq LabelWhileDown0
-	getstatic java/lang/System/out Ljava/io/PrintStream;
-	iload 2
-	invokevirtual java/io/PrintStream/println(I)V
-	iload 3
-	istore 1
-	iload 2
-	iload 3
-	iadd
-	istore 3
 	iload 1
-	istore 2
-	iload 2
-	bipush 34
+	bipush 1
+	iadd
+	istore 1
+LabelWhileUp1:
+	iload 3
+	bipush 10
 	isub
-	ifgt LabelTrue1
+	iflt LabelTrue1
 	bipush 0
 	goto LabelCompEnd1
 LabelTrue1:
 	bipush 1
 LabelCompEnd1:
-	ifeq LabelIfElse1
-	goto LabelWhileDown0
-LabelIfElse1:
-	getstatic java/lang/System/out Ljava/io/PrintStream;
-	iload 2
-	invokevirtual java/io/PrintStream/println(I)V
+	ifeq LabelWhileDown1
+	iload 3
 	bipush 1
-	bipush 2
+	iadd
+	istore 3
+	goto LabelWhileUp1
+LabelWhileDown1:
+LabelBreakDown0:
+LabelWhileUp2:
+	iload 2
+	bipush 10
 	isub
 	iflt LabelTrue2
 	bipush 0
@@ -65,38 +62,30 @@ LabelIfElse1:
 LabelTrue2:
 	bipush 1
 LabelCompEnd2:
-	ifeq LabelIfElse2
+	ifeq LabelWhileDown2
 	getstatic java/lang/System/out Ljava/io/PrintStream;
-	bipush 0
+	iload 2
 	invokevirtual java/io/PrintStream/println(I)V
-LabelIfElse2:
+	goto LabelBreakDown1
 	getstatic java/lang/System/out Ljava/io/PrintStream;
-	bipush 100
+	ldc 111111
 	invokevirtual java/io/PrintStream/println(I)V
-LabelWhileUp3:
-	iload 4
-	bipush 5
-	isub
-	iflt LabelTrue3
-	bipush 0
-	goto LabelCompEnd3
-LabelTrue3:
-	bipush 1
-LabelCompEnd3:
-	ifeq LabelWhileDown3
+	goto LabelWhileUp2
+LabelWhileDown2:
+LabelBreakDown1:
+	goto LabelBreakDown2
 	getstatic java/lang/System/out Ljava/io/PrintStream;
-	iload 4
+	ldc 222222
 	invokevirtual java/io/PrintStream/println(I)V
-	iload 4
-	bipush 1
-	iadd
-	istore 4
-	goto LabelWhileUp3
-LabelWhileDown3:
+	goto LabelBreakDown2
+	getstatic java/lang/System/out Ljava/io/PrintStream;
+	ldc 333333
+	invokevirtual java/io/PrintStream/println(I)V
 	goto LabelWhileUp0
 LabelWhileDown0:
+LabelBreakDown2:
 	getstatic java/lang/System/out Ljava/io/PrintStream;
-	bipush 10
+	ldc 999999
 	invokevirtual java/io/PrintStream/println(I)V
 	return
 .end method

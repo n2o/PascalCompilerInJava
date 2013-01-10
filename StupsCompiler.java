@@ -33,18 +33,19 @@ public class StupsCompiler {
             fileName = args[1];
         }
         try {
-            if (args[0].equals("-compile")) {       // Compile section
-                String zeile;
-                fileName = args[1];
-                FileReader fr = new FileReader(fileName);
-                BufferedReader br = new BufferedReader(fr);
+            String zeile;
+            fileName = args[1];
+            FileReader fr = new FileReader(fileName);
+            BufferedReader br = new BufferedReader(fr);
 
+            zeile = br.readLine();
+            while (zeile != null) {
+                input += zeile+"\n";
                 zeile = br.readLine();
-                while (zeile != null) {
-                    input += zeile+"\n";
-                    zeile = br.readLine();
-                }
-                br.close();
+            }
+            br.close();
+
+            if (args[0].equals("-compile")) {       // Compile section
                 parse(input, fileName.substring(0, fileName.lastIndexOf('.')));
 
             } else if (args[0].equals("-liveness")) {
@@ -71,9 +72,9 @@ public class StupsCompiler {
         int pos = Integer.parseInt(message.substring(message.indexOf(',') + 1, message.indexOf(']')));
         String[] split = input.split("\n");
 
+        if (line > split.length) line--;
         System.out.println("# "+split[line-1]);
         System.out.print("#");
-        pos += 0;
         while (pos != 0) {
             System.out.print(" ");
             pos--;
@@ -105,7 +106,6 @@ public class StupsCompiler {
         start.apply(codeGenerator);
 
         output = createOutput(codeGenerator, fileName);
-//        System.out.println(output);
 
         Writer wout = new BufferedWriter(                      // Write everything to the outputfile.j
                 new OutputStreamWriter(

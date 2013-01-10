@@ -1,28 +1,27 @@
-program fibonacci;
-var a : integer; 
-var b,D: integer; 
-var temp : integer; 
+program parenthesis;
+var a,c,b : integer;
 begin
-a := 1;
-b := 1;
-a := b;
-d := 1;
-while a < 100 do 
-	begin 
-		writeln(a);
-		temp := b;
-		b := a + b;
-		a := temp ;
-		if a > 34 then break else
-		    begin
-		        writeln(a);
-		        if 1 < 2 then writeln(0) else writeln(100);
-		        while d < 5 do
-                    begin
-                        writeln(d);
-                        d := d+1;
-                    end;
-		    end;
-	end;
-writeln(10)
+	a := 1;
+	b := a;
+	c := b+a;
+
+	while a < 10 do
+		begin
+			a := a+1;
+			while b < 10 do
+				b := b+1;
+				begin
+					while c < 10 do
+						begin
+							writeln(c);
+							break;
+							writeln(111111);
+						end;
+					break;
+					writeln(222222);
+				end;
+			break;
+			writeln(333333);
+		end
+	writeln(999999);
 end.

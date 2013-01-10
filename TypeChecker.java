@@ -13,7 +13,7 @@ import java.util.HashMap;
 
 public class TypeChecker extends DepthFirstAdapter {
     private HashMap<String, String> symbolTable = new HashMap<String, String>();
-    private HashMap<String, Integer> varInitialized = new HashMap<String, Integer>();
+    private HashMap<String, Boolean> varInitialized = new HashMap<String, Boolean>();
     private String result;
     /**
      * Check if break is only used in a while context
@@ -46,7 +46,7 @@ public class TypeChecker extends DepthFirstAdapter {
         for (String aVar : var) {
             if (!symbolTable.containsKey(aVar)) {
                 symbolTable.put(aVar, type);
-                varInitialized.put(aVar, 0);
+                varInitialized.put(aVar, false);
             } else {
                 System.out.println("# Error: Already specified '" + aVar + "' as '" + symbolTable.get(aVar) + "'. Terminating...\n");
                 System.exit(1);
@@ -62,7 +62,7 @@ public class TypeChecker extends DepthFirstAdapter {
         String identifier = node.getIdentifier().toString().toLowerCase().replaceAll(" ","");
         checkDeclared(identifier);
         String type = symbolTable.get(identifier);
-        varInitialized.put(identifier, 1);
+        varInitialized.put(identifier, true);
         String expr = node.getExpr().getClass().getSimpleName();
 
         node.getExpr().apply(this);     // Going through the AST
@@ -70,14 +70,14 @@ public class TypeChecker extends DepthFirstAdapter {
         // Check if arithmetic expressions are
         if (expr.equals("APlusExpr") || expr.equals("AMinusExpr") || expr.equals("AMultExpr") || expr.equals("ADivExpr") || expr.equals("AModExpr") || expr.equals("AUnaryMinusExpr") || expr.equals("AUnaryPlusExpr")) {
             if (!type.equals("integer")) {
-                System.out.println("# Error: Wrong types. Expected 'integer'.\n");
+                System.out.println("# Error: Wrong type of '"+identifier+"'. Expected 'integer'.\n");
                 System.exit(1);
             }
         }
         // Check if those comparisons and boolean arithmetic are assigned to booleans
         if (expr.equals("AOrExpr") || expr.equals("AXorExpr") || expr.equals("AAndExpr") || expr.equals("ANotExpr") || expr.equals("AComparisonExpr") ) {
             if (!type.equals("boolean")) {
-                System.out.println("# Error: Wrong types. Found: '"+identifier+"' : '"+symbolTable.get(identifier)+"'. Expected 'boolean'.\n");
+                System.out.println("# Error: Wrong type of '"+identifier+"'. Expected 'boolean'.\n");
                 System.exit(1);
             }
         }
@@ -115,6 +115,8 @@ public class TypeChecker extends DepthFirstAdapter {
         String left = this.result;
         node.getRight().apply(this);
         String right = this.result;
+
+        result = "boolean";         // Result of an
 
         if (!left.equals(right))
             printErrorBooleanOperation(operation);
@@ -159,7 +161,7 @@ public class TypeChecker extends DepthFirstAdapter {
         node.getExpr().apply(this);
 
         if (!result.equals("boolean")) {
-            System.out.println("# Error: Syntax of '" + operation + "' is: 'boolean' := '"+operation+"' 'boolean'.\n");
+            System.out.println("# Error: Syntax of '" + operation + "' is: '"+operation+"' 'boolean'.\n");
             System.exit(1);
         }
     }
@@ -195,7 +197,7 @@ public class TypeChecker extends DepthFirstAdapter {
         node.getExpr().apply(this);
 
         if (!result.equals("integer") && !node.getExpr().getClass().getSimpleName().equals("AIdentifierExpr") && !node.getExpr().getClass().getSimpleName().equals("ANumberExpr")) {
-            System.out.println("# Error: Syntax of '"+operation+"' is: 'integer' := '"+operation+"' 'integer'.\n");
+            System.out.println("# Error: Syntax of '"+operation+"' is: '"+operation+"' 'integer'.\n");
             System.exit(1);
         }
     }
@@ -205,7 +207,7 @@ public class TypeChecker extends DepthFirstAdapter {
         node.getExpr().apply(this);
 
         if (!result.equals("integer") && !node.getExpr().getClass().getSimpleName().equals("AIdentifierExpr") && !node.getExpr().getClass().getSimpleName().equals("ANumberExpr")) {
-            System.out.println("# Error: Syntax of '"+operation+"' is: 'integer' := '"+operation+"' 'integer'.\n");
+            System.out.println("# Error: Syntax of '"+operation+"' is: '"+operation+"' 'integer'.\n");
             System.exit(1);
         }
     }
@@ -233,7 +235,7 @@ public class TypeChecker extends DepthFirstAdapter {
     }
     @Override
     public void caseADivExpr(ADivExpr node) {
-        String operation = "/";
+        String operation = "div";
         node.getLeft().apply(this);
         String left = this.result;
         node.getRight().apply(this);
@@ -272,7 +274,7 @@ public class TypeChecker extends DepthFirstAdapter {
     public void caseAIdentifierExpr(AIdentifierExpr node) {
         String identifier = node.getIdentifier().toString().toLowerCase().replaceAll(" ","");
         checkDeclared(identifier);
-        if (varInitialized.get(identifier) == 0) {
+        if (!varInitialized.get(identifier)) {
             System.out.println("# Error: Identifier '"+identifier+"' has been declared, but not initialized. Terminating...");
             System.exit(1);
         }
@@ -294,7 +296,7 @@ public class TypeChecker extends DepthFirstAdapter {
      * Prepare output for arithmetic operations
      */
     private void printErrorArithmeticOperation(String operation) {
-        System.out.println("# Error: Syntax of '"+operation+"' is: 'integer' := 'integer' '"+operation+"' 'integer'.\n");
+        System.out.println("# Error: Syntax of '"+operation+"' is: 'integer' '"+operation+"' 'integer'.\n");
         System.exit(1);
     }
 
@@ -302,7 +304,7 @@ public class TypeChecker extends DepthFirstAdapter {
      * The same for boolean expressions
      */
     private void printErrorBooleanOperation(String operation) {
-        System.out.println("# Error: Syntax of '"+operation+"' is: 'boolean' := 'boolean' '"+operation+"' 'boolean'.\n");
+        System.out.println("# Error: Syntax of '"+operation+"' is: 'boolean' '"+operation+"' 'boolean'.\n");
         System.exit(1);
     }
 

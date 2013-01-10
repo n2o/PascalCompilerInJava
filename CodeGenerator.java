@@ -5,7 +5,6 @@ import java.util.HashMap;
 
 /**
  * Need to test:
- *  - UnaryMinus
  *  - UnaryPlus not necessary?
  */
 
@@ -44,7 +43,13 @@ public class CodeGenerator extends DepthFirstAdapter {
     }
     @Override
     public void outANotExpr(ANotExpr node) {
-        code += "\tineg\n";
+        int temp = countLabels++;
+        code += "\tifeq LabelNotTrue"+temp+"\n";
+        code += "\tbipush 0\n";
+        code += "\tgoto LabelNotEnd"+temp+"\n";
+        code += "LabelNotTrue"+temp+":\n";
+        code += "\tbipush 1\n";
+        code += "\tLabelNotEnd"+temp+":\n";
         type = "boolean";
     }
     // Arithmetic operations
@@ -115,7 +120,11 @@ public class CodeGenerator extends DepthFirstAdapter {
     }
     @Override
     public void caseANumberExpr(ANumberExpr node) {
-        code += "\tbipush "+node.getNumber().toString().replaceAll(" ","")+"\n";
+        int number = Integer.parseInt(node.getNumber().toString().replaceAll(" ", ""));
+        if (number > 255)
+            code += "\tldc "+number+"\n";
+        else
+            code += "\tbipush "+number+"\n";
         stackHeight++;
         type = "integer";
     }
@@ -144,7 +153,6 @@ public class CodeGenerator extends DepthFirstAdapter {
     // While loop
     @Override
     public void caseAWhileExpr(AWhileExpr node) {
-        breakCounter = countLabels;
         int temp = countLabels++;
         code += "LabelWhileUp"+temp+":\n";
         node.getLeft().apply(this);
@@ -153,12 +161,13 @@ public class CodeGenerator extends DepthFirstAdapter {
         node.getRight().apply(this);
         code += "\tgoto LabelWhileUp"+temp+"\n";
         code += "LabelWhileDown"+temp+":\n";
+        code += "LabelBreakDown"+(breakCounter++)+":\n";
     }
 
     // Break
     @Override
     public void caseABreakExpr(ABreakExpr node) {
-        code += "\tgoto LabelWhileDown"+breakCounter+"\n";
+        code += "\tgoto LabelBreakDown"+breakCounter+"\n";
     }
 
     // If-then Part
@@ -180,8 +189,10 @@ public class CodeGenerator extends DepthFirstAdapter {
         code += "\tifeq LabelIfElse"+temp+"\n";
         stackHeight--;
         node.getThen().apply(this);
+        code += "\tgoto LabelIfElseEnd"+temp+"\n";
         code += "LabelIfElse"+temp+":\n";
         node.getElse().apply(this);
+        code += "LabelIfElseEnd"+temp+":\n";
     }
 
     // Comparisons

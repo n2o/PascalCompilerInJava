@@ -55,7 +55,6 @@ public interface Analysis extends Switch
     void caseTNumber(TNumber node);
     void caseTAssign(TAssign node);
     void caseTBegin(TBegin node);
-    void caseTProgramend(TProgramend node);
     void caseTEnd(TEnd node);
     void caseTProgram(TProgram node);
     void caseTIf(TIf node);
