@@ -6,5 +6,8 @@
  * To change this template use File | Settings | File Templates.
  */
 public class Liveness {
-    
+    String input;
+    public Liveness(String input) {
+        this.input = input;
+    }
 }

@@ -1,7 +1,19 @@
 # Automatic calling all the necessary Files to test all test cases.
+import os
+import subprocess
 
-n = input("# How many test cases?\n")
+n = 0
 fileShellScript = open("shellScript.sh","w")
+
+dirList = os.listdir('testCases/')
+dirList.sort()
+
+for sFile in dirList:
+    if sFile.find('.pas') == -1:
+        dirList.remove(sFile)
+
+for sFile in dirList:	
+    n += 1
 
 def copyAllTheThings(n):
 	inc = 1
