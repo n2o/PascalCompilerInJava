@@ -5,7 +5,7 @@ public class Block {
     public LinkedList<String> use;
     private LinkedList<String> in = new LinkedList<String>();
     private LinkedList<String> out = new LinkedList<String>();
-    private LinkedList<Block> successor = new LinkedList<Block>();
+    private LinkedList<Block> successor;
     private boolean hasSuccessor = false;
 
     private boolean hasUse = false;
@@ -35,7 +35,10 @@ public class Block {
         out.add(input);
     }
     public void addSuccessor(Block input) {
-        hasSuccessor = true;
+        if (!hasSuccessor) {
+            successor = new LinkedList<Block>();
+            hasSuccessor = true;
+        }
         successor.add(input);
     }
 

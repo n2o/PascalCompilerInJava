@@ -8,6 +8,7 @@ public class Liveness {
     public Liveness(GraphVisitor analysis) {
         this.analysis = analysis;
         this.blocks = analysis.getBlocks();
+
         addSuccessors();
         removeSuccessors();
 
@@ -24,9 +25,8 @@ public class Liveness {
         int value;
         for (int key : map.keySet()) {
             value = map.get(key);
-            if (value-1 < blocks.size()) {       // protecting to run out of the index of blocks
+            if (value-1 < blocks.size())       // protecting to run out of the index of blocks
                 blocks.get(key-1).addSuccessor(blocks.get(value-1));
-            }
         }
     }
     private void removeSuccessors() {
@@ -46,8 +46,10 @@ public class Liveness {
         for (int i = 0; i < blocks.size(); i++) {
             currentBlock = blocks.get(i);
             System.out.print("\t#" + currentBlock.getBlockID() + "\tDef: " + currentBlock.getDef() + "\t\tUse: " + currentBlock.getUse()+"\t\tSuccessor: ");
-            for (Block block : currentBlock.getSuccessor()) {
-                System.out.print(block.getBlockID() + " ");
+            if (currentBlock.hasSuccessor()) {
+                for (Block block : currentBlock.getSuccessor()) {
+                    System.out.print(block.getBlockID() + " ");
+                }
             }
             System.out.print("\t\t IN: ");
             for (String element : currentBlock.getIn()) {
@@ -73,7 +75,6 @@ public class Liveness {
             calcFirstIteration();       // Copy use to in in all the blocks!
             LinkedList<String> diff;
             LinkedList<String> inSuccessor;
-            boolean duplicate = false;
 
             while (changed) {
                 changed = false;
@@ -81,35 +82,25 @@ public class Liveness {
                     // Get IN
                     diff = calcDiff(currentBlock);
                     for (String element : diff) {
-                        for (String in : currentBlock.getIn()) {
-                            if (in.equals(element)) {
-                                duplicate = true;
-                            }
-                        }
-                        if (!duplicate) {
+                        if (!currentBlock.getIn().contains(element)) {
                             currentBlock.addIn(element);
                             changed = true;
                         }
                     }
-                    duplicate = false;
                     // Get OUT
                     inSuccessor = calcInOfSuccessor(currentBlock);
                     for (String element : inSuccessor) {
-                        for (String out : currentBlock.getOut())
-                            if (out.equals(element)) {
-                                duplicate = true;
-                            }
-                        if (!duplicate) {
+                        if (!currentBlock.getOut().contains(element)) {
                             currentBlock.addOut(element);
                             changed = true;
                         }
                     }
-                    duplicate = false;
                     currentBlock = blocks.get(i);
                 }
             }
         }
     }
+
     private void calcFirstIteration() {
         for (Block block : blocks) {
             if (block.hasUse()) {
@@ -121,20 +112,31 @@ public class Liveness {
     }
     private LinkedList<String> calcDiff(Block currentBlock) {
         LinkedList<String> output = new LinkedList<String>();
+        boolean duplicate = false;
         for (String out : currentBlock.getOut()) {
-            if (!out.equals(currentBlock.getDef())) {
+            if (out.equals(currentBlock.getDef())) {
+                duplicate = true;
+            }
+            if (!duplicate) {
                 output.add(out);
+                duplicate = false;
             }
         }
         return output;
     }
     private LinkedList<String> calcInOfSuccessor(Block currentBlock) {
         LinkedList<String> inSuccessor = new LinkedList<String>();
-        for (Block successor : currentBlock.getSuccessor()) {
-            for (String element : successor.getIn()) {
-                inSuccessor.add(element);
+        if (currentBlock.hasSuccessor()) {
+            for (Block successor : currentBlock.getSuccessor()) {
+                for (String element : successor.getIn()) {
+                    inSuccessor.add(element);
+                }
             }
         }
         return inSuccessor;
+    }
+
+    private void printAdjacencyMatrix() {
+
     }
 }

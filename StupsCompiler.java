@@ -135,6 +135,7 @@ public class StupsCompiler {
 
         GraphVisitor analysis = new GraphVisitor();
         start.apply(analysis);
+        analysis.exitNode();
 
         new Liveness(analysis);     // Start Liveness analysis
     }

@@ -63,7 +63,8 @@ public class GraphVisitor extends DepthFirstAdapter{
 
         // because of the normal algorithm according to setStartAndSuccessor() I need to remove the
         // first successor, because this one points to else, which is simply wrong at this point.
-        blocks.get(thenPointer-1).getSuccessor().removeFirst();
+//        blocks.get(thenPointer-1).getSuccessor().removeFirst();
+        removeSuccessors.add(thenPointer-1);
         addSuccessors.put(thenPointer, flow);       // Add normal program flow after the then block
     }
     /**
@@ -79,8 +80,15 @@ public class GraphVisitor extends DepthFirstAdapter{
         addSuccessors.put(temp, blockID);   // Add second successor for while loop
         addSuccessors.put(blockID - 1, temp);
 //        blocks.get(blockID-2).getSuccessor().removeFirst();
-        removeSuccessors.add(blockID-1);    // Remove later the first successor
+        removeSuccessors.add(blockID - 1);    // Remove later the first successor
     }
+
+//    @Override
+//    public void caseAStartExpr(AStartExpr node) {
+//        currentBlock = new Block(blockID++);
+//        node.getStatementList().apply(this);
+//        setStartAndSuccessor();
+//    }
 
     private void setStartAndSuccessor() {
         if (lastBlock != null)              // if it is the first block, do nothing
@@ -107,6 +115,10 @@ public class GraphVisitor extends DepthFirstAdapter{
         }
 
     }
+    public void exitNode() {
+        currentBlock = new Block(blockID++);
+        setStartAndSuccessor();
+    }
 
     /************************************************************************************************/
     public HashMap<Integer, Integer> getAddSuccessors() {
@@ -118,4 +130,5 @@ public class GraphVisitor extends DepthFirstAdapter{
     public LinkedList<Block> getBlocks() {
         return blocks;
     }
+
 }

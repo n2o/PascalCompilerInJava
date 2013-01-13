@@ -1,24 +1,14 @@
-Program IlovePriNum;
-Var i, n: Integer;
-Var prim: Boolean;
-Begin
-    n := 42;
-    i := 2;
-    prim := true;
-    while true do
-    BEGIN
-        if (n mod i)=0 then
-        BEGIN
-            writeln(i);
-            prim := false;
-            break;
-        END else
-        i := i + 1;
-        if i=(n-1) then
-        BEGIN
-            prim := true;
-            break;
-        END;
-    END;
-    writeln(42)
-End.
+program fibonacci ; 
+var a : integer ; 
+var b: integer; 
+var temp : integer ;
+begin
+	a := 1;
+	b := 1;
+	while (True and (a < 100))  do begin
+		 writeln(a);
+		temp := b;
+		b := a + b;
+		a := temp ;
+		end
+end .
