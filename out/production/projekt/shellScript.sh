@@ -2,6 +2,8 @@ clear
 echo ""######################## Starting Shell Script "########################"
 echo "# Compiling all *.java Files..."
 javac *.java
+echo "# Removing old tests..."
+rm -r tests/
 echo "# Preparing directory..."
 mkdir tests
 cp testCases/1.pas tests/
@@ -12,6 +14,11 @@ cp testCases/5.pas tests/
 cp testCases/6.pas tests/
 cp testCases/7.pas tests/
 cp testCases/8.pas tests/
+cp testCases/9.pas tests/
+cp testCases/10.pas tests/
+cp testCases/11.pas tests/
+cp testCases/12.pas tests/
+cp testCases/13.pas tests/
 echo "######################## Test 1 ########################"
 echo "# Calling StupsCompiler..."
 java StupsCompiler -compile tests/1.pas
@@ -75,4 +82,44 @@ echo "# Calling jasmin.jar..."
 java -jar jasmin.jar tests/8.j
 echo "# Executing Java File..."
 java tests/8
+echo "# Done."
+echo "######################## Test 9 ########################"
+echo "# Calling StupsCompiler..."
+java StupsCompiler -compile tests/9.pas
+echo "# Calling jasmin.jar..."
+java -jar jasmin.jar tests/9.j
+echo "# Executing Java File..."
+java tests/9
+echo "# Done."
+echo "######################## Test 10 ########################"
+echo "# Calling StupsCompiler..."
+java StupsCompiler -compile tests/10.pas
+echo "# Calling jasmin.jar..."
+java -jar jasmin.jar tests/10.j
+echo "# Executing Java File..."
+java tests/10
+echo "# Done."
+echo "######################## Test 11 ########################"
+echo "# Calling StupsCompiler..."
+java StupsCompiler -compile tests/11.pas
+echo "# Calling jasmin.jar..."
+java -jar jasmin.jar tests/11.j
+echo "# Executing Java File..."
+java tests/11
+echo "# Done."
+echo "######################## Test 12 ########################"
+echo "# Calling StupsCompiler..."
+java StupsCompiler -compile tests/12.pas
+echo "# Calling jasmin.jar..."
+java -jar jasmin.jar tests/12.j
+echo "# Executing Java File..."
+java tests/12
+echo "# Done."
+echo "######################## Test 13 ########################"
+echo "# Calling StupsCompiler..."
+java StupsCompiler -compile tests/13.pas
+echo "# Calling jasmin.jar..."
+java -jar jasmin.jar tests/13.j
+echo "# Executing Java File..."
+java tests/13
 echo "# Done."

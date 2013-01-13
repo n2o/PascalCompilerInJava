@@ -49,9 +49,6 @@ LabelCompEnd1:
 	bipush 1
 	iadd
 	istore 3
-	goto LabelWhileUp1
-LabelWhileDown1:
-LabelBreakDown0:
 LabelWhileUp2:
 	iload 2
 	bipush 10
@@ -66,17 +63,20 @@ LabelCompEnd2:
 	getstatic java/lang/System/out Ljava/io/PrintStream;
 	iload 2
 	invokevirtual java/io/PrintStream/println(I)V
-	goto LabelBreakDown1
+	goto LabelBreakDown0
 	getstatic java/lang/System/out Ljava/io/PrintStream;
 	ldc 111111
 	invokevirtual java/io/PrintStream/println(I)V
 	goto LabelWhileUp2
 LabelWhileDown2:
-LabelBreakDown1:
-	goto LabelBreakDown2
+LabelBreakDown0:
+	goto LabelBreakDown1
 	getstatic java/lang/System/out Ljava/io/PrintStream;
 	ldc 222222
 	invokevirtual java/io/PrintStream/println(I)V
+	goto LabelWhileUp1
+LabelWhileDown1:
+LabelBreakDown1:
 	goto LabelBreakDown2
 	getstatic java/lang/System/out Ljava/io/PrintStream;
 	ldc 333333

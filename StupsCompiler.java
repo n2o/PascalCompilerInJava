@@ -14,8 +14,11 @@ import lexer.LexerException;
 import node.Start;
 import parser.Parser;
 import parser.ParserException;
+import sun.jvm.hotspot.utilities.LivenessAnalysis;
 
 import java.io.*;
+import java.util.HashMap;
+import java.util.LinkedList;
 
 public class StupsCompiler {
 
@@ -23,7 +26,7 @@ public class StupsCompiler {
         String input = "";
         String fileName = "";
         if (args.length < 2) {  // catch valid number of arguments
-            System.out.println("# Error: Not enough arguments.\n# Usage: > java StupsCompiler -argument <Filename.pas>\n# Valid arguments are: compile, liveness.");
+            System.out.println("# Error: Not enough arguments.\n# Usage: > java StupsCompiler -argument <Filename.pas>\n# Valid arguments are: -compile, -liveness.");
             System.exit(1);
         }
         if (!args[1].endsWith(".pas")) {    // catch valid file extension
@@ -46,10 +49,10 @@ public class StupsCompiler {
             br.close();
 
             if (args[0].equals("-compile")) {       // Compile section
-                parse(input, fileName.substring(0, fileName.lastIndexOf('.')));
+                parseCompile(input, fileName.substring(0, fileName.lastIndexOf('.')));
 
             } else if (args[0].equals("-liveness")) {
-                // Write something about liveness...
+                parseLiveness(input);
             } else {
                 System.out.println("# Error: Wrong usage of StupsCompiler.\n# Usage: > java StupsCompiler -compile <Filename.pas>");
             }
@@ -87,7 +90,7 @@ public class StupsCompiler {
      * Start one module after the other and try to compile the input file. Then generate the
      * assembler file and create this file for jasmin.
      */
-	private static void parse(String input, String fileName) throws ParserException, LexerException, IOException {
+	private static void parseCompile(String input, String fileName) throws ParserException, LexerException, IOException {
 		String output;                                          // Init output string
         StringReader reader = new StringReader(input);          // Standard routine to start the parser, lexer, ...
 		PushbackReader r = new PushbackReader(reader, 100);
@@ -95,8 +98,8 @@ public class StupsCompiler {
         Parser parser = new Parser(l);
 		Start start = parser.parse();
 
-//        ASTPrinter printer = new ASTPrinter();
-//        start.apply(printer);
+        ASTPrinter printer = new ASTPrinter();
+        start.apply(printer);
 
         TypeChecker typeChecker = new TypeChecker();            // Starting TypeChecker
         start.apply(typeChecker);
@@ -112,6 +115,28 @@ public class StupsCompiler {
                         new FileOutputStream(fileName+".j"),"UTF8"));
         wout.append(output);
         wout.close();
+    }
+
+    /**
+     * Check the code with Lexer, Parser and TypeChecker. After this was all correct, start the Liveness analysis
+     */
+    private static void parseLiveness(String input) throws ParserException, LexerException, IOException {
+        StringReader reader = new StringReader(input);          // Standard routine to start the parser, lexer, ...
+        PushbackReader r = new PushbackReader(reader, 100);
+        Lexer l = new Lexer(r);
+        Parser parser = new Parser(l);
+        Start start = parser.parse();
+
+//        ASTPrinter printer = new ASTPrinter();
+//        start.apply(printer);
+
+        TypeChecker typeChecker = new TypeChecker();            // Starting TypeChecker
+        start.apply(typeChecker);
+
+        GraphVisitor analysis = new GraphVisitor();
+        start.apply(analysis);
+
+        new Liveness(analysis);     // Start Liveness analysis
     }
 
     /**

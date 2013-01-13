@@ -22,6 +22,8 @@ def copyAllTheThings(n):
 	fileShellScript.write("echo \"\"######################## Starting Shell Script \"########################\"\n")
 	fileShellScript.write("echo \"# Compiling all *.java Files...\"\n")
 	fileShellScript.write("javac *.java\n")
+	fileShellScript.write("echo \"# Removing old tests...\"\n")
+	fileShellScript.write("rm -r tests/\n")
 	fileShellScript.write("echo \"# Preparing directory...\"\n")
 	fileShellScript.write("mkdir tests\n")
 	while temp != 0:
@@ -47,5 +49,5 @@ def createShellScript(n):
 # Main Program
 copyAllTheThings(n)
 createShellScript(n)
-print "# Great! Now execute:"
+print "# Found "+str(n)+" testcases. Now execute:"
 print "# > sh shellScript.sh"

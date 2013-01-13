@@ -1,7 +1,19 @@
 # Automatic calling all the necessary Files to test all test cases.
+import os
+import subprocess
 
-n = input("# How many test cases?\n")
+n = 0
 fileShellScript = open("shellScript.sh","w")
+
+dirList = os.listdir('testCases/')
+dirList.sort()
+
+for sFile in dirList:
+    if sFile.find('.pas') == -1:
+        dirList.remove(sFile)
+
+for sFile in dirList:	
+    n += 1
 
 def copyAllTheThings(n):
 	inc = 1
@@ -10,6 +22,8 @@ def copyAllTheThings(n):
 	fileShellScript.write("echo \"\"######################## Starting Shell Script \"########################\"\n")
 	fileShellScript.write("echo \"# Compiling all *.java Files...\"\n")
 	fileShellScript.write("javac *.java\n")
+	fileShellScript.write("echo \"# Removing old tests...\"\n")
+	fileShellScript.write("rm -r tests/\n")
 	fileShellScript.write("echo \"# Preparing directory...\"\n")
 	fileShellScript.write("mkdir tests\n")
 	while temp != 0:
@@ -35,5 +49,5 @@ def createShellScript(n):
 # Main Program
 copyAllTheThings(n)
 createShellScript(n)
-print "# Great! Now execute:"
+print "# Found "+str(n)+" testcases. Now execute:"
 print "# > sh shellScript.sh"

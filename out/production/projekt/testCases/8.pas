@@ -1,4 +1,4 @@
-program parenthesis;
+program nested_while;
 var a,c,b : integer;
 begin
 	a := 1;
@@ -9,8 +9,8 @@ begin
 		begin
 			a := a+1;
 			while b < 10 do
-				b := b+1;
 				begin
+					b := b+1;
 					while c < 10 do
 						begin
 							writeln(c);

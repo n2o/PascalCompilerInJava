@@ -2,34 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f3e7a438-b788-4167-a4f1-283d1c74201f" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pascal.j" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node/TProgramend.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node/TProgramend.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/analysis/Analysis.class" afterPath="$PROJECT_DIR$/analysis/Analysis.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/analysis/AnalysisAdapter.class" afterPath="$PROJECT_DIR$/analysis/AnalysisAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lexer/Lexer$State.class" afterPath="$PROJECT_DIR$/lexer/Lexer$State.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lexer/Lexer.class" afterPath="$PROJECT_DIR$/lexer/Lexer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parser/Parser.class" afterPath="$PROJECT_DIR$/parser/Parser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pascal.class" afterPath="$PROJECT_DIR$/Pascal.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/StupsCompiler.class" afterPath="$PROJECT_DIR$/StupsCompiler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parser/TokenIndex.class" afterPath="$PROJECT_DIR$/parser/TokenIndex.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TypeChecker.class" afterPath="$PROJECT_DIR$/TypeChecker.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lexer/lexer.dat" afterPath="$PROJECT_DIR$/lexer/lexer.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parser/parser.dat" afterPath="$PROJECT_DIR$/parser/parser.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/analysis/Analysis.java" afterPath="$PROJECT_DIR$/analysis/Analysis.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/analysis/AnalysisAdapter.java" afterPath="$PROJECT_DIR$/analysis/AnalysisAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CodeGenerator.java" afterPath="$PROJECT_DIR$/CodeGenerator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lexer/Lexer.java" afterPath="$PROJECT_DIR$/lexer/Lexer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parser/Parser.java" afterPath="$PROJECT_DIR$/parser/Parser.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Block.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GraphVisitor.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CodeGeneratorException.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Liveness.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/TypeCheckerException.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generateShellScript.py" afterPath="$PROJECT_DIR$/generateShellScript.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testCases/8.pas" afterPath="$PROJECT_DIR$/testCases/8.pas" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/8.pas" afterPath="$PROJECT_DIR$/tests/8.pas" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pascal.pas" afterPath="$PROJECT_DIR$/Pascal.pas" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/StupsCompiler.java" afterPath="$PROJECT_DIR$/StupsCompiler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parser/TokenIndex.java" afterPath="$PROJECT_DIR$/parser/TokenIndex.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TypeChecker.java" afterPath="$PROJECT_DIR$/TypeChecker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sablecc.scc" afterPath="$PROJECT_DIR$/sablecc.scc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testCases/Automatisieren/generateShellScript.py" afterPath="$PROJECT_DIR$/testCases/Automatisieren/generateShellScript.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shellScript.sh" afterPath="$PROJECT_DIR$/shellScript.sh" />
     </list>
     <ignored path="projekt.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1357834402218" ignored="false" />
+    <file path="/Dummy.txt" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1358065671232" ignored="false" />
     <file path="/Compiler.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354976870895" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../Development/Java/BjörnProjekt/src/MainWorld.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354740432198" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../Development/Java/BjörnProjekt/src/Protagonist.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354740759028" ignored="false" />
@@ -38,20 +26,25 @@
     <file path="$PROJECT_DIR$/../../../../Development/Java/BjörnProjekt/src/Menu.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354740784503" ignored="false" />
     <file path="/SWorld.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354740874897" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../Development/Java/BjörnProjekt/src/SWorld.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354740883510" ignored="false" />
-    <file path="/fragment.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1355915836514" ignored="false" />
+    <file path="/fragment.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1357901092787" ignored="false" />
     <file path="$PROJECT_DIR$/node/TWhitespace.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354794418630" ignored="false" />
     <file path="$PROJECT_DIR$/node/TLCurlyBracket.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354794418632" ignored="false" />
     <file path="/ASTInterpreter.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1354979828159" ignored="false" />
     <file path="/ASTTypeChecker.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1355397199999" ignored="false" />
-    <file path="/StupsCompiler.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1357822670569" ignored="false" />
+    <file path="/StupsCompiler.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1358016764479" ignored="false" />
     <file path="/ParserException.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1355400586713" ignored="false" />
     <file path="/TypeCheckerException.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1355400612106" ignored="false" />
     <file path="/TypeChecker.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1357821774924" ignored="false" />
-    <file path="/CodeGenerator.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1357818435792" ignored="false" />
+    <file path="/CodeGenerator.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1357841133265" ignored="false" />
     <file path="/CodeGeneratorException.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1356102776412" ignored="false" />
     <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1356109638866" ignored="false" />
-    <file path="/Pascal.pas" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1356266908438" ignored="false" />
+    <file path="/Pascal.pas" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1358015111268" ignored="false" />
     <file path="/sablecc.scc" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1357822140651" ignored="false" />
+    <file path="/Liveness.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1358002438755" ignored="false" />
+    <file path="/Blocks.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1357898783274" ignored="false" />
+    <file path="/Block.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1358013109021" ignored="false" />
+    <file path="/GraphVisitor.java" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1358016074475" ignored="false" />
+    <file path="/a.dummy" changelist="f3e7a438-b788-4167-a4f1-283d1c74201f" time="1357998990533" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +57,9 @@
     <rightPanel url="file://$PROJECT_DIR$" />
     <splitter proportion="0.033264033" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/projekt$StupsCompiler.coverage" NAME="StupsCompiler Coverage Results" MODIFIED="1358001178950" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -71,22 +67,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/analysis/DepthFirstAdapter.java" line="240" class="analysis.DepthFirstAdapter" package="analysis">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -121,7 +102,22 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint url="file://$PROJECT_DIR$/analysis/DepthFirstAdapter.java" line="240" class="analysis.DepthFirstAdapter" package="analysis">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -134,16 +130,52 @@
       <file leaf-file-name="StupsCompiler.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/StupsCompiler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="0" selection-start="2223" selection-end="2223" vertical-scroll-proportion="0.0">
+            <state line="146" column="103" selection-start="6355" selection-end="6355" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CodeGenerator.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="GraphVisitor.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/GraphVisitor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="38" column="27" selection-start="1236" selection-end="1236" vertical-scroll-proportion="-0.46019107">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Block.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Block.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="25" selection-start="405" selection-end="405" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Pascal.pas" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Pascal.pas">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="0" selection-start="370" selection-end="370" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DepthFirstAdapter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/analysis/DepthFirstAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="240" column="0" selection-start="5060" selection-end="5060" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CodeGenerator.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CodeGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="16" selection-start="98" selection-end="98" vertical-scroll-proportion="0.08121019">
+            <state line="96" column="8" selection-start="2536" selection-end="2621" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -152,7 +184,7 @@
       <file leaf-file-name="TypeChecker.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TypeChecker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="276" column="46" selection-start="10482" selection-end="10482" vertical-scroll-proportion="0.0">
+            <state line="34" column="9" selection-start="987" selection-end="1454" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -176,8 +208,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/HelloWorld.pas" />
-        <option value="$PROJECT_DIR$/node/AExpression2.java" />
         <option value="$PROJECT_DIR$/ASTInterpreter.java" />
         <option value="$PROJECT_DIR$/Compiler.java" />
         <option value="$PROJECT_DIR$/ASTTypeChecker.java" />
@@ -185,11 +215,15 @@
         <option value="$PROJECT_DIR$/parser/ParserException.java" />
         <option value="$PROJECT_DIR$/TypeCheckerException.java" />
         <option value="$PROJECT_DIR$/CodeGeneratorException.java" />
-        <option value="$PROJECT_DIR$/Pascal.pas" />
         <option value="$PROJECT_DIR$/TypeChecker.java" />
         <option value="$PROJECT_DIR$/sablecc.scc" />
-        <option value="$PROJECT_DIR$/StupsCompiler.java" />
         <option value="$PROJECT_DIR$/CodeGenerator.java" />
+        <option value="$PROJECT_DIR$/Blocks.java" />
+        <option value="$PROJECT_DIR$/Liveness.java" />
+        <option value="$PROJECT_DIR$/Block.java" />
+        <option value="$PROJECT_DIR$/StupsCompiler.java" />
+        <option value="$PROJECT_DIR$/GraphVisitor.java" />
+        <option value="$PROJECT_DIR$/Pascal.pas" />
       </list>
     </option>
   </component>
@@ -200,6 +234,22 @@
     <option name="y" value="22" />
     <option name="width" value="1280" />
     <option name="height" value="774" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Spelling</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -217,7 +267,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+    <navigator proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -228,44 +278,7 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes>
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="projekt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="projekt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="projekt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="projekt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="projekt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
@@ -274,7 +287,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="preferences.fileTypes" />
+    <property name="options.lastSelected" value="Errors" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
@@ -298,7 +311,7 @@
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="StupsCompiler" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="-compile Pascal.pas" />
+      <option name="PROGRAM_PARAMETERS" value="-liveness Pascal.pas" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" value="" />
@@ -307,12 +320,14 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="projekt" />
       <envs />
+      <RunnerSettings RunnerId="Cover" />
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="" />
         <option name="TRANSPORT" value="0" />
         <option name="LOCAL" value="true" />
       </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Cover" />
       <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
@@ -473,13 +488,14 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1726094" sideWeight="0.60091746" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39908257" sideWeight="0.9975689" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1726094" sideWeight="0.6712538" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39296636" sideWeight="0.9975689" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="110" y="122" width="1060" height="574" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.60091746" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32874617" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32874617" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -538,30 +554,17 @@
     <MESSAGE value="Project for IntelliJ" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+    </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/TypeChecker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="276" column="46" selection-start="10482" selection-end="10482" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ASTPrinter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="157" column="36" selection-start="4047" selection-end="4047" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/analysis/Analysis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="281" selection-end="281" vertical-scroll-proportion="0.5589041" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/parser/TokenIndex.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="28" column="0" selection-start="540" selection-end="540" vertical-scroll-proportion="-9.945206" />
@@ -582,37 +585,14 @@
         <state line="44" column="35" selection-start="947" selection-end="947" vertical-scroll-proportion="-3.2748537" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TypeCheckerException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="45" selection-start="46" selection-end="46" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/parser/ParserException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="23" selection-start="319" selection-end="319" vertical-scroll-proportion="0.34795323">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CodeGeneratorException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="14" selection-start="83" selection-end="83" vertical-scroll-proportion="0.09315068">
-          <folding />
-        </state>
+        <state line="13" column="23" selection-start="319" selection-end="319" vertical-scroll-proportion="0.34795323" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/parser/Parser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="134" column="24" selection-start="3504" selection-end="3504" vertical-scroll-proportion="0.048295453">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Pascal.pas">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="31" selection-start="283" selection-end="283" vertical-scroll-proportion="0.0" />
+        <state line="134" column="24" selection-start="3504" selection-end="3504" vertical-scroll-proportion="0.048295453" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sablecc.scc">
@@ -620,23 +600,61 @@
         <state line="101" column="69" selection-start="2090" selection-end="2090" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/lib/sa-jdi.jar!/sun/jvm/hotspot/utilities/LivenessAnalysis.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="29" selection-start="460" selection-end="460" vertical-scroll-proportion="0.57954544" />
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/src.zip!/java/lang/Override.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="18" selection-start="971" selection-end="979" vertical-scroll-proportion="0.62739724" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CodeGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="96" column="8" selection-start="2536" selection-end="2621" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analysis/DepthFirstAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="240" column="0" selection-start="5060" selection-end="5060" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/TypeChecker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="276" column="46" selection-start="10482" selection-end="10482" vertical-scroll-proportion="0.0">
+        <state line="34" column="9" selection-start="987" selection-end="1454" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Block.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="25" selection-start="405" selection-end="405" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/StupsCompiler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="0" selection-start="2223" selection-end="2223" vertical-scroll-proportion="0.0">
+        <state line="146" column="103" selection-start="6355" selection-end="6355" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CodeGenerator.java">
+    <entry file="file://$PROJECT_DIR$/Pascal.pas">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="16" selection-start="98" selection-end="98" vertical-scroll-proportion="0.08121019">
+        <state line="19" column="0" selection-start="370" selection-end="370" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GraphVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="27" selection-start="1236" selection-end="1236" vertical-scroll-proportion="-0.46019107">
           <folding />
         </state>
       </provider>

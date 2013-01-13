@@ -20,5 +20,5 @@ Begin
             break;
         END;
     END;
-    writeln(42)
+    writeln(prim)
 End.

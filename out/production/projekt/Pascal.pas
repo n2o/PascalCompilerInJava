@@ -1,27 +1,24 @@
-program parenthesis;
-var a,c,b : integer;
-begin
-	a := 1;
-	b := a;
-	c := b+a;
-
-	while a < 10 do
-		begin
-			a := a+1;
-			while b < 10 do
-				b := b+1;
-				begin
-					while c < 10 do
-						begin
-							writeln(c);
-							break;
-							writeln(111111);
-						end;
-					break;
-					writeln(222222);
-				end;
-			break;
-			writeln(333333);
-		end
-	writeln(999999);
-end.
+Program IlovePriNum;
+Var i, n: Integer;
+Var prim: Boolean;
+Begin
+    n := 42;
+    i := 2;
+    prim := true;
+    while true do
+    BEGIN
+        if (n mod i)=0 then
+        BEGIN
+            writeln(i);
+            prim := false;
+            break;
+        END else
+        i := i + 1;
+        if i=(n-1) then
+        BEGIN
+            prim := true;
+            break;
+        END;
+    END;
+    writeln(42)
+End.

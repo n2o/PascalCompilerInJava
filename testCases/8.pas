@@ -1,4 +1,4 @@
-program parenthesis;
+program nested_while;
 var a,c,b : integer;
 begin
 	a := 1;
