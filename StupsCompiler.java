@@ -1,12 +1,10 @@
 /**************************************************************************
- * Created by Christian Meter on 21st December 2012                       *
+ * Created by Christian Meter on 14rd January 2013                        *
  *                                                                        *
  * Mainprogram for the StupsCompiler project                              *
  **************************************************************************
- * Usage: > java StupsCompiler -compile <Filename.pas>                    *
- **************************************************************************
- * ToDo:                                                                  *
- *  - Catch uninitialized variables                                       *
+ * Usage: > java StupsCompiler -argument <Filename.pas>                   *
+ * Valid arguments: -compile, -liveness                                   *
  *************************************************************************/
 
 import lexer.Lexer;
@@ -14,11 +12,8 @@ import lexer.LexerException;
 import node.Start;
 import parser.Parser;
 import parser.ParserException;
-import sun.jvm.hotspot.utilities.LivenessAnalysis;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.LinkedList;
 
 public class StupsCompiler {
 
@@ -98,8 +93,8 @@ public class StupsCompiler {
         Parser parser = new Parser(l);
 		Start start = parser.parse();
 
-        ASTPrinter printer = new ASTPrinter();
-        start.apply(printer);
+//        ASTPrinter printer = new ASTPrinter();
+//        start.apply(printer);
 
         TypeChecker typeChecker = new TypeChecker();            // Starting TypeChecker
         start.apply(typeChecker);
@@ -127,17 +122,13 @@ public class StupsCompiler {
         Parser parser = new Parser(l);
         Start start = parser.parse();
 
-//        ASTPrinter printer = new ASTPrinter();
-//        start.apply(printer);
-
         TypeChecker typeChecker = new TypeChecker();            // Starting TypeChecker
         start.apply(typeChecker);
 
         GraphVisitor analysis = new GraphVisitor();
         start.apply(analysis);
-        analysis.exitNode();
 
-        new Liveness(analysis);     // Start Liveness analysis
+        new Liveness(analysis, typeChecker);     // Start Liveness analysis
     }
 
     /**

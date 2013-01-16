@@ -11,13 +11,13 @@
 	.method public static main([Ljava/lang/String;)V
 	.limit stack 4
 	.limit locals 3
-	bipush 5
+	ldc 5
 	istore 1
-	bipush 1
+	ldc 1
 	istore 2
 LabelWhileUp0:
 	iload 1
-	bipush 0
+	ldc 0
 	isub
 	ifgt LabelTrue0
 	bipush 0
@@ -31,7 +31,7 @@ LabelCompEnd0:
 	imul
 	istore 2
 	iload 1
-	bipush 1
+	ldc 1
 	isub
 	istore 1
 	goto LabelWhileUp0

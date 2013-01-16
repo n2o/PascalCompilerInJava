@@ -1,3 +1,7 @@
+/**
+ * Structure for the liveness analysis. Here are the information about DEF, USE, IN and OUT stored
+ */
+
 import java.util.LinkedList;
 
 public class Block {
@@ -58,9 +62,6 @@ public class Block {
     }
     public String getDef() {
         return def;
-    }
-    public Block getSuccessor(int i) {
-        return successor.get(i);
     }
     public boolean hasSuccessor() {
         return hasSuccessor;

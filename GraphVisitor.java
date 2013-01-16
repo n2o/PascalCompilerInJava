@@ -8,7 +8,6 @@ public class GraphVisitor extends DepthFirstAdapter{
     private LinkedList<Block> blocks = new LinkedList<Block>();
     private Block lastBlock;
     private Block currentBlock;
-    private Block startBlock;
     private int blockID = 1;
     private HashMap<Integer, Integer> addSuccessors = new HashMap<Integer, Integer>();
 
@@ -22,7 +21,7 @@ public class GraphVisitor extends DepthFirstAdapter{
         String identifier = node.getIdentifier().toString().toLowerCase().replaceAll(" ","");
         currentBlock = new Block(identifier, blockID++);
         node.getExpr().apply(this);         // evaluate the expression
-        setStartAndSuccessor();
+        setNextSuccessor();
     }
     /**
      * For writeln(). Nearly same as Assignment
@@ -31,7 +30,7 @@ public class GraphVisitor extends DepthFirstAdapter{
     public void caseAPrintExpr(APrintExpr node) {
         currentBlock = new Block(blockID++);
         node.getExpr().apply(this);         // evaluate the expression
-        setStartAndSuccessor();
+        setNextSuccessor();
     }
     /**
      * If then
@@ -41,7 +40,7 @@ public class GraphVisitor extends DepthFirstAdapter{
         int temp = blockID;
         currentBlock = new Block(blockID++);
         node.getLeft().apply(this);         // evaluate the expression
-        setStartAndSuccessor();
+        setNextSuccessor();
         node.getRight().apply(this);
         addSuccessors.put(temp, blockID);
     }
@@ -54,7 +53,7 @@ public class GraphVisitor extends DepthFirstAdapter{
         int ifPointer = blockID;
         currentBlock = new Block(blockID++);
         node.getIf().apply(this);         // evaluate the expression
-        setStartAndSuccessor();
+        setNextSuccessor();
         node.getThen().apply(this);
         thenPointer = blockID-1;                   // last element of then
         addSuccessors.put(ifPointer, blockID);
@@ -63,7 +62,6 @@ public class GraphVisitor extends DepthFirstAdapter{
 
         // because of the normal algorithm according to setStartAndSuccessor() I need to remove the
         // first successor, because this one points to else, which is simply wrong at this point.
-//        blocks.get(thenPointer-1).getSuccessor().removeFirst();
         removeSuccessors.add(thenPointer-1);
         addSuccessors.put(thenPointer, flow);       // Add normal program flow after the then block
     }
@@ -75,28 +73,11 @@ public class GraphVisitor extends DepthFirstAdapter{
         int temp = blockID;
         currentBlock = new Block(blockID++);
         node.getLeft().apply(this);         // evaluate the expression
-        setStartAndSuccessor();
+        setNextSuccessor();
         node.getRight().apply(this);
         addSuccessors.put(temp, blockID);   // Add second successor for while loop
         addSuccessors.put(blockID - 1, temp);
-//        blocks.get(blockID-2).getSuccessor().removeFirst();
         removeSuccessors.add(blockID - 1);    // Remove later the first successor
-    }
-
-//    @Override
-//    public void caseAStartExpr(AStartExpr node) {
-//        currentBlock = new Block(blockID++);
-//        node.getStatementList().apply(this);
-//        setStartAndSuccessor();
-//    }
-
-    private void setStartAndSuccessor() {
-        if (lastBlock != null)              // if it is the first block, do nothing
-            lastBlock.addSuccessor(currentBlock);
-        else
-            startBlock = currentBlock;
-        blocks.add(currentBlock);       // Add currentBlock to the global list of blocks
-        lastBlock = currentBlock;
     }
     /**
      * Add to the current visited block a new item to the Use list
@@ -117,7 +98,16 @@ public class GraphVisitor extends DepthFirstAdapter{
     }
     public void exitNode() {
         currentBlock = new Block(blockID++);
-        setStartAndSuccessor();
+        setNextSuccessor();
+    }
+    /**
+     * Method to set the standard successor for one node
+     */
+    private void setNextSuccessor() {
+        if (lastBlock != null)              // if it is the first block, do nothing
+            lastBlock.addSuccessor(currentBlock);
+        blocks.add(currentBlock);       // Add currentBlock to the global list of blocks
+        lastBlock = currentBlock;
     }
 
     /************************************************************************************************/

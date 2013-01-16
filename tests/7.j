@@ -11,21 +11,21 @@
 	.method public static main([Ljava/lang/String;)V
 	.limit stack 7
 	.limit locals 4
-	bipush 1
-	bipush 7
-	bipush 3
+	ldc 1
+	ldc 7
+	ldc 3
 	imul
 	iadd
 	istore 1
-	bipush 7
-	bipush 1
-	bipush 4
+	ldc 7
+	ldc 1
+	ldc 4
 	iadd
 	ineg
 	isub
 	istore 3
-	bipush 2
-	bipush 1
+	ldc 2
+	ldc 1
 	ineg
 	ineg
 	ineg

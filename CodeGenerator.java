@@ -121,10 +121,10 @@ public class CodeGenerator extends DepthFirstAdapter {
     @Override
     public void caseANumberExpr(ANumberExpr node) {
         int number = Integer.parseInt(node.getNumber().toString().replaceAll(" ", ""));
-        if (number > 255)
+//        if (number > 255)
             code += "\tldc "+number+"\n";
-        else
-            code += "\tbipush "+number+"\n";
+//        else
+//            code += "\tbipush "+number+"\n";
         stackHeight++;
         type = "integer";
     }

@@ -36,8 +36,10 @@ def createShellScript(n):
 	temp = n
 	while temp != 0:
 		fileShellScript.write("echo \"######################## Test " + str(inc) + " ########################\"\n")
-		fileShellScript.write("echo \"# Calling StupsCompiler...\"\n")
+		fileShellScript.write("echo \"# Calling StupsCompiler - Compiling...\"\n")
 		fileShellScript.write("java StupsCompiler -compile tests/"+str(inc)+".pas\n")
+		fileShellScript.write("echo \"# Calling StupsCompiler - Liveness Analysis...\"\n")
+		fileShellScript.write("java StupsCompiler -liveness tests/"+str(inc)+".pas\n")
 		fileShellScript.write("echo \"# Calling jasmin.jar...\"\n")
 		fileShellScript.write("java -jar jasmin.jar tests/"+str(inc)+".j\n")
 		fileShellScript.write("echo \"# Executing Java File...\"\n")

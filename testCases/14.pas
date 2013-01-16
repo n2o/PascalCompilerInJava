@@ -19,6 +19,6 @@ Begin
             prim := true;
             break;
         END;
-    END;
-    writeln(prim)
+    END
+    //writeln(prim)
 End.

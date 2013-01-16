@@ -1,10 +1,6 @@
 /**************************************************************************
- * Created by Christian Meter on 13th December 2012                       *
- *                                                                        *
  * Typechecking all the identifiers and their operations                  *
- **************************************************************************
- * Usage: > java StupsCompiler -compile <Filename.pas>                    *
- **************************************************************************/
+ *************************************************************************/
 
 import analysis.DepthFirstAdapter;
 import node.*;
@@ -99,9 +95,8 @@ public class TypeChecker extends DepthFirstAdapter {
         if (expr.equals("AIdentifierExpr")) {
             String matchIdentifier = node.getIdentifier().toString().toLowerCase().replaceAll(" ","");
             checkDeclared(matchIdentifier);
-            if (!symbolTable.get(identifier).equals(symbolTable.get(identifier))) {
-                System.out.println("# Error: Wrong types. '"+identifier+"' has type '"+symbolTable.get(identifier)+"' and '"+matchIdentifier+"' is type '"+symbolTable.get(matchIdentifier)+"'.\n");
-            }
+            if (!symbolTable.get(identifier).equals(symbolTable.get(identifier)))
+                System.out.println("# Error: Wrong types. '" + identifier + "' has type '" + symbolTable.get(identifier) + "' and '" + matchIdentifier + "' is type '" + symbolTable.get(matchIdentifier) + "'.\n");
         }
     }
 
