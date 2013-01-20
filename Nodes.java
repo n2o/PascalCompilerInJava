@@ -1,3 +1,8 @@
+/**
+ * This class is only for the special points for the graphical output of the
+ * adjacency list
+ */
+
 import java.util.LinkedList;
 
 public class Nodes {

@@ -10,6 +10,10 @@ public class Liveness {
     private TypeChecker typeChecker;
     private LinkedList<Block> blocks;
 
+    /**
+     * Constructor for the Liveness analysis. Copy first all results from the former graph visitors
+     * and evaluate all the results
+     */
     public Liveness(GraphVisitor analysis, TypeChecker typeChecker) {
         this.analysis = analysis;
         this.blocks = analysis.getBlocks();
@@ -73,7 +77,7 @@ public class Liveness {
 
     /****************************************************************************************************/
     /**
-     * Start liveness analysis
+     * Start liveness analysis like in our course
      */
     private void startLiveness() {
         if (blocks.size() < Integer.MAX_VALUE) {

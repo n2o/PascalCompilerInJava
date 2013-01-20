@@ -1,5 +1,6 @@
 /**
  * Structure for the liveness analysis. Here are the information about DEF, USE, IN and OUT stored
+ * I create for each line one so called Block and store the above mentioned information in it
  */
 
 import java.util.LinkedList;
