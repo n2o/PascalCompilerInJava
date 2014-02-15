@@ -11,9 +11,9 @@
 	.method public static main([Ljava/lang/String;)V
 	.limit stack 24
 	.limit locals 5
-	bipush 4
+	ldc 4
 	istore 1
-	bipush 4
+	ldc 4
 	istore 3
 	iload 1
 	iload 3
@@ -83,16 +83,16 @@ LabelCompEnd4:
 	iload 4
 	ifeq LabelIfElse0
 	getstatic java/lang/System/out Ljava/io/PrintStream;
-	bipush 3
+	ldc 3
 	invokevirtual java/io/PrintStream/println(I)V
 	goto LabelIfElseEnd0
 LabelIfElse0:
 	getstatic java/lang/System/out Ljava/io/PrintStream;
-	bipush 1
+	ldc 1
 	invokevirtual java/io/PrintStream/println(I)V
 LabelIfElseEnd0:
-	bipush 2
-	bipush 2
+	ldc 2
+	ldc 2
 	isub
 	ifeq LabelTrue5
 	bipush 0
@@ -100,8 +100,8 @@ LabelIfElseEnd0:
 LabelTrue5:
 	bipush 1
 LabelCompEnd5:
-	bipush 2
-	bipush 2
+	ldc 2
+	ldc 2
 	isub
 	ifne LabelTrue6
 	bipush 0
@@ -118,7 +118,7 @@ LabelNotTrue2:
 	iand
 	ifeq LabelIfDown1
 	getstatic java/lang/System/out Ljava/io/PrintStream;
-	bipush 1
+	ldc 1
 	invokevirtual java/io/PrintStream/println(I)V
 LabelIfDown1:
 	return

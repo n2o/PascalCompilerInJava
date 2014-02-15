@@ -21,6 +21,8 @@ cp testCases/12.pas tests/
 cp testCases/13.pas tests/
 cp testCases/14.pas tests/
 cp testCases/15.pas tests/
+cp testCases/16.pas tests/
+cp testCases/17.pas tests/
 echo "######################## Test 1 ########################"
 echo "# Calling StupsCompiler - Compiling..."
 java StupsCompiler -compile tests/1.pas
@@ -170,4 +172,24 @@ echo "# Calling jasmin.jar..."
 java -jar jasmin.jar tests/15.j
 echo "# Executing Java File..."
 java tests/15
+echo "# Done."
+echo "######################## Test 16 ########################"
+echo "# Calling StupsCompiler - Compiling..."
+java StupsCompiler -compile tests/16.pas
+echo "# Calling StupsCompiler - Liveness Analysis..."
+java StupsCompiler -liveness tests/16.pas
+echo "# Calling jasmin.jar..."
+java -jar jasmin.jar tests/16.j
+echo "# Executing Java File..."
+java tests/16
+echo "# Done."
+echo "######################## Test 17 ########################"
+echo "# Calling StupsCompiler - Compiling..."
+java StupsCompiler -compile tests/17.pas
+echo "# Calling StupsCompiler - Liveness Analysis..."
+java StupsCompiler -liveness tests/17.pas
+echo "# Calling jasmin.jar..."
+java -jar jasmin.jar tests/17.j
+echo "# Executing Java File..."
+java tests/17
 echo "# Done."

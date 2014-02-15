@@ -11,9 +11,9 @@
 	.method public static main([Ljava/lang/String;)V
 	.limit stack 15
 	.limit locals 8
-	bipush 1
+	ldc 1
 	istore 4
-	bipush 7
+	ldc 7
 	iload 4
 	ineg
 	iadd
@@ -24,16 +24,16 @@ LabelWhileUp0:
 	bipush 1
 	ifeq LabelWhileDown0
 	getstatic java/lang/System/out Ljava/io/PrintStream;
-	bipush 1
+	ldc 1
 	invokevirtual java/io/PrintStream/println(I)V
 	iload 7
 	istore 3
-	bipush 2
+	ldc 2
 	iload 3
 	iadd
 	istore 7
 	iload 4
-	bipush 2
+	ldc 2
 	isub
 	istore 7
 	iload 4
@@ -41,25 +41,25 @@ LabelWhileUp0:
 	imul
 	istore 7
 	iload 4
-	bipush 2
+	ldc 2
 	idiv
 	istore 7
 	iload 4
 	iload 7
 	iadd
-	bipush 4
+	ldc 4
 	idiv
 	istore 7
 	iload 4
-	bipush 2
+	ldc 2
 	irem
 	istore 7
 	iload 4
-	bipush 3
+	ldc 3
 	irem
 	istore 7
 	getstatic java/lang/System/out Ljava/io/PrintStream;
-	bipush 2
+	ldc 2
 	invokevirtual java/io/PrintStream/println(I)V
 	bipush 1
 	ifeq LabelIfElse1
@@ -72,7 +72,7 @@ LabelIfElse1:
 	invokevirtual java/io/PrintStream/println(I)V
 LabelIfElseEnd1:
 	getstatic java/lang/System/out Ljava/io/PrintStream;
-	bipush 3
+	ldc 3
 	invokevirtual java/io/PrintStream/println(I)V
 	iload 5
 	ifeq LabelNotTrue3
@@ -89,7 +89,7 @@ LabelIfElse4:
 LabelIfElseEnd4:
 LabelIfDown2:
 	getstatic java/lang/System/out Ljava/io/PrintStream;
-	bipush 4
+	ldc 4
 	invokevirtual java/io/PrintStream/println(I)V
 	bipush 0
 	istore 5
@@ -97,7 +97,7 @@ LabelWhileUp5:
 	bipush 1
 	ifeq LabelWhileDown5
 	iload 4
-	bipush 1
+	ldc 1
 	iadd
 	istore 4
 	goto LabelBreakDown0
@@ -105,7 +105,7 @@ LabelWhileUp5:
 LabelWhileDown5:
 LabelBreakDown0:
 	getstatic java/lang/System/out Ljava/io/PrintStream;
-	bipush 5
+	ldc 5
 	invokevirtual java/io/PrintStream/println(I)V
 	goto LabelBreakDown1
 	iload 3

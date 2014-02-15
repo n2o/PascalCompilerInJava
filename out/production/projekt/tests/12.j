@@ -11,9 +11,9 @@
 	.method public static main([Ljava/lang/String;)V
 	.limit stack 7
 	.limit locals 5
-	bipush 0
+	ldc 0
 	istore 1
-	bipush 6
+	ldc 600
 	istore 3
 	iload 1
 	iload 3
@@ -37,7 +37,7 @@ LabelTrue1:
 LabelCompEnd1:
 	ifeq LabelWhileDown0
 	iload 1
-	bipush 1
+	ldc 1
 	iload 1
 	iadd
 	ineg

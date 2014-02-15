@@ -11,14 +11,14 @@
 	.method public static main([Ljava/lang/String;)V
 	.limit stack 4
 	.limit locals 4
-	bipush 1
+	ldc 1
 	istore 2
-	bipush 1
+	ldc 1
 	istore 3
 LabelWhileUp0:
 	bipush 1
 	iload 2
-	bipush 100
+	ldc 100
 	isub
 	iflt LabelTrue0
 	bipush 0

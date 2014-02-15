@@ -11,20 +11,20 @@
 	.method public static main([Ljava/lang/String;)V
 	.limit stack 10
 	.limit locals 7
-	bipush 10
+	ldc 10
 	istore 4
 	iload 4
-	bipush 3
+	ldc 3
 	irem
-	bipush 3
+	ldc 3
 	imul
-	bipush 2
+	ldc 2
 	idiv
 	istore 5
 	getstatic java/lang/System/out Ljava/io/PrintStream;
 	iload 5
 	invokevirtual java/io/PrintStream/println(I)V
-	bipush 1
+	ldc 1
 	istore 6
 	bipush 1
 	istore 1
@@ -48,7 +48,7 @@ LabelCompEnd0:
 	invokevirtual java/io/PrintStream/println(I)V
 	iload 4
 	iload 6
-	bipush 1
+	ldc 1
 	iadd
 	isub
 	ifle LabelTrue1

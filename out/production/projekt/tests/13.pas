@@ -1,18 +1,18 @@
 program someTest;
-var a,c,b,x : integer;
+var a,c,b,d : integer;
 var endPointer : boolean;
 begin
     endPointer := true;
     a := 1;
-    x := 0;
+    d := 0;
     c := 0;
     b := 42;
-    if x = 1 then
+    if d = 1 then
         begin
             b := a + a;
             c := b;
             writeln(a);
-            if x < 2 then
+            if d < 2 then
                 begin
                     a := a+1;
                     b := b+2;
@@ -20,7 +20,7 @@ begin
         end;
     writeln(c);
 
-    if x > 4 then
+    if d > 4 then
         begin
             writeln(a);
             writeln(b);
@@ -32,10 +32,10 @@ begin
         end;
 
     writeln(endPointer);
-    x := 0;
-    while x < 4 do
+    d := 0;
+    while d < 4 do
         begin
             writeln(a);
-            x := x+1;
+            d := d+1;
         end
 end.

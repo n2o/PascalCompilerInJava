@@ -11,8 +11,8 @@
 	.method public static main([Ljava/lang/String;)V
 	.limit stack 17
 	.limit locals 1
-	bipush 2
-	bipush 2
+	ldc 2
+	ldc 2
 	isub
 	ifeq LabelTrue0
 	bipush 0
@@ -20,8 +20,8 @@
 LabelTrue0:
 	bipush 1
 LabelCompEnd0:
-	bipush 2
-	bipush 2
+	ldc 2
+	ldc 2
 	isub
 	ifne LabelTrue1
 	bipush 0
@@ -41,8 +41,8 @@ LabelNotTrue1:
 	ldc 334364336
 	invokevirtual java/io/PrintStream/println(I)V
 LabelIfDown0:
-	bipush 2
-	bipush 2
+	ldc 2
+	ldc 2
 	isub
 	ifeq LabelTrue2
 	bipush 0
@@ -50,8 +50,8 @@ LabelIfDown0:
 LabelTrue2:
 	bipush 1
 LabelCompEnd2:
-	bipush 2
-	bipush 3
+	ldc 2
+	ldc 3
 	isub
 	ifne LabelTrue3
 	bipush 0
@@ -101,10 +101,10 @@ LabelNotTrue6:
 	LabelNotEnd6:
 	invokevirtual java/io/PrintStream/println(Z)V
 	getstatic java/lang/System/out Ljava/io/PrintStream;
-	bipush 1
-	bipush 3
-	bipush 2
-	bipush 1
+	ldc 1
+	ldc 3
+	ldc 2
+	ldc 1
 	iadd
 	isub
 	isub
