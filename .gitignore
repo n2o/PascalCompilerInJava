@@ -35,3 +35,4 @@ analysis/
 lexer/
 node/
 parser/
+.classpath/
