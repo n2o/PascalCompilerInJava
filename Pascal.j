@@ -9,31 +9,26 @@
 	return
 .end method
 	.method public static main([Ljava/lang/String;)V
-	.limit stack 4
-	.limit locals 5
+	.limit stack 6
+	.limit locals 1
 	ldc 1
-	istore 1
-	ldc 1
-	istore 2
-	ldc 10
-	istore 4
-while:
-	iload 1
-	iload 4
+	ldc 2
 	isub
-	ifge endLabel
+	iflt LabelTrue0
+	bipush 0
+	goto LabelCompEnd0
+LabelTrue0:
+	bipush 1
+LabelCompEnd0:
+	ifeq LabelIfElse0
 	getstatic java/lang/System/out Ljava/io/PrintStream;
-	iload 1
+	ldc 1
 	invokevirtual java/io/PrintStream/println(I)V
-	iload 2
-	istore 3
-	iload 1
-	iload 2
-	iadd
-	istore 2
-	iload 3
-	istore 1
-	goto while
-endLabel:
+	goto LabelIfElseEnd0
+LabelIfElse0:
+	getstatic java/lang/System/out Ljava/io/PrintStream;
+	ldc 0
+	invokevirtual java/io/PrintStream/println(I)V
+LabelIfElseEnd0:
 	return
 .end method
