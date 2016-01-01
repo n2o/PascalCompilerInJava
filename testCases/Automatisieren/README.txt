@@ -2,7 +2,7 @@
 
 1. Navigiere in das Hauptverzeichnis des Compilers (da, wo auch StupsCompiler.java und jasmin.jar gespeichert sind)
 
-2. Alle Testcases müssen im aktuellen Verzeichnis in dem DropBox Ordner testCases/ gespeichert sein.
+2. Alle Testcases müssen im aktuellen Verzeichnis in dem Ordner testCases/ gespeichert sein.
 
 3. In der Shell ausführen:
 	> python generateShellScript.py
