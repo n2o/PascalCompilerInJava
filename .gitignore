@@ -1,6 +1,7 @@
 *.class
 *.iml
 .gradle/
+.project
 
 # Ignore compiled Pascal files
 *.j
